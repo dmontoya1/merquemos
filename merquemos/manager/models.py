@@ -21,9 +21,9 @@ class AppPolicy(models.Model):
         return 'App policy record'
 
     def clean(self):
-        # Don't allow to save new AppPolicy objects is there is a created record.
+        # Don't allow to save new objects is there is a created record.
         if self.__class__.objects.all().count() > 0:
-            raise ValidationError('An AppPolicy record is already created')
+            raise ValidationError('An %s record is already created' % self._meta.verbose_name)
 
 class FAQCategory(models.Model):
     """Stores Frequently Asked Quetions categories
