@@ -24,6 +24,7 @@ class AppPolicy(models.Model):
         # Don't allow to save new objects is there is a created record.
         if self.__class__.objects.all().count() > 0:
             raise ValidationError('An %s record is already created' % self._meta.verbose_name)
+        return True
 
 class FAQCategory(models.Model):
     """Stores Frequently Asked Quetions categories
