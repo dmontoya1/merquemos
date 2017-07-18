@@ -18,7 +18,7 @@ class AppPolicy(models.Model):
     )
 
     def __unicode__(self):
-        return 'App policy record'
+        return '%s record' % self._meta.verbose_name
 
     def clean(self):
         # Don't allow to save new objects is there is a created record.

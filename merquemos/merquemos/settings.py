@@ -29,6 +29,7 @@ THIRD_PARTY_APPS = [
 ]
 
 PROJECT_APPS = [
+    'api',
     'manager',
     'stock',
     'users',
@@ -119,5 +120,3 @@ USE_TZ = True
 # Static files
 
 STATIC_URL = '/static/'
-
-print os.path.join(PROJECT_DIR, 'templates')
