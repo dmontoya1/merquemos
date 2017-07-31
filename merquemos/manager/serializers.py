@@ -3,7 +3,7 @@ from .models import AppPolicy, FAQCategory, FAQItem, State, City
 
 
 class AppPolicySerializer(serializers.ModelSerializer):
-
+    
     class Meta:
         model = AppPolicy
         fields = ('privacy_policy', 'terms_and_conditions')

@@ -17,8 +17,12 @@ class AppPolicy(models.Model):
         blank=True
     )
 
+    class Meta:
+        verbose_name = 'Poliza de usuario'
+        verbose_name_plural = 'Polizas de usuario'
+        
     def __unicode__(self):
-        return '%s record' % self._meta.verbose_name
+        return 'Registro de %s' % str(self._meta.verbose_name).
 
     def clean(self):
         # Don't allow to save new objects is there is a created record.
