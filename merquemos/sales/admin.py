@@ -2,5 +2,12 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from .models import (
+    Order, Item, Rating,
+    DeliveryOrder
+)
 
-# Register your models here.
+admin.site.register(Order)
+admin.site.register(Item)
+admin.site.register(Rating)
+admin.site.register(DeliveryOrder)

@@ -3,6 +3,8 @@ django-rest-auth==0.9.1
 djangorestframework==3.6.3
 drfapikey==0.0.3
 drfdocs==0.0.11
+olefile==0.44
+Pillow==4.2.1
 psycopg2==2.7.1
 pytz==2017.2
 six==1.10.0

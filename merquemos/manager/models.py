@@ -39,6 +39,10 @@ class FAQCategory(models.Model):
         unique=True
     )
 
+    class Meta:
+        verbose_name = 'Categoría de FAQ'
+        verbose_name_plural = 'Categorías de FAQ'
+
     def __unicode__(self):
         return self.name
 
@@ -50,6 +54,10 @@ class FAQItem(models.Model):
     question = models.TextField(unique=True)
     answer = models.TextField(unique=True)
 
+    class Meta:
+        verbose_name = 'Item de FAQ'
+        verbose_name_plural = 'Items de FAQ'
+
     def __unicode__(self):
         return self.question
 
@@ -58,6 +66,10 @@ class State(models.Model):
     """
 
     name = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name = 'Region'
+        verbose_name_plural = 'Regiones'
 
     def __unicode__(self):
         return self.name
@@ -69,6 +81,11 @@ class City(models.Model):
     state = models.ForeignKey(State)
     name = models.CharField(max_length=255)
 
+    class Meta:
+        verbose_name = 'Ciudad'
+        verbose_name_plural = 'Ciudades'
+
     def __unicode__(self):
         return self.name
+
 

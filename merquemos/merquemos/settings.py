@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -12,6 +14,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 DJANGO_APPS = [
+    'grappelli', #Third party app, needs to be before django.contrib.admin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,6 +78,10 @@ REST_FRAMEWORK = {
         'rest_framework_api_key.permissions.HasAPIAccess',
     )
 }
+
+AUTH_USER_MODEL = 'users.User'
+
+GRAPPELLI_ADMIN_TITLE = "Administrador Merquemos"
 
 # Database
 
