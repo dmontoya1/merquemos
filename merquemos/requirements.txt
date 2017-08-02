@@ -1,4 +1,5 @@
 Django==1.11.2
+django-grappelli==2.10.1
 django-rest-auth==0.9.1
 djangorestframework==3.6.3
 drfapikey==0.0.3
