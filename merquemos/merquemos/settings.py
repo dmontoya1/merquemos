@@ -14,7 +14,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 DJANGO_APPS = [
-    'grappelli', #Third party app, needs to be before django.contrib.admin
+    'material',
+    'material.admin', #Third party app, needs to be before django.contrib.admin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
