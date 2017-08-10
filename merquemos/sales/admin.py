@@ -7,7 +7,14 @@ from .models import (
     DeliveryOrder
 )
 
-admin.site.register(Order)
-admin.site.register(Item)
-admin.site.register(Rating)
-admin.site.register(DeliveryOrder)
+class OrderAdmin(admin.ModelAdmin):
+    icon = '<i class="material-icons">shopping_cart</i>'
+admin.site.register(Order, OrderAdmin)
+
+class RatingAdmin(admin.ModelAdmin):
+    icon = '<i class="material-icons">rate_review</i>'
+admin.site.register(Rating, RatingAdmin)
+
+class DeliveryOrderAdmin(admin.ModelAdmin):
+    icon = '<i class="material-icons">local_shipping</i>'
+admin.site.register(DeliveryOrder, DeliveryOrderAdmin)

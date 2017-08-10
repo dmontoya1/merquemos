@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -14,22 +18,25 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 DJANGO_APPS = [
-    'material',
+    'material', #Third party app, needs to be before django.contrib.admin
     'material.admin', #Third party app, needs to be before django.contrib.admin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'django.contrib.sites'
 ]
 
 THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework_api_key',
     'rest_auth',
     'rest_framework_docs',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
 ]
 
 PROJECT_APPS = [
@@ -37,7 +44,8 @@ PROJECT_APPS = [
     'manager',
     'stock',
     'users',
-    'sales'
+    'sales',
+    'reports'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -76,13 +84,13 @@ WSGI_APPLICATION = 'merquemos.wsgi.application'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework_api_key.permissions.HasAPIAccess',
+        'api.permissions.HasAPIAccess',
     )
 }
 
 AUTH_USER_MODEL = 'users.User'
 
-GRAPPELLI_ADMIN_TITLE = "Administrador Merquemos"
+SITE_ID = 1
 
 # Database
 
@@ -128,3 +136,6 @@ USE_TZ = True
 # Static files
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_DIR, "merquemos/static")
+]

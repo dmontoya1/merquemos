@@ -2,10 +2,12 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
+from reports.views import ReportsView 
 
 urlpatterns = [
-    url(r'^grappelli/', include('grappelli.urls')),
+    url(r'^admin/reports/$', ReportsView.as_view(), name="admin-reports"),
     url(r'^admin/', admin.site.urls),
     url(r'^auth/', include('rest_auth.urls')),
+    url(r'^auth/registration/', include('rest_auth.registration.urls')),
     url(r'^api/', include('api.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

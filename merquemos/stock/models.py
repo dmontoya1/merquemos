@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.db import models
+from django.db.models import F
 from manager.models import City
 
 
@@ -83,7 +85,7 @@ class BrandStore(models.Model):
         verbose_name_plural = "Marcas por tiendas"
     
     def __str__(self):
-        return '%s / %s' % self.brand, self.store
+        return str(self.brand)
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -104,6 +106,7 @@ class Product(models.Model):
     tax_percentage = models.DecimalField(max_digits=10, decimal_places=2)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     size = models.CharField(max_length=255)
+    stock_quantity = models.PositiveIntegerField(editable=False, default=0)
 
     class Meta:
         verbose_name = "Producto"
@@ -114,12 +117,29 @@ class Product(models.Model):
 class Inventory(models.Model):
     product = models.ForeignKey(Product)
     quantity = models.PositiveIntegerField()
+    date_added = models.DateTimeField(auto_now_add=True, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
 
     class Meta:
         verbose_name = "Inventario"
     
     def __str__(self):
-        return self.product
+        return str(self.quantity)
+
+    def __init__(self, *args, **kwargs):
+        super(Inventory, self).__init__(*args, **kwargs)
+        #Save last quantity value 
+        self.last_quantity = self.quantity
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            #If operation is an update, reduce product stock quantity from object's last quantity value
+            self.product.stock_quantity = F('stock_quantity') - self.last_quantity
+        #Increase product stock quantity when Inventory object is saved
+        self.product.stock_quantity = F('stock_quantity') + self.quantity
+        self.product.save()
+        super(Inventory, self).save(*args, **kwargs);
+
 
 
     

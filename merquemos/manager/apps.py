@@ -5,5 +5,5 @@ from django.apps import AppConfig
 
 class ManagerConfig(AppConfig):
     name = 'manager'
-    verbose_name = "Administración de aplicación"
+    verbose_name = "Administración de plataforma"
     icon = '<i class="material-icons">extension</i>'

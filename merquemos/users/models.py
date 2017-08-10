@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
 from manager.models import City
 
 class User(AbstractUser):
@@ -21,7 +21,7 @@ class User(AbstractUser):
         return str(self.get_full_name())
 
 class Address(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     city = models.ForeignKey(City)
     name = models.CharField(max_length=25)
     phone_number = models.CharField(max_length=15)
@@ -34,3 +34,4 @@ class Address(models.Model):
 
     def __str__(self):
         return str(self.label)
+
