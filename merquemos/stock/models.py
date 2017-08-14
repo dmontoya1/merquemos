@@ -10,7 +10,7 @@ from manager.models import City
 class Store(models.Model):
     name = models.CharField(max_length=255, unique=True)
     legal_id_number = models.CharField(max_length=255, unique=True)
-    logo = models.ImageField(upload_to="stock/store/logos")
+    logo = models.ImageField()
     city = models.ForeignKey(City)
     address = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=255)
@@ -131,14 +131,13 @@ class Inventory(models.Model):
         #Save last quantity value 
         self.last_quantity = self.quantity
 
-    def save(self, *args, **kwargs):
-        if self.pk:
-            #If operation is an update, reduce product stock quantity from object's last quantity value
-            self.product.stock_quantity = F('stock_quantity') - self.last_quantity
-        #Increase product stock quantity when Inventory object is saved
-        self.product.stock_quantity = F('stock_quantity') + self.quantity
-        self.product.save()
-        super(Inventory, self).save(*args, **kwargs);
+    def save(self, raw=False, *args, **kwargs):
+        if raw is False:
+            #Increase product stock quantity when Inventory object is saved
+            print self.last_quantity
+            self.product.stock_quantity = self.product.stock_quantity + self.quantity
+            self.product.save()
+            super(Inventory, self).save(*args, **kwargs)
 
 
 

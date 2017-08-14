@@ -43,7 +43,7 @@ class ProductAdmin(admin.ModelAdmin):
         instances = formset.save(commit=False)
         for instance in instances:
             instance.user = request.user
-            instance.save()
+            instance.save(raw=True)
         formset.save()
 admin.site.register(Product, ProductAdmin)
 
