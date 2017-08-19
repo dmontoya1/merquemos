@@ -10,7 +10,7 @@ from manager.models import City
 class Store(models.Model):
     name = models.CharField(max_length=255, unique=True)
     legal_id_number = models.CharField(max_length=255, unique=True)
-    logo = models.ImageField()
+    logo = models.ImageField(upload_to="stock/stores/logos/")
     city = models.ForeignKey(City)
     address = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=255)
