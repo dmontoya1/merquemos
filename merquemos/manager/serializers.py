@@ -13,7 +13,7 @@ class FAQCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FAQCategory
-        fields = ('name',)
+        fields = ('pk', 'name')
 
 
 class FAQItemSerializer(serializers.ModelSerializer):

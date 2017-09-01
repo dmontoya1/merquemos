@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import raven
 import sys
 
 reload(sys)
@@ -16,7 +17,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Application definition
-
 DJANGO_APPS = [
     'material', #Third party app, needs to be before django.contrib.admin
     'material.admin', #Third party app, needs to be before django.contrib.admin
@@ -37,6 +37,7 @@ THIRD_PARTY_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
+    'raven.contrib.django.raven_compat'
 ]
 
 PROJECT_APPS = [
@@ -82,18 +83,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'merquemos.wsgi.application'
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'api.permissions.HasAPIAccess',
-    )
-}
-
-AUTH_USER_MODEL = 'users.User'
-
 SITE_ID = 1
 
-# Database
+#Auth settings
+AUTH_USER_MODEL = 'users.User'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_ADAPTER = 'users.adapters.AccountAdapter'
 
+
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -103,7 +102,6 @@ DATABASES = {
 
 
 # Password validation
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -121,26 +119,42 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-
 LANGUAGE_CODE = 'es-co'
-
 TIME_ZONE = 'America/Bogota'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
 # Static files
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "merquemos/static")
 ]
 
-#User uploades files
 
+#User uploades files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_DIR, "merquemos/media")
+
+
+#Email config
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+
+
+#Sentry Config
+RAVEN_CONFIG = {
+    'dsn': 'https://79c7c7b847f144ac806773d761810fd9:17bde4d4addb4494b1e8a32f2aed91a3@sentry.io/210686',
+    'release': raven.fetch_git_sha(BASE_DIR),
+}
+
+#DRF Config
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'api.permissions.HasAPIAccess',
+    )
+}
