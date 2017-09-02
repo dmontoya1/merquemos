@@ -14,6 +14,12 @@ class Store(models.Model):
     city = models.ForeignKey(City)
     address = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=255)
+    app_cover = models.ImageField(
+        upload_to="stock/stores/app_covers/",
+        null=True,
+        blank=True
+    )
+    app_hex_code = models.CharField(max_length=10, null=True, blank=True)
 
     class Meta:
         verbose_name = "Tienda"
