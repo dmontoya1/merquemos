@@ -13,6 +13,12 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ('pk', 'name')
 
 class ProductSerializer(serializers.ModelSerializer):
+    price = serializers.DecimalField(
+        source='get_price',
+        read_only=True,
+        max_digits=10,
+        decimal_places=2
+    )
     class Meta:
         model = Product
         fields = (
@@ -22,5 +28,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'description',
             'price',
             'size',
-            'image'
+            'image',
+            'has_discount',
+            'discount_percentage'
         )

@@ -25,7 +25,7 @@ class AppPolicy(models.Model):
         return 'Registro de %s' % str(self._meta.verbose_name)
 
     def clean(self):
-        # Don't allow to save new objects is there is a created record.
+        # Don't allow to save new objects if there is a created record.
         if self.__class__.objects.all().count() > 0:
             raise ValidationError('An %s record is already created' % self._meta.verbose_name)
         return True

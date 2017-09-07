@@ -32,11 +32,18 @@ class RequiredParametersMixin(object):
         return super(generics.ListAPIView, self).list(request)
 
 class StoreList(generics.ListAPIView):
-    """Obtiene el listado de tiendas activas de la plataforma
+    """Obtiene el listado de tiendas activas de la plataforma. Si el parámetro 
+    'city_id' está presente, se filtrarán las tiendas por el id de la ciudad brindada.
     """
 
     serializer_class = StoreSerializer
-    queryset = Store.objects.all()
+
+    def get_queryset(self):
+        queryset = Store.objects.all()
+        city_id = self.request.query_params.get('city_id')
+        if city_id:
+            queryset = queryset.filter(city__pk=city_id)
+        return queryset
 
 class CategoryList(generics.ListAPIView):
     """Obtiene el listado de categorias de producto. Si el parámetro

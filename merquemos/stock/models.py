@@ -27,6 +27,12 @@ class Store(models.Model):
     def __str__(self): 
         return str(self.name)
 
+    def get_delivery_price(self):
+        if self.related_parameters.all().count() > 0:
+            params = self.related_parameters.all().last()
+            return params.delivery_price
+        return 0
+
 class StoreContact(models.Model):
     store = models.ForeignKey(Store)
     name = models.CharField(max_length=255)
@@ -63,7 +69,7 @@ class StoreHour(models.Model):
         return str(self.day.get_display_name())
 
 class StoreParameter(models.Model):
-    store = models.ForeignKey(Store)
+    store = models.ForeignKey(Store, related_name='related_parameters')
     delivery_price = models.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
@@ -115,12 +121,26 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     size = models.CharField(max_length=255)
     stock_quantity = models.PositiveIntegerField(editable=False, default=0)
+    discount_percentage = models.PositiveIntegerField(default=0)
 
     class Meta:
         verbose_name = "Producto"
     
     def __str__(self):
         return str(self.name)
+    
+    def has_discount(self):
+        if self.discount_percentage > 0:
+            return True
+        return False
+    
+    def get_discount_value(self):
+        return self.discount_percentage*self.price/100
+
+    def get_price(self):
+        if self.has_discount():
+            return self.price - self.get_discount_value()
+        return self.price
 
 class Inventory(models.Model):
     product = models.ForeignKey(Product)
