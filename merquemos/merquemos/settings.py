@@ -85,11 +85,15 @@ WSGI_APPLICATION = 'merquemos.wsgi.application'
 
 SITE_ID = 1
 
-#Auth settings
+# Auth settings
 AUTH_USER_MODEL = 'users.User'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_ADAPTER = 'users.adapters.AccountAdapter'
+AUTHENTICATION_BACKENDS = (
+   "django.contrib.auth.backends.ModelBackend",
+   "allauth.account.auth_backends.AuthenticationBackend"
+)
 
 
 # Database
@@ -156,5 +160,9 @@ RAVEN_CONFIG = {
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'api.permissions.HasAPIAccess',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     )
 }
