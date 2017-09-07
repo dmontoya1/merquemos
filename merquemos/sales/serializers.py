@@ -22,7 +22,7 @@ class ItemDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Item
-        fields = ('product', 'quantity', 'total')
+        fields = ('pk', 'product', 'quantity', 'total')
 
 class OrderItemSerializer(serializers.ModelSerializer):
     items = ItemDetailSerializer(many=True, read_only=True, source='get_items')

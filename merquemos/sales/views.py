@@ -51,6 +51,14 @@ class ItemCreate(generics.CreateAPIView):
     """
 
     serializer_class = ItemSerializer
+
+class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
+    """Edita (HTTP UPDATE) o elimina (DELETE) el item asociado al
+    id entregado en la URL
+    """
+
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
     
 
 
