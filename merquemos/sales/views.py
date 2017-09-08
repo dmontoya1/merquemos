@@ -12,6 +12,11 @@ from .serializers import OrderSerializer, OrderItemSerializer, ItemSerializer
 
 class OrderDetail(generics.ListAPIView):
     """Obtiene la información de la orden actual del usuario, obtenida con base en el token del usuario.
+    Los estados de orden son los siguientes:
+    ('PE', 'Pendiente')
+    ('AC', 'Aceptado')
+    ('CA', 'Cancelado')
+    ('DE', 'Entregado')
     """
 
     serializer_class = OrderSerializer

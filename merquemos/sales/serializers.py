@@ -9,7 +9,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ('pk', 'item_quantity')
+        fields = ('pk', 'item_quantity', 'status')
 
 class ItemSerializer(serializers.ModelSerializer):
     
