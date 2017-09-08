@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import datetime
+
 from django.conf import settings
 from django.db import models
 from django.db.models import F
+
 from manager.models import City
 
 
@@ -26,15 +29,20 @@ class Store(models.Model):
 
     def __str__(self): 
         return str(self.name)
-
+    
     def get_delivery_price(self):
         if self.related_parameters.all().count() > 0:
             params = self.related_parameters.all().last()
             return params.delivery_price
         return 0
 
+    def is_open(self):
+        if self.related_hours.all().count() > 0:
+            return True
+        return False
+
 class StoreContact(models.Model):
-    store = models.ForeignKey(Store)
+    store = models.ForeignKey(Store, related_name='related_contacts')
     name = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=15)
     email = models.EmailField()
@@ -56,7 +64,7 @@ class StoreHour(models.Model):
         (6, 'Sábado'),
         (7, 'Domingo'),
     )
-    store = models.ForeignKey(Store)
+    store = models.ForeignKey(Store, related_name='related_hours')
     day = models.CharField(max_length=1, choices=DAY_CHOICES)
     open_time = models.TimeField()
     close_time = models.TimeField()

@@ -3,11 +3,20 @@ from .models import Store, Category, Product
 
 
 class StoreSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = Store
-        fields = ('pk', 'name', 'logo', 'app_cover', 'app_hex_code')
+        fields = (
+            'pk',
+            'name',
+            'logo',
+            'app_cover',
+            'app_hex_code',
+            'is_open'
+        )
 
 class CategorySerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Category
         fields = ('pk', 'name')
@@ -19,6 +28,7 @@ class ProductSerializer(serializers.ModelSerializer):
         max_digits=10,
         decimal_places=2
     )
+
     class Meta:
         model = Product
         fields = (
