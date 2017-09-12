@@ -1,13 +1,15 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 from .views import (
-    OrderDetail, ItemCreate,
-    OrderItems, ItemDetail
+    CurrentOrderDetail, ItemCreate, OrderList,
+    CurrentOrderItems, ItemDetail, OrderDetail
 )
 
 urlpatterns = [
-    url(r'^order/$', OrderDetail.as_view(), name="order"),
-    url(r'^order/items/$', OrderItems.as_view(), name="order-items"),
+    url(r'^current-order/$', CurrentOrderDetail.as_view(), name="current-order"),
+    url(r'^current-order/items/$', CurrentOrderItems.as_view(), name="current-order-items"),
+    url(r'^orders/$', OrderList.as_view(), name="order-list"),
+    url(r'^order/(?P<pk>[0-9]+)/$', OrderDetail.as_view(), name="order-detail"),
     url(r'^item/$', ItemCreate.as_view(), name="item"),
     url(r'^item/(?P<pk>[0-9]+)/$', ItemDetail.as_view(), name="item-detail")
 ]

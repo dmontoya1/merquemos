@@ -10,13 +10,9 @@ from rest_framework.response import Response
 from .models import Order, Item
 from .serializers import OrderSerializer, OrderItemSerializer, ItemSerializer
 
-class OrderDetail(generics.ListAPIView):
+class CurrentOrderDetail(generics.ListAPIView):
     """Obtiene la información de la orden actual del usuario, obtenida con base en el token del usuario.
     Los estados de orden son los siguientes:
-    ('PE', 'Pendiente')
-    ('AC', 'Aceptado')
-    ('CA', 'Cancelado')
-    ('DE', 'Entregado')
     """
 
     serializer_class = OrderSerializer
@@ -33,7 +29,7 @@ class OrderDetail(generics.ListAPIView):
         serializer = OrderSerializer(order, many=False)
         return Response(serializer.data)
 
-class OrderItems(generics.ListAPIView):
+class CurrentOrderItems(generics.ListAPIView):
     """Obtiene los items de la orden actual, obtenida con base en el token del usuario.
     """
 
@@ -50,6 +46,25 @@ class OrderItems(generics.ListAPIView):
             )
         serializer = OrderItemSerializer(order, many=False)
         return Response(serializer.data)
+
+class OrderList(generics.ListAPIView):
+    """Obtiene las ordenes de un usuario, obtenido con base en el token de autenticación entregado.
+    """
+
+    serializer_class = OrderSerializer
+
+    def get(self, request, format=None):
+        orders = Order.objects.filter(user=request.auth.user).exclude(status='PE')
+        serializer = OrderSerializer(orders, many=True)
+        return Response(serializer.data)
+
+class OrderDetail(generics.RetrieveDestroyAPIView):
+    """Edita (HTTP UPDATE) o elimina (DELETE) la orden asociada al
+    id entregado en la URL
+    """
+
+    serializer_class = OrderSerializer
+    queryset = Order.objects.all()
 
 class ItemCreate(generics.CreateAPIView):
     """Crea un nuevo item para una orden.
