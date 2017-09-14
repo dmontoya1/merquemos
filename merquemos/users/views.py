@@ -19,3 +19,11 @@ class AddressList(generics.ListAPIView):
         addresses = Address.objects.filter(user=request.auth.user)
         serializer = AddressSerializer(addresses, many=True)
         return Response(serializer.data)
+
+class AddressDetail(generics.RetrieveUpdateDestroyAPIView):
+    """Edita (HTTP UPDATE) o elimina (DELETE) la dirección asociada al
+    id entregado en la URL
+    """
+
+    queryset = Address.objects.all()
+    serializer_class = AddressSerializer

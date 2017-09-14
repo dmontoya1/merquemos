@@ -6,4 +6,4 @@ class AddressSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Address
-        fields = ('__all__')
+        fields = ('pk', 'city', 'name', 'phone_number', 'label', 'directions')
