@@ -18,6 +18,8 @@ class User(AbstractUser):
         verbose_name_plural = "Usuarios"
     
     def __str__(self):
+        if self.get_full_name() == "":
+            return str(self.username)
         return str(self.get_full_name())
 
 class Address(models.Model):
