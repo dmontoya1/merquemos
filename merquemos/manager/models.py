@@ -88,4 +88,17 @@ class City(models.Model):
     def __unicode__(self):
         return self.name
 
+class ContactMessage(models.Model):
+    """Stores contact messages sent from contact form
+    """
+
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+
+    class Meta:
+        verbose_name = 'Mensaje de contacto'
+        verbose_name_plural = 'Mensajes de contacto'
+
+    def __unicode__(self):
+        return self.title
 

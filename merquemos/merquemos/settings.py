@@ -37,7 +37,8 @@ THIRD_PARTY_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
-    'raven.contrib.django.raven_compat'
+    'raven.contrib.django.raven_compat',
+    'fcm_django'
 ]
 
 PROJECT_APPS = [
@@ -164,4 +165,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     )
+}
+
+#FCM Config
+FCM_DJANGO_SETTINGS = {
+    "FCM_SERVER_KEY": "AAAAXfLtBHk:APA91bEwGbwSitAVEwmKioqKnxU1z2aS8XD5pIUzerRPQKWCY48DBzACSF0i7yEl2J7aprtujTKyWsSiAzkY2lBWLazey7jfXLoxX16NRgDDFRyvlAJ-e3hVGosgVUNmzHPxfbSJ3w_b",
 }

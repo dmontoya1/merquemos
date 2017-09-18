@@ -12,6 +12,7 @@ django-rest-auth==0.9.1
 djangorestframework==3.6.3
 drfapikey==0.0.3
 drfdocs==0.0.11
+fcm-django==0.2.11
 idna==2.5
 itypes==1.1.0
 Jinja2==2.9.6
@@ -21,11 +22,13 @@ olefile==0.44
 openapi-codec==1.3.1
 Pillow==4.2.1
 psycopg2==2.7.1
+pyfcm==1.3.1
 python-openid==2.2.5
 pytz==2017.2
 raven==6.1.0
 requests==2.18.1
 requests-oauthlib==0.8.0
+requests-toolbelt==0.8.0
 simplejson==3.11.1
 six==1.10.0
 uritemplate==3.0.0

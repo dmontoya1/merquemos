@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.http import JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework import generics
 from rest_framework import status
@@ -80,5 +82,14 @@ class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
     
-
-
+@csrf_exempt
+def checkout(request):
+    order = Order.objects.get(pk=request.POST['order_id'])
+    order.status = 'AC'
+    order.save()
+    return JsonResponse(
+        {
+            'detail': 'Compra aceptada satisfactoriamente'
+        },
+        status_code=200
+    )

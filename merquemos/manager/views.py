@@ -10,7 +10,7 @@ from .models import (
     State, City
 )
 from .serializers import (
-    AppPolicySerializer, FAQCategorySerializer, 
+    AppPolicySerializer, FAQCategorySerializer, ContactMessageSerializer,
     FAQItemSerializer, StateSerializer, CitySerializer
 )
 
@@ -71,4 +71,8 @@ class CityList(generics.ListAPIView):
             queryset = queryset.filter(state__pk=state_id)
         return queryset
 
+class ContactMessageCreate(generics.CreateAPIView):
+    """Crea un nuevo registro de contacto
+    """
 
+    serializer_class = ContactMessageSerializer
