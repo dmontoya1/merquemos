@@ -11,6 +11,16 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = ('pk', 'item_quantity', 'status')
 
+class OrderHistorySerializer(serializers.ModelSerializer):
+    store_logo = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Order
+        fields = ('pk', 'last_status_date', 'status', 'store_logo')
+    
+    def get_store_logo(self, obj):
+        return obj.related_items.all().last().product.store.logo
+
 class ItemSerializer(serializers.ModelSerializer):
     
     class Meta:

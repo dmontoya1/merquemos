@@ -10,7 +10,7 @@ from rest_framework import status
 from rest_framework.response import Response
 
 from .models import Order, Item
-from .serializers import OrderSerializer, OrderItemSerializer, ItemSerializer
+from .serializers import OrderSerializer, OrderItemSerializer, ItemSerializer, OrderHistorySerializer
 
 class CurrentOrderDetail(generics.ListAPIView):
     """Obtiene la información de la orden actual del usuario, obtenida con base en el token del usuario.
@@ -57,7 +57,7 @@ class OrderList(generics.ListAPIView):
 
     def get(self, request, format=None):
         orders = Order.objects.filter(user=request.auth.user).exclude(status='PE')
-        serializer = OrderSerializer(orders, many=True)
+        serializer = OrderHistorySerializer(orders, many=True)
         return Response(serializer.data)
 
 class OrderDetail(generics.RetrieveDestroyAPIView):

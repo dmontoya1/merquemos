@@ -28,7 +28,7 @@ class Order(models.Model):
         return str(self.pk)
     
     def get_items(self):
-        return self.related_items.all()
+        return self.related_items.all().order_by('pk')
     
     def has_items(self):
         if self.get_items().count() > 0:
