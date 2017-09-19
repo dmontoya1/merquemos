@@ -1,7 +1,9 @@
 from rest_framework import serializers
 
 from stock.serializers import ProductSerializer
-from .models import Order, Item, Rating
+from users.serializers import AddressSerializer
+
+from .models import Order, Item, Rating, DeliveryOrder
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -67,6 +69,20 @@ class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('pk', 'items', 'total_no_tax', 'total_tax', 'delivery_price', 'total_with_tax')
+
+class DeliveryOrderSerializer(serializers.ModelSerializer):
+    address = AddressSerializer(many=False, read_only=True)
+    
+    class Meta:
+        model = DeliveryOrder
+        fields = ('payment_method', 'status', 'address', 'extra_details', 'paid_amount')
+
+class OrderDetailSerializer(OrderItemSerializer):
+    deliveryorder = DeliveryOrderSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = Order
+        fields = ('pk', 'items', 'total_no_tax', 'total_tax', 'delivery_price', 'total_with_tax', 'deliveryorder')
 
 class RatingSerializer(serializers.ModelSerializer):
     

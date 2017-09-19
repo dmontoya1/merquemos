@@ -13,7 +13,7 @@ from .models import Order, Item
 from .serializers import (
     OrderSerializer, OrderItemSerializer, 
     ItemSerializer, OrderHistorySerializer,
-    RatingSerializer
+    RatingSerializer, OrderDetailSerializer
 )
 
 class CurrentOrderDetail(generics.ListAPIView):
@@ -69,7 +69,7 @@ class OrderDetail(generics.RetrieveDestroyAPIView):
     id entregado en la URL
     """
 
-    serializer_class = OrderSerializer
+    serializer_class = OrderDetailSerializer
     queryset = Order.objects.all()
 
 class ItemCreate(generics.CreateAPIView):
@@ -93,9 +93,14 @@ class RatingCreate(generics.CreateAPIView):
     serializer_class = RatingSerializer
 
     def create(self, request, *args, **kwargs):
-        request.data['user'] = request.auth.user
-        serializer = self.get_serializer(data=request.data)
-        self.perform_create(serializer)
+        data = request.data
+        mutable = data._mutable
+        data._mutable = True
+        data['user'] = request.auth.user.pk
+        data._mutable = mutable
+        serializer = self.get_serializer(data=data)
+        if serializer.is_valid():
+            self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 

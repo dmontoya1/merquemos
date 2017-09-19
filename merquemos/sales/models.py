@@ -6,6 +6,8 @@ from django.db import models
 from django.db.models import Sum
 
 from stock.models import Product
+from users.models import Address
+
 from .helpers import get_value_from_percentage
 
 
@@ -109,11 +111,22 @@ class Rating(models.Model):
         return str(self.pk)
 
 class DeliveryOrder(models.Model):
+    PAYMENT_METHOD_CHOICES = (
+        ('CS', 'Cash'),
+        ('PS', 'POS'),
+    )
+    STATUS_CHOICES = (
+        ('RN', 'Running'),
+        ('DV', 'Delivered'),
+        ('CA', 'Cancelled'),
+    )
+
     order = models.OneToOneField(Order)
-    payment_method = models.CharField(max_length=2)
-    status = models.CharField(max_length=2)
-    extra_details = models.TextField()
-    paid_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_method = models.CharField(max_length=2, choices=PAYMENT_METHOD_CHOICES)
+    status = models.CharField(max_length=2, choices=STATUS_CHOICES)
+    address = models.ForeignKey(Address, null=True, blank=True)
+    extra_details = models.TextField(null=True, blank=True)
+    paid_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 
     class Meta:
         verbose_name = "Orden de entrega"

@@ -16,9 +16,14 @@ class AddressCreate(generics.CreateAPIView):
     serializer_class = AddressCreateSerializer
 
     def create(self, request, *args, **kwargs):
-        request.data['user'] = request.auth.user
-        serializer = self.get_serializer(data=request.data)
-        self.perform_create(serializer)
+        data = request.data
+        mutable = data._mutable
+        data._mutable = True
+        data['user'] = request.auth.user.pk
+        data._mutable = mutable
+        serializer = self.get_serializer(data=data)
+        if serializer.is_valid():
+            self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
@@ -31,8 +36,9 @@ class AddressList(generics.ListAPIView):
 
     def get(self, request, format=None):
         addresses = Address.objects.filter(user=request.auth.user)
+        print request.auth.user.pk
         state_id = self.request.query_params.get('state_id', None)
-        if city_id is not None:
+        if state_id is not None:
             addresses = addresses.filter(city__state__pk=state_id)
         serializer = AddressSerializer(addresses, many=True)
         return Response(serializer.data)

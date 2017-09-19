@@ -3,10 +3,11 @@ from .models import User, Address
 
 
 class AddressSerializer(serializers.ModelSerializer):
-    
+    city_name = serializers.ReadOnlyField(source='city.name', read_only=True)
+
     class Meta:
         model = Address
-        fields = ('pk', 'city', 'name', 'phone_number', 'label', 'directions')
+        fields = ('pk', 'city_name', 'name', 'phone_number', 'label', 'directions')
 
 class AddressCreateSerializer(serializers.ModelSerializer):
     
