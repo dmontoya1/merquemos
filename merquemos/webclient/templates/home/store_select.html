@@ -1,0 +1,69 @@
+{% extends 'webclient/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+            <article class="has-post-thumbnail hentry">
+                <header class="entry-header header-with-cover-image" style="background-image: url({% static 'assets/images/products/header-image.png' %});">
+                    <div class="caption">
+                        <h1 class="entry-title" itemprop="name">Seleccione su ciudad</h1>
+                        <br>                                        
+                        <a type="button" class="btn btn-secondary" data-toggle="modal" data-target="#citySelectionModal" >
+                            <span class="button_icon">
+                                <i class="icon-layout"></i>
+                            </span> 
+                            <span class="button_label">Selecciona la Ciudad</span>
+                        </a>
+                    </div>
+                </header><!-- .entry-header -->
+                <!-- Modal Ciudad -->
+                <div class="modal fade " id="citySelectionModal" tabindex="-1" role="dialog" aria-labelledby="citySelectionModal" aria-hidden="true">
+                    <div class="modal-dialog " role="document">
+                        <div class="modal-content col-md-12">
+                            <div class="modal-header col-md-12">
+                                <h5 class="modal-title" id="exampleModalLabel">Ingresa tu dirección de entrega</h5>
+                            </div>
+                            <div class="modal-body col-md-12">
+                                <select class="selectpicker">
+                                    <option>Municipio</option>
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                                
+                                <select class="selectpicker zona  col-md-12 ">
+                                    <option>Ciudad</option>
+                                    <option>Ketchup</option>
+                                    <option>Mustard</option>
+                                    <option>Relish</option>
+                                </select>
+                            </div>
+
+                            <div class="modal-footer col-md-12">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+                                <button type="button" class="btn btn-primary">Seleccionar ciudad</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="entry-content">
+                    <div class="row about-features inner-top-md inner-bottom-sm">
+                        {% for store in webclient_context_stores %}
+                            <div class="col-xs-12 col-md-3">
+                                <figure class="wpb_wrapper vc_figure outer-bottom-xs">
+                                    <div class="vc_single_image-wrapper">
+                                        <a href="{{store.get_absolute_url}}">
+                                            <img src="{{store.logo.url}}" data-echo="{{store.logo.url}}" class="img-responsive" alt="">
+                                        </a>
+                                    </div>
+                                </figure>
+                            </div><!-- .col -->
+                        {% endfor %}
+                    </div><!-- .row -->
+                </div><!-- .entry-content -->
+            </article><!-- #post-## -->
+        </main><!-- #main -->
+    </div><!-- #primary -->
+{% endblock %}

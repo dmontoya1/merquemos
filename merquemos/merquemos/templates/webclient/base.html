@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Merquemos</title>
+
+        <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous" />        
+        <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/animate.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-electro.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/owl-carousel.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/colors/red.css' %}" />
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
+
+        <link rel="shortcut icon" href="{% static 'assets/images/fav-icon.png' %}">
+    </head>    
+    <body class="about full-width page page-template-default full-color-background">
+        <div id="page" class="hfeed site">
+            <a class="skip-link screen-reader-text" href="#site-navigation">Skip to navigation</a>
+            <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+            <div class="top-bar">
+                <div class="container">
+                    <nav>
+                        <ul id="menu-top-bar-left" class="nav nav-inline pull-left animate-dropdown flip">
+                            <li class="menu-item animate-dropdown"><a title="Bienvenidos a Merquemos" href="#">Bienvenidos a Merquemos</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav>
+                        <ul id="menu-top-bar-right" class="nav nav-inline pull-right animate-dropdown flip">
+                            <li class="menu-item animate-dropdown"><a title="My Account" href="my-account.html"><i class="ec ec-user"></i>Mi cuenta</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            
+            <header id="masthead" class="site-header header-v3">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="header-logo">
+                        	<a href="/" class="header-logo-link">
+                        		<img src="{% static 'assets/images/logo.png' %}" alt="Merquemos">
+                        	</a>
+                        </div>
+                       
+
+                        <form class="navbar-search" method="get" action="/">
+                        	<label class="sr-only screen-reader-text" for="search">Buscar por:</label>
+                        	<div class="input-group">
+                        		<input type="text" id="search" class="form-control search-field" dir="ltr" value="" name="q" placeholder="Buscar productos" />
+                        		<div class="input-group-addon search-categories">
+                        			<select name='product_cat' id='product_cat' class='postform resizeselect' >
+                                        <option disabled selected='selected'>Categorias</option>
+                                        {% for category in webclient_context_categories %}
+                                            <option class="level-0" value="{{category.pk}}">{{category.name}}</option>
+                                        {% endfor %}
+                        			</select>
+                        		</div>
+                        		<div class="input-group-btn">
+                        			<input type="hidden" id="search-param" name="post_type" value="product" />
+                        			<button type="submit" class="btn btn-secondary"><i class="ec ec-search"></i></button>
+                        		</div>
+                        	</div>
+                        </form>
+                        <!--
+                        <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
+                        	<li class="nav-item dropdown">
+                        		<a href="cart.html" class="nav-link" data-toggle="dropdown">
+                        			<i class="ec ec-shopping-bag"></i>
+                        			<span class="cart-items-count count">4</span>
+                                    <span class="cart-items-total-price total-price"><span class="amount">&#36;1,215.00</span></span>
+                                    <span class="cart-items-text ">Ver tienda</span>
+                        		</a>
+                        		<ul class="dropdown-menu dropdown-menu-mini-cart">
+                        			<li>
+                        				<div class="widget_shopping_cart_content">
+
+                        					<ul class="cart_list product_list_widget ">
+                        						<li class="mini_cart_item">
+                        							<a href="cart.html">
+                                                        <img class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" src="assets/images/tiendas/makro1.jpg" alt="">
+                                                        Despachado
+                        							</a>
+
+                        							<span class="quantity">El pedido fue despachado con satisfacción </span>
+                        						</li>
+                        					</ul>
+                        				</div>
+                        			</li>
+                        		</ul>
+                        	</li>
+                        </ul>                    
+                        -->    
+                        <!-- end product list -->
+
+                        
+                    </div><!-- /.row -->
+                </div>
+            </header><!-- #masthead -->
+            <div id="content" class="site-content" tabindex="-1">
+            	<div class="container">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="footer-bottom-widgets">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-7 col-md-push-5">
+                            <div class="columns">
+                                <aside id="nav_menu-4" class="widget clearfix widget_nav_menu">
+                                    <div class="body">
+                                        <h4 class="widget-title">Customer Care</h4>
+                                        <div class="menu-footer-menu-3-container">
+                                            <ul id="menu-footer-menu-3" class="menu">
+                                                <li class="menu-item"><a href="single-product.html">My Account</a></li>
+                                                <li class="menu-item"><a href="single-product.html">Track your Order</a></li>
+                                                <li class="menu-item"><a href="single-product.html">Wishlist</a></li>
+                                                <li class="menu-item"><a href="single-product.html">Customer Service</a></li>
+                                                <li class="menu-item"><a href="single-product.html">Returns/Exchange</a></li>
+                                                <li class="menu-item"><a href="single-product.html">FAQs</a></li>
+                                                <li class="menu-item"><a href="hsingle-product.html">Product Support</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div><!-- /.columns -->
+
+                        </div><!-- /.col -->
+
+                        <div class="footer-contact col-xs-12 col-sm-12 col-md-5 col-md-pull-7">
+                            <div class="footer-logo">
+                                <img src="{% static 'assets/images/logo_footer.png' %}" alt="Merquemos">
+                            </div><!-- /.footer-contact -->
+
+                            <div class="footer-call-us">
+                                <div class="media">
+                                    <span class="media-left call-us-icon media-middle"><i class="ec ec-support"></i></span>
+                                    <div class="media-body">
+                                        <span class="call-us-text">Got Questions ? Call us 24/7!</span>
+                                        <span class="call-us-number">(800) 8001-8588, (0600) 874 548</span>
+                                    </div>
+                                </div>
+                            </div><!-- /.footer-call-us -->
+
+
+                            <div class="footer-address">
+                                <strong class="footer-address-title">Contact Info</strong>
+                                <address>17 Princess Road, London, Greater London NW1 8JR, UK</address>
+                            </div><!-- /.footer-address -->
+
+                            <div class="footer-social-icons">
+                                <ul class="social-icons list-unstyled">
+                                    <li><a class="fa fa-facebook" href="http://themeforest.net/user/shaikrilwan/portfolio"></a></li>
+                                    <li><a class="fa fa-twitter" href="http://themeforest.net/user/shaikrilwan/portfolio"></a></li>
+                                    <li><a class="fa fa-pinterest" href="http://themeforest.net/user/shaikrilwan/portfolio"></a></li>
+                                    <li><a class="fa fa-linkedin" href="http://themeforest.net/user/shaikrilwan/portfolio"></a></li>
+                                    <li><a class="fa fa-google-plus" href="http://themeforest.net/user/shaikrilwan/portfolio"></a></li>
+                                    <li><a class="fa fa-tumblr" href="http://themeforest.net/user/shaikrilwan/portfolio"></a></li>
+                                    <li><a class="fa fa-instagram" href="http://themeforest.net/user/shaikrilwan/portfolio"></a></li>
+                                    <li><a class="fa fa-youtube" href="http://themeforest.net/user/shaikrilwan/portfolio"></a></li>
+                                    <li><a class="fa fa-rss" href="#"></a></li>
+                                    </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    
+            <div class="copyright-bar">
+                <div class="container">
+                    <div class="pull-left flip copyright">Powered by <a href="http://www.apptitud.com.co">Apptitud </a>&copy; Merquemos - All Rights Reserved</div>
+                    <div class="pull-right flip payment">
+                        <!--                        
+                        <div class="footer-payment-logo">
+                            <ul class="cash-card card-inline">
+                                <li class="card-item"><img src="assets/images/footer/payment-icon/1.png" alt="" width="52"></li>
+                                <li class="card-item"><img src="assets/images/footer/payment-icon/2.png" alt="" width="52"></li>
+                                <li class="card-item"><img src="assets/images/footer/payment-icon/3.png" alt="" width="52"></li>
+                                <li class="card-item"><img src="assets/images/footer/payment-icon/4.png" alt="" width="52"></li>
+                                <li class="card-item"><img src="assets/images/footer/payment-icon/5.png" alt="" width="52"></li>
+                            </ul>
+                        </div><!-- /.payment-methods 
+                        --> 
+                    </div>
+                </div> <!--.container -->
+            </div> <!-- /.copyright-bar-->
+        </div>
+
+        <script type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/tether.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/bootstrap-hover-dropdown.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/echo.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/wow.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/jquery.easing.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/electro.js' %}"></script>
+    </body>
+</html>

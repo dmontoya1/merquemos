@@ -47,7 +47,8 @@ PROJECT_APPS = [
     'stock',
     'users',
     'sales',
-    'reports'
+    'reports',
+    'webclient'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -77,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'webclient.context_processors.webclient_processor'
             ],
         },
     },
