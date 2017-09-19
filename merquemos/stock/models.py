@@ -6,6 +6,7 @@ import datetime
 from django.conf import settings
 from django.db import models
 from django.db.models import F
+from django.utils.text import slugify
 
 from manager.models import City
 
@@ -23,6 +24,7 @@ class Store(models.Model):
         blank=True
     )
     app_hex_code = models.CharField(max_length=10, null=True, blank=True)
+    slug = models.SlugField(unique=True, null=True, blank=True)
 
     class Meta:
         verbose_name = "Tienda"
@@ -30,11 +32,19 @@ class Store(models.Model):
     def __str__(self): 
         return str(self.name)
     
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Store, self).save(*args, **kwargs)
+
     def get_delivery_price(self):
         if self.related_parameters.all().count() > 0:
             params = self.related_parameters.all().last()
             return params.delivery_price
         return 0
+    
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('webclient:store', args=[str(self.slug)])
 
     def is_open(self):
         if self.related_hours.all().count() > 0:
