@@ -26,7 +26,7 @@ class Order(models.Model):
     
     def __str__(self):
         return str(self.pk)
-    
+
     def get_items(self):
         return self.related_items.all().order_by('pk')
     
@@ -93,12 +93,12 @@ class Item(models.Model):
         super(Item, self).save(*args, **kwargs)
 
     def get_tax_value(self):
-        percentaje = get_value_from_percentage(self.tax_percentage)
-        return self.price*percentaje
+        percentage = get_value_from_percentage(self.tax_percentage)
+        return self.price*percentage
 
 class Rating(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    order = models.ForeignKey(Order)
+    order = models.OneToOneField(Order)
     number = models.PositiveIntegerField()
 
     class Meta:
@@ -109,7 +109,7 @@ class Rating(models.Model):
         return str(self.pk)
 
 class DeliveryOrder(models.Model):
-    order = models.ForeignKey(Order)
+    order = models.OneToOneField(Order)
     payment_method = models.CharField(max_length=2)
     status = models.CharField(max_length=2)
     extra_details = models.TextField()

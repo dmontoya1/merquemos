@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from stock.serializers import ProductSerializer
-from .models import Order, Item
+from .models import Order, Item, Rating
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -16,11 +16,12 @@ class OrderHistorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ('pk', 'last_status_date', 'status', 'store_logo')
+        fields = ('pk', 'last_status_date', 'status', 'store_logo', 'rating')
     
     def get_store_logo(self, obj):
         if obj.related_items.all().last().product.store.logo:
-            return obj.related_items.all().last().product.store.logo.url
+            request = self.context.get('request')
+            return request.build_absolute_uri(obj.related_items.all().last().product.store.logo.url)
         return None
 
 class ItemSerializer(serializers.ModelSerializer):
@@ -66,3 +67,9 @@ class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('pk', 'items', 'total_no_tax', 'total_tax', 'delivery_price', 'total_with_tax')
+
+class RatingSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Rating
+        fields = ('user', 'order', 'number')

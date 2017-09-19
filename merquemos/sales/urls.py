@@ -2,7 +2,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from .views import (
     CurrentOrderDetail, ItemCreate, OrderList,
-    CurrentOrderItems, ItemDetail, OrderDetail, checkout
+    CurrentOrderItems, ItemDetail, OrderDetail, checkout,
+    RatingCreate
 )
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     url(r'^item/$', ItemCreate.as_view(), name="item"),
     url(r'^item/(?P<pk>[0-9]+)/$', ItemDetail.as_view(), name="item-detail"),
     url(r'^checkout/$', checkout, name="checkout"),
+    url(r'^rating/$', RatingCreate, name="rating-create"),
 ]

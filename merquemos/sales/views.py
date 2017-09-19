@@ -10,7 +10,11 @@ from rest_framework import status
 from rest_framework.response import Response
 
 from .models import Order, Item
-from .serializers import OrderSerializer, OrderItemSerializer, ItemSerializer, OrderHistorySerializer
+from .serializers import (
+    OrderSerializer, OrderItemSerializer, 
+    ItemSerializer, OrderHistorySerializer,
+    RatingSerializer
+)
 
 class CurrentOrderDetail(generics.ListAPIView):
     """Obtiene la información de la orden actual del usuario, obtenida con base en el token del usuario.
@@ -57,7 +61,7 @@ class OrderList(generics.ListAPIView):
 
     def get(self, request, format=None):
         orders = Order.objects.filter(user=request.auth.user).exclude(status='PE')
-        serializer = OrderHistorySerializer(orders, many=True)
+        serializer = OrderHistorySerializer(orders, many=True, context={"request": request})
         return Response(serializer.data)
 
 class OrderDetail(generics.RetrieveDestroyAPIView):
@@ -81,7 +85,20 @@ class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
-    
+
+class RatingCreate(generics.CreateAPIView):
+    """Crea un nuevo registro de calificación para una orden
+    """
+
+    serializer_class = RatingSerializer
+
+    def create(self, request, *args, **kwargs):
+        request.data['user'] = request.auth.user
+        serializer = self.get_serializer(data=request.data)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
 @csrf_exempt
 def checkout(request):
     order = Order.objects.get(pk=request.POST['order_id'])

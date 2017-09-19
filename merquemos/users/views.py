@@ -24,15 +24,18 @@ class AddressCreate(generics.CreateAPIView):
 
 class AddressList(generics.ListAPIView):
     """Obtiene las direcciones de un usuario, obtenida con base en el token de autenticación de dicho usuario.
+    Si el parámetro 'state_id' está presente, se filtrarán las direcciones por el departamento con el id correspondiente.
     """
 
     serializer_class = AddressSerializer
 
     def get(self, request, format=None):
         addresses = Address.objects.filter(user=request.auth.user)
+        state_id = self.request.query_params.get('state_id', None)
+        if city_id is not None:
+            addresses = addresses.filter(city__state__pk=state_id)
         serializer = AddressSerializer(addresses, many=True)
         return Response(serializer.data)
-
 
 class AddressDetail(generics.RetrieveUpdateDestroyAPIView):
     """Edita (HTTP UPDATE) o elimina (DELETE) la dirección asociada al
