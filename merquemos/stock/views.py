@@ -70,16 +70,22 @@ class ProductList(RequiredParametersMixin, generics.ListAPIView):
 
     serializer_class = ProductSerializer
     pagination_class = PageLimitPagination
-    required_parameters = ['category_id', 'store_id', 'limit']
+    required_parameters = ['store_id', 'limit']
 
     def get_queryset(self):
         queryset = Product.objects.all()
-        category_id = self.request.query_params.get('category_id')
+        
         store_id = self.request.query_params.get('store_id')
-        queryset = queryset.filter(category__pk=category_id, store__pk=store_id)
+        queryset = queryset.filter(store__pk=store_id)
+
         q_term = self.request.query_params.get('q', None)
         if q_term is not None:
             queryset = queryset.filter(name__icontains=q_term)
+
+        category_id = self.request.query_params.get('category_id', None)
+        if category_id is not None:
+            queryset = queryset.filter(category__pk=category_id)
+
         return queryset
 
 
