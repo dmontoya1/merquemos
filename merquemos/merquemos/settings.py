@@ -89,7 +89,9 @@ SITE_ID = 1
 # Auth settings
 AUTH_USER_MODEL = 'users.User'
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_ADAPTER = 'users.adapters.AccountAdapter'
 AUTHENTICATION_BACKENDS = (
    "django.contrib.auth.backends.ModelBackend",
@@ -166,8 +168,11 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     )
 }
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'users.serializers.UserSerializer'
+}
 
 #FCM Config
 FCM_DJANGO_SETTINGS = {
-    "FCM_SERVER_KEY": "AAAAXfLtBHk:APA91bEwGbwSitAVEwmKioqKnxU1z2aS8XD5pIUzerRPQKWCY48DBzACSF0i7yEl2J7aprtujTKyWsSiAzkY2lBWLazey7jfXLoxX16NRgDDFRyvlAJ-e3hVGosgVUNmzHPxfbSJ3w_b",
+    "FCM_SERVER_KEY": "AAAAXfLtBHk:APA91bEwGbwSitAVEwmKioqKnxU1z2aS8XD5pIUzerRPQKWCY48DBzACSF0i7yEl2J7aprtujTKyWsSiAzkY2lBWLazey7jfXLoxX16NRgDDFRyvlAJ-e3hVGosgVUNmzHPxfbSJ3w_b"
 }

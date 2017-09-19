@@ -13,3 +13,9 @@ class AddressCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
         fields = ('user', 'city', 'name', 'phone_number', 'label', 'directions')
+
+class UserSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email', 'phone_number')

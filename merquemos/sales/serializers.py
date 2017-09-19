@@ -19,7 +19,9 @@ class OrderHistorySerializer(serializers.ModelSerializer):
         fields = ('pk', 'last_status_date', 'status', 'store_logo')
     
     def get_store_logo(self, obj):
-        return obj.related_items.all().last().product.store.logo
+        if obj.related_items.all().last().product.store.logo:
+            return obj.related_items.all().last().product.store.logo.url
+        return None
 
 class ItemSerializer(serializers.ModelSerializer):
     
