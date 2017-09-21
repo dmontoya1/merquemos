@@ -123,7 +123,7 @@ class DeliveryOrder(models.Model):
 
     order = models.OneToOneField(Order)
     payment_method = models.CharField(max_length=2, choices=PAYMENT_METHOD_CHOICES)
-    status = models.CharField(max_length=2, choices=STATUS_CHOICES)
+    status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='RN')
     address = models.ForeignKey(Address, null=True, blank=True)
     extra_details = models.TextField(null=True, blank=True)
     paid_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)

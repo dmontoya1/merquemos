@@ -9,7 +9,8 @@ from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
 
-from .models import Order, Item
+from users.models import Address
+from .models import Order, Item, DeliveryOrder
 from .serializers import (
     OrderSerializer, OrderItemSerializer, 
     ItemSerializer, OrderHistorySerializer,
@@ -109,9 +110,34 @@ def checkout(request):
     order = Order.objects.get(pk=request.POST['order_id'])
     order.status = 'AC'
     order.save()
+
+    address = Address.objects.get(pk=request.POST['address_id'])
+
+    payment_method = request.POST['payment_method']
+
+    delivery_order = DeliveryOrder(
+        order=order,
+        address=address,
+        payment_method=payment_method
+    )
+    delivery_order.save()
+
     return JsonResponse(
         {
             'detail': 'Compra aceptada satisfactoriamente'
         },
-        status_code=200
+        status=200
+    )
+
+@csrf_exempt
+def order_cancellation(request):
+    order = Order.objects.get(pk=request.POST['order_id'])
+    order.status = 'CA'
+    order.save()
+
+    return JsonResponse(
+        {
+            'detail': 'Compra cancelada satisfactoriamente'
+        },
+        status=200
     )
