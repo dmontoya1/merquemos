@@ -45,6 +45,13 @@ class StoreList(generics.ListAPIView):
             queryset = queryset.filter(city__pk=city_id)
         return queryset
 
+class StoreDetail(generics.RetrieveAPIView):
+    """Obtiene el detalle de una tienda  de la plataforma.
+    """
+
+    serializer_class = StoreSerializer
+    queryset = Store.objects.all()
+
 class CategoryList(generics.ListAPIView):
     """Obtiene el listado de categorias de producto. Si el parámetro
     'parent_category_id' está presente, se filtrara las categorías por el 

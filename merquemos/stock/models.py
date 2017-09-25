@@ -42,9 +42,9 @@ class Store(models.Model):
             return params.delivery_price
         return 0
     
+    @models.permalink
     def get_absolute_url(self):
-        from django.urls import reverse
-        return reverse('webclient:store', args=[str(self.slug)])
+        return 'webclient:store', (self.slug,)
 
     def is_open(self):
         if self.related_hours.all().count() > 0:
