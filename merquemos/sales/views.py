@@ -17,6 +17,7 @@ from .serializers import (
     RatingSerializer, OrderDetailSerializer
 )
 
+
 class CurrentOrderDetail(generics.ListAPIView):
     """Obtiene la información de la orden actual del usuario, obtenida con base en el token del usuario.
     Los estados de orden son los siguientes:
