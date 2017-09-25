@@ -15,5 +15,5 @@ urlpatterns = [
     url(r'^item/(?P<pk>[0-9]+)/$', ItemDetail.as_view(), name="item-detail"),
     url(r'^checkout/$', checkout, name="checkout"),
     url(r'^cancellation/$', checkout, name="cancellation"),
-    url(r'^rating/$', RatingCreate, name="rating-create"),
+    url(r'^rating/$', RatingCreate.as_view(), name="rating-create"),
 ]
