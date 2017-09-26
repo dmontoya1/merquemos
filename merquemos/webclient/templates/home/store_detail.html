@@ -4,15 +4,12 @@
 {% block content %}
 <div id="primary" class="content-area">
     <main id="main" class="site-main"> 
-        <div class="home-v3-slider" >
 
-
-        </div>
         
 
         {% for category in webclient_context_categories %}
             <section class="products-carousel-tabs animate-in-view fadeIn animated" data-animation="fadeIn">
-                <h2 class="sr-only">Product Carousel Tabs</h2>
+                <h2 class="sr-only">Categorias</h2>
                 <ul class="nav nav-inline text-xs-left">
                     <li class="nav-item">
                         <a class="nav-link active">{{category.name}}</a>

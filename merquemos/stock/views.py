@@ -91,9 +91,11 @@ class ProductList(RequiredParametersMixin, generics.ListAPIView):
             queryset = queryset.filter(name__icontains=q_term)
 
         category_id = self.request.query_params.get('category_id', None)
-        if category_id is not None:
-            queryset = queryset.filter(category__pk=category_id)
 
+        if category_id is not None:
+            category = Category.objects.get(pk=category_id)
+            queryset = category.get_related_products()
+            
         return queryset
 
 

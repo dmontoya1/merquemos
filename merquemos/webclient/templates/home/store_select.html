@@ -22,12 +22,6 @@
                     <div class="modal-dialog " role="document">
                         <div class="modal-content col-md-12">
                             <div class="modal-body col-md-12">
-                                <select class="selectpicker">
-                                    <option>Departamento</option>
-                                    <option>Risaralda</option>
-                                    <option>Quindío</option>
-                                </select>
-                                
                                 <select class="selectpicker zona  col-md-12 ">
                                     <option>Ciudad</option>
                                     <option>Pereira</option>
@@ -49,7 +43,7 @@
                             <div class="col-xs-12 col-md-3">
                                 <figure class="wpb_wrapper vc_figure outer-bottom-xs">
                                     <div class="vc_single_image-wrapper">
-                                        <a href="{{store.get_absolute_url}}">
+                                        <a href="/{{store.city.name}}/{{store.slug}}">
                                             <img src="{{store.logo.url}}" data-echo="{{store.logo.url}}" class="img-responsive" alt="">
                                         </a>
                                     </div>
