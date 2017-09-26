@@ -127,11 +127,16 @@ class Category(models.Model):
     
     def __str__(self):
         return str(self.name)
-
+    
+    def get_related_products(self):
+        if self.parent is None:
+            return self.related_products.all()
+        return Product.objects.filter(category__parent=self)
+        
 class Product(models.Model):
     store = models.ForeignKey(Store)
     brand = models.ForeignKey(BrandStore)
-    category = models.ForeignKey(Category)  
+    category = models.ForeignKey(Category, related_name='related_products')  
     code = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     description = models.TextField()
@@ -160,6 +165,11 @@ class Product(models.Model):
         if self.has_discount():
             return self.price - self.get_discount_value()
         return self.price
+    
+    def get_image_url(self):
+        if self.image:
+            return self.image.url
+        return None
 
 class Inventory(models.Model):
     product = models.ForeignKey(Product)
