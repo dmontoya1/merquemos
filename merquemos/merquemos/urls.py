@@ -5,7 +5,7 @@ from django.contrib import admin
 from reports.views import ReportsView 
 
 urlpatterns = [
-    url(r'^$', include('webclient.urls', namespace='webclient')),
+    url(r'^', include('webclient.urls', namespace='webclient')),
     url(r'^admin/reports/$', ReportsView.as_view(), name="admin-reports"),
     url(r'^admin/', admin.site.urls),
     url(r'^auth/', include('rest_auth.urls')),

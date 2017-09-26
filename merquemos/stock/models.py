@@ -6,6 +6,7 @@ import datetime
 from django.conf import settings
 from django.db import models
 from django.db.models import F
+from django.urls import reverse_lazy
 from django.utils.text import slugify
 
 from manager.models import City
@@ -44,7 +45,7 @@ class Store(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return 'webclient:store', (self.slug,)
+        return reverse_lazy('webclient:store', args=(self.city.name, self.slug))
 
     def is_open(self):
         if self.related_hours.all().count() > 0:

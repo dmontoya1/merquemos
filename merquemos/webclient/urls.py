@@ -3,5 +3,5 @@ from .views import HomePageView, StoreView
 
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name="home"),
-    url(r'^(?P<slug>[-\w]+)/$', StoreView.as_view(), name='store'),
+    url(r'^(?P<city>[\w-]+)/(?P<slug>[\w-]+)$', StoreView.as_view(), name='store'),
 ]

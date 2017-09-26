@@ -12,3 +12,4 @@ class HomePageView(TemplateView):
 
 class StoreView(DetailView):
     model = Store
+    template_name = 'home/store_detail.html'

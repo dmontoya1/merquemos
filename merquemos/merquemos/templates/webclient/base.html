@@ -35,7 +35,11 @@
 
                     <nav>
                         <ul id="menu-top-bar-right" class="nav nav-inline pull-right animate-dropdown flip">
-                            <li class="menu-item animate-dropdown"><a title="My Account" href="my-account.html"><i class="ec ec-user"></i>Mi cuenta</a></li>
+                            {% if request.user.is_authenticated %}
+                                <li class="menu-item animate-dropdown"><a title="My Account" href="/"><i class="ec ec-user"></i>Mi cuenta</a></li>
+                            {% else %}
+                                <li class="menu-item animate-dropdown"><a title="My Account" href="/"><i class="ec ec-user"></i>Iniciar sesión</a></li>
+                            {% endif %}
                         </ul>
                     </nav>
                 </div>
@@ -116,22 +120,24 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-7 col-md-push-5">
                             <div class="columns">
-                                <aside id="nav_menu-4" class="widget clearfix widget_nav_menu">
-                                    <div class="body">
-                                        <h4 class="widget-title">Customer Care</h4>
-                                        <div class="menu-footer-menu-3-container">
-                                            <ul id="menu-footer-menu-3" class="menu">
-                                                <li class="menu-item"><a href="single-product.html">My Account</a></li>
-                                                <li class="menu-item"><a href="single-product.html">Track your Order</a></li>
-                                                <li class="menu-item"><a href="single-product.html">Wishlist</a></li>
-                                                <li class="menu-item"><a href="single-product.html">Customer Service</a></li>
-                                                <li class="menu-item"><a href="single-product.html">Returns/Exchange</a></li>
-                                                <li class="menu-item"><a href="single-product.html">FAQs</a></li>
-                                                <li class="menu-item"><a href="hsingle-product.html">Product Support</a></li>
-                                            </ul>
+                                <!--
+                                    <aside id="nav_menu-4" class="widget clearfix widget_nav_menu">
+                                        <div class="body">
+                                            <h4 class="widget-title">Customer Care</h4>
+                                            <div class="menu-footer-menu-3-container">
+                                                <ul id="menu-footer-menu-3" class="menu">
+                                                    <li class="menu-item"><a href="single-product.html">My Account</a></li>
+                                                    <li class="menu-item"><a href="single-product.html">Track your Order</a></li>
+                                                    <li class="menu-item"><a href="single-product.html">Wishlist</a></li>
+                                                    <li class="menu-item"><a href="single-product.html">Customer Service</a></li>
+                                                    <li class="menu-item"><a href="single-product.html">Returns/Exchange</a></li>
+                                                    <li class="menu-item"><a href="single-product.html">FAQs</a></li>
+                                                    <li class="menu-item"><a href="hsingle-product.html">Product Support</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                </aside>
+                                    </aside>
+                                -->
                             </div><!-- /.columns -->
 
                         </div><!-- /.col -->
@@ -145,17 +151,12 @@
                                 <div class="media">
                                     <span class="media-left call-us-icon media-middle"><i class="ec ec-support"></i></span>
                                     <div class="media-body">
-                                        <span class="call-us-text">Got Questions ? Call us 24/7!</span>
-                                        <span class="call-us-number">(800) 8001-8588, (0600) 874 548</span>
+                                        <span class="call-us-text">¿Preguntas? ¡Nuestro servicio es 24/7!</span>
+                                        <span class="call-us-number">(01) 8001-8588, (0600) 874 548</span>
                                     </div>
                                 </div>
                             </div><!-- /.footer-call-us -->
 
-
-                            <div class="footer-address">
-                                <strong class="footer-address-title">Contact Info</strong>
-                                <address>17 Princess Road, London, Greater London NW1 8JR, UK</address>
-                            </div><!-- /.footer-address -->
 
                             <div class="footer-social-icons">
                                 <ul class="social-icons list-unstyled">
