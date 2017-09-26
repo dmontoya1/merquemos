@@ -9,6 +9,8 @@ from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
 
+from fcm_django.models import FCMDevice
+
 from users.models import Address
 from .models import Order, Item, DeliveryOrder
 from .serializers import (
@@ -26,14 +28,16 @@ class CurrentOrderDetail(generics.ListAPIView):
     serializer_class = OrderSerializer
 
     def get(self, request, format=None):
-        order = Order.objects.filter(user=request.auth.user, status='PE').exists()
-        if order:
+        if Order.objects.filter(user=request.auth.user, status='PE').exists():
             order = Order.objects.get(user=request.auth.user, status='PE')
         else:
-            order = Order(
-                user=request.auth.user
-            )
-            order.save()
+            if Order.objects.filter(user=request.auth.user, status='AC').exists():
+                order = Order.objects.get(user=request.auth.user, status='AC')
+            else:
+                order = Order(
+                    user=request.auth.user
+                )
+                order.save()
         serializer = OrderSerializer(order, many=False)
         return Response(serializer.data)
 
@@ -122,6 +126,17 @@ def checkout(request):
         payment_method=payment_method
     )
     delivery_order.save()
+
+    devices = FCMDevice.objects.filter(user=order.user)
+
+    device.send_message(
+        title="Orden aceptada",
+        body="Tu orden está en camino",
+        icon="",
+        data={
+            "order_id": order.pk
+        }
+    )
 
     return JsonResponse(
         {
