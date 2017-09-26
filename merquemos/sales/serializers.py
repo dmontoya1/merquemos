@@ -69,7 +69,7 @@ class OrderDetailSerializer(OrderItemSerializer):
 
     class Meta:
         model = Order
-        fields = ('pk', 'items', 'total_no_tax', 'total_tax', 'delivery_price', 'total_with_tax', 'deliveryorder')
+        fields = ('pk', 'items', 'total_no_tax', 'total_tax', 'delivery_price', 'total_with_tax', 'deliveryorder', 'status')
 
 class OrderHistorySerializer(OrderItemSerializer):
     store_logo = serializers.SerializerMethodField()
