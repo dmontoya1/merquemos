@@ -16,6 +16,7 @@ from .serializers import (
     ProductSerializer
 )
 
+
 class RequiredParametersMixin(object):
     """Mixin compatible con ListAPIView. Sobreescribe el método 'list' de la
     clase para añadir un filtrado de parámetros requeridos en el request.
