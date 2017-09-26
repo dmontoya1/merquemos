@@ -13,19 +13,6 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = ('pk', 'item_quantity', 'status')
 
-class OrderHistorySerializer(serializers.ModelSerializer):
-    store_logo = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Order
-        fields = ('pk', 'last_status_date', 'status', 'store_logo', 'rating')
-    
-    def get_store_logo(self, obj):
-        if obj.related_items.all().last().product.store.logo:
-            request = self.context.get('request')
-            return request.build_absolute_uri(obj.related_items.all().last().product.store.logo.url)
-        return None
-
 class ItemSerializer(serializers.ModelSerializer):
     
     class Meta:
@@ -83,6 +70,20 @@ class OrderDetailSerializer(OrderItemSerializer):
     class Meta:
         model = Order
         fields = ('pk', 'items', 'total_no_tax', 'total_tax', 'delivery_price', 'total_with_tax', 'deliveryorder')
+
+class OrderHistorySerializer(OrderItemSerializer):
+    store_logo = serializers.SerializerMethodField()
+    formated_last_status_date = serializers.DateTimeField(format="%Y-%m-%d", source="last_status_date", read_only=True)
+
+    class Meta:
+        model = Order
+        fields = ('pk', 'formated_last_status_date', 'status', 'store_logo', 'rating', 'total_with_tax')
+    
+    def get_store_logo(self, obj):
+        if obj.related_items.all().last().product.store.logo:
+            request = self.context.get('request')
+            return request.build_absolute_uri(obj.related_items.all().last().product.store.logo.url)
+        return None
 
 class RatingSerializer(serializers.ModelSerializer):
     
