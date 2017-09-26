@@ -129,7 +129,7 @@ def checkout(request):
 
     devices = FCMDevice.objects.filter(user=order.user)
 
-    device.send_message(
+    devices.send_message(
         title="Orden aceptada",
         body="Tu orden está en camino",
         icon="",
