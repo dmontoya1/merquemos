@@ -128,10 +128,14 @@ class Category(models.Model):
     def __str__(self):
         return str(self.name)
     
-    def get_related_products(self):
+    def get_related_products(self, store=None):
         if self.parent is None:
-            return self.related_products.all()
-        return Product.objects.filter(category__parent=self)
+            queryset = self.related_products.all()
+        else:
+            queryset = Product.objects.filter(category__parent=self)
+        if store is not None:
+            queryset = queryset.filter(store=store)
+        return queryset
         
 class Product(models.Model):
     store = models.ForeignKey(Store)

@@ -87,15 +87,17 @@ class ProductList(RequiredParametersMixin, generics.ListAPIView):
         queryset = queryset.filter(store__pk=store_id)
 
         q_term = self.request.query_params.get('q', None)
+
         if q_term is not None:
             queryset = queryset.filter(name__icontains=q_term)
 
         category_id = self.request.query_params.get('category_id', None)
 
         if category_id is not None:
+            store = Store.objects.get(pk=store_id)
             category = Category.objects.get(pk=category_id)
-            queryset = category.get_related_products()
-            
+            queryset = category.get_related_products(store=store)
+
         return queryset
 
 
