@@ -1,3 +1,4 @@
+from django.contrib.sites.models import Site
 from rest_framework import serializers
 from .models import Store, Category, Product
 
@@ -28,6 +29,7 @@ class ProductSerializer(serializers.ModelSerializer):
         max_digits=10,
         decimal_places=2
     )
+    product_image = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -38,7 +40,11 @@ class ProductSerializer(serializers.ModelSerializer):
             'description',
             'price',
             'size',
-            'image',
+            'product_image',
             'has_discount',
             'discount_percentage'
         )
+    
+    def get_product_image(self, obj):
+        domain = Site.objects.get_current().domain
+        return 'http://{domain}{path}'.format(domain=domain, path=obj.image.url)
