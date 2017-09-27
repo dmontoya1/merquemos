@@ -1,19 +1,33 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 
 from manager.models import City
 from stock.models import Store, Product
+from users.models import User
+
 
 class AuthView(TemplateView):
     template_name = 'auth/auth.html'
 
+class LoginView(AuthView):
+
     def post(self, request, *args, **kwargs):
-        import time
-        time.sleep(200)
+        redirect_url = 'webclient:login'
+
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            redirect_url = 'webclient:home'
+        messages.add_message(request, messages.WARNING, 'Datos inválidos, reintenta nuevamente.')
+        return redirect(redirect_url)
 
 class HomePageView(TemplateView):
     template_name = 'home/store_select.html'
