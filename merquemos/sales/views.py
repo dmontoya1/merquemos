@@ -132,7 +132,7 @@ class RatingCreate(generics.CreateAPIView):
 
 @csrf_exempt
 def checkout(request):
-    print request.data
+    print request.POST  
     order = Order.objects.get(pk=request.POST['order_id'])
     order.status = 'AC'
     order.save()
