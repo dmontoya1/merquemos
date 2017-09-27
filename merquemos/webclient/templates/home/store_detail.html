@@ -1,10 +1,44 @@
 {% extends 'webclient/base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block content %}
 <div id="primary" class="content-area">
     <main id="main" class="site-main"> 
+        <div class="home-v3-slider" >
+            <!-- ========================================== SECTION – HERO : END========================================= -->
 
+            <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
+
+                <div class="item" style="background-image: url({% static 'img/slider_01.jpg' %});">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="caption vertical-center text-left">
+                                <!--
+                                    <div class="hero-subtitle-v2 fadeInDown-1">
+                                        Nuevas promociones en Septiembre
+                                    </div>
+
+                                    <div class="hero-2 fadeInDown-2">
+                                        Compra en la sección de lácteos y recibe un descuento del 60%
+                                    </div>
+
+                                    <div class="hero-action-btn fadeInDown-3">
+                                        <a href="/" class="big le-button ">Comprar ya</a>
+                                    </div>
+                                -->
+                                </div><!-- /.caption -->
+                            </div><!-- /.col -->
+                        </div>
+                    </div><!-- /.container -->
+                </div><!-- /.item -->
+
+            </div><!-- /.owl-carousel -->
+
+            <!-- ========================================= SECTION – HERO : END ========================================= -->
+
+        </div><!-- /.home-v1-slider -->
         
 
         {% for category in webclient_context_categories %}
@@ -28,7 +62,7 @@
                                     <li class="product {% if forloop.first %}first{% endif %}">
                                         <div class="product-outer">
                                             <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">{{product.category}}</a></span>
+                                                <span class="loop-product-categories">{{product.category}}</span>
                                                 <a href="{{product.get_absolute_url}}">
                                                     <h3>{{product.name}}</h3>
                                                     <div class="product-thumbnail">
@@ -37,11 +71,13 @@
                                                 </a>
         
                                                 <div class="price-add-to-cart">
-                                                    <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Agregar al carrito</a>
+                                                    <a rel="nofollow" href="/stores/{{product.store.city}}/{{product.store.slug}}/products/{{product.slug}}/" class="button add_to_cart_button">Agregar al carrito</a>
                                                     <span class="price">
                                                         <span class="electro-price">
-                                                            <ins><span class="amount">{{product.get_price}}</span></ins>
-                                                            <del><span class="amount">{{product.get_price}}</span></del>
+                                                            <ins><span class="amount">${{product.get_price|intcomma}}</span></ins>
+                                                            {% if product.has_discount %}
+                                                                <del><span class="amount">${{product.price|intcomma}}</span></del>
+                                                            {% endif %}
                                                         </span>
                                                     </span>
                                                     

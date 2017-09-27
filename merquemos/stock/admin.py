@@ -33,7 +33,7 @@ class InventoryInline(admin.StackedInline):
 
 class ProductAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">storage</i>'
-    list_display = ('code', 'name', 'brand', 'store', 'category', 'price', 'tax_percentage', 'size', 'stock_quantity')
+    list_display = ('sku', 'name', 'brand', 'store', 'category', 'price', 'tax_percentage', 'size', 'stock_quantity')
     readonly_fields = ('stock_quantity',)
     inlines = [
         InventoryInline,

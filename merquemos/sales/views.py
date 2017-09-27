@@ -27,7 +27,7 @@ class CurrentOrderDetail(generics.ListAPIView):
         ('AC', 'Accepted'),
         ('CA', 'Canceled'),
         ('DE', 'Delivered')
-    Si el parámetro 'base_order' está presente, se creará una orden nueva en base a la orden con la llave primaria
+    Si el parámetro 'base_order' está presente, se creará una orden nueva con base a la orden con la llave primaria
     correspondiente al valor de 'base_order'. En éste último escenario, solo se crearán items cuando cada producto tenga
     stock disponible.
     """

@@ -141,7 +141,7 @@ class Product(models.Model):
     store = models.ForeignKey(Store)
     brand = models.ForeignKey(BrandStore)
     category = models.ForeignKey(Category, related_name='related_products')  
-    code = models.CharField(max_length=255)
+    sku = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     description = models.TextField()
     image = models.ImageField(upload_to="stock/products/images/", null=True, blank=True)
@@ -150,6 +150,7 @@ class Product(models.Model):
     size = models.CharField(max_length=255)
     stock_quantity = models.PositiveIntegerField(editable=False, default=0)
     discount_percentage = models.PositiveIntegerField(default=0)
+    slug = models.SlugField(unique=True, null=True, blank=True)
 
     class Meta:
         verbose_name = "Producto"
@@ -157,6 +158,10 @@ class Product(models.Model):
     def __str__(self):
         return str(self.name)
     
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Product, self).save(*args, **kwargs)
+
     def has_discount(self):
         if self.discount_percentage > 0:
             return True
@@ -169,7 +174,7 @@ class Product(models.Model):
         if self.has_discount():
             return self.price - self.get_discount_value()
         return self.price
-    
+
     def get_image_url(self):
         if self.image:
             return self.image.url
