@@ -23,11 +23,21 @@ from .serializers import (
 class CurrentOrderDetail(generics.ListAPIView):
     """Obtiene la información de la orden actual del usuario, obtenida con base en el token del usuario.
     Los estados de orden son los siguientes:
+        ('PE', 'Pending'),
+        ('AC', 'Accepted'),
+        ('CA', 'Canceled'),
+        ('DE', 'Delivered')
+    Si el parámetro 'base_order' está presente, se creará una orden nueva en base a la orden con la llave primaria
+    correspondiente al valor de 'base_order'. En éste último escenario, solo se crearán items cuando cada producto tenga
+    stock disponible.
     """
 
     serializer_class = OrderSerializer
 
     def get(self, request, format=None):
+        base_order = None
+        if request.GET.get('base_order', None):
+            base_order = Order.objects.get(pk=request.GET['base_order'])
         if Order.objects.filter(user=request.auth.user, status='PE').exists():
             order = Order.objects.get(user=request.auth.user, status='PE')
         else:
@@ -38,6 +48,15 @@ class CurrentOrderDetail(generics.ListAPIView):
                     user=request.auth.user
                 )
                 order.save()
+                if base_order:
+                    for item in base_order.get_items():
+                        if item.product.stock_quantity > 0:
+                            new_item = Item(
+                                product=item.product,
+                                order=order,
+                                quantity=item.quantity
+                            )
+                            new_item.save()
         serializer = OrderSerializer(order, many=False)
         return Response(serializer.data)
 

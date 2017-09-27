@@ -142,12 +142,12 @@ STATICFILES_DIRS = [
 ]
 
 
-#User uploades files
+# User uploades files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_DIR, "merquemos/media")
 
 
-#Email config
+# Email config
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
@@ -155,13 +155,13 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = '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'
 
 
-#Sentry Config
+# Sentry Config
 RAVEN_CONFIG = {
     'dsn': 'https://79c7c7b847f144ac806773d761810fd9:17bde4d4addb4494b1e8a32f2aed91a3@sentry.io/210686',
     'release': raven.fetch_git_sha(BASE_DIR),
 }
 
-#DRF Config
+# DRF Config
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'api.permissions.HasAPIAccess',
@@ -174,7 +174,7 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'users.serializers.UserSerializer'
 }
 
-#FCM Config
+# FCM Config
 FCM_DJANGO_SETTINGS = {
     "FCM_SERVER_KEY": "AIzaSyCRceZzs8BPV6C0O8rQrRar-1TOobXbM-k"
 }
