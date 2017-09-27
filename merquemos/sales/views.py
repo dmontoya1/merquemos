@@ -67,9 +67,10 @@ class CurrentOrderItems(generics.ListAPIView):
     serializer_class = OrderItemSerializer
 
     def get(self, request, format=None):
-        order = Order.objects.filter(user=request.auth.user, status='PE').exists()
-        if order:
+        if Order.objects.filter(user=request.auth.user, status='PE').exists():
             order = Order.objects.get(user=request.auth.user, status='PE')
+        elif Order.objects.filter(user=request.auth.user, status='AC').exists():
+            order = Order.objects.get(user=request.auth.user, status='AC')
         else:
             return Response(
                 {'detail': 'El usuario no tiene compras activas'},
