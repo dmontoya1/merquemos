@@ -67,7 +67,7 @@ class CategoryList(generics.ListAPIView):
         if parent_category_id is not None:
             queryset = Category.objects.all().filter(parent__pk=parent_category_id)
         for category in queryset:
-            if category.get_related_products().count() == 0:
+            if category.related_products.all().count() == 0:
                 queryset = queryset.exclude(pk=category.pk)
         return queryset
 
