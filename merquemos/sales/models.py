@@ -46,7 +46,7 @@ class Order(models.Model):
         if self.has_items():
             total = 0
             for item in self.get_items():
-                tax = item.get_price_no_tax()
+                tax = item.product.get_price_no_tax()
                 total = total + tax
         return 0
 
