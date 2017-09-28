@@ -38,6 +38,7 @@ class CurrentOrderDetail(generics.ListAPIView):
         base_order = None
         if request.GET.get('base_order', None):
             base_order = Order.objects.get(pk=request.GET['base_order'])
+            Order.objects.filter(user=request.auth.user, status='PE').delete()
             order = Order(
                 user=request.auth.user
             )
