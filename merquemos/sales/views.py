@@ -134,6 +134,7 @@ class RatingCreate(generics.CreateAPIView):
 def checkout(request):
     print request.POST  
     order = Order.objects.get(pk=request.POST['order_id'])
+    order.delivery_price = order.get_delivery_price()
     order.status = 'AC'
     order.save()
 

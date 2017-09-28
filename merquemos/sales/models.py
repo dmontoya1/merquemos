@@ -17,6 +17,12 @@ class Order(models.Model):
         ('DE', 'Delivered')
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    delivery_price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True
+    )
     status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='PE')
     last_status_date = models.DateTimeField(auto_now_add=True)
 
@@ -26,7 +32,7 @@ class Order(models.Model):
     
     def __str__(self):
         return str(self.pk)
-
+    
     def get_items(self):
         return self.related_items.all().order_by('pk')
     
@@ -61,7 +67,10 @@ class Order(models.Model):
 
     def get_delivery_price(self):
         if self.has_items():
-            return self.get_items().last().product.store.get_delivery_price()
+            if self.status == "PE":
+                return self.get_items().last().product.store.get_delivery_price()
+            else:
+                return self.delivery_price
         return 0
 
 class Item(models.Model):
