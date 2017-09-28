@@ -97,7 +97,7 @@ class Item(models.Model):
         super(Item, self).save(*args, **kwargs)
 
     def get_tax_value(self):
-        return self.tax_percentage*self.price/100
+        return self.tax_percentage*self.total/100
 
     def get_price_no_tax(self):
         return self.total - self.get_tax_value()
