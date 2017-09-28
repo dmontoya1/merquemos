@@ -8,8 +8,6 @@ from django.db.models import Sum
 from stock.models import Product
 from users.models import Address
 
-from .helpers import get_value_from_percentage
-
 
 class Order(models.Model):
     STATUS_CHOICES = (
@@ -100,8 +98,10 @@ class Item(models.Model):
         super(Item, self).save(*args, **kwargs)
 
     def get_tax_value(self):
-        percentage = get_value_from_percentage(self.tax_percentage)
-        return self.price*percentage
+        return self.tax_percentage*self.price/100
+
+    def get_price_no_tax(self):
+        return self.price - self.get_tax_value()
 
 class Rating(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
