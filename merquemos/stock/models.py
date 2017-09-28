@@ -96,9 +96,6 @@ class StoreParameter(models.Model):
         verbose_name = "Parámetro de tienda"
         verbose_name_plural = "Parámetros de tiendas"
 
-    def __str__(self):
-        return "%s de %s" % self._meta.verbose_name_plural, str(self.store)
-
 class Brand(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
