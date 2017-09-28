@@ -66,6 +66,9 @@ class CategoryList(generics.ListAPIView):
         parent_category_id = self.request.query_params.get('parent_category_id')
         if parent_category_id is not None:
             queryset = Category.objects.all().filter(parent__pk=parent_category_id)
+        for category in queryset:
+            if category.get_related_products() == 0: #Validate if related products are 0.
+                queryset = queryset.exclude(pk=category.pk)
         return queryset
 
 class ProductList(RequiredParametersMixin, generics.ListAPIView):
