@@ -9,8 +9,15 @@ from .models import (
 )
 
 
+class StoreParameterInline(admin.StackedInline):
+    model = StoreParameter
+    extra = 0
+
 class StoreAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">store</i>'
+    inlines = [
+        StoreParameterInline,
+    ]
 admin.site.register(Store, StoreAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
