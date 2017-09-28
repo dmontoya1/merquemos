@@ -48,7 +48,7 @@ class Order(models.Model):
             for item in self.get_items():
                 tax = item.product.get_price_no_tax()
                 total = total + tax
-        return 0
+        return total
 
     def get_total_tax(self):
         total = 0
