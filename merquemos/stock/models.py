@@ -185,9 +185,7 @@ class Product(models.Model):
         return self.price
 
     def get_price_no_tax(self):
-        if self.has_discount(): 
-            return self.get_price() - self.get_tax_value()
-        return self.price
+        return self.get_price() - self.get_tax_value()
 
     def get_image_url(self):
         if self.image:
