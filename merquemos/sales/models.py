@@ -100,7 +100,7 @@ class Item(models.Model):
         return self.tax_percentage*self.price/100
 
     def get_price_no_tax(self):
-        return self.price - self.get_tax_value()
+        return self.total - self.get_tax_value()
 
 class Rating(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
