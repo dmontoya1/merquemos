@@ -78,7 +78,7 @@ class City(models.Model):
     """Stores country cities, referenced by state (State). e.g: Pereira (City), Risaralda (State)
     """
 
-    state = models.ForeignKey(State)
+    state = models.ForeignKey(State, related_name="related_cities")
     name = models.CharField(max_length=255)
 
     class Meta:

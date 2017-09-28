@@ -38,25 +38,29 @@ class CurrentOrderDetail(generics.ListAPIView):
         base_order = None
         if request.GET.get('base_order', None):
             base_order = Order.objects.get(pk=request.GET['base_order'])
-        if Order.objects.filter(user=request.auth.user, status='PE').exists():
-            order = Order.objects.get(user=request.auth.user, status='PE')
+            order = Order(
+                user=request.auth.user
+            )
+            order.save()
+            for item in base_order.get_items():
+                if item.product.stock_quantity > 0:
+                    new_item = Item(
+                        product=item.product,
+                        order=order,
+                        quantity=item.quantity
+                    )
+                    new_item.save()
         else:
-            if Order.objects.filter(user=request.auth.user, status='AC').exists():
-                order = Order.objects.get(user=request.auth.user, status='AC')
+            if Order.objects.filter(user=request.auth.user, status='PE').exists():
+                order = Order.objects.get(user=request.auth.user, status='PE')
             else:
-                order = Order(
-                    user=request.auth.user
-                )
-                order.save()
-                if base_order:
-                    for item in base_order.get_items():
-                        if item.product.stock_quantity > 0:
-                            new_item = Item(
-                                product=item.product,
-                                order=order,
-                                quantity=item.quantity
-                            )
-                            new_item.save()
+                if Order.objects.filter(user=request.auth.user, status='AC').exists():
+                    order = Order.objects.get(user=request.auth.user, status='AC')
+                else:
+                    order = Order(
+                        user=request.auth.user
+                    )
+                    order.save()
         serializer = OrderSerializer(order, many=False)
         return Response(serializer.data)
 

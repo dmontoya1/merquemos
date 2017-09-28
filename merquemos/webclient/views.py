@@ -27,8 +27,12 @@ class LoginView(AuthView):
         if user is not None:
             login(request, user)
             redirect_url = 'webclient:home'
-        messages.add_message(request, messages.WARNING, 'Datos inválidos, reintenta nuevamente.')
+        else:
+            messages.add_message(request, messages.WARNING, 'Datos inválidos, reintenta nuevamente.')
         return redirect(redirect_url)
+
+class SignupView(AuthView):  
+    pass
 
 class HomePageView(TemplateView):
     template_name = 'home/store_select.html'

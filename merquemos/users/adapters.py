@@ -6,5 +6,4 @@ from allauth.account.adapter import DefaultAccountAdapter
 class AccountAdapter(DefaultAccountAdapter):
 
     def get_email_confirmation_redirect_url(self, request):
-        messages.add_message(request, messages.SUCCESS, 'Cuenta activada exitosamente')
-        return reverse('users:login')
+        return reverse('webclient:login')

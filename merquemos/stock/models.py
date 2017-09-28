@@ -17,7 +17,7 @@ class Store(models.Model):
     name = models.CharField(max_length=255, unique=True)
     legal_id_number = models.CharField(max_length=255, unique=True)
     logo = models.ImageField(upload_to="stock/stores/logos/")
-    city = models.ForeignKey(City)
+    city = models.ForeignKey(City, related_name="related_stores")
     address = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=255)
     app_cover = models.ImageField(

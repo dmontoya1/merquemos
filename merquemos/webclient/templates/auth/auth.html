@@ -29,12 +29,6 @@
 
                                             <p class="before-login-text">Bienvenidos, Iniciar sesión en su cuenta</p>
 
-                                            {% if messages %}
-                                                {% for message in messages %}
-                                                    <p class="alert alert-{{ message.tags }}">{{ message }}</p>
-                                                {% endfor %}
-                                            {% endif %}
-
                                             <p class="form-row form-row-wide">
                                                 <label for="username">Usuario o correo electronico<span class="required">*</span></label>
                                                 <input type="text" class="input-text" name="username" id="username" value="" />
@@ -47,7 +41,6 @@
 
                                             <p class="form-row">
                                                 <input class="button" type="submit" value="Iniciar sesión" name="login">
-                                                <label for="rememberme" class="inline"><input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Recuérdame</label>
                                             </p>
 
                                             <p class="form-row">
@@ -80,19 +73,23 @@
                                             <p class="before-register-text">Crea tu propia cuenta</p>
 
                                             <p class="form-row form-row-wide">
-                                                <label for="reg_email">Correo Electronico<span class="required">*</span></label>
+                                                <label for="reg_email">Correo Electrónico<span class="required">*</span></label>
                                                 <input type="email" class="input-text" name="email" id="reg_email" value="" />
                                             </p>
                                             <p class="form-row form-row-wide">
                                                 <label for="reg_password1">Contraseña<span class="required">*</span></label>
                                                 <input type="password" class="input-text" name="password1" id="reg_password1" value="" />
+                                                
                                             </p>
                                             <p class="form-row form-row-wide">
                                                 <label for="reg_password2">Repite la contraseña<span class="required">*</span></label>
                                                 <input type="password" class="input-text" name="password2" id="reg_password2" value="" />
                                             </p>
 
-                                            <p class="form-row"><input type="submit" class="button" name="register" value="Registrar" /></p>
+                                            <p class="form-row">
+                                                <input type="submit" class="button" name="register" value="Registrar" id="reg_submit"/>
+                                                <div id="spinner"></div>
+                                            </p>
 
                                             <div class="register-benefits">
                                                 <h3>Regístrese hoy y podrá:</h3>
@@ -125,14 +122,25 @@
 
 {% block extra_js %}
 <script>
-    $('#register-form').on('submit', function(e){
-        e.preventDefault();
-        var jqxhr = $.post( "/auth/registration/", $(this).serialize(), function(data) {
-            alert(data);
-        })
-        .fail(function(data) {
-            alert( "Error: " + data );
-        })
-    });
+    (function($) {
+        $('#register-form').on('submit', function(e){
+            e.preventDefault();
+            $('#reg_submit').attr('disabled', true);
+            $('#reg_submit').val('Registrando...');
+            var jqxhr = $.post( "/auth/registration/", $(this).serialize(), function(data) {
+                location.reload();
+            })
+                .fail(function(data) {
+                    $('.validator').remove();
+                    $.each(data.responseJSON, function(key,value) {
+                        $('#reg_' + key).after('<span class="red validator">'+ value +'</span>')
+                    }); 
+                })
+                .always(function(data) {
+                    $('#reg_submit').attr('disabled', false);
+                    $('#reg_submit').val('Registrar');
+                });
+        });
+    })(jQuery);
 </script>
 {% endblock %}
