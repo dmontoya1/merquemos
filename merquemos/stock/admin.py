@@ -15,6 +15,7 @@ admin.site.register(Store, StoreAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">layers</i>'
+    list_display = ('name', 'parent')
 admin.site.register(Category, CategoryAdmin)
 
 class BrandAdmin(admin.ModelAdmin):
@@ -45,5 +46,11 @@ class ProductAdmin(admin.ModelAdmin):
             instance.user = request.user
             instance.save(raw=True)
         formset.save()
+    
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(ProductAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['category'].queryset = Category.objects.exclude(parent=None)
+        return form
+
 admin.site.register(Product, ProductAdmin)
 

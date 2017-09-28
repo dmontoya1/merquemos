@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import datetime
 
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import F
 from django.urls import reverse_lazy
@@ -158,6 +159,11 @@ class Product(models.Model):
     def __str__(self):
         return str(self.name)
     
+    def clean(self):
+        if self.category.parent is None:
+            raise ValidationError("La categoría seleccionada para el producto no puede ser {}, pues es una categoría principal. Por favor,\
+            selecciona una subcategoría".format(self.category.name))
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Product, self).save(*args, **kwargs)
