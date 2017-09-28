@@ -130,7 +130,7 @@ class Category(models.Model):
         return str(self.name)
     
     def get_related_products(self, store=None):
-        if self.parent is None:
+        if self.parent is not None:
             queryset = self.related_products.all()
         else:
             queryset = Product.objects.filter(category__parent=self)
