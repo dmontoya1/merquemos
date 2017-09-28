@@ -175,10 +175,18 @@ class Product(models.Model):
     
     def get_discount_value(self):
         return self.discount_percentage*self.price/100
+    
+    def get_tax_value(self):
+        return self.tax_percentage*self.price/100
 
     def get_price(self):
         if self.has_discount():
             return self.price - self.get_discount_value()
+        return self.price
+
+    def get_price_no_tax(self):
+        if self.has_discount(): 
+            return self.get_price() - self.get_tax_value()
         return self.price
 
     def get_image_url(self):

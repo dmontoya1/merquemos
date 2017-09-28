@@ -44,7 +44,10 @@ class Order(models.Model):
 
     def get_total_no_tax(self):
         if self.has_items():
-            return self.get_items().aggregate(Sum('total'))['total__sum']
+            total = 0
+            for item in self.get_items():
+                tax = item.get_price_no_tax()
+                total = total + tax
         return 0
 
     def get_total_tax(self):
