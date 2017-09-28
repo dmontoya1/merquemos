@@ -56,6 +56,7 @@ class Order(models.Model):
         for item in self.get_items():
             tax = item.get_tax_value()
             total = total + tax
+        
         return total
     
     def get_total_with_tax(self):
