@@ -156,6 +156,7 @@ def checkout(request):
             "order_id": order.pk
         }
     )
+    print devices
 
     return JsonResponse(
         {
