@@ -34,6 +34,12 @@ class Order(models.Model):
     def __str__(self):
         return str(self.pk)
     
+    def get_rating(self):
+        try:
+            return self.rating.number
+        except:
+            return 0
+
     def get_items(self):
         return self.related_items.all().order_by('pk')
     

@@ -74,6 +74,7 @@ class OrderDetailSerializer(OrderItemSerializer):
 class OrderHistorySerializer(OrderItemSerializer):
     store_logo = serializers.SerializerMethodField()
     formated_last_status_date = serializers.DateTimeField(format="%Y-%m-%d", source="last_status_date", read_only=True)
+    rating = serializers.IntegerField(source="get_rating", read_only=True)
 
     class Meta:
         model = Order
@@ -86,7 +87,7 @@ class OrderHistorySerializer(OrderItemSerializer):
         return None
 
 class RatingSerializer(serializers.ModelSerializer):
-    user = serializers.CharField(source='user', required=False)
+    user = serializers.CharField(required=False)
 
     class Meta:
         model = Rating
