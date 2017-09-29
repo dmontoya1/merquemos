@@ -1,5 +1,6 @@
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth.views import password_reset_confirm
 from allauth.account.views import ConfirmEmailView
 
 urlpatterns = [
@@ -11,5 +12,5 @@ urlpatterns = [
     url(r'^users/', include('users.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^account-confirm-email/(?P<key>[-:\w]+)/$', ConfirmEmailView.as_view(), name='account_confirm_email'),
-    url(r'^reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', name='password_reset_confirm'),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm, name='password_reset_confirm'),
 ]
