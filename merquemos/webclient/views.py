@@ -37,6 +37,21 @@ class SignupView(AuthView):
 class HomePageView(TemplateView):
     template_name = 'home/store_select.html'
 
+    def post(self, request):
+        city = City.objects.get(pk=request.POST['city'])
+        request.session['city'] = city.pk
+        return self.get(request)
+
+    def get_context_data(self, **kwargs):
+        request = self.request
+        print request.session.get('city', False)
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        if request.session.get('city', False):
+            city = City.objects.get(pk=request.session['city'])
+            context['stores'] = Store.objects.filter(city=city)
+            context['city'] = city
+        return context
+
 class StoreView(DetailView):
     model = Store
     template_name = 'home/store_detail.html'

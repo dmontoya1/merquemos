@@ -121,6 +121,28 @@
                     </div><!-- /.row -->
                 </div>
             </header><!-- #masthead -->
+            
+            <div class="modal fade " id="citySelectionModal" tabindex="-1" role="dialog" aria-labelledby="citySelectionModal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog " role="document">
+                    <div class="modal-content col-md-12">
+                        <form action="/" method="POST">
+                            {% csrf_token %}
+                            <div class="modal-body col-md-12">
+                                <select class="selectpicker zona  col-md-12 " id="city_selector" name="city">
+                                    <option disabled selected>Ciudad</option>
+                                    {% for city in webclient_context_cities %}
+                                        <option value="{{city.pk}}">{{city.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="modal-footer col-md-12">
+                                <button type="submit" class="btn btn-secondary" id="city_selector_action">Seleccionar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <div id="content" class="site-content" tabindex="-1">
             	<div class="container">
                     {% block content %}

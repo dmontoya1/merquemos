@@ -17,42 +17,37 @@
                         </a>
                     </div>
                 </header><!-- .entry-header -->
-                <!-- Modal Ciudad -->
-                <div class="modal fade " id="citySelectionModal" tabindex="-1" role="dialog" aria-labelledby="citySelectionModal" aria-hidden="true">
-                    <div class="modal-dialog " role="document">
-                        <div class="modal-content col-md-12">
-                            <div class="modal-body col-md-12">
-                                <select class="selectpicker zona  col-md-12 ">
-                                    <option>Ciudad</option>
-                                    <option>Pereira</option>
-                                    <option>Armenia</option>
-                                </select>
-                            </div>
 
-                            <div class="modal-footer col-md-12">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-                                <button type="button" class="btn btn-primary">Seleccionar ciudad</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% if request.session.city %}
+                    <div class="entry-content">
+                        <div class="row about-features inner-top-md inner-bottom-sm">
+                            <h1 class="entry-title" itemprop="name">{{city.name}}</h1>
+                            {% for store in stores %}
+                                <div class="col-xs-12 col-md-3">
+                                    <figure class="wpb_wrapper vc_figure outer-bottom-xs">
+                                        <div class="vc_single_image-wrapper">
+                                            <a href="/stores/{{store.city.name}}/{{store.slug}}">
+                                                <img src="{{store.logo.url}}" data-echo="{{store.logo.url}}" class="img-responsive" alt="">
+                                            </a>
+                                        </div>
+                                    </figure>
+                                </div><!-- .col -->
+                            {% endfor %}
+                        </div><!-- .row -->
+                    </div><!-- .entry-content -->
+                {% endif %}
 
-                <div class="entry-content">
-                    <div class="row about-features inner-top-md inner-bottom-sm">
-                        {% for store in webclient_context_stores %}
-                            <div class="col-xs-12 col-md-3">
-                                <figure class="wpb_wrapper vc_figure outer-bottom-xs">
-                                    <div class="vc_single_image-wrapper">
-                                        <a href="/stores/{{store.city.name}}/{{store.slug}}">
-                                            <img src="{{store.logo.url}}" data-echo="{{store.logo.url}}" class="img-responsive" alt="">
-                                        </a>
-                                    </div>
-                                </figure>
-                            </div><!-- .col -->
-                        {% endfor %}
-                    </div><!-- .row -->
-                </div><!-- .entry-content -->
             </article><!-- #post-## -->
         </main><!-- #main -->
     </div><!-- #primary -->
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    (function($) {
+        {% if not request.session.city %}
+            $('#citySelectionModal').modal('show');
+        {% endif %}
+    })(jQuery);
+</script>
 {% endblock %}
