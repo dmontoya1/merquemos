@@ -40,7 +40,7 @@ class FCMDeviceQuerySet(models.query.QuerySet):
 		if self:
 			from .fcm import fcm_send_bulk_message
 
-			reg_ids = list(self.filter(active=True).values_list('registration_id', flat=True))
+			reg_ids = list(self.all().values_list('registration_id', flat=True))
 			if len(reg_ids) == 0:
 				return [{'failure': len(self), 'success': 0}]
 
@@ -56,6 +56,15 @@ class FCMDeviceQuerySet(models.query.QuerySet):
 				**kwargs
 			)
 
+			results = result[0]['results']
+			for (index, item) in enumerate(results):
+				print results
+				if 'error' in item:
+					reg_id = reg_ids[index]
+					self.filter(registration_id=reg_id).update(active=False)
+
+					if SETTINGS["DELETE_INACTIVE_DEVICES"]:
+						self.filter(registration_id=reg_id).delete()
 			return result
 
 
@@ -91,4 +100,12 @@ class FCMDevice(Device):
 			api_key=api_key,
 			**kwargs
 		)
+
+		device = FCMDevice.objects.filter(registration_id=self.registration_id)
+		if 'error' in result['results'][0]:
+			device.update(active=False)
+
+			if SETTINGS["DELETE_INACTIVE_DEVICES"]:
+				device.delete()
+
 		return result
