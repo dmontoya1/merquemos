@@ -37,7 +37,7 @@ class Order(models.Model):
         return str(self.pk)
     
     def save(self, *args, **kwargs):
-        devices = FCMDevice.objects.filter(user=order.user)
+        devices = FCMDevice.objects.filter(user=self.user)
         if self.status == "CA" or self.status == "DE":
             if devices.count() > 0:
                 devices.send_message(
