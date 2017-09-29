@@ -56,15 +56,6 @@ class FCMDeviceQuerySet(models.query.QuerySet):
 				**kwargs
 			)
 
-			results = result[0]['results']
-			for (index, item) in enumerate(results):
-				print results
-				if 'error' in item:
-					reg_id = reg_ids[index]
-					self.filter(registration_id=reg_id).update(active=False)
-
-					if SETTINGS["DELETE_INACTIVE_DEVICES"]:
-						self.filter(registration_id=reg_id).delete()
 			return result
 
 
