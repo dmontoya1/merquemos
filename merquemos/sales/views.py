@@ -124,6 +124,7 @@ class RatingCreate(generics.CreateAPIView):
     serializer_class = RatingSerializer
 
     def perform_create(self, serializer):
+        print self.request.data
         serializer.save(user=self.request.auth.user)
 
 @csrf_exempt
