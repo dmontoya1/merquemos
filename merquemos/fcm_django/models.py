@@ -91,12 +91,4 @@ class FCMDevice(Device):
 			api_key=api_key,
 			**kwargs
 		)
-
-		device = FCMDevice.objects.filter(registration_id=self.registration_id)
-		if 'error' in result['results'][0]:
-			device.update(active=False)
-
-			if SETTINGS["DELETE_INACTIVE_DEVICES"]:
-				device.delete()
-
 		return result
