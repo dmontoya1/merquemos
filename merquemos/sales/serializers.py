@@ -86,8 +86,7 @@ class OrderHistorySerializer(OrderItemSerializer):
         return None
 
 class RatingSerializer(serializers.ModelSerializer):
-    user = serializers.CharField(source='user.pk', required=False)
-    order = serializers.CharField(source='order.pk', required=False)
+    user = serializers.CharField(source='user', required=False)
 
     class Meta:
         model = Rating

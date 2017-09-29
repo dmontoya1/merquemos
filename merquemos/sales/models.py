@@ -20,6 +20,7 @@ class Order(models.Model):
     delivery_price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
+        default=0,
         null=True,
         blank=True
     )
@@ -114,7 +115,7 @@ class Item(models.Model):
 class Rating(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     order = models.OneToOneField(Order)
-    number = models.PositiveIntegerField()
+    number = models.PositiveIntegerField(default=0)
     comments = models.TextField(null=True, blank=True)
 
     class Meta:
