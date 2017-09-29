@@ -48,7 +48,7 @@ class Order(models.Model):
                         "order_id": self.pk
                     }
                 )
-        super(Order).save(*args, **kwargs)
+        super(Order, self).save(*args, **kwargs)
 
     def get_rating(self):
         try:
