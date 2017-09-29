@@ -5,16 +5,18 @@ from django.conf import settings
 from django.db import models
 from django.db.models import Sum
 
+from fcm_django.models import FCMDevice
+
 from stock.models import Product
 from users.models import Address
 
 
 class Order(models.Model):
     STATUS_CHOICES = (
-        ('PE', 'Pending'),
-        ('AC', 'Accepted'),
-        ('CA', 'Canceled'),
-        ('DE', 'Delivered')
+        ('PE', 'Pendiente'),
+        ('AC', 'Aceptada'),
+        ('CA', 'Cancelada'),
+        ('DE', 'Entregada')
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     delivery_price = models.DecimalField(
@@ -34,6 +36,20 @@ class Order(models.Model):
     def __str__(self):
         return str(self.pk)
     
+    def save(self, *args, **kwargs):
+        devices = FCMDevice.objects.filter(user=order.user)
+        if self.status == "CA" or self.status == "DE":
+            if devices.count() > 0:
+                devices.send_message(
+                    title="Tu orden de Merquemos",
+                    body="Tu orden ha sido " + self.get_status_display(),
+                    icon="",
+                    data={
+                        "order_id": order.pk
+                    }
+                )
+        super(Order).save(*args, **kwargs)
+
     def get_rating(self):
         try:
             return self.rating.number
