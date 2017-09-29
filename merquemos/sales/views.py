@@ -130,10 +130,13 @@ class RatingCreate(generics.CreateAPIView):
         data['user'] = request.auth.user.pk
         data._mutable = mutable
         serializer = self.get_serializer(data=data)
+        print data
+        print serializer
         if serializer.is_valid():
             self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+            headers = self.get_success_headers(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
 def checkout(request):
