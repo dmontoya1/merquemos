@@ -115,6 +115,7 @@ class Rating(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     order = models.OneToOneField(Order)
     number = models.PositiveIntegerField()
+    comments = models.TextField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Reseña de compra"
