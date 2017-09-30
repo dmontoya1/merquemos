@@ -28,7 +28,7 @@ class Address(models.Model):
     name = models.CharField(max_length=25)
     phone_number = models.CharField(max_length=15)
     label = models.CharField(max_length=255)
-    directions = models.TextField()
+    directions = models.TextField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Dirección"
