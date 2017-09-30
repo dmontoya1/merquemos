@@ -53,10 +53,10 @@ class CurrentOrderDetail(generics.ListAPIView):
                     new_item.save()
         else:
             if Order.objects.filter(user=request.auth.user, status='PE').exists():
-                order = Order.objects.get(user=request.auth.user, status='PE')
+                order = Order.objects.filter(user=request.auth.user, status='PE').last()
             else:
                 if Order.objects.filter(user=request.auth.user, status='AC').exists():
-                    order = Order.objects.get(user=request.auth.user, status='AC')
+                    order = Order.objects.filter(user=request.auth.user, status='AC').last()
                 else:
                     order = Order(
                         user=request.auth.user
