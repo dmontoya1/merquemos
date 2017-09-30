@@ -9,23 +9,15 @@ from rest_framework.response import Response
 from .serializers import AddressSerializer, AddressCreateSerializer
 from .models import Address
 
+
 class AddressCreate(generics.CreateAPIView):
     """Crea una dirección, asignada al usuario del token de autenticación enviado
     """
 
     serializer_class = AddressCreateSerializer
 
-    def create(self, request, *args, **kwargs):
-        data = request.data
-        mutable = data._mutable
-        data._mutable = True
-        data['user'] = request.auth.user.pk
-        data._mutable = mutable
-        serializer = self.get_serializer(data=data)
-        if serializer.is_valid():
-            self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.auth.user)
 
 class AddressList(generics.ListAPIView):
     """Obtiene las direcciones de un usuario, obtenida con base en el token de autenticación de dicho usuario.

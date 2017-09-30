@@ -10,7 +10,8 @@ class AddressSerializer(serializers.ModelSerializer):
         fields = ('pk', 'city_name', 'name', 'phone_number', 'label', 'directions')
 
 class AddressCreateSerializer(serializers.ModelSerializer):
-    
+    user = serializers.CharField(required=False)
+
     class Meta:
         model = Address
         fields = ('user', 'city', 'name', 'phone_number', 'label', 'directions')
