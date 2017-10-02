@@ -10,14 +10,9 @@ from rest_framework.response import Response
 
 from allauth.socialaccount import providers
 from allauth.socialaccount.models import SocialLogin, SocialToken, SocialApp
-from allauth.socialaccount.providers.facebook.views import fb_complete_login
+from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter, fb_complete_login
 from allauth.socialaccount.helpers import complete_social_login
-
-from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from rest_auth.registration.views import SocialLoginView
-
-class FacebookLogin(SocialLoginView):
-    adapter_class = FacebookOAuth2Adapter
 
 from .serializers import AddressSerializer, AddressCreateSerializer
 from .models import Address
@@ -56,38 +51,5 @@ class AddressDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Address.objects.all()
     serializer_class = AddressSerializer
 
-class FacebookAuth(APIView):   
-    """Gestiona el inicio de sesión con Facebook. Obtiene la información remota del usuario
-    al que corresponda el access_token enviado por POST.
-    """
-
-    def dispatch(self, *args, **kwargs):
-        return super(FacebookAuth, self).dispatch(*args, **kwargs)
-    
-    def post(self, request):        
-        access_token = request.POST.get('access_token', '')    
-
-        try:
-            app = SocialApp.objects.get(provider="facebook")
-            token = SocialToken(app=app, token=access_token)
-                            
-            # Verificación de token en Facebook Graph API                
-            login = fb_complete_login(request, app, token)
-            login.token = token
-            login.state = SocialLogin.state_from_request(request)
-        
-            # Creación o actualización de usuario
-            ret = complete_social_login(request, login)
-
-            token, _ = Token.objects.get_or_create(user=login.user)
-
-            return Response(status=200, data={
-                'key': token
-            })
-            
-        except Exception as e:
- 
-            return Response(status=401 ,data={
-                'success': False,
-                'reason': e.message,
-            })
+class FacebookAuth(SocialLoginView):   
+    adapter_class = FacebookOAuth2Adapter
