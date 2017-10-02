@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 
 from rest_framework import generics, status
+from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -71,14 +72,11 @@ class FacebookAuth(APIView):
         
             # Creación o actualización de usuario
             ret = complete_social_login(request, login)
-            
-            print ret 
-            print type(login.user)
+
+            token, _ = Token.objects.get_or_create(user=login.user)
 
             return Response(status=200, data={
-                'success': True,
-                'username': request.user.username,
-                'user_id': request.user.pk,
+                'token': token
             })
             
         except Exception as e:
