@@ -62,7 +62,7 @@ class FacebookAuth(APIView):
             token = SocialToken(app=app, token=access_token)
                             
             # check token against facebook                  
-            login = fb_complete_login(app, token)
+            login = fb_complete_login(request, app, token)
             login.token = token
             login.state = SocialLogin.state_from_request(request)
         
@@ -76,9 +76,9 @@ class FacebookAuth(APIView):
                 'user_id': request.user.pk,
             })
             
-        except:
+        except Exception as e:
  
             return Response(status=401 ,data={
                 'success': False,
-                'reason': "Bad Access Token",
+                'reason': e.message,
             })
