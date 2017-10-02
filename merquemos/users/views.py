@@ -76,7 +76,7 @@ class FacebookAuth(APIView):
             token, _ = Token.objects.get_or_create(user=login.user)
 
             return Response(status=200, data={
-                'token': token
+                'key': token
             })
             
         except Exception as e:
