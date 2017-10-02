@@ -10042,7 +10042,7 @@ h3.faq-title {
   border-width: 0;
   display: inline-block;
   margin-bottom: 1em;
-  color: #fff;
+  color: #fff !important;
 }
 
 .center-align {
