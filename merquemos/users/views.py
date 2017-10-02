@@ -50,7 +50,9 @@ class AddressDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = AddressSerializer
 
 class FacebookAuth(APIView):   
-    
+    """Gestiona el inicio de sesión con Facebook.
+    """
+
     def dispatch(self, *args, **kwargs):
         return super(FacebookAuth, self).dispatch(*args, **kwargs)
     
@@ -61,15 +63,14 @@ class FacebookAuth(APIView):
             app = SocialApp.objects.get(provider="facebook")
             token = SocialToken(app=app, token=access_token)
                             
-            # check token against facebook                  
+            # Verificación de token en Facebook Graph API                
             login = fb_complete_login(request, app, token)
             login.token = token
             login.state = SocialLogin.state_from_request(request)
         
-            # add or update the user into users table
+            # Creación o actualización de usuario
             ret = complete_social_login(request, login)
  
-            # if we get here we've succeeded
             return Response(status=200, data={
                 'success': True,
                 'username': request.user.username,
