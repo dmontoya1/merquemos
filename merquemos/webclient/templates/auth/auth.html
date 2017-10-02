@@ -1,5 +1,7 @@
 {% extends 'webclient/base.html' %}
 {% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
 
 {% block content%}
 
@@ -45,9 +47,9 @@
 
                                             <p class="form-row">
                                                 <div class="btn-group">
-                                                    <button type="submit" class="buttonfacebook">
+                                                    <a href="{% provider_login_url "facebook" method="oauth2" %}" class="buttonfacebook">
                                                         <span class="fa fa-facebook"></span> | Iniciar sesión
-                                                    </button>
+                                                    </a>        
 
                                                     <button type="submit" class="buttongoogle">
                                                         <span class="fa fa-google-plus"></span> | Iniciar sesión
