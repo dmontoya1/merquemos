@@ -25,6 +25,25 @@
         <link rel="shortcut icon" href="{% static 'assets/images/fav-icon.png' %}">
     </head>    
     <body class="about full-width page page-template-default full-color-background">
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                appId      : '2028298897389488',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v2.10'
+                });
+                FB.AppEvents.logPageView();   
+            };
+            
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+        </script>
         <div id="page" class="hfeed site">
             <a class="skip-link screen-reader-text" href="#site-navigation">Skip to navigation</a>
             <a class="skip-link screen-reader-text" href="#content">Skip to content</a>

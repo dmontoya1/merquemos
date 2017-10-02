@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 
 from rest_framework import generics, status
+from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .serializers import AddressSerializer, AddressCreateSerializer
@@ -42,3 +43,14 @@ class AddressDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Address.objects.all()
     serializer_class = AddressSerializer
+
+class SocialAuth(APIView):
+    """
+    Administra el registro/login con redes sociales
+
+    * No requiere token de autenticación
+    """
+
+    def post(self, request):
+        email = request.POST['email']
+        return Response({"detail": "El usuario {} ya posee una cuenta registrada".format(email)})

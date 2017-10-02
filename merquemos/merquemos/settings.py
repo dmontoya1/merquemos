@@ -37,6 +37,7 @@ THIRD_PARTY_APPS = [
     'rest_framework_docs',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
     'rest_auth.registration',
@@ -82,8 +83,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'allauth.account.context_processors.account',
-                'allauth.socialaccount.context_processors.socialaccount',
                 'webclient.context_processors.webclient_processor'
             ],
         },
@@ -125,17 +124,12 @@ SOCIALACCOUNT_PROVIDERS = {
             'name',
             'first_name',
             'last_name',
-            'verified',
-            'locale',
-            'timezone',
-            'link',
-            'gender',
-            'updated_time',
+            'verified'
         ],
         'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': 'path.to.callable',
+        'LOCALE_FUNC': lambda request: 'es_CO',
         'VERIFIED_EMAIL': False,
-        'VERSION': 'v2.5',
+        'VERSION': 'v2.10',
     },
     'google': {
         'SCOPE': [

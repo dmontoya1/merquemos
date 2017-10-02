@@ -10033,3 +10033,12 @@ h3.faq-title {
 .single_add_to_cart_button {
   display: inline-block;
 }
+
+.social-btn {
+  font-size: 0.875rem;
+  border-radius: 1.571em;
+  padding: 1.036em 2.134em;
+  border-width: 0;
+  display: inline-block;
+}
+    
