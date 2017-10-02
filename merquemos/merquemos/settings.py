@@ -139,6 +139,7 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
 
 
 # Database
