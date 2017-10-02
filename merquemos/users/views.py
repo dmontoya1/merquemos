@@ -73,8 +73,8 @@ class FacebookAuth(APIView):
             ret = complete_social_login(request, login)
             
             print ret 
-            print login
-            
+            print login.user
+
             return Response(status=200, data={
                 'success': True,
                 'username': request.user.username,
