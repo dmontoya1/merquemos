@@ -140,7 +140,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
-
+SOCIALACCOUNT_ADAPTER = 'users.adapters.SocialAccountAdapter'
 
 # Database
 DATABASES = {
