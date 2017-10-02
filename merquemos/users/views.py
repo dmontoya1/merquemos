@@ -55,7 +55,7 @@ class FacebookAuth(APIView):
         return super(FacebookAuth, self).dispatch(*args, **kwargs)
     
     def post(self, request):        
-        access_token = request.get('access_token', '')    
+        access_token = request.POST.get('access_token', '')    
         
         try:
             app = SocialApp.objects.get(provider="facebook")
