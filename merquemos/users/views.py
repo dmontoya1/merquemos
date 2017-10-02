@@ -52,5 +52,6 @@ class SocialAuth(APIView):
     """
 
     def post(self, request):
+        print request
         email = request.POST['email']
         return Response({"detail": "El usuario {} ya posee una cuenta registrada".format(email)})
