@@ -76,7 +76,7 @@ class FacebookAuth(APIView):
             ret = complete_social_login(request, login)
 
             print request.user
-            print access_token
+            print request
 
             return Response(status=200, data={
                 'success': True,
