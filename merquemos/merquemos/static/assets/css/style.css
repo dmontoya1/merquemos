@@ -10041,4 +10041,7 @@ h3.faq-title {
   border-width: 0;
   display: inline-block;
 }
-    
+
+.center-align {
+  text-align: center;
+}

@@ -1,4 +1,5 @@
 {% extends 'webclient/base.html' %}
+{% laod static %}
 
 {% block head_title %}Error de inicio de sesión con redes sociales{% endblock %}
 
@@ -7,7 +8,8 @@
     <div class="container">
 
         <div id="primary" class="content-area">
-            <main id="main" class="site-main">
+            <main id="main" class="site-main center-align">
+                <img width="120px" src="{% static 'img/error.gif' %}">
                 <h1>Error al iniciar sesión con tu red social</h1>
                 <p>Ocurrió un error al intentar autenticarte con tu red social</p>
             </main><!-- #main -->
