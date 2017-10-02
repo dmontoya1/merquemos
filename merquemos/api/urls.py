@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^auth/', include('rest_auth.urls')),
     url(r'^manager/', include('manager.urls')),
     url(r'^stock/', include('stock.urls')),
-    url(r'^sales/', include('sales.urls')),
+    url(r'^sales/', include('sales.urls', namespace='sales')),
     url(r'^users/', include('users.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^account-confirm-email/(?P<key>[-:\w]+)/$', ConfirmEmailView.as_view(), name='account_confirm_email'),

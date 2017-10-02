@@ -44,7 +44,6 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         request = self.request
-        print request.session.get('city', False)
         context = super(HomePageView, self).get_context_data(**kwargs)
         if request.session.get('city', False):
             city = City.objects.get(pk=request.session['city'])

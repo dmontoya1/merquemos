@@ -25,6 +25,11 @@ class Store(models.Model):
         null=True,
         blank=True
     )
+    web_cover = models.ImageField(
+        upload_to="stock/stores/web_covers/",
+        null=True,
+        blank=True
+    )
     app_hex_code = models.CharField(max_length=10, null=True, blank=True)
     slug = models.SlugField(unique=True, null=True, blank=True)
 
@@ -52,6 +57,12 @@ class Store(models.Model):
         if self.related_hours.all().count() > 0:
             return True
         return False
+    
+    def get_web_cover_url(self):
+        if self.web_cover:
+            return self.web_cover.url
+        else:
+            return ''
 
 class StoreContact(models.Model):
     store = models.ForeignKey(Store, related_name='related_contacts')
@@ -142,7 +153,7 @@ class Product(models.Model):
     sku = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     description = models.TextField()
-    image = models.ImageField(upload_to="stock/products/images/", null=True, blank=True)
+    image = models.ImageField(upload_to="stock/products/images/")
     tax_percentage = models.DecimalField(max_digits=10, decimal_places=2)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     size = models.CharField(max_length=255)

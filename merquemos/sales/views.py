@@ -11,6 +11,7 @@ from rest_framework.response import Response
 
 from fcm_django.models import FCMDevice
 
+from api.helpers import get_api_user
 from users.models import Address
 from .models import Order, Item, DeliveryOrder
 from .serializers import (
@@ -35,12 +36,14 @@ class CurrentOrderDetail(generics.ListAPIView):
     serializer_class = OrderSerializer
 
     def get(self, request, format=None):
+        user = get_api_user(request)
+        print user
         base_order = None
         if request.GET.get('base_order', None):
             base_order = Order.objects.get(pk=request.GET['base_order'])
-            Order.objects.filter(user=request.auth.user, status='PE').delete()
+            Order.objects.filter(user=user, status='PE').delete()
             order = Order(
-                user=request.auth.user
+                user=user
             )
             order.save()
             for item in base_order.get_items():
@@ -52,14 +55,14 @@ class CurrentOrderDetail(generics.ListAPIView):
                     )
                     new_item.save()
         else:
-            if Order.objects.filter(user=request.auth.user, status='PE').exists():
-                order = Order.objects.filter(user=request.auth.user, status='PE').last()
+            if Order.objects.filter(user=user, status='PE').exists():
+                order = Order.objects.filter(user=user, status='PE').last()
             else:
-                if Order.objects.filter(user=request.auth.user, status='AC').exists():
-                    order = Order.objects.filter(user=request.auth.user, status='AC').last()
+                if Order.objects.filter(user=user, status='AC').exists():
+                    order = Order.objects.filter(user=user, status='AC').last()
                 else:
                     order = Order(
-                        user=request.auth.user
+                        user=user
                     )
                     order.save()
         serializer = OrderSerializer(order, many=False)

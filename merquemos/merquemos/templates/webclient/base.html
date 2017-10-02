@@ -86,15 +86,16 @@
                         		</div>
                         	</div>
                         </form>
-                        <!--
                         <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
                         	<li class="nav-item dropdown">
-                        		<a href="cart.html" class="nav-link" data-toggle="dropdown">
+                        		<a href="/" class="nav-link" data-toggle="dropdown">
                         			<i class="ec ec-shopping-bag"></i>
-                        			<span class="cart-items-count count">4</span>
-                                    <span class="cart-items-total-price total-price"><span class="amount">&#36;1,215.00</span></span>
+                        			<span class="cart-items-count count" id="user_cart_count"></span>
+                                    <!--
                                     <span class="cart-items-text ">Ver tienda</span>
-                        		</a>
+                                    -->
+                                </a>
+                                <!--
                         		<ul class="dropdown-menu dropdown-menu-mini-cart">
                         			<li>
                         				<div class="widget_shopping_cart_content">
@@ -111,10 +112,10 @@
                         					</ul>
                         				</div>
                         			</li>
-                        		</ul>
+                                </ul>
+                                -->
                         	</li>
                         </ul>                    
-                        -->    
                         <!-- end product list -->
 
                         
@@ -186,12 +187,12 @@
                                     <span class="media-left call-us-icon media-middle"><i class="ec ec-support"></i></span>
                                     <div class="media-body">
                                         <span class="call-us-text">¿Preguntas? ¡Nuestro servicio es 24/7!</span>
-                                        <span class="call-us-number">(01) 8001-8588, (0600) 874 548</span>
+                                        <span class="call-us-number">(01) 8001-8588</span>
                                     </div>
                                 </div>
                             </div><!-- /.footer-call-us -->
 
-
+                            <!--
                             <div class="footer-social-icons">
                                 <ul class="social-icons list-unstyled">
                                     <li><a class="fa fa-facebook" href="http://themeforest.net/user/shaikrilwan/portfolio"></a></li>
@@ -205,6 +206,7 @@
                                     <li><a class="fa fa-rss" href="#"></a></li>
                                     </ul>
                             </div>
+                            -->
                         </div>
 
                     </div>
@@ -250,6 +252,18 @@
                     {% for message in messages %}
                         vex.dialog.alert('{{message}}')
                     {% endfor %}
+                {% endif %}
+
+                $.ajaxSetup({
+                    headers:
+                    { 'Api-Key': '{{webclient_context_web_auth_token.key}}' }
+                });
+
+                {% if request.user.is_authenticated %}
+                    $.get( "{% url 'sales:current-order' %}", function( data ) {
+                        var current_order_id = data.pk
+                        $('#user_cart_count').html(data.item_quantity);
+                    });
                 {% endif %}
             })(jQuery);
 

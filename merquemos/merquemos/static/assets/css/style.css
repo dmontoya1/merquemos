@@ -10018,4 +10018,18 @@ h3.faq-title {
     margin: 0 auto; 
 }
 
+.product {
+  margin-top: 1.2em;
+}
 
+.quantity, .single_add_to_cart_button {
+  margin: 1em .5em 1em 0;
+}
+
+.quantity {
+  display: inline-block;
+}
+
+.single_add_to_cart_button {
+  display: inline-block;
+}

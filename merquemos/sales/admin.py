@@ -9,6 +9,8 @@ from .models import (
 
 class OrderAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">shopping_cart</i>'
+    list_display = ('pk', 'user', 'status')
+    list_filter = ('status',)
 admin.site.register(Order, OrderAdmin)
 
 class RatingAdmin(admin.ModelAdmin):

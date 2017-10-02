@@ -1,6 +1,6 @@
 {% extends 'webclient/base.html' %}
 {% load static %}
-{% load webclient_extras %}
+{% load webclientextras %}
 {% load humanize %}
 
 {% block content %}
@@ -11,7 +11,7 @@
 
             <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
 
-                <div class="item" style="background-image: url({% static 'img/slider_01.jpg' %});">
+                <div class="item" style="background-image: url({{object.get_web_cover_url}});">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8">
@@ -43,6 +43,7 @@
         
 
         {% for category in webclient_context_categories %}
+            {% get_filtered_products object category as filtered_products %} 
             <section class="products-carousel-tabs animate-in-view fadeIn animated" data-animation="fadeIn">
                 <h2 class="sr-only">Categorias</h2>
                 <ul class="nav nav-inline text-xs-left">
@@ -59,12 +60,12 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">  
                             <ul class="products columns-6">
-                                {% for product in category.get_related_products %}
+                                {% for product in filtered_products %}
                                     <li class="product {% if forloop.first %}first{% endif %}">
                                         <div class="product-outer">
                                             <div class="product-inner">
                                                 <span class="loop-product-categories">{{product.category}}</span>
-                                                <a href="{{product.get_absolute_url}}">
+                                                <a href="/stores/{{product.store.city}}/{{product.store.slug}}/products/{{product.slug}}/">
                                                     <h3>{{product.name}}</h3>
                                                     <div class="product-thumbnail">
                                                         <img data-echo="{{product.get_image_url}}" src="{{product.get_image_url}}" alt="{{product.name}}">
