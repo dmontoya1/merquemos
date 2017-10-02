@@ -20,7 +20,7 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
 
     def pre_social_login(self, request, sociallogin):
         print self
-        print request.data 
+        print request 
         print request.user 
         print sociallogin
         print sociallogin.user
