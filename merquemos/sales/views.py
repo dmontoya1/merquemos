@@ -94,7 +94,7 @@ class OrderList(generics.ListAPIView):
     serializer_class = OrderSerializer
 
     def get(self, request, format=None):
-        orders = Order.objects.filter(user=request.auth.user).exclude(status='PE')
+        orders = Order.objects.filter(user=request.auth.user).exclude(status='PE').order_by('-pk')
         serializer = OrderHistorySerializer(orders, many=True, context={"request": request})
         return Response(serializer.data)
 

@@ -37,6 +37,8 @@ THIRD_PARTY_APPS = [
     'rest_framework_docs',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
     'rest_auth.registration',
     'raven.contrib.django.raven_compat',
     'fcm_django'
@@ -80,6 +82,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'allauth.account.context_processors.account',
+                'allauth.socialaccount.context_processors.socialaccount',
                 'webclient.context_processors.webclient_processor'
             ],
         },
