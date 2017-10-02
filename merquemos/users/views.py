@@ -60,9 +60,6 @@ class FacebookAuth(APIView):
     def post(self, request):        
         access_token = request.POST.get('access_token', '')    
 
-        print request.user
-        print access_token
-
         try:
             app = SocialApp.objects.get(provider="facebook")
             token = SocialToken(app=app, token=access_token)
@@ -74,10 +71,10 @@ class FacebookAuth(APIView):
         
             # Creación o actualización de usuario
             ret = complete_social_login(request, login)
-
-            print request.user
-            print request
-
+            
+            print ret 
+            print login
+            
             return Response(status=200, data={
                 'success': True,
                 'username': request.user.username,
