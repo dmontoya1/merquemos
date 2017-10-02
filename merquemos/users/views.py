@@ -7,6 +7,11 @@ from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from allauth.socialaccount import providers
+from allauth.socialaccount.models import SocialLogin, SocialToken, SocialApp
+from allauth.socialaccount.providers.facebook.views import fb_complete_login
+from allauth.socialaccount.helpers import complete_social_login
+
 from .serializers import AddressSerializer, AddressCreateSerializer
 from .models import Address
 
@@ -44,14 +49,37 @@ class AddressDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Address.objects.all()
     serializer_class = AddressSerializer
 
-class SocialAuth(APIView):
-    """
-    Administra el registro/login con redes sociales
-
-    * No requiere token de autenticación
-    """
-
-    def post(self, request):
-        print request
-        email = request.POST['email']
-        return Response({"detail": "Error accessing FB user profile."}, status=400)
+class FacebookAuth(APIView):   
+    
+    def dispatch(self, *args, **kwargs):
+        return super(FacebookAuth, self).dispatch(*args, **kwargs)
+    
+    def post(self, request):        
+        data = JSONParser().parse(request)
+        access_token = data.get('access_token', '')    
+        
+        try:
+            app = SocialApp.objects.get(provider="facebook")
+            token = SocialToken(app=app, token=access_token)
+                            
+            # check token against facebook                  
+            login = fb_complete_login(app, token)
+            login.token = token
+            login.state = SocialLogin.state_from_request(request)
+        
+            # add or update the user into users table
+            ret = complete_social_login(request, login)
+ 
+            # if we get here we've succeeded
+            return Response(status=200, data={
+                'success': True,
+                'username': request.user.username,
+                'user_id': request.user.pk,
+            })
+            
+        except:
+ 
+            return Response(status=401 ,data={
+                'success': False,
+                'reason': "Bad Access Token",
+            })

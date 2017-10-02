@@ -115,21 +115,19 @@ LOGOUT_REDIRECT_URL = '/'
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
         'METHOD': 'oauth2',
-        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'SCOPE': ['email', 'public_profile'],
         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
         'INIT_PARAMS': {'cookie': True},
         'FIELDS': [
             'id',
             'email',
-            'name',
             'first_name',
-            'last_name',
-            'verified'
+            'last_name'
         ],
         'EXCHANGE_TOKEN': True,
         'LOCALE_FUNC': lambda request: 'es_CO',
         'VERIFIED_EMAIL': False,
-        'VERSION': 'v2.10',
+        'VERSION': 'v2.10'
     },
     'google': {
         'SCOPE': [
