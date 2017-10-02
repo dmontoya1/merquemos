@@ -257,7 +257,8 @@ table.layout {
 img {
   height: auto;
   max-width: 100%;
-  display: block; }
+  display: block;
+}
 
 .electro-cute * {
   font-family: "Comic Sans MS", sans-serif; }
@@ -10040,8 +10041,11 @@ h3.faq-title {
   padding: 1.036em 2.134em;
   border-width: 0;
   display: inline-block;
+  margin-bottom: 1em;
+  color: #fff;
 }
 
 .center-align {
   text-align: center;
+  margin: 0 auto;
 }

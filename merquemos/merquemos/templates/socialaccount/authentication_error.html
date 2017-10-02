@@ -9,9 +9,12 @@
 
         <div id="primary" class="content-area">
             <main id="main" class="site-main center-align">
-                <img width="120px" src="{% static 'assets/images/error.gif' %}">
+                <img width="330px" src="{% static 'assets/images/error.gif' %}" class="center-align">
                 <h1>Error al iniciar sesión con tu red social</h1>
-                <p>Ocurrió un error al intentar autenticarte con tu red social</p>
+                <p>Ocurrió un error al intentar autenticarte con tu red social, intenta nuevamente.</p>
+                <a href="{% url 'webclient:login' %}" class="social-btn btn-primary">
+                    Regresar a Merquemos
+                </a>  
             </main><!-- #main -->
         </div><!-- #primary -->
 
