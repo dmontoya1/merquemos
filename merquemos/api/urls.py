@@ -5,7 +5,7 @@ from django.contrib.auth.views import (
     password_reset_confirm, password_reset_complete
 )
 from allauth.account.views import ConfirmEmailView
-from users.views import SocialAuth
+
 
 urlpatterns = [
     url(r'^docs/', include('rest_framework_docs.urls')),
@@ -15,7 +15,6 @@ urlpatterns = [
     url(r'^sales/', include('sales.urls', namespace='sales')),
     url(r'^users/', include('users.urls')),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^accounts/auth/facebook/', include('allauth.urls')),
     url(r'^account-confirm-email/(?P<key>[-:\w]+)/$', ConfirmEmailView.as_view(), name='account_confirm_email'),
     url(
         regex=r'^contrib/password_reset/$',
