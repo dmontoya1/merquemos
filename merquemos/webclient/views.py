@@ -78,7 +78,7 @@ class PrivacyPolicyView(TemplateView):
         return context
 
 class TermsView(TemplateView):
-    template_name = 'auth/policy_detail.html'
+    template_name = 'home/policy_detail.html'
 
     def get_context_data(self, **kwargs):
         policies = AppPolicy.objects.all().last()
