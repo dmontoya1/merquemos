@@ -10049,3 +10049,7 @@ h3.faq-title {
   text-align: center;
   margin: 0 auto;
 }
+
+p {
+  color: #607D8B !important;
+}
