@@ -39,7 +39,8 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
             existing_user = False
 
         if existing_user:
-            sociallogin.connect(request, user)
+            if not sociallogin.is_existing:
+                sociallogin.connect(request, user)
             return perform_login(request, user, app_settings.EMAIL_VERIFICATION)
         
         pass
