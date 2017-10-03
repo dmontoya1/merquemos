@@ -71,3 +71,24 @@ class ProductView(DetailView):
         store = Store.objects.get(slug=self.kwargs.get('store_slug')) 
         query = self.get_queryset().filter(store=store)
         return super(DetailView, self).get_object(queryset) 
+
+def custom_403(request):
+    return render(
+        request,
+        'webclient/403.html',
+        status=None
+    )
+
+def custom_404(request):
+    return render(
+        request,
+        'webclient/404.html',
+        status=None
+    )
+
+def custom_500(request):
+    return render(
+        request,
+        'webclient/500.html',
+        status=None
+    )

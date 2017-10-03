@@ -81,9 +81,10 @@ class OrderHistorySerializer(OrderItemSerializer):
         fields = ('pk', 'formated_last_status_date', 'status', 'store_logo', 'rating', 'total_with_tax')
     
     def get_store_logo(self, obj):
-        if obj.related_items.all().last().product.store.logo:
-            request = self.context.get('request')
-            return request.build_absolute_uri(obj.related_items.all().last().product.store.logo.url)
+        if obj.related_items.all().count() > 0:
+            if obj.related_items.all().last().product.store.logo:
+                request = self.context.get('request')
+                return request.build_absolute_uri(obj.related_items.all().last().product.store.logo.url)
         return None
 
 class RatingSerializer(serializers.ModelSerializer):
