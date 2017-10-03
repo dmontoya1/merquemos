@@ -56,7 +56,7 @@ class Store(models.Model):
     def is_open(self):
         if self.related_hours.all().count() > 0:
             return True
-        return False
+        return True
     
     def get_web_cover_url(self):
         if self.web_cover:
