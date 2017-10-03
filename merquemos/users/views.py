@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.sites.models import Site
 from django.shortcuts import render
 
 from rest_framework import generics, status
@@ -10,8 +11,11 @@ from rest_framework.response import Response
 
 from allauth.socialaccount import providers
 from allauth.socialaccount.models import SocialLogin, SocialToken, SocialApp
-from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter, fb_complete_login
+from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from allauth.socialaccount.providers.oauth2.client import OAuth2Client
 from allauth.socialaccount.helpers import complete_social_login
+
 from rest_auth.registration.views import SocialLoginView
 
 from .serializers import AddressSerializer, AddressCreateSerializer
@@ -53,3 +57,13 @@ class AddressDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class FacebookAuth(SocialLoginView):   
     adapter_class = FacebookOAuth2Adapter
+
+class GoogleAuth(SocialLoginView):
+    adapter_class = GoogleOAuth2Adapter
+    client_class = OAuth2Client
+    
+    def __init__(self):
+        self.callback_url = self.get_callback_url()
+    
+    def get_callback_url(self):
+        return 'http://{domain}/api/accounts/google/login/'.format(domain=domain)
