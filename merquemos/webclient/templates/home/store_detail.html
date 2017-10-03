@@ -41,55 +41,57 @@
 
         {% for category in webclient_context_categories %}
             {% get_filtered_products object category as filtered_products %} 
-            <section class="products-carousel-tabs animate-in-view fadeIn animated" data-animation="fadeIn">
-                <h2 class="sr-only">Categorias</h2>
-                <ul class="nav nav-inline text-xs-left">
-                    <li class="nav-item">
-                        <a class="nav-link active">{{category.name}}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active">Ver +</a>
-                    </li>                                    
-                </ul>
-            </section><!-- /.products-carousel-tabs -->
-            <section class="products-6-1 animate-in-view fadeIn animated" data-animation="fadeIn">
-                <div class="container">
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">  
-                            <ul class="products columns-6">
-                                {% for product in filtered_products %}
-                                    <li class="product {% if forloop.first %}first{% endif %}">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories">{{product.category}}</span>
-                                                <a href="/stores/{{product.store.city}}/{{product.store.slug}}/products/{{product.slug}}/">
-                                                    <h3>{{product.name}}</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img data-echo="{{product.get_image_url}}" src="{{product.get_image_url}}" alt="{{product.name}}">
-                                                    </div>
-                                                </a>
-        
-                                                <div class="price-add-to-cart">
-                                                    <a rel="nofollow" href="/stores/{{product.store.city}}/{{product.store.slug}}/products/{{product.slug}}/" class="button add_to_cart_button">Agregar al carrito</a>
-                                                    <span class="price">
-                                                        <span class="electro-price">
-                                                            <ins><span class="amount">${{product.get_price|intcomma}}</span></ins>
-                                                            {% if product.has_discount %}
-                                                                <del><span class="amount">${{product.price|intcomma}}</span></del>
-                                                            {% endif %}
+            {% if filtered_products.count > 0 %}
+                <section class="products-carousel-tabs animate-in-view fadeIn animated" data-animation="fadeIn">
+                    <h2 class="sr-only">Categorias</h2>
+                    <ul class="nav nav-inline text-xs-left">
+                        <li class="nav-item">
+                            <a class="nav-link active">{{category.name}}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active">Ver +</a>
+                        </li>                                    
+                    </ul>
+                </section><!-- /.products-carousel-tabs -->
+                <section class="products-6-1 animate-in-view fadeIn animated" data-animation="fadeIn">
+                    <div class="container">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">  
+                                <ul class="products columns-6">
+                                    {% for product in filtered_products %}
+                                        <li class="product {% if forloop.first %}first{% endif %}">
+                                            <div class="product-outer">
+                                                <div class="product-inner">
+                                                    <span class="loop-product-categories">{{product.category}}</span>
+                                                    <a href="/stores/{{product.store.city}}/{{product.store.slug}}/products/{{product.slug}}/">
+                                                        <h3>{{product.name}}</h3>
+                                                        <div class="product-thumbnail">
+                                                            <img data-echo="{{product.get_image_url}}" src="{{product.get_image_url}}" alt="{{product.name}}">
+                                                        </div>
+                                                    </a>
+            
+                                                    <div class="price-add-to-cart">
+                                                        <a rel="nofollow" href="/stores/{{product.store.city}}/{{product.store.slug}}/products/{{product.slug}}/" class="button add_to_cart_button">Agregar al carrito</a>
+                                                        <span class="price">
+                                                            <span class="electro-price">
+                                                                <ins><span class="amount">${{product.get_price|intcomma}}</span></ins>
+                                                                {% if product.has_discount %}
+                                                                    <del><span class="amount">${{product.price|intcomma}}</span></del>
+                                                                {% endif %}
+                                                            </span>
                                                         </span>
-                                                    </span>
-                                                    
-                                                </div><!-- /.price-add-to-cart -->
-                                            </div><!-- /.product-inner -->
-                                        </div><!-- /.product-outer -->
-                                    </li>
-                                {% endfor %}
-                            </ul>
+                                                        
+                                                    </div><!-- /.price-add-to-cart -->
+                                                </div><!-- /.product-inner -->
+                                            </div><!-- /.product-outer -->
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            {% endif %}
         {% endfor %}
     </main><!-- #main -->
 </div><!-- #primary -->
