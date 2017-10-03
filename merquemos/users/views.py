@@ -66,4 +66,5 @@ class GoogleAuth(SocialLoginView):
         self.callback_url = self.get_callback_url()
     
     def get_callback_url(self):
+        domain = Site.objects.get_current().domain
         return 'http://{domain}/api/accounts/google/login/'.format(domain=domain)
