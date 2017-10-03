@@ -80,8 +80,18 @@ class ProductView(DetailView):
         return super(DetailView, self).get_object(queryset) 
 
 class SearchView(ListView):
-    model = Product
-    
+    template_name = 'product/search_result.html'
+
+    def get_queryset(self):
+        store_id = self.request.session.get('store', None)
+        store = Store.objects.get(pk=store_id)
+        q = Product.objects.filter(
+            name__icontains=self.request.GET.get('q', ''),
+            store=store,
+            category=self.request.GET.get('category', None)
+        )
+        return q
+
 class PrivacyPolicyView(TemplateView):
     template_name = 'home/policy_detail.html'
 
