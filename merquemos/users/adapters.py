@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from allauth.account.adapter import DefaultAccountAdapter
 from allauth.socialaccount.adapter import DefaultSocialAccountAdapter
-from allauth.socialaccount.helpers import complete_social_login
+from allauth.socialaccount.helpers import complete_social_login, login_social_account
 
 class AccountAdapter(DefaultAccountAdapter):
 
@@ -28,7 +28,7 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
 
         if existing_user:
             sociallogin.connect(request, user)
-            return complete_social_login(request, sociallogin)
+            return login_social_account(request, user)
         
         pass
         
