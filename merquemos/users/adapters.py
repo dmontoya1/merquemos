@@ -21,14 +21,6 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
         return redirect(reverse('webclient:home'))
 
     def pre_social_login(self, request, sociallogin):
-        print self
-        print request 
-        print request.user 
-        print sociallogin
-        print sociallogin.user
-        print sociallogin.is_existing
-        
-
         try:
             user = get_user_model().objects.get(username=sociallogin.user.email)
         except get_user_model().DoesNotExist:
@@ -38,5 +30,5 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
             sociallogin.connect(request, user)
             return complete_social_login(request, sociallogin)
         
-        return super(DefaultSocialAccountAdapter, self).pre_social_login(request, sociallogin)
+        pass
         
