@@ -18,7 +18,7 @@ class Order(models.Model):
         ('CA', 'Cancelada'),
         ('DE', 'Entregada')
     )
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="related_orders")
     delivery_price = models.DecimalField(
         max_digits=10,
         decimal_places=2,

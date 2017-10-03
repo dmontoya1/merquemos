@@ -19,8 +19,13 @@ class User(AbstractUser):
     
     def __str__(self):
         if self.get_full_name() == "":
-            return str(self.username)
+            return str(self.email)
         return str(self.get_full_name())
+
+    def get_current_order(self):
+        if self.related_orders.filter(status='PE').count() > 0:
+            return self.related_orders.get(status='PE')
+        return None
 
 class Address(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)

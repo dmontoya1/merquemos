@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'assets/css/owl-carousel.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'assets/css/colors/red.css' %}" />
+        <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
         <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
         <link rel="stylesheet" href="{% static 'assets/css/vex.css' %}" />
@@ -62,7 +63,7 @@
                                 <li class="menu-item animate-dropdown">
                                     <a title="Mi cuenta" href="/">
                                         <i class="ec ec-user"></i>
-                                        {{request.user.first_name}}
+                                        {{request.user}}
                                     </a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
@@ -263,31 +264,34 @@
         <script type="text/javascript" src="{% static 'assets/js/jquery.easing.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/js/electro.js' %}"></script>
-        <script type="text/javascript" src="{% static 'assets/js/vex.combined.min.js' %}"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script>
+            
             (function($) {
-                vex.defaultOptions.className = 'vex-theme-os'
-                
                 {% if messages %}
                     {% for message in messages %}
-
-                        vex.dialog.alert('{{message}}')
+                        toastr.info('{{message}}');
                     {% endfor %}
                 {% endif %}
-
                 $.ajaxSetup({
                     headers:
                     { 'Api-Key': '{{webclient_context_web_auth_token.key}}' }
                 });
-
                 {% if request.user.is_authenticated %}
-                    $.get( "{% url 'sales:current-order' %}", function( data ) {
-                        var current_order_id = data.pk
-                        $('#user_cart_count').html(data.item_quantity);
-                    });
+                
+                function update_cart(){
+                    $.ajax({
+                        url: "{% url 'sales:current-order' %}",
+                        method: "GET"
+                    })
+                        .done(function(data) {
+                            $('#user_cart_count').html(data.item_quantity);
+                        });
+                }
+
+                update_cart();
                 {% endif %}
             })(jQuery);
-
         </script>
         {% block extra_js %}
         {% endblock %}

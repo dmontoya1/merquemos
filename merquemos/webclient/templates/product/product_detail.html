@@ -43,19 +43,17 @@
 
                     </div><!-- /itemprop -->
 
-                    <form class="variations_form cart" method="post">
+                    <form class="variations_form cart" method="POST" id="add_to_cart_form">
 
                         <div class="single_variation_wrap">
                             <div class="woocommerce-variation single_variation"></div>
                             <div class="woocommerce-variation-add-to-cart variations_button">
-                                <form method="POST" id="add_to_cart_form">
                                     <div class="quantity">
                                         <label>Cantidad:</label>
                                         <input type="number" name="quantity" value="1" title="Qty" class="input-text qty text quantity_selector"/>
                                     </div>
                                     <button type="submit" class="single_add_to_cart_button button">Agregar al carrito</button>
-                                    <input type="hidden" name="product_id" value="{{product.pk}}" />
-                                </form>
+                                    <input type="hidden" name="product" value="{{product.pk}}" />
                             </div>
                         </div>
                     </form>
@@ -69,11 +67,15 @@
 {% endblock %}
 
 {% block extra_js %}
-<script>
-    (function($) {
-        $('#add_to_cart_form').on('submit', function(e){
-            e.preventDefault();
-        });
-    })(jQuery);
-</script>
+    <script>
+        (function($) {
+            $(document).on('submit', '#add_to_cart_form', function(e) {
+                e.preventDefault();
+                var jqxhr = $.post( "{% url 'sales:item-create' %}", $(this).serialize(), function(data) {
+                    update_cart();
+                    toastr.success('Producto agregado exitosamente');
+                });
+            });
+        })(jQuery);
+    </script>
 {% endblock %}
