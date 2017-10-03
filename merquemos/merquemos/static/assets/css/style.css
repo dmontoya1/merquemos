@@ -10053,3 +10053,12 @@ h3.faq-title {
 p {
   color: #607D8B !important;
 }
+
+.toast-top-right {
+  top: 200px !important;
+  right: 120px !important;
+}
+
+#toast-container>div {
+  opacity: 1 !important;
+}

@@ -7,6 +7,7 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 
 from manager.models import City, AppPolicy
 from stock.models import Store, Product
@@ -36,6 +37,13 @@ class HomePageView(TemplateView):
         city = City.objects.get(pk=request.POST['city'])
         request.session['city'] = city.pk
         return self.get(request)
+    
+    def get(self, request, format=None):
+        try:
+            del request.session['store']
+        except KeyError:
+            pass
+        return super(HomePageView, self).get(request)
 
     def get_context_data(self, **kwargs):
         request = self.request
@@ -49,6 +57,10 @@ class HomePageView(TemplateView):
 class StoreView(DetailView):
     model = Store
     template_name = 'home/store_detail.html'
+
+    def get(self, request, city, slug):
+        request.session['store'] = self.get_object().pk
+        return super(StoreView, self).get(request)
 
     def get_object(self, queryset=None):
         try:
@@ -67,6 +79,9 @@ class ProductView(DetailView):
         query = self.get_queryset().filter(store=store)
         return super(DetailView, self).get_object(queryset) 
 
+class SearchView(ListView):
+    model = Product
+    
 class PrivacyPolicyView(TemplateView):
     template_name = 'home/policy_detail.html'
 

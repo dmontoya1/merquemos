@@ -17,8 +17,6 @@
         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
         <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
-        <link rel="stylesheet" href="{% static 'assets/css/vex.css' %}" />
-        <link rel="stylesheet" href="{% static 'assets/css/vex-theme-os.css' %}" />
         
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
@@ -41,7 +39,7 @@
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id)) {return;}
                 js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js";
+                js.src = "//connect.facebook.net/es_CO/sdk.js";
                 fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));
         </script>
@@ -53,7 +51,7 @@
                 <div class="container">
                     <nav>
                         <ul id="menu-top-bar-left" class="nav nav-inline pull-left animate-dropdown flip">
-                            <li class="menu-item animate-dropdown"><a title="Bienvenidos a Merquemos" href="#">Bienvenidos a Merquemos</a></li>
+                            <li class="menu-item animate-dropdown"><a title="Bienvenidos a Merquemos" href="/">Bienvenidos a Merquemos</a></li>
                         </ul>
                     </nav>
 
@@ -70,7 +68,7 @@
                                     <a href="{% url 'webclient:logout' %}">Cerrar sesión</a>
                                 </li>
                             {% else %}
-                                <li class="menu-item animate-dropdown"><a title="My Account" href="{% url 'webclient:login' %}"><i class="ec ec-user"></i>Iniciar sesión</a></li>
+                                <li class="menu-item animate-dropdown"><a title="Iniciar sesión" href="{% url 'webclient:login' %}"><i class="ec ec-user"></i>Iniciar sesión</a></li>
                             {% endif %}
                         </ul>
                     </nav>
@@ -88,7 +86,7 @@
                         </div>
                        
 
-                        <form class="navbar-search" method="get" action="/">
+                        <form class="navbar-search" method="get" action="/" id="category_search">
                         	<label class="sr-only screen-reader-text" for="search">Buscar por:</label>
                         	<div class="input-group">
                         		<input type="text" id="search" class="form-control search-field" dir="ltr" value="" name="q" placeholder="Buscar productos" />
@@ -273,12 +271,13 @@
                         toastr.info('{{message}}');
                     {% endfor %}
                 {% endif %}
+
                 $.ajaxSetup({
                     headers:
                     { 'Api-Key': '{{webclient_context_web_auth_token.key}}' }
                 });
+
                 {% if request.user.is_authenticated %}
-                
                 function update_cart(){
                     $.ajax({
                         url: "{% url 'sales:current-order' %}",
@@ -290,6 +289,13 @@
                 }
 
                 update_cart();
+
+                {% endif %}
+                {% if not request.session.store %}
+                $(document).on('submit', '#category_search', function(e) {
+                    e.preventDefault();
+                    toastr.warning('Selecciona una tienda para realizar búsquedas de productos');
+                });
                 {% endif %}
             })(jQuery);
         </script>
