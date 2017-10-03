@@ -1,0 +1,38 @@
+{% extends 'webclient/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content%}
+<div id="primary" class="content-area">
+    <main id="main" class="site-main">
+    <br>
+        
+        <section class="products-6-1 animate-in-view fadeIn animated" data-animation="fadeIn">
+            <div class="container">
+                <div class="tab-content">
+
+                    <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
+
+                        <ul class="products columns-6">
+                            {% for product in object_list %}
+                                {% include 'product/product_list_detail.html' %}
+                            {% empty %}
+                                <div class="center-align">
+                                    <img width="330px" src="{% static 'assets/images/error.gif' %}" class="center-align">
+                                    <h1>Búsqueda vacía</h1>
+                                    <p>No se encontraron productos relacionados con "{{request.GET.q}}". Intenta cambiar tus parámetros de búsqueda</p>
+                                    <a href="{% url 'webclient:home' %}" class="social-btn btn-primary">
+                                        Regresar
+                                    </a> 
+                                </div> 
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.columns-6-1 -->
+            </div>
+        </section>
+
+    </main><!-- #main -->
+</div><!-- #primary -->
+{% endblock %}

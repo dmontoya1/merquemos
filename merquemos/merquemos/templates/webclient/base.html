@@ -57,6 +57,13 @@
 
                     <nav>
                         <ul id="menu-top-bar-right" class="nav nav-inline pull-right animate-dropdown flip">
+                            {% if request.session.city %}
+                            <li class="menu-item animate-dropdown">
+                                <a title="Cambiar ubicación" href="/?change_location=1">
+                                    <i class="ec ec-map-pointer"></i><strong>{{request.session.city__name}}</strong> - Cambiar ubicación
+                                </a>
+                            </li>
+                            {% endif %}
                             {% if request.user.is_authenticated %}
                                 <li class="menu-item animate-dropdown">
                                     <a title="Mi cuenta" href="/">
@@ -86,12 +93,12 @@
                         </div>
                        
 
-                        <form class="navbar-search" method="get" action="/" id="category_search">
+                        <form class="navbar-search" method="GET" action="{% url 'webclient:search' %}" id="category_search">
                         	<label class="sr-only screen-reader-text" for="search">Buscar por:</label>
                         	<div class="input-group">
                         		<input type="text" id="search" class="form-control search-field" dir="ltr" value="" name="q" placeholder="Buscar productos" />
                         		<div class="input-group-addon search-categories">
-                        			<select name='product_cat' id='product_cat' class='postform resizeselect' >
+                        			<select name='category' id='product_cat' class='postform resizeselect' required>
                                         <option disabled selected='selected'>Categorias</option>
                                         {% for category in webclient_context_categories %}
                                             <option class="level-0" value="{{category.pk}}">{{category.name}}</option>

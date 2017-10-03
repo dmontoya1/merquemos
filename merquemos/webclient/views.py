@@ -36,13 +36,20 @@ class HomePageView(TemplateView):
     def post(self, request):
         city = City.objects.get(pk=request.POST['city'])
         request.session['city'] = city.pk
+        request.session['city__name'] = city.name
         return self.get(request)
     
     def get(self, request, format=None):
-        try:
-            del request.session['store']
-        except KeyError:
-            pass
+        if request.GET.get('change_location', None):
+            try:
+                del request.session['store']
+            except KeyError:
+                pass
+        else:
+            if request.session.get('city', False) and request.session.get('store', False):
+                city = City.objects.get(pk=request.session['city'])
+                store = Store.objects.get(pk=request.session['store']) 
+                return redirect('/stores/{}/{}/'.format(city.name, store.slug))
         return super(HomePageView, self).get(request)
 
     def get_context_data(self, **kwargs):
@@ -80,16 +87,17 @@ class ProductView(DetailView):
         return super(DetailView, self).get_object(queryset) 
 
 class SearchView(ListView):
-    template_name = 'product/search_result.html'
+    template_name = 'home/search_result.html'
 
     def get_queryset(self):
         store_id = self.request.session.get('store', None)
         store = Store.objects.get(pk=store_id)
         q = Product.objects.filter(
             name__icontains=self.request.GET.get('q', ''),
-            store=store,
-            category=self.request.GET.get('category', None)
+            store=store
         )
+        if self.request.GET.get('category', None):
+            q = q.filter(category__pk=self.request.GET['category'])
         return q
 
 class PrivacyPolicyView(TemplateView):
