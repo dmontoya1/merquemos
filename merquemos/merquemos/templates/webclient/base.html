@@ -259,7 +259,7 @@
             </div> <!-- /.copyright-bar-->
         </div>
 
-        <script type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" src="{% static 'assets/js/tether.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/js/bootstrap-hover-dropdown.min.js' %}"></script>
@@ -271,7 +271,15 @@
         <script type="text/javascript" src="{% static 'assets/js/electro.js' %}"></script>
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script>
-            
+            function update_cart(){
+                $.ajax({
+                    url: "{% url 'sales:current-order' %}",
+                    method: "GET"
+                })
+                    .done(function(data) {
+                        $('#user_cart_count').html(data.item_quantity);
+                    });
+            }
             (function($) {
                 {% if messages %}
                     {% for message in messages %}
@@ -285,24 +293,13 @@
                 });
 
                 {% if request.user.is_authenticated %}
-                function update_cart(){
-                    $.ajax({
-                        url: "{% url 'sales:current-order' %}",
-                        method: "GET"
-                    })
-                        .done(function(data) {
-                            $('#user_cart_count').html(data.item_quantity);
-                        });
-                }
-
-                update_cart();
-
+                    update_cart();
                 {% endif %}
                 {% if not request.session.store %}
-                $(document).on('submit', '#category_search', function(e) {
-                    e.preventDefault();
-                    toastr.warning('Selecciona una tienda para realizar búsquedas de productos');
-                });
+                    $(document).on('submit', '#category_search', function(e) {
+                        e.preventDefault();
+                        toastr.warning('Selecciona una tienda para realizar búsquedas de productos');
+                    });
                 {% endif %}
             })(jQuery);
         </script>

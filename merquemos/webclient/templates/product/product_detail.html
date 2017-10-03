@@ -70,7 +70,7 @@
 {% block extra_js %}
     <script>
         (function($) {
-            $(document).on('submit', '#add_to_cart_form', function(e) {
+            $('#add_to_cart_form').on('submit', function(e) {
                 e.preventDefault();
                 var jqxhr = $.post( "{% url 'sales:item-create' %}", $(this).serialize(), function(data) {
                     update_cart();

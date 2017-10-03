@@ -112,6 +112,10 @@ class ItemCreate(generics.CreateAPIView):
 
     serializer_class = ItemSerializer
 
+    def perform_create(self, serializer):
+        user = get_api_user(self.request)
+        serializer.save(order=user.get_current_order())
+
 class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
     """Edita (HTTP UPDATE) o elimina (DELETE) el item asociado al
     id entregado en la URL
