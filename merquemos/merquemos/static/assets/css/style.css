@@ -1644,7 +1644,7 @@ li.product h3, .section-onsale-product .onsale-product h3, .section-onsale-produ
   overflow: hidden; }
 
 li.product .product-thumbnail, .section-onsale-product .onsale-product .product-thumbnail, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .product-thumbnail, .products-carousel .owl-item .product .product-thumbnail {
-  margin-bottom: 0.714em;
+  margin-bottom: 1.3em;
   position: relative;
   width: 100%;
   padding-bottom: 93.01%;
@@ -4028,7 +4028,7 @@ div.quantity.buttons_added {
 
 .hero-2 {
   font-size: 3.000em;
-  color: #3DB292;
+  color: #fff;
   font-weight: 300;
   line-height: 1.000em;
   margin-bottom: 30px;

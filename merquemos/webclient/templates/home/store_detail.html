@@ -16,16 +16,15 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="caption vertical-center text-left">
-                                    <div class="hero-subtitle-v2 fadeInDown-1">
+
+                                    <div class="hero-2 fadeInDown-2">
                                         {{object.name}}
                                     </div>
 
-                                    <div class="hero-2 fadeInDown-2">
-                                            {{object.name}}
-                                    </div>
-
                                     <div class="hero-action-btn fadeInDown-3">
-                                        <a href="/" class="big le-button ">{{object.name}}</a>
+                                        <a class="big le-button {% if object.is_open %}red{% else %}green{% endif %}">
+                                            {% if object.is_open %}Abierto{% else %}Cerrado{% endif %}
+                                        </a>
                                     </div>
                                 </div><!-- /.caption -->
                             </div><!-- /.col -->
