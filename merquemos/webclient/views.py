@@ -89,6 +89,6 @@ def custom_404(request):
 def custom_500(request):
     return render(
         request,
-        'webclient/500.html',
+        'webclient/404.html',
         status=None
     )
