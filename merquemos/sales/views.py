@@ -155,7 +155,8 @@ def checkout(request):
         body="Tu orden está en camino",
         icon="",
         data={
-            "order_id": order.pk
+            "order_id": order.pk,
+            "order_status": order.status
         }
     )
     print devices

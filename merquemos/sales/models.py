@@ -45,7 +45,8 @@ class Order(models.Model):
                     body="Tu orden ha sido " + self.get_status_display(),
                     icon="",
                     data={
-                        "order_id": self.pk
+                        "order_id": self.pk,
+                        "order_status": self.status
                     }
                 )
         super(Order, self).save(*args, **kwargs)
