@@ -8,15 +8,13 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 
-from manager.models import City
+from manager.models import City, AppPolicy
 from stock.models import Store, Product
 from users.models import User
 
 
 class AuthView(TemplateView):
     template_name = 'auth/auth.html'
-
-class LoginView(AuthView):
 
     def post(self, request, *args, **kwargs):
         redirect_url = 'webclient:login'
@@ -30,9 +28,6 @@ class LoginView(AuthView):
         else:
             messages.add_message(request, messages.WARNING, 'Datos inválidos, reintenta nuevamente.')
         return redirect(redirect_url)
-
-class SignupView(AuthView):  
-    pass
 
 class HomePageView(TemplateView):
     template_name = 'home/store_select.html'
@@ -71,6 +66,26 @@ class ProductView(DetailView):
         store = Store.objects.get(slug=self.kwargs.get('store_slug')) 
         query = self.get_queryset().filter(store=store)
         return super(DetailView, self).get_object(queryset) 
+
+class PrivacyPolicyView(TemplateView):
+    template_name = 'home/policy_detail.html'
+
+    def get_context_data(self, **kwargs):
+        policies = AppPolicy.objects.all().last()
+        context = super(PrivacyPolicyView, self).get_context_data(**kwargs)
+        context['name'] = 'Política de privacidad y tratamiento de datos'
+        context['content'] = policies.privacy_policy
+        return context
+
+class TermsView(TemplateView):
+    template_name = 'auth/policy_detail.html'
+
+    def get_context_data(self, **kwargs):
+        policies = AppPolicy.objects.all().last()
+        context = super(PrivacyPolicyView, self).get_context_data(**kwargs)
+        context['name'] = 'Terminos y condiciones'
+        context['content'] = policies.terms_and_conditions
+        return context
 
 def custom_403(request):
     return render(

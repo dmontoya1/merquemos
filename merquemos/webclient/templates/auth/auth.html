@@ -29,8 +29,6 @@
 
                                             {% csrf_token %}
 
-                                            <p class="before-login-text">Bienvenidos, Iniciar sesión en su cuenta</p>
-
                                             <p class="form-row form-row-wide">
                                                 <label for="username">Usuario o correo electronico<span class="required">*</span></label>
                                                 <input type="text" class="input-text" name="username" id="username" value="" />
@@ -72,8 +70,6 @@
 
                                             {% csrf_token %}
 
-                                            <p class="before-register-text">Crea tu propia cuenta</p>
-
                                             <p class="form-row form-row-wide">
                                                 <label for="reg_email">Correo Electrónico<span class="required">*</span></label>
                                                 <input type="email" class="input-text" name="email" id="reg_email" value="" />
@@ -91,6 +87,13 @@
                                             <p class="form-row">
                                                 <input type="submit" class="button" name="register" value="Registrar" id="reg_submit"/>
                                                 <div id="spinner"></div>
+                                            </p>
+
+                                            <p class="form-row">
+                                                <span>
+                                                    Al seguir también aceptas los <a href="{% url 'webclient:terms' %}">Términos y Condiciones</a> y las 
+                                                    <a href="{% url 'webclient:privacy-policy' %}">Políticas de tratamiento de datos</a> de Merquemos
+                                                </span>
                                             </p>
 
                                             <div class="register-benefits">
