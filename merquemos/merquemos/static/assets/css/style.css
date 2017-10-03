@@ -10062,3 +10062,7 @@ p {
 #toast-container>div {
   opacity: 1 !important;
 }
+
+.green-bg {
+  background-color: #3DB292 !important;
+}

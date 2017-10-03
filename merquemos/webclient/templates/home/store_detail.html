@@ -21,8 +21,8 @@
                                         {{object.name}}
                                     </div>
 
-                                    <div class="hero-action-btn fadeInDown-3">
-                                        <a class="big le-button {% if object.is_open %}red{% else %}green{% endif %}">
+                                    <div class="hero-action-btn fadeInDown-3 {% if object.is_open %}green-bg{% endif %}">
+                                        <a class="big le-button">
                                             {% if object.is_open %}Abierto{% else %}Cerrado{% endif %}
                                         </a>
                                     </div>
