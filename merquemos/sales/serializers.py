@@ -14,8 +14,6 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = ('pk', 'item_quantity', 'status')
 
 class ItemSerializer(serializers.ModelSerializer):
-    order = serializers.CharField(required=False)
-
     class Meta:
         model = Item
         fields = ('product', 'order', 'quantity')
