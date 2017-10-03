@@ -25,8 +25,9 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
         return redirect(reverse('webclient:home'))
 
     def pre_social_login(self, request, sociallogin):
+        existing_user = True
         try:
-            user = get_user_model().objects.get(username=sociallogin.user.email)
+            user = get_user_model().objects.get(email=sociallogin.user.email)
         except get_user_model().DoesNotExist:
             existing_user = False
 
