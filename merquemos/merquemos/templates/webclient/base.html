@@ -62,7 +62,7 @@
                                 <li class="menu-item animate-dropdown">
                                     <a title="Mi cuenta" href="/">
                                         <i class="ec ec-user"></i>
-                                        {{request.user}}
+                                        {{request.user.first_name}}
                                     </a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
@@ -269,6 +269,7 @@
                 
                 {% if messages %}
                     {% for message in messages %}
+
                         vex.dialog.alert('{{message}}')
                     {% endfor %}
                 {% endif %}
