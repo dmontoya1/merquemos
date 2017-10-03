@@ -1,8 +1,10 @@
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.urls import reverse
 from allauth.account.adapter import DefaultAccountAdapter
 from allauth.socialaccount.adapter import DefaultSocialAccountAdapter
+from allauth.socialaccount.helpers import complete_social_login
 
 class AccountAdapter(DefaultAccountAdapter):
 
@@ -24,4 +26,17 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
         print request.user 
         print sociallogin
         print sociallogin.user
-        pass
+        print sociallogin.is_existing
+        
+
+        try:
+            user = get_user_model().objects.get(username=sociallogin.user.email)
+        except get_user_model().DoesNotExist:
+            existing_user = False
+
+        if existing_user:
+            sociallogin.connect(request, user)
+            return complete_social_login(request, sociallogin)
+        
+        return super(DefaultAccountAdapter, self).pre_social_login(self, request, sociallogin)
+        
