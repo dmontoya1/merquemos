@@ -38,5 +38,5 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
             sociallogin.connect(request, user)
             return complete_social_login(request, sociallogin)
         
-        return super(DefaultAccountAdapter, self).pre_social_login(self, request, sociallogin)
+        return super(DefaultSocialAccountAdapter, self).pre_social_login(self, request, sociallogin)
         
