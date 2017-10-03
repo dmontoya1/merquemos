@@ -82,7 +82,7 @@ class TermsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         policies = AppPolicy.objects.all().last()
-        context = super(PrivacyPolicyView, self).get_context_data(**kwargs)
+        context = super(TermsView, self).get_context_data(**kwargs)
         context['name'] = 'Terminos y condiciones'
         context['content'] = policies.terms_and_conditions
         return context
