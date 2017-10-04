@@ -28,7 +28,7 @@ class User(AbstractUser):
         return None
 
 class Address(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="related_addresses")
     city = models.ForeignKey(City)
     name = models.CharField(max_length=25)
     phone_number = models.CharField(max_length=15)

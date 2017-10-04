@@ -51,7 +51,7 @@
                 <div class="container">
                     <nav>
                         <ul id="menu-top-bar-left" class="nav nav-inline pull-left animate-dropdown flip">
-                            <li class="menu-item animate-dropdown"><a title="Bienvenidos a Merquemos" href="/">Bienvenidos a Merquemos</a></li>
+                            <li class="menu-item animate-dropdown"><a title="Bienvenidos a Merquemos" href="/">Bienvenido a Merquemos</a></li>
                         </ul>
                     </nav>
 
@@ -164,6 +164,45 @@
                             </div>
                             <div class="modal-footer col-md-12">
                                 <button type="submit" class="btn btn-secondary" id="city_selector_action">Seleccionar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade " id="addressCreationModal" tabindex="-1" role="dialog" aria-labelledby="addressCreationModal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog " role="document">
+                    <div class="modal-content col-md-12">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <form action="/" method="POST" id="add_address_form">
+                            <p class="form-row form-row-wide">
+                                <label for="add_name">Nombre de dirección<span class="required">*</span></label>
+                                <input type="text" required class="input-text" name="name" id="add_name" placeholder="Ej: Casa, Oficina, Apto mamá" />
+                            </p>
+                            <p class="form-row form-row-wide">
+                                <label for="add_phone_number">Teléfono<span class="required">*</span></label>
+                                <input type="phone" required class="input-text" name="phone_number" id="add_phone_number"  />
+                            </p>
+                            <p class="form-row form-row-wide">
+                                <label for="add_city">Ciudad<span class="required">*</span></label>
+                                <select class="selectpicker input-text" name="city" id="add_city" required>
+                                    <option disabled selected>Ciudad</option>
+                                    {% for city in webclient_context_cities %}
+                                        <option value="{{city.pk}}">{{city.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                            <p class="form-row form-row-wide">
+                                <label for="add_label">Dirección<span class="required">*</span></label>
+                                <input type="text" required class="input-text" name="label" id="add_label" placeholder="Ej: Calle 1 #02-03 Casas Lindas" />
+                            </p>
+                            <p class="form-row form-row-wide">
+                                <label for="add_directions">Indicaciones</label>
+                                <input type="text" class="input-text" name="directions" id="add_directions" placeholder="Ej: A la vuelta de la iglesia" />
+                            </p>
+                    
+                            <div class="modal-footer col-md-12">
+                                <button type="submit" class="btn btn-secondary" id="add_submit">Guardar</button>
                             </div>
                         </form>
                     </div>
@@ -287,26 +326,49 @@
                     });
             }
             (function($) {
+                $.ajaxSetup({
+                    headers:
+                    { 'Api-Key': '{{webclient_context_web_auth_token.key}}' }
+                });
+
                 {% if messages %}
                     {% for message in messages %}
                         toastr.info('{{message}}');
                     {% endfor %}
                 {% endif %}
 
-                $.ajaxSetup({
-                    headers:
-                    { 'Api-Key': '{{webclient_context_web_auth_token.key}}' }
-                });
-
+                
                 {% if request.user.is_authenticated %}
                     update_cart();
                 {% endif %}
+
                 {% if not request.session.store %}
                     $(document).on('submit', '#category_search', function(e) {
                         e.preventDefault();
                         toastr.warning('Selecciona una tienda para realizar búsquedas de productos');
                     });
                 {% endif %}
+
+                $('#add_address_form').on('submit', function(e) {
+                    e.preventDefault();
+                    $('#add_submit').attr('disabled', true);
+                    $('#add_submit').val('Guardando...');
+                    var jqxhr = $.post( "{% url 'users:address-create' %}", $(this).serialize(), function(data) {
+                        toastr.success('Dirección agregada exitosamente');
+                    })
+                        .fail(function(data) {
+                            $('.validator').remove();
+                            $.each(data.responseJSON, function(key,value) {
+                                $('#add_' + key).after('<span class="red validator">'+ value +'</span>')
+                            }); 
+                        })
+                        .always(function(data) {
+                            $('#add_submit').attr('disabled', false);
+                            $('#add_submit').val('Guardar');
+                            $('#addressCreationModal').modal('toggle');
+                        });
+                });
+
             })(jQuery);
         </script>
         {% block extra_js %}

@@ -64,8 +64,8 @@
                                 <li class="wc_payment_method payment_method_ship_dir">
                                     <label for="ship_address">Dirección de envío
                                     </label>
-                                    <select id="ship_address" name="address" class="selectpicker" required>
-                                        {% for address in request.user.related_addresses %}
+                                    <select id="ship_address" name="address" class="selectpicker input-text" required>
+                                        {% for address in request.user.related_addresses.all %}
                                             <option value="{{address.pk}}">{{address.name}}</option>
                                         {% endfor %}
                                     </select>

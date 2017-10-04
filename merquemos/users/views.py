@@ -18,6 +18,7 @@ from allauth.socialaccount.helpers import complete_social_login
 
 from rest_auth.registration.views import SocialLoginView
 
+from api.helpers import get_api_user
 from .serializers import AddressSerializer, AddressCreateSerializer
 from .models import Address
 
@@ -29,7 +30,7 @@ class AddressCreate(generics.CreateAPIView):
     serializer_class = AddressCreateSerializer
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.auth.user)
+        serializer.save(user=get_api_user(self.request))
 
 class AddressList(generics.ListAPIView):
     """Obtiene las direcciones de un usuario, obtenida con base en el token de autenticación de dicho usuario.
