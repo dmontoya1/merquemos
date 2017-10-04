@@ -1,0 +1,68 @@
+{% extends 'webclient/base.html' %}
+{% load static %}
+
+{% block content%}
+<div id="primary" class="content-area">
+    <main id="main" class="site-main">
+        <article class="page type-page status-publish hentry">
+
+            <div class="cart-collaterals col-md-8 center-align">
+                <br>
+                <div class="cart_totals ">
+
+                    <h2>Mi perfil</h2>
+
+                    <table class="shop_table shop_table_responsive">
+
+                        <tbody>
+                            <tr class="cart-subtotal">
+                                <th>Nombres</th>
+                                <td data-title="Subtotal"><span class="amount">{{request.user.first_name}}</span></td>
+                            </tr>
+                            <tr class="cart-subtotal">
+                                <th>Apellidos</th>
+                                <td data-title="Subtotal"><span class="amount">{{request.user.last_name}}</span></td>
+                            </tr>
+                            <tr class="cart-subtotal">
+                                <th>Correo electrónico</th>
+                                <td data-title="Subtotal"><span class="amount">{{request.user.email}}</span></td>
+                            </tr>
+                            <tr class="cart-subtotal">
+                                <th>Teléfono celular</th>
+                                <td data-title="Subtotal"><span class="amount">{{request.user.phone_number}}</span></td>
+                            </tr>
+                            <tr class="cart-subtotal">
+                                <th>Configuración de cuenta</th>
+                                <td data-title="iva">
+                                    <span class="amount">
+                                        <a>Actualizar contraseña de cuenta</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="cart-subtotal">
+                                <th>Direcciones</th>
+                                <td data-title="Subtotal">
+                                    <span class="amount">
+                                        <a>Agregar direcciones</a>
+                                    </span>
+                                </td>
+                            </tr>                                                                                                                                                                               
+                            <tr class="cart-subtotal">
+                                <th>Compras</th>
+                                <td data-title="Subtotal">
+                                    <span class="amount">
+                                        <a>Ver historial de compras</a>
+                                    </span>
+                                </td>
+                            </tr>     
+                        </tbody>
+                    </table>
+
+                    
+                </div>
+            </div>            					
+        </article>
+    </main><!-- #main -->
+</div><!-- #primary -->
+{% endblock %}
+

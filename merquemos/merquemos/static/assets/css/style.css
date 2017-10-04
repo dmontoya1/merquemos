@@ -10048,6 +10048,7 @@ h3.faq-title {
 .center-align {
   text-align: center;
   margin: 0 auto;
+  float: none;
 }
 
 p {
@@ -10065,4 +10066,27 @@ p {
 
 .green-bg {
   background-color: #3DB292 !important;
+}
+
+#active-order-indicator {
+  height: 3em;
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+  #active-order-indicator a {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    margin-top: .5em;
+    font-size: 1.3em; 
+  }
+
+header {
+  padding-bottom: 0 !important;
+}
+
+.payment_method_ship_dir label {
+  margin-left: 0 !important;
+  margin-bottom: 8px !important;
 }

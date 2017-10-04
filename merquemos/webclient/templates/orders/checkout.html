@@ -8,7 +8,7 @@
             <article class="page type-page status-publish hentry">
                 <header class="entry-header"><h1 itemprop="name" class="entry-title">Checkout</h1></header><!-- .entry-header -->
 
-                <form enctype="multipart/form-data" action="#" class="checkout woocommerce-checkout" method="post" name="checkout">
+                <form enctype="multipart/form-data" id="checkout-form" class="checkout woocommerce-checkout" method="post" name="checkout">
                     <div id="customer_details" class="col2-set">
                         <div class="col-1">
                             <h3 id="order_review_heading">Tu pedido</h3>
@@ -61,19 +61,28 @@
                             <h3>Detalles de envío</h3>
                         <div class="woocommerce-checkout-payment" id="payment">
                             <ul class="wc_payment_methods payment_methods methods">
+                                <li class="wc_payment_method payment_method_ship_dir">
+                                    <label for="ship_address">Dirección de envío
+                                    </label>
+                                    <select id="ship_address" name="address" class="selectpicker" required>
+                                        {% for address in request.user.related_addresses %}
+                                            <option value="{{address.pk}}">{{address.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    
+                                </li>
                                 <li class="wc_payment_method payment_method_bacs">
-                                    <input type="radio" data-order_button_text="" checked="checked" value="bacs" name="payment_method" class="input-radio" id="payment_method_bacs">
+                                    <input type="radio" data-order_button_text="" checked="checked" value="CS" name="payment_method" class="input-radio" id="payment_method_bacs">
                                     <label for="payment_method_bacs">Efectivo</label>
                                 </li>
                                 
                                 <li class="wc_payment_method payment_method_paypal">
-                                    <input type="radio" data-order_button_text="Proceed to PayPal" value="paypal" name="payment_method" class="input-radio" id="payment_method_paypal">
+                                    <input type="radio" data-order_button_text="Proceed to PayPal" value="PS" name="payment_method" class="input-radio" id="payment_method_paypal">
 
                                     <label for="payment_method_paypal">Datafono <img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"></label>
-                                    <div style="display:none;" class="payment_box payment_method_paypal">
-                                        <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
-                                    </div>
                                 </li>
+
+                                
                             </ul>
                             <div class="form-row place-order">
 
@@ -92,5 +101,18 @@
             </article>
         </main><!-- #main -->
     </div><!-- #primary -->
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    (function($) {
+        $('#checkout-form').on('submit', function(e) {
+            e.preventDefault();
+            var jqxhr = $.post( "{% url 'sales:checkout' %}", $(this).serialize(), function(data) {
+                location.reload('/');
+            });
+        });
+    })(jQuery);
+</script>
 {% endblock %}
 

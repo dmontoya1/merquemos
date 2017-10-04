@@ -108,6 +108,9 @@ class CheckoutView(TemplateView):
         context['order'] = self.request.user.get_current_order()
         return context
 
+class ProfileView(TemplateView):
+    template_name = 'user/profile.html'
+
 class PrivacyPolicyView(TemplateView):
     template_name = 'home/policy_detail.html'
 

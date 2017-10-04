@@ -66,7 +66,7 @@
                             {% endif %}
                             {% if request.user.is_authenticated %}
                                 <li class="menu-item animate-dropdown">
-                                    <a title="Mi cuenta" href="/">
+                                    <a title="Mi cuenta" href="{% url 'webclient:profile' %}">
                                         <i class="ec ec-user"></i>
                                         {{request.user}}
                                     </a>
@@ -142,6 +142,9 @@
 
                         
                     </div><!-- /.row -->
+                </div>
+                <div id="active-order-indicator" class="green-bg">
+                    <a class="center-align" href="/">Tienes una orden activa</a>
                 </div>
             </header><!-- #masthead -->
             
@@ -275,6 +278,12 @@
                 })
                     .done(function(data) {
                         $('#user_cart_count').html(data.item_quantity);
+                        if (data.item_quantity == "AC") {
+                            $('#active-order-indicator').show();
+                            $('.nav-item .dropdown').hide();
+                            $('.single_add_to_cart_button').attr('disabled', true);
+                            $('.single_add_to_cart_button').html('No puedes agregar al carrito mientras tengas una compra activa');
+                        }
                     });
             }
             (function($) {
