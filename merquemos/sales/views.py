@@ -107,7 +107,8 @@ class OrderDetail(generics.RetrieveDestroyAPIView):
     queryset = Order.objects.all()
 
 class ItemCreate(generics.CreateAPIView):
-    """Crea un nuevo item para una orden.
+    """Crea un nuevo item para la orden actual, la cual se valida a partir del usuario relacinado al Token
+    de autenticación enviado.
     """
 
     serializer_class = ItemSerializer
