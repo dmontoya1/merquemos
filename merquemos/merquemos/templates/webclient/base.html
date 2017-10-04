@@ -113,12 +113,9 @@
                         </form>
                         <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
                         	<li class="nav-item dropdown">
-                        		<a href="/" class="nav-link" data-toggle="dropdown">
+                        		<a href="{% url 'webclient:checkout' %}" class="nav-link">
                         			<i class="ec ec-shopping-bag"></i>
-                        			<span class="cart-items-count count" id="user_cart_count"></span>
-                                    <!--
-                                    <span class="cart-items-text ">Ver tienda</span>
-                                    -->
+                                    <span class="cart-items-count count" id="user_cart_count"></span>
                                 </a>
                                 <!--
                         		<ul class="dropdown-menu dropdown-menu-mini-cart">

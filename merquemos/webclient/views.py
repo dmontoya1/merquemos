@@ -100,6 +100,14 @@ class SearchView(ListView):
             q = q.filter(category__pk=self.request.GET['category'])
         return q
 
+class CheckoutView(TemplateView):
+    template_name = 'orders/checkout.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CheckoutView, self).get_context_data(**kwargs)
+        context['order'] = self.request.user.get_current_order()
+        return context
+
 class PrivacyPolicyView(TemplateView):
     template_name = 'home/policy_detail.html'
 

@@ -1,0 +1,96 @@
+{% extends 'webclient/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+            <article class="page type-page status-publish hentry">
+                <header class="entry-header"><h1 itemprop="name" class="entry-title">Checkout</h1></header><!-- .entry-header -->
+
+                <form enctype="multipart/form-data" action="#" class="checkout woocommerce-checkout" method="post" name="checkout">
+                    <div id="customer_details" class="col2-set">
+                        <div class="col-1">
+                            <h3 id="order_review_heading">Tu pedido</h3>
+                            <table class="shop_table woocommerce-checkout-review-order-table">
+                                <thead>
+                                    <tr>
+                                        <th class="product-name">Producto</th>
+                                        <th class="product-total">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in order.get_items %}
+                                        <tr class="cart_item">
+                                            <td class="product-name">
+                                                {{item.product.name}}
+                                                <strong class="product-quantity">× {{item.quantity}}</strong>
+                                            </td>
+                                            <td class="product-total">
+                                                <span class="amount">${{item.total|intcomma}}</span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+
+                                    <tr class="cart-subtotal">
+                                        <th>Subtotal</th>
+                                        <td><span class="amount">${{order.get_total_no_tax|intcomma}}</span></td>
+                                    </tr>
+
+                                    <tr class="shipping">
+                                        <th>Impuestos</th>
+                                        <td data-title="Shipping"><span class="amount">${{order.get_total_tax|intcomma}}</span> <input type="hidden" class="shipping_method" value="international_delivery" id="shipping_method_0" data-index="0" name="shipping_method[0]"></td>
+                                    </tr>
+
+                                    <tr class="shipping">
+                                        <th>Servicio de entrega</th>
+                                        <td data-title="Shipping"><span class="amount">${{order.get_delivery_price|intcomma}}</span> <input type="hidden" class="shipping_method" value="international_delivery" id="shipping_method_0" data-index="0" name="shipping_method[0]"></td>
+                                    </tr>
+
+                                    <tr class="order-total">
+                                        <th>Total</th>
+                                        <td><strong><span class="amount">${{order.get_total_with_tax|intcomma}}</span></strong> </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div class="col-2">
+                            <h3>Detalles de envío</h3>
+                        <div class="woocommerce-checkout-payment" id="payment">
+                            <ul class="wc_payment_methods payment_methods methods">
+                                <li class="wc_payment_method payment_method_bacs">
+                                    <input type="radio" data-order_button_text="" checked="checked" value="bacs" name="payment_method" class="input-radio" id="payment_method_bacs">
+                                    <label for="payment_method_bacs">Efectivo</label>
+                                </li>
+                                
+                                <li class="wc_payment_method payment_method_paypal">
+                                    <input type="radio" data-order_button_text="Proceed to PayPal" value="paypal" name="payment_method" class="input-radio" id="payment_method_paypal">
+
+                                    <label for="payment_method_paypal">Datafono <img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"></label>
+                                    <div style="display:none;" class="payment_box payment_method_paypal">
+                                        <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="form-row place-order">
+
+                                <input type="submit" data-value="Place order" value="Realizar pedido" class="button alt">
+                            </div>
+                        </div>                                            
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="woocommerce-checkout-review-order" id="order_review">
+
+                    </div>
+                </form>
+            </article>
+        </main><!-- #main -->
+    </div><!-- #primary -->
+{% endblock %}
+
