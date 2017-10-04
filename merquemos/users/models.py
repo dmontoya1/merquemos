@@ -25,6 +25,8 @@ class User(AbstractUser):
     def get_current_order(self):
         if self.related_orders.filter(status='PE').count() > 0:
             return self.related_orders.get(status='PE')
+        elif self.related_orders.filter(status='AC').count() > 0:
+            return self.related_orders.get(status='AC')
         return None
 
 class Address(models.Model):
@@ -38,6 +40,7 @@ class Address(models.Model):
     class Meta:
         verbose_name = "Dirección"
         verbose_name_plural = "Direcciones"
+        ordering = ['-pk']
 
     def __str__(self):
         return str(self.label)

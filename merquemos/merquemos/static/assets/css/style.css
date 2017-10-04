@@ -6870,7 +6870,7 @@ article.post .entry-content .gallery figure.gallery-item {
     background-color: #fff; }
 
 #payment {
-  border-top: 3px solid #ddd; }
+  border-top: 1px solid #efecec;margin-bottom: -1em; }
   #payment::after {
     content: "";
     display: table;
@@ -10089,4 +10089,12 @@ header {
 .payment_method_ship_dir label {
   margin-left: 0 !important;
   margin-bottom: 8px !important;
+}
+
+.weight-500 {
+  font-weight: 500 !important;
+}
+
+.cart_item {
+  color: #607D8B !important;
 }

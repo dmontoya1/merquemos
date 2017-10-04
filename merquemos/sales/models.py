@@ -159,7 +159,7 @@ class DeliveryOrder(models.Model):
         ('CA', 'Cancelled'),
     )
 
-    order = models.OneToOneField(Order)
+    order = models.OneToOneField(Order, related_name="delivery_order")
     payment_method = models.CharField(max_length=2, choices=PAYMENT_METHOD_CHOICES)
     status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='RN')
     address = models.ForeignKey(Address, null=True, blank=True)

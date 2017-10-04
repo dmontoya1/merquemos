@@ -17,19 +17,19 @@
                         <tbody>
                             <tr class="cart-subtotal">
                                 <th>Nombres</th>
-                                <td data-title="Subtotal"><span class="amount">{{request.user.first_name}}</span></td>
+                                <td data-title="Nombres"><span>{{request.user.first_name}}</span></td>
                             </tr>
                             <tr class="cart-subtotal">
                                 <th>Apellidos</th>
-                                <td data-title="Subtotal"><span class="amount">{{request.user.last_name}}</span></td>
+                                <td data-title="Apellidos"><span>{{request.user.last_name}}</span></td>
                             </tr>
                             <tr class="cart-subtotal">
                                 <th>Correo electrónico</th>
-                                <td data-title="Subtotal"><span class="amount">{{request.user.email}}</span></td>
+                                <td data-title="Correo electrónico"><span>{{request.user.email}}</span></td>
                             </tr>
                             <tr class="cart-subtotal">
                                 <th>Teléfono celular</th>
-                                <td data-title="Subtotal"><span class="amount">{{request.user.phone_number}}</span></td>
+                                <td data-title="Teléfono celula"><span>{{request.user.phone_number}}</span></td>
                             </tr>
                             <tr class="cart-subtotal">
                                 <th>Configuración de cuenta</th>
@@ -40,21 +40,35 @@
                                 </td>
                             </tr>
                             <tr class="cart-subtotal">
-                                <th>Direcciones</th>
-                                <td data-title="Subtotal">
-                                    <span class="amount">
-                                        <a href="#" data-toggle="modal" data-target="#addressCreationModal">Agregar direcciones</a>
-                                    </span>
-                                </td>
-                            </tr>                                                                                                                                                                               
-                            <tr class="cart-subtotal">
                                 <th>Compras</th>
                                 <td data-title="Subtotal">
                                     <span class="amount">
                                         <a>Ver historial de compras</a>
                                     </span>
                                 </td>
-                            </tr>     
+                            </tr>   
+                            <tr class="cart-subtotal">
+                                <th>Direcciones <br><br>
+                                    <ul>
+                                        {% for address in request.user.related_addresses.all %}
+                                            <li>
+                                                <strong class="navy">Nombre: </strong> <span class="navy weight-500">{{address.name}}</span><br>
+                                                <strong class="navy">Teléfono: </strong> <span class="navy weight-500">{{address.phone_number}}</span><br>
+                                                <strong class="navy">Dirección: </strong> <span class="navy weight-500">{{address.label}}</span><br>
+                                                <strong class="navy">Indicaciones: </strong> <span class="navy weight-500">{{address.directions|default:"Sin indicaciones"}}</span>
+                                                <br>
+                                                <br>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </th>
+                                
+                                <td data-title="Subtotal">
+                                    <span class="amount">
+                                        <a href="#" data-toggle="modal" data-target="#addressCreationModal">Agregar nueva dirección</a>
+                                    </span>
+                                </td>
+                            </tr>                                                                                                                                                                                 
                         </tbody>
                     </table>
 

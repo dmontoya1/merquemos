@@ -37,6 +37,7 @@ class HomePageView(TemplateView):
         city = City.objects.get(pk=request.POST['city'])
         request.session['city'] = city.pk
         request.session['city__name'] = city.name
+        request.session['state__name'] = city.state.name
         return self.get(request)
     
     def get(self, request, format=None):
