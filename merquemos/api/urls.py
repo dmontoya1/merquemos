@@ -6,9 +6,11 @@ from django.contrib.auth.views import (
 )
 from allauth.account.views import ConfirmEmailView
 
+from users.views import UserDetailsView
 
 urlpatterns = [
     url(r'^docs/', include('rest_framework_docs.urls')),
+    url(r'^auth/user/$', UserDetailsView.as_view()),
     url(r'^auth/', include('rest_auth.urls')),
     url(r'^manager/', include('manager.urls')),
     url(r'^stock/', include('stock.urls')),

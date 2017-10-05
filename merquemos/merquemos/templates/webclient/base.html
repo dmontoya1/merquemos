@@ -15,6 +15,8 @@
         <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'assets/css/colors/red.css' %}" />
         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 
         <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
         
@@ -22,6 +24,10 @@
         <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
 
         <link rel="shortcut icon" href="{% static 'assets/images/fav-icon.png' %}">
+
+        {% block extra_css %}
+
+        {% endblock %}
     </head>    
     <body class="about full-width page page-template-default full-color-background">
         <script>
@@ -299,6 +305,8 @@
         </div>
 
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/sockjs/1.1/sockjs.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="{% static 'assets/js/centrifuge.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/js/tether.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/js/bootstrap-hover-dropdown.min.js' %}"></script>
@@ -309,14 +317,80 @@
         <script type="text/javascript" src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/js/electro.js' %}"></script>
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
         <script>
+            var centrifuge = new Centrifuge({
+                url: '{{ webclient_context_centrifugo_params.sockjs_endpoint }}',
+                user: '{{ webclient_context_centrifugo_params.user }}',
+                timestamp: '{{ webclient_context_centrifugo_params.timestamp }}',
+                info: '{{ webclient_context_centrifugo_params.info|safe }}',
+                token: '{{ webclient_context_centrifugo_params.token }}'
+            });
+
+            centrifuge.subscribe("private:{{request.user.private_hash}}#{{request.user.pk}}", function(message) {
+                if (message.data.order_status == "CA") {
+                    title = 'Tu orden ha sido cancelada'
+                    type = 'warning'
+                    html = ''
+                    confirmButtonText = 'Aceptar'
+                } else {
+                    title = 'Orden entregada satisfactoriamente'
+                    type = 'success'
+                    html = '<div id="rater" class="center-align"></div><br>' +
+                    '<input type="text" class="input-text" name="rat_comments" id="rat_comments" placeholder="Comentarios (opcional)" />'
+                    confirmButtonText = 'Calificar'
+                }
+                swal({
+                    title: title,
+                    type: type,
+                    html: html,
+                    showCloseButton: true,
+                    focusConfirm: false,
+                    confirmButtonText: confirmButtonText,
+                    showLoaderOnConfirm: true,
+                    preConfirm: function() {
+                        if (message.data.order_status == "DE") {
+                            return new Promise(function(resolve) {
+                                var jqxhr = $.post(
+                                    "{% url 'sales:rating-create' %}",
+                                    {
+                                        number: $("#rater").rateYo("option", "numStars"),
+                                        order: message.data.order_id,
+                                        comments: $('#rat_comments').val()
+                                    }, function(data) {
+                                        resolve();
+                                    }
+                                );
+                            });
+                        } else {
+                            return new Promise(function(resolve){resolve();});
+                        }
+                    }
+                }).then(function () {
+                    if (message.data.order_status == "DE") {
+                        $('.swal2-confirm').attr('disabled', false);
+                        $('.swal2-confirm').val('Guardar');
+                        swal('Orden calificada correctamente').then(function () {
+                            window.location.reload();
+                        });
+                    }
+                    window.location.reload();
+                });
+
+                $("#rater").rateYo({
+                    numStars: 5
+                });
+            });
+
+            centrifuge.connect();
+
             function update_cart(){
                 $.ajax({
                     url: "{% url 'sales:current-order' %}",
                     method: "GET"
                 })
                     .done(function(data) {
-                        console.log(data);
                         $('#user_cart_count').html(data.item_quantity);
                         if (data.status == "AC") {
                             $('#active-order-indicator').show();

@@ -132,7 +132,7 @@ class RatingCreate(generics.CreateAPIView):
     serializer_class = RatingSerializer
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.auth.user)
+        serializer.save(user=get_api_user(self.request))
 
 @csrf_exempt
 def checkout(request):
@@ -140,6 +140,8 @@ def checkout(request):
     order = Order.objects.get(pk=request.POST['order_id'])
     order.delivery_price = order.get_delivery_price()
     order.status = 'AC'
+    if request.POST.get('comments', False):
+        order.comments = request.POST['comments']
     order.save()
 
     address = Address.objects.get(pk=request.POST['address_id'])

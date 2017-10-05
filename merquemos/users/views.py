@@ -6,8 +6,9 @@ from django.shortcuts import render
 
 from rest_framework import generics, status
 from rest_framework.authtoken.models import Token
-from rest_framework.views import APIView
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from allauth.socialaccount import providers
 from allauth.socialaccount.models import SocialLogin, SocialToken, SocialApp
@@ -17,6 +18,7 @@ from allauth.socialaccount.providers.oauth2.client import OAuth2Client
 from allauth.socialaccount.helpers import complete_social_login
 
 from rest_auth.registration.views import SocialLoginView
+from rest_auth.app_settings import UserDetailsSerializer
 
 from api.helpers import get_api_user
 from .serializers import AddressSerializer, AddressCreateSerializer
@@ -55,6 +57,19 @@ class AddressDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Address.objects.all()
     serializer_class = AddressSerializer
+
+class UserDetailsView(generics.RetrieveUpdateAPIView):
+    serializer_class = UserDetailsSerializer
+    permission_classes = (AllowAny,)
+
+    def get(self, request, format=None):
+        return Response({'Unauthorized access'}, status=401)
+
+    def get_object(self):
+        return get_api_user(self.request)
+
+    def get_queryset(self):
+        return get_user_model().objects.none()
 
 class FacebookAuth(SocialLoginView):   
     adapter_class = FacebookOAuth2Adapter

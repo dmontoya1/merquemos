@@ -5,6 +5,7 @@ from django.conf import settings
 from django.db import models
 from django.db.models import Sum
 
+from cent import Client
 from fcm_django.models import FCMDevice
 
 from stock.models import Product
@@ -28,6 +29,7 @@ class Order(models.Model):
     )
     status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='PE')
     last_status_date = models.DateTimeField(auto_now_add=True)
+    comments = models.TextField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Orden de compra"
@@ -39,16 +41,19 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
         devices = FCMDevice.objects.filter(user=self.user)
         if self.status == "CA" or self.status == "DE":
+            data ={
+                "order_id": self.pk,
+                "order_status": self.status
+            }
             if devices.count() > 0:
                 devices.send_message(
                     title="Tu orden de Merquemos",
                     body="Tu orden ha sido " + self.get_status_display(),
                     icon="",
-                    data={
-                        "order_id": self.pk,
-                        "order_status": self.status
-                    }
+                    data=data
                 )
+            client = Client(settings.CENTRIFUGE_ADDRESS, settings.CENTRIFUGE_SECRET, timeout=1)
+            client.publish("private:{}#{}".format(self.user.private_hash, self.user.pk), data)
         super(Order, self).save(*args, **kwargs)
 
     def get_rating(self):
@@ -150,8 +155,8 @@ class Rating(models.Model):
 
 class DeliveryOrder(models.Model):
     PAYMENT_METHOD_CHOICES = (
-        ('CS', 'Cash'),
-        ('PS', 'POS'),
+        ('CS', 'Efectivo'),
+        ('PS', 'Datáfono'),
     )
     STATUS_CHOICES = (
         ('RN', 'Running'),

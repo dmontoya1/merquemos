@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.http import Http404
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -131,6 +132,10 @@ class TermsView(TemplateView):
         context['name'] = 'Terminos y condiciones'
         context['content'] = policies.terms_and_conditions
         return context
+
+@csrf_exempt
+def centrifugo_auth(request):
+    print request.POST
 
 def custom_403(request):
     return render(

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import uuid
+
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -12,6 +14,9 @@ class User(AbstractUser):
         blank=True,
         null=True
     )
+    private_hash = models.UUIDField(
+        editable=False
+    )
 
     class Meta:
         verbose_name = "Usuario"
@@ -21,6 +26,11 @@ class User(AbstractUser):
         if self.get_full_name() == "":
             return str(self.email)
         return str(self.get_full_name())
+    
+    def save(self, *args, **kwargs):
+        if not self.private_hash:
+            self.private_hash = uuid.uuid4()
+        super(User, self).save(*args, **kwargs)
 
     def get_current_order(self):
         if self.related_orders.filter(status='PE').count() > 0:

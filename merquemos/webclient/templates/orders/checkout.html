@@ -2,6 +2,10 @@
 {% load static %}
 {% load humanize %}
 
+{% block extra_css %}
+
+{% endblock %}
+
 {% block content %}
     <div id="primary" class="content-area">
         <main id="main" class="site-main">
@@ -109,31 +113,50 @@
                                             <label for="payment_method_paypal">Datafono <img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"></label>
                                         </li>
                                     {% else %}
+                                        <li class="wc_payment_method payment_method_paypal">
+                                            <input type="radio" data-order_button_text="{{request.user.get_current_order.delivery_order.get_payment_method_display}}" checked class="input-radio" id="che_payment_method">
+        
+                                            <label for="payment_method_paypal">{{request.user.get_current_order.delivery_order.get_payment_method_display}}</label>
+                                        </li>
                                     {% endif %}
                                 </ul>
                                 <div class="form-row place-order">
-    
-                                    <input type="submit" id="che_submit" data-value="Realizar pedido" value="Realizar pedido" class="button alt">
+                                    {% if request.user.get_current_order.status == "PE" %}
+                                        <input type="submit" id="che_submit" data-value="Realizar pedido" value="Realizar pedido" class="button alt">                                      
+                                    {% endif %}
+                                    <br>
+                                    <br>
                                 </div>
                             </div>                                            
                             </div>
                     </div>
-
+                
                 </form>
+                {% if not request.user.get_current_order.status == "PE" %}
+                <div class="col-xs-12">
+                    <form id="cancellation_form" class="center-align">
+                        <input type="hidden" name="order_id" value="{{request.user.get_current_order.pk}}">
+                        <input type="submit" id="can_submit" data-value="Cancelar pedido" value="Cancelar pedido" class="button alt col-xs-8 center-align">
+                        <br>
+                        <br>
+                    </form>
+                </div>
+                {% endif %}
             </article>
         </main><!-- #main -->
     </div><!-- #primary -->
 {% endblock %}
 
 {% block extra_js %}
+
 <script>
     (function($) {
         $('#checkout-form').on('submit', function(e) {
             e.preventDefault();
             $('#che_submit').attr('disabled', true);
-            $('#che_submit').val('Registrando...');
+            $('#che_submit').val('Enviando...');
             var jqxhr = $.post( "{% url 'sales:checkout' %}", $(this).serialize(), function(data) {
-                location.reload('/');
+                window.location.replace("/");
             })
                 .fail(function(data) {
                     $('.validator').remove();
@@ -143,7 +166,25 @@
                 })
                 .always(function(data) {
                     $('#che_submit').attr('disabled', false);
-                    $('#che_submit').val('Registrar');
+                    $('#che_submit').val('Realizar pedido');
+                });
+        });
+        $('#cancellation_form').on('submit', function(e) {
+            e.preventDefault();
+            $('#can_submit').attr('disabled', true);
+            $('#can_submit').val('Cancelando...');
+            var jqxhr = $.post( "{% url 'sales:cancellation' %}", $(this).serialize(), function(data) {
+                window.location.replace("/");
+            })
+                .fail(function(data) {
+                    $('.validator').remove();
+                    $.each(data.responseJSON, function(key,value) {
+                        $('#can_' + key).after('<span class="red validator">'+ value +'</span>')
+                    }); 
+                })
+                .always(function(data) {
+                    $('#che_submit').attr('disabled', false);
+                    $('#che_submit').val('Cancelar');
                 });
         });
     })(jQuery);

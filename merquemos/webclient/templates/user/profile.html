@@ -10,73 +10,130 @@
                 <br>
                 <div class="cart_totals ">
 
-                    <h2>Mi perfil</h2>
+                    <h2>Información personal</h2>
 
                     <table class="shop_table shop_table_responsive">
-
-                        <tbody>
-                            <tr class="cart-subtotal">
-                                <th>Nombres</th>
-                                <td data-title="Nombres"><span>{{request.user.first_name}}</span></td>
-                            </tr>
-                            <tr class="cart-subtotal">
-                                <th>Apellidos</th>
-                                <td data-title="Apellidos"><span>{{request.user.last_name}}</span></td>
-                            </tr>
-                            <tr class="cart-subtotal">
-                                <th>Correo electrónico</th>
-                                <td data-title="Correo electrónico"><span>{{request.user.email}}</span></td>
-                            </tr>
-                            <tr class="cart-subtotal">
-                                <th>Teléfono celular</th>
-                                <td data-title="Teléfono celula"><span>{{request.user.phone_number}}</span></td>
-                            </tr>
-                            <tr class="cart-subtotal">
-                                <th>Configuración de cuenta</th>
-                                <td data-title="iva">
-                                    <span class="amount">
-                                        <a hreF="#">Actualizar contraseña de acceso</a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="cart-subtotal">
-                                <th>Compras</th>
-                                <td data-title="Subtotal">
-                                    <span class="amount">
-                                        <a>Ver historial de compras</a>
-                                    </span>
-                                </td>
-                            </tr>   
-                            <tr class="cart-subtotal">
-                                <th>Direcciones <br><br>
-                                    <ul>
-                                        {% for address in request.user.related_addresses.all %}
-                                            <li>
-                                                <strong class="navy">Nombre: </strong> <span class="navy weight-500">{{address.name}}</span><br>
-                                                <strong class="navy">Teléfono: </strong> <span class="navy weight-500">{{address.phone_number}}</span><br>
-                                                <strong class="navy">Dirección: </strong> <span class="navy weight-500">{{address.label}}</span><br>
-                                                <strong class="navy">Indicaciones: </strong> <span class="navy weight-500">{{address.directions|default:"Sin indicaciones"}}</span>
-                                                <br>
-                                                <br>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </th>
-                                
-                                <td data-title="Subtotal">
-                                    <span class="amount">
-                                        <a href="#" data-toggle="modal" data-target="#addressCreationModal">Agregar nueva dirección</a>
-                                    </span>
-                                </td>
-                            </tr>                                                                                                                                                                                 
-                        </tbody>
+                        <form id="profile-form">
+                            <tbody>
+                                <tr class="cart-subtotal">
+                                    <th>Nombres</th>
+                                    <td data-title="Nombres">
+                                        <input type="text" class="input-text" name="first_name" id="pro_first_name" value="{{request.user.first_name}}" />
+                                    </td>
+                                </tr>
+                                <tr class="cart-subtotal">
+                                    <th>Apellidos</th>
+                                    <td data-title="Apellidos">
+                                        <input type="text" class="input-text" name="last_name" id="pro_last_name" value="{{request.user.last_name}}" />
+                                    </td>
+                                </tr>
+                                <tr class="cart-subtotal">
+                                    <th>Correo electrónico</th>
+                                    <td data-title="Correo electrónico">
+                                        <input type="email" class="input-text" name="email" id="pro_email" value="{{request.user.email}}" />
+                                    </td>
+                                </tr>
+                                <tr class="cart-subtotal">
+                                    <th>Teléfono celular</th>
+                                    <td data-title="Teléfono celular">
+                                        <input type="tel" class="input-text" name="phone_number" id="pro_phone_number" value="{{request.user.phone_number}}" />
+                                    </td>
+                                </tr>
+                                <tr class="cart-subtotal">
+                                    <th>Configuración de acceso</th>
+                                    <td data-title="iva">
+                                        <span class="amount">
+                                            <a hreF="#" class="teal">Actualizar contraseña de acceso</a>
+                                        </span>
+                                    </td>
+                                </tr>            
+                                <tr class="cart-subtotal">
+                                    <th></th>
+                                    <td data-title="iva">
+                                        <input type="submit" class="button" name="submit" value="Actualixar" id="pro_submit"/>
+                                    </td>
+                                </tr>                                                                                                                                                                            
+                            </tbody>
+                        </form>
                     </table>
 
                     
                 </div>
-            </div>            					
+            </div>            
+            
+            <div class="cart-collaterals col-md-8 center-align">
+                    <br>
+                    <div class="cart_totals ">
+    
+                        <h2>Cuenta y compras</h2>
+    
+                        <table class="shop_table shop_table_responsive">
+    
+                            <tbody>
+                                <tr class="cart-subtotal">
+                                    <th>Compras</th>
+                                    <td data-title="Subtotal">
+                                        <span class="amount">
+                                            <a class="teal">Ver historial de compras</a>
+                                        </span>
+                                    </td>
+                                </tr>   
+                                <tr class="cart-subtotal">
+                                    <th>Direcciones <br><br>
+                                        <ul>
+                                            {% for address in request.user.related_addresses.all %}
+                                                <li>
+                                                    <strong class="navy">Nombre: </strong> <span class="navy weight-500">{{address.name}}</span><br>
+                                                    <strong class="navy">Teléfono: </strong> <span class="navy weight-500">{{address.phone_number}}</span><br>
+                                                    <strong class="navy">Dirección: </strong> <span class="navy weight-500">{{address.label}}</span><br>
+                                                    <strong class="navy">Indicaciones: </strong> <span class="navy weight-500">{{address.directions|default:"Sin indicaciones"}}</span>
+                                                    <br>
+                                                    <br>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </th>
+                                    
+                                    <td data-title="Subtotal">
+                                        <span class="amount">
+                                            <a href="#" data-toggle="modal" data-target="#addressCreationModal" class="teal">Agregar nueva dirección</a>
+                                        </span>
+                                    </td>
+                                </tr>                                                                                                                                                                                 
+                            </tbody>
+                        </table>
+    
+                        
+                    </div>
+                </div>     
         </article>
     </main><!-- #main -->
 </div><!-- #primary -->
 {% endblock %}
 
+{% block extra_js %}
+<script>
+    (function($) {
+        $('#profile-form').on('submit', function(e){
+            e.preventDefault();
+            $('#pro_submit').attr('disabled', true);
+            $('#pro_submit').val('Actualizando...');
+            $.ajax({
+                url: "/api/auth/user/",
+                data: $(this).serialize(), 
+                type: 'PUT'
+            })
+                .fail(function(data) {
+                    $('.validator').remove();
+                    $.each(data.responseJSON, function(key,value) {
+                        $('#pro_' + key).after('<span class="red validator">'+ value +'</span>')
+                    }); 
+                })
+                .always(function(data) {
+                    $('#pro_submit').attr('disabled', false);
+                    $('#pro_submit').val('Actualizar');
+                });
+        });
+    })(jQuery);
+</script>
+{% endblock %}
