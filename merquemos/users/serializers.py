@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.conf import settings
 from django.contrib.auth.forms import SetPasswordForm
 
@@ -58,7 +60,7 @@ class PasswordChangeSerializer(serializers.Serializer):
         )
 
         if all(invalid_password_conditions):
-            raise serializers.ValidationError('Invalid password')
+            raise serializers.ValidationError('Contraseña inválida')
         return value
 
     def validate(self, attrs):

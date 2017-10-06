@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib import messages
 from django.contrib.sites.models import Site
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
+from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.debug import sensitive_post_parameters
 
 from rest_framework import generics, status
@@ -92,6 +94,7 @@ class PasswordChangeView(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        messages.add_message(request, messages.INFO, 'Inicia sesión con tu nueva contraseña')
         return Response({"detail": _("New password has been saved.")})
 
 class FacebookAuth(SocialLoginView):   

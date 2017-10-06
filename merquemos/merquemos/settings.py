@@ -110,6 +110,7 @@ AUTHENTICATION_BACKENDS = (
    "django.contrib.auth.backends.ModelBackend",
    "allauth.account.auth_backends.AuthenticationBackend"
 )
+LOGIN_REDIRECT_URL = '/login/'
 LOGOUT_REDIRECT_URL = '/'
 LOGOUT_ON_PASSWORD_CHANGE = True
 OLD_PASSWORD_FIELD_ENABLED = True

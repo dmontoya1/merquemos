@@ -109,13 +109,15 @@
                                 </tr>   
                                 <tr class="cart-subtotal">
                                     <th>Direcciones <br><br>
-                                        <ul>
+                                        <ul class="address-list">
                                             {% for address in request.user.related_addresses.all %}
                                                 <li>
-                                                    <strong class="navy">Nombre: </strong> <span class="navy weight-500">{{address.name}}</span><br>
-                                                    <strong class="navy">Teléfono: </strong> <span class="navy weight-500">{{address.phone_number}}</span><br>
-                                                    <strong class="navy">Dirección: </strong> <span class="navy weight-500">{{address.label}}</span><br>
+                                                    <strong class="navy">Nombre: </strong> <span class="navy weight-500">{{address.name}}</span>
+                                                    <strong class="navy">Teléfono: </strong> <span class="navy weight-500">{{address.phone_number}}</span>
+                                                    <strong class="navy">Dirección: </strong> <span class="navy weight-500">{{address.label}}</span>
                                                     <strong class="navy">Indicaciones: </strong> <span class="navy weight-500">{{address.directions|default:"Sin indicaciones"}}</span>
+                                                    <br>
+                                                    <a href="#" class="red address-delete" data-pk="{{address.pk}}" >Eliminar dirección</a>
                                                     <br>
                                                     <br>
                                                 </li>
@@ -166,7 +168,7 @@
             e.preventDefault();
             $('#cha_submit').attr('disabled', true);
             var jqxhr = $.post( "{% url 'users:password-change' %}", $(this).serialize(), function(data) {
-                location.reload();
+                window.location.replace("{% url 'webclient:login' %}");
             })
                 .fail(function(data) {
                     $('.validator').remove();
@@ -177,6 +179,21 @@
                 .always(function(data) {
                     $('#cha_submit').attr('disabled', false);
                 });
+        });
+        $('.address-delete').on('click', function(e){
+            e.preventDefault();
+            pk = $(this).data('pk')
+            $.ajax({
+                url: '/api/users/addresses/' + pk + '/',
+                type: 'DELETE'
+            })
+                .fail(function(data) {
+                    toastr.warning('Ha ocurrido un error intentando eliminar la dirección, reintenta nuevamente');
+                })
+                .always(function(data) {
+                    location.reload();
+                });
+
         });
     })(jQuery);
 </script>

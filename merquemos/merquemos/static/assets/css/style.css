@@ -10102,3 +10102,18 @@ header {
 .teal {
   color: #3DB292 !important;
 }
+
+.address-list {
+  list-style-type: none; 
+  padding: 0;
+}
+
+.address-list li {
+  float: left;
+  display: inline-grid;
+  margin-right: 35px;
+}
+
+.address-list li span {
+  margin-bottom: .5em;
+}

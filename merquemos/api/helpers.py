@@ -7,6 +7,8 @@ def generate_key():
     return binascii.hexlify(os.urandom(20)).decode()
 
 def get_api_user(request): 
-    if request.auth:
-        return request.auth.user
-    return get_user(request)
+    if request:
+        if request.auth:
+            return request.auth.user
+        return get_user(request)
+    pass
