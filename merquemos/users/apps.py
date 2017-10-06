@@ -6,3 +6,5 @@ from django.apps import AppConfig
 
 class UsersConfig(AppConfig):
     name = 'users'
+    verbose_name = "Usuarios de plataforma"
+    icon = '<i class="material-icons">supervisor_account</i>'

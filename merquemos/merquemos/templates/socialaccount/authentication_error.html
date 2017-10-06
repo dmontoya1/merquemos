@@ -1,0 +1,23 @@
+{% extends 'webclient/base.html' %}
+{% load static %}
+
+{% block head_title %}Error de inicio de sesión con redes sociales{% endblock %}
+
+{% block content%}
+<div id="content" class="site-content" tabindex="-1">
+    <div class="container">
+
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main center-align">
+                <img width="330px" src="{% static 'assets/images/error.gif' %}" class="center-align">
+                <h1>Error al iniciar sesión con tu red social</h1>
+                <p>Ocurrió un error al intentar autenticarte con tu red social, intenta nuevamente.</p>
+                <a href="{% url 'webclient:login' %}" class="social-btn btn-primary">
+                    Regresar a Merquemos
+                </a>  
+            </main><!-- #main -->
+        </div><!-- #primary -->
+
+    </div><!-- .col-full -->
+</div><!-- #content -->
+{% endblock %}

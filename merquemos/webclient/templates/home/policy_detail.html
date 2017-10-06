@@ -1,0 +1,17 @@
+{% extends 'webclient/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+            <div class="container">
+                <br>
+                <h2 class="center-align">{{name}}</h2>
+                <br>
+                <p>{{content}}</p>
+                <img class="center-align" src="{% static 'assets/images/logo_footer.png' %}">
+            </div>
+        </main><!-- #main -->
+    </div><!-- #primary -->
+{% endblock %}
+

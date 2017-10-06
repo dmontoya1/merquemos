@@ -2,5 +2,18 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from django.contrib.auth.models import Group
+from .models import User, Address
 
-# Register your models here.
+admin.site.unregister(Group)
+
+class AddressInline(admin.StackedInline):
+    model = Address
+
+class UserAdmin(admin.ModelAdmin):
+    inlines = [
+        AddressInline,
+    ]
+    icon = '<i class="material-icons">account_circle</i>'
+
+admin.site.register(User, UserAdmin)

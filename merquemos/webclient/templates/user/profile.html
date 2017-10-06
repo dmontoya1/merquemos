@@ -1,0 +1,200 @@
+{% extends 'webclient/base.html' %}
+{% load static %}
+
+{% block content%}
+
+<div class="modal fade " id="passwordChangeModal" tabindex="-1" role="dialog" aria-labelledby="passwordChangeModal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content col-md-12">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <form action="/" method="POST" id="change_password_form">
+                {% csrf_token %}
+                <div class="modal-body col-md-12">
+                    <p class="form-row form-row-wide">
+                        <label for="cha_old_password">Contraseña actual<span class="required">*</span></label>
+                        <input type="password" required class="input-text" name="old_password" id="cha_old_password" />
+                    </p>
+                    <p class="form-row form-row-wide">
+                        <label for="cha_new_password_1">Nueva contraseña<span class="required">*</span></label>
+                        <input type="password" required class="input-text" name="new_password1" id="cha_new_password1" />
+                    </p>
+                    <p class="form-row form-row-wide">
+                        <label for="cha_new_password_2">Confirmación nueva contraseña<span class="required">*</span></label>
+                        <input type="password" required class="input-text" name="new_password2" id="cha_new_password2" />
+                    </p>
+                </div>
+                <div class="modal-footer col-md-12">
+                    <button type="submit" class="btn btn-secondary" id="cha_submit">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="primary" class="content-area">
+    <main id="main" class="site-main">
+        <article class="page type-page status-publish hentry">
+
+            <div class="cart-collaterals col-md-8 center-align">
+                <br>
+                <div class="cart_totals ">
+
+                    <h2>Información personal</h2>
+
+                    <table class="shop_table shop_table_responsive">
+                        <form id="profile-form">
+                            <tbody>
+                                <tr class="cart-subtotal">
+                                    <th>Nombres</th>
+                                    <td data-title="Nombres">
+                                        <input type="text" class="input-text" name="first_name" id="pro_first_name" value="{{request.user.first_name}}" />
+                                    </td>
+                                </tr>
+                                <tr class="cart-subtotal">
+                                    <th>Apellidos</th>
+                                    <td data-title="Apellidos">
+                                        <input type="text" class="input-text" name="last_name" id="pro_last_name" value="{{request.user.last_name}}" />
+                                    </td>
+                                </tr>
+                                <tr class="cart-subtotal">
+                                    <th>Correo electrónico</th>
+                                    <td data-title="Correo electrónico">
+                                        <input type="email" class="input-text" name="email" id="pro_email" value="{{request.user.email}}" />
+                                    </td>
+                                </tr>
+                                <tr class="cart-subtotal">
+                                    <th>Teléfono celular</th>
+                                    <td data-title="Teléfono celular">
+                                        <input type="tel" class="input-text" name="phone_number" id="pro_phone_number" value="{{request.user.phone_number}}" />
+                                    </td>
+                                </tr>
+                                <tr class="cart-subtotal">
+                                    <th>Configuración de acceso</th>
+                                    <td data-title="iva">
+                                        <span class="amount">
+                                            <a hreF="#" data-toggle="modal" data-target="#passwordChangeModal" class="teal">Actualizar contraseña de acceso</a>
+                                        </span>
+                                    </td>
+                                </tr>            
+                                <tr class="cart-subtotal">
+                                    <th></th>
+                                    <td data-title="iva">
+                                        <input type="submit" class="button" name="submit" value="Actualixar" id="pro_submit"/>
+                                    </td>
+                                </tr>                                                                                                                                                                            
+                            </tbody>
+                        </form>
+                    </table>
+
+                    
+                </div>
+            </div>            
+            
+            <div class="cart-collaterals col-md-8 center-align">
+                    <br>
+                    <div class="cart_totals ">
+    
+                        <h2>Cuenta y compras</h2>
+    
+                        <table class="shop_table shop_table_responsive">
+    
+                            <tbody>
+                                <tr class="cart-subtotal">
+                                    <th>Compras</th>
+                                    <td data-title="Subtotal">
+                                        <span class="amount">
+                                            <a class="teal" href="#">Ver historial de compras</a>
+                                        </span>
+                                    </td>
+                                </tr>   
+                                <tr class="cart-subtotal">
+                                    <th>Direcciones <br><br>
+                                        <ul class="address-list">
+                                            {% for address in request.user.related_addresses.all %}
+                                                <li>
+                                                    <strong class="navy">Nombre: </strong> <span class="navy weight-500">{{address.name}}</span>
+                                                    <strong class="navy">Teléfono: </strong> <span class="navy weight-500">{{address.phone_number}}</span>
+                                                    <strong class="navy">Dirección: </strong> <span class="navy weight-500">{{address.label}}</span>
+                                                    <strong class="navy">Indicaciones: </strong> <span class="navy weight-500">{{address.directions|default:"Sin indicaciones"}}</span>
+                                                    <br>
+                                                    <a href="#" class="red address-delete" data-pk="{{address.pk}}" >Eliminar dirección</a>
+                                                    <br>
+                                                    <br>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </th>
+                                    
+                                    <td data-title="Subtotal">
+                                        <span class="amount">
+                                            <a href="#" data-toggle="modal" data-target="#addressCreationModal" class="teal">Agregar nueva dirección</a>
+                                        </span>
+                                    </td>
+                                </tr>                                                                                                                                                                                 
+                            </tbody>
+                        </table>
+    
+                        
+                    </div>
+                </div>     
+        </article>
+    </main><!-- #main -->
+</div><!-- #primary -->
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    (function($) {
+        $('#profile-form').on('submit', function(e){
+            e.preventDefault();
+            $('#pro_submit').attr('disabled', true);
+            $.ajax({
+                url: "/api/auth/user/",
+                data: $(this).serialize(), 
+                type: 'PUT'
+            })
+                .fail(function(data) {
+                    $('.validator').remove();
+                    $.each(data.responseJSON, function(key,value) {
+                        $('#pro_' + key).after('<span class="red validator">'+ value +'</span>')
+                    }); 
+                })
+                .always(function(data) {
+                    $('#pro_submit').attr('disabled', false);
+                    toastr.success('Perfil actualizado exitosamente');
+                });
+        });
+        $('#change_password_form').on('submit', function(e){
+            e.preventDefault();
+            $('#cha_submit').attr('disabled', true);
+            var jqxhr = $.post( "{% url 'users:password-change' %}", $(this).serialize(), function(data) {
+                window.location.replace("{% url 'webclient:login' %}");
+            })
+                .fail(function(data) {
+                    $('.validator').remove();
+                    $.each(data.responseJSON, function(key,value) {
+                        $('#cha_' + key).after('<span class="red validator">'+ value +'</span>')
+                    }); 
+                })
+                .always(function(data) {
+                    $('#cha_submit').attr('disabled', false);
+                });
+        });
+        $('.address-delete').on('click', function(e){
+            e.preventDefault();
+            pk = $(this).data('pk')
+            $.ajax({
+                url: '/api/users/addresses/' + pk + '/',
+                type: 'DELETE'
+            })
+                .fail(function(data) {
+                    toastr.warning('Ha ocurrido un error intentando eliminar la dirección, reintenta nuevamente');
+                })
+                .always(function(data) {
+                    location.reload();
+                });
+
+        });
+    })(jQuery);
+</script>
+{% endblock %}

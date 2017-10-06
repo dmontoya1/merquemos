@@ -1,0 +1,14 @@
+{
+    "secret": "f@pp#qe3b7)7uy27u094t8s1pq",
+    "namespaces": [
+        {
+          "name": "private",
+          "presence": true,
+          "join_leave": true,
+          "history_size": 10,
+          "history_lifetime": 30,
+          "recover": true,
+	  "anonymous": false
+        }
+    ]
+}

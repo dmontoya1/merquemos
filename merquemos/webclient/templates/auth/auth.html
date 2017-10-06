@@ -1,0 +1,188 @@
+{% extends 'webclient/base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% block content%}
+<div class="modal fade " id="passwordResetModal" tabindex="-1" role="dialog" aria-labelledby="passwordResetModal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content col-md-12">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <form method="POST" id="password_reset_form">
+                {% csrf_token %}
+                <div class="modal-body col-md-12">
+                    <p class="form-row form-row-wide">
+                        <label for="re_email">Correo electrónico registrado<span class="required">*</span></label>
+                        <input type="email" required class="input-text" name="email" id="re_email" />
+                    </p>
+                </div>
+                <div class="modal-footer col-md-12">
+                    <button type="submit" class="btn btn-secondary" id="re_submit">Recuperar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="content" class="site-content" tabindex="-1">
+    <div class="container">
+
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+                <article id="post-8" class="hentry">
+
+                    <div class="entry-content">
+                        <div class="woocommerce">
+                            <div class="customer-login-form">
+                                <span class="or-text">o</span>
+
+                                <div class="col2-set" id="customer_login">
+
+                                    <div class="col-1">
+
+
+                                        <h2>Iniciar Sesión</h2>
+
+                                        <form method="post" class="login" action="{% url 'webclient:login' %}">
+
+                                            {% csrf_token %}
+
+                                            <p class="form-row form-row-wide">
+                                                <label for="username">Usuario o correo electronico<span class="required">*</span></label>
+                                                <input type="text" class="input-text" name="username" id="username" value="" />
+                                            </p>
+
+                                            <p class="form-row form-row-wide">
+                                                <label for="password">Contraseña<span class="required">*</span></label>
+                                                <input class="input-text" type="password" name="password" id="password" />
+                                            </p>
+
+                                            <p class="form-row">
+                                                <input class="button" type="submit" value="Iniciar sesión" name="login">
+                                            </p>
+
+                                            <p class="form-row">
+                                                <div class="btn-group">
+                                                    <a href="{% provider_login_url "facebook" method="oauth2" next="/" %}" class="social-btn buttonfacebook">
+                                                        <span class="fa fa-facebook"></span> | Iniciar sesión
+                                                    </a>        
+
+                                                    <a href="{% provider_login_url "google" method="oauth2" next="/" %}" class="social-btn buttongoogle">
+                                                        <span class="fa fa-google-plus"></span> | Iniciar sesión
+                                                    </a> 
+                                                </div>
+                                            </p>
+
+                                            <p class="lost_password"><a href="#" data-toggle="modal" data-target="#passwordResetModal"  class="teal">Olvidé la contraseña</a></p>
+
+                                        </form>
+
+
+                                    </div><!-- .col-1 -->
+
+                                    <div class="col-2">
+
+                                        <h2>Regístrate</h2>
+
+                                        <form method="post" class="register" id="register-form">
+
+                                            {% csrf_token %}
+
+                                            <p class="form-row form-row-wide">
+                                                <label for="reg_email">Correo Electrónico<span class="required">*</span></label>
+                                                <input type="email" class="input-text" name="email" id="reg_email" value="" />
+                                            </p>
+                                            <p class="form-row form-row-wide">
+                                                <label for="reg_password1">Contraseña<span class="required">*</span></label>
+                                                <input type="password" class="input-text" name="password1" id="reg_password1" value="" />
+                                                
+                                            </p>
+                                            <p class="form-row form-row-wide">
+                                                <label for="reg_password2">Repite la contraseña<span class="required">*</span></label>
+                                                <input type="password" class="input-text" name="password2" id="reg_password2" value="" />
+                                            </p>
+
+                                            <p class="form-row">
+                                                <input type="submit" class="button" name="register" value="Registrar" id="reg_submit"/>
+                                                <div id="spinner"></div>
+                                            </p>
+
+                                            <p class="form-row">
+                                                <span>
+                                                    Al seguir también aceptas los <a href="{% url 'webclient:terms' %}">Términos y Condiciones</a> y las 
+                                                    <a href="{% url 'webclient:privacy-policy' %}">Políticas de tratamiento de datos</a> de Merquemos
+                                                </span>
+                                            </p>
+
+                                            <div class="register-benefits">
+                                                <h3>Regístrese hoy y podrá:</h3>
+                                                <ul>
+                                                    <li>Comprar más rapido</li>
+                                                    <li>Rastree sus pedidos fácilmente</li>
+                                                    <li>Mantenga un registro de todas sus compras</li>
+                                                </ul>
+                                            </div>
+
+                                        </form>
+
+                                    </div><!-- .col-2 -->
+
+                                </div><!-- .col2-set -->
+
+                            </div><!-- /.customer-login-form -->
+                        </div><!-- .woocommerce -->
+                    </div><!-- .entry-content -->
+
+                </article><!-- #post-## -->
+
+            </main><!-- #main -->
+        </div><!-- #primary -->
+
+    </div><!-- .col-full -->
+</div><!-- #content -->
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    (function($) {
+        $('#register-form').on('submit', function(e){
+            e.preventDefault();
+            $('#reg_submit').attr('disabled', true);
+            $('#reg_submit').val('Registrando...');
+            var jqxhr = $.post( "/auth/registration/", $(this).serialize(), function(data) {
+                location.reload();
+            })
+                .fail(function(data) {
+                    $('.validator').remove();
+                    $.each(data.responseJSON, function(key,value) {
+                        $('#reg_' + key).after('<span class="red validator">'+ value +'</span>')
+                    }); 
+                })
+                .always(function(data) {
+                    $('#reg_submit').attr('disabled', false);
+                    $('#reg_submit').val('Registrar');
+                });
+        });
+        $('#password_reset_form').on('submit', function(e){
+            e.preventDefault();
+            $('#re_submit').attr('disabled', true);
+            $('#re_submit').val('Enviando correo de recuperación...');
+            var jqxhr = $.post( "/auth/password/reset/", $(this).serialize(), function(data) {
+                toastr.success('Si el email ' + $('#re_email').val() + ' existe en nuestra base de datos, recibirás un correo de recuperación.');
+            })
+                .fail(function(data) {
+                    $('.validator').remove();
+                    $.each(data.responseJSON, function(key,value) {
+                        $('#re_' + key).after('<span class="red validator">'+ value +'</span>')
+                    }); 
+                })
+                .always(function(data) {
+                    $('#re_submit').attr('disabled', false);
+                    $('#re_submit').val('Recuperar');
+                    $('#passwordResetModal').modal('toggle');
+                });
+        });
+    })(jQuery);
+</script>
+{% endblock %}

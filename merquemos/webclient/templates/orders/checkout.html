@@ -1,0 +1,193 @@
+{% extends 'webclient/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block content %}
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+            <article class="page type-page status-publish hentry">
+                <br>  
+                <br>  
+                <form enctype="multipart/form-data" id="checkout-form" class="checkout woocommerce-checkout" method="post" name="checkout">
+                    <input type="hidden" name="order_id" value="{{request.user.get_current_order.pk}}">
+                    <div id="customer_details" class="col2-set">
+                        <div class="col-1">
+                            <h3 id="order_review_heading">Tu pedido</h3>
+                            <table class="shop_table woocommerce-checkout-review-order-table">
+                                <thead>
+                                    <tr>
+                                        <th class="product-name">Producto</th>
+                                        <th class="product-total">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in order.get_items %}
+                                        <tr class="cart_item">
+                                            <td class="product-name">
+                                                {{item.product.name}}
+                                                <strong class="product-quantity">× {{item.quantity}}</strong>
+                                            </td>
+                                            <td class="product-total">
+                                                <span class="amount">${{item.total|intcomma}}</span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+
+                                    <tr class="cart-subtotal">
+                                        <th>Subtotal</th>
+                                        <td><span class="amount">${{order.get_total_no_tax|intcomma}}</span></td>
+                                    </tr>
+
+                                    <tr class="shipping">
+                                        <th>Impuestos</th>
+                                        <td data-title="Shipping"><span class="amount">${{order.get_total_tax|intcomma}}</span> <input type="hidden" class="shipping_method" value="international_delivery" id="shipping_method_0" data-index="0" name="shipping_method[0]"></td>
+                                    </tr>
+
+                                    <tr class="shipping">
+                                        <th>Servicio de entrega</th>
+                                        <td data-title="Shipping"><span class="amount">${{order.get_delivery_price|intcomma}}</span> <input type="hidden" class="shipping_method" value="international_delivery" id="shipping_method_0" data-index="0" name="shipping_method[0]"></td>
+                                    </tr>
+
+                                    <tr class="order-total">
+                                        <th>Total</th>
+                                        <td><strong><span class="amount">${{order.get_total_with_tax|intcomma}}</span></strong> </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div class="col-2">
+                            <h3>Detalles de envío</h3>
+                        <div class="woocommerce-checkout-payment" id="payment">
+                            <ul class="wc_payment_methods payment_methods methods">
+                                <li class="wc_payment_method payment_method_ship_dir">
+                                    {% if request.user.get_current_order.status == "PE" %}
+                                    <div class="payment_box payment_method_bacs">
+                                        <p>Solo podrás seleccionar direcciones de envío en <strong>{{request.session.state__name}}</strong>.
+                                            Puedes cambiar de ubicación para ver más.</p>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    {% endif %}
+                                    <label for="che_address">Dirección de envío
+                                    </label>
+                                    <select {% if not request.user.get_current_order.status == "PE" %}disabled{% endif %}id="che_address" name="address_id" class="selectpicker input-text" required>
+                                        {% if not request.user.get_current_order.status == "PE" %}
+                                            <option selected disabled>{{request.user.get_current_order.delivery_order.address.name}} - {{request.user.get_current_order.delivery_order.address.label}}</option>
+                                        {% else %}
+                                            {% for address in request.user.related_addresses.all %}
+                                                <option value="{{address.pk}}">{{address.name}} - {{address.label}}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select>
+                                    <br>
+                                    <br>  
+                                    {% if request.user.get_current_order.status == "PE" %}
+                                        <a href="#" data-toggle="modal" data-target="#addressCreationModal" class="pull-right">Agregar nueva dirección</a>     
+                                        <br>  
+                                    {% endif %}   
+                                </li>    
+                            </ul>
+                        </div>                                            
+                        </div>
+                        <div class="col-2">
+                                <br>
+                                <br>  
+                                <h3>Método de pago</h3>
+                            <div class="woocommerce-checkout-payment" id="payment">
+                                <ul class="wc_payment_methods payment_methods methods">
+                                    {% if request.user.get_current_order.status == "PE" %}
+                                        <li class="wc_payment_method payment_method_bacs">
+                                            <input type="radio" data-order_button_text="" checked="checked" value="CS" name="payment_method" class="input-radio" id="che_payment_method">
+                                            <label for="payment_method_bacs">Efectivo</label>
+                                        </li>
+                                        <li class="wc_payment_method payment_method_paypal">
+                                            <input type="radio" data-order_button_text="Proceed to PayPal" value="PS" name="payment_method" class="input-radio" id="che_payment_method">
+        
+                                            <label for="payment_method_paypal">Datafono <img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"></label>
+                                        </li>
+                                    {% else %}
+                                        <li class="wc_payment_method payment_method_paypal">
+                                            <input type="radio" data-order_button_text="{{request.user.get_current_order.delivery_order.get_payment_method_display}}" checked class="input-radio" id="che_payment_method">
+        
+                                            <label for="payment_method_paypal">{{request.user.get_current_order.delivery_order.get_payment_method_display}}</label>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                                <div class="form-row place-order">
+                                    {% if request.user.get_current_order.status == "PE" %}
+                                        <input type="submit" id="che_submit" data-value="Realizar pedido" value="Realizar pedido" class="button alt">                                      
+                                    {% endif %}
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>                                            
+                            </div>
+                    </div>
+                
+                </form>
+                {% if not request.user.get_current_order.status == "PE" %}
+                <div class="col-xs-12">
+                    <form id="cancellation_form" class="center-align">
+                        <input type="hidden" name="order_id" value="{{request.user.get_current_order.pk}}">
+                        <input type="submit" id="can_submit" data-value="Cancelar pedido" value="Cancelar pedido" class="button alt col-xs-8 center-align">
+                        <br>
+                        <br>
+                    </form>
+                </div>
+                {% endif %}
+            </article>
+        </main><!-- #main -->
+    </div><!-- #primary -->
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    (function($) {
+        $('#checkout-form').on('submit', function(e) {
+            e.preventDefault();
+            $('#che_submit').attr('disabled', true);
+            $('#che_submit').val('Enviando...');
+            var jqxhr = $.post( "{% url 'sales:checkout' %}", $(this).serialize(), function(data) {
+                window.location.replace("/");
+            })
+                .fail(function(data) {
+                    $('.validator').remove();
+                    $.each(data.responseJSON, function(key,value) {
+                        $('#che_' + key).after('<span class="red validator">'+ value +'</span>')
+                    }); 
+                })
+                .always(function(data) {
+                    $('#che_submit').attr('disabled', false);
+                    $('#che_submit').val('Realizar pedido');
+                });
+        });
+        $('#cancellation_form').on('submit', function(e) {
+            e.preventDefault();
+            $('#can_submit').attr('disabled', true);
+            $('#can_submit').val('Cancelando...');
+            var jqxhr = $.post( "{% url 'sales:cancellation' %}", $(this).serialize(), function(data) {
+                window.location.replace("/");
+            })
+                .fail(function(data) {
+                    $('.validator').remove();
+                    $.each(data.responseJSON, function(key,value) {
+                        $('#can_' + key).after('<span class="red validator">'+ value +'</span>')
+                    }); 
+                })
+                .always(function(data) {
+                    $('#che_submit').attr('disabled', false);
+                    $('#che_submit').val('Cancelar');
+                });
+        });
+    })(jQuery);
+</script>
+{% endblock %}
+
