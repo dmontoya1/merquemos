@@ -11,7 +11,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 from manager.models import City, AppPolicy
-from stock.models import Store, Product
+from stock.models import Store, Product, Category
 from users.models import User
 
 
@@ -88,6 +88,21 @@ class ProductView(DetailView):
         query = self.get_queryset().filter(store=store)
         return super(DetailView, self).get_object(queryset) 
 
+class CategoryView(DetailView):
+    model = Product
+    template_name = 'home/category_detail.html'
+
+    def get_object(self, queryset=None):
+        category = Category.objects.get(name=self.kwargs.get('slug')) 
+        return category
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryView, self).get_context_data(**kwargs)
+        store_id = self.request.session.get('store', None)
+        store = Store.objects.get(pk=store_id)
+        context['store'] = store
+        return context
+
 class SearchView(ListView):
     template_name = 'home/search_result.html'
 
@@ -132,10 +147,6 @@ class TermsView(TemplateView):
         context['name'] = 'Terminos y condiciones'
         context['content'] = policies.terms_and_conditions
         return context
-
-@csrf_exempt
-def centrifugo_auth(request):
-    print request.POST
 
 def custom_403(request):
     return render(

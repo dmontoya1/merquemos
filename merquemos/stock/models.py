@@ -129,7 +129,7 @@ class BrandStore(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
-    parent = models.ForeignKey('self', null=True, blank=True)
+    parent = models.ForeignKey('self', null=True, blank=True, related_name="related_categories")
 
     class Meta:
         verbose_name = "Categoría"

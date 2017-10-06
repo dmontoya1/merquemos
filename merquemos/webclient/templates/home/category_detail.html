@@ -1,0 +1,38 @@
+{% extends 'webclient/base.html' %}
+{% load static %}
+{% load webclientextras %}
+{% load humanize %}
+
+{% block content %}
+<div id="primary" class="content-area">
+    <main id="main" class="site-main"> 
+        <br>
+        {% for category in object.parent.related_categories.all %}
+            {% get_filtered_products store category as filtered_products %} 
+            {% if filtered_products.count > 0 %}
+                <section class="products-carousel-tabs animate-in-view fadeIn animated" data-animation="fadeIn">
+                    <h2 class="sr-only">Categorias</h2>
+                    <ul class="nav nav-inline text-xs-left">
+                        <li class="nav-item">
+                            <a class="nav-link active">{{category.name}}</a>
+                        </li>                         
+                    </ul>
+                </section><!-- /.products-carousel-tabs -->
+                <section class="products-6-1 animate-in-view fadeIn animated" data-animation="fadeIn">
+                    <div class="container">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">  
+                                <ul class="products columns-6">
+                                    {% for product in filtered_products %}
+                                        {% include 'product/product_list_detail.html' %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+        {% endfor %}
+    </main><!-- #main -->
+</div><!-- #primary -->
+{% endblock %}
