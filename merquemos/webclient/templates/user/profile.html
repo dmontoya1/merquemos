@@ -2,6 +2,35 @@
 {% load static %}
 
 {% block content%}
+
+<div class="modal fade " id="passwordChangeModal" tabindex="-1" role="dialog" aria-labelledby="passwordChangeModal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content col-md-12">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <form action="/" method="POST" id="change_password_form">
+                {% csrf_token %}
+                <div class="modal-body col-md-12">
+                    <p class="form-row form-row-wide">
+                        <label for="cha_old_password">Contraseña actual<span class="required">*</span></label>
+                        <input type="password" required class="input-text" name="old_password" id="cha_old_password" />
+                    </p>
+                    <p class="form-row form-row-wide">
+                        <label for="cha_new_password_1">Nueva contraseña<span class="required">*</span></label>
+                        <input type="password" required class="input-text" name="new_password1" id="cha_new_password1" />
+                    </p>
+                    <p class="form-row form-row-wide">
+                        <label for="cha_new_password_2">Confirmación nueva contraseña<span class="required">*</span></label>
+                        <input type="password" required class="input-text" name="new_password2" id="cha_new_password2" />
+                    </p>
+                </div>
+                <div class="modal-footer col-md-12">
+                    <button type="submit" class="btn btn-secondary" id="cha_submit">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div id="primary" class="content-area">
     <main id="main" class="site-main">
         <article class="page type-page status-publish hentry">
@@ -43,7 +72,7 @@
                                     <th>Configuración de acceso</th>
                                     <td data-title="iva">
                                         <span class="amount">
-                                            <a hreF="#" class="teal">Actualizar contraseña de acceso</a>
+                                            <a hreF="#" data-toggle="modal" data-target="#passwordChangeModal" class="teal">Actualizar contraseña de acceso</a>
                                         </span>
                                     </td>
                                 </tr>            
@@ -117,7 +146,6 @@
         $('#profile-form').on('submit', function(e){
             e.preventDefault();
             $('#pro_submit').attr('disabled', true);
-            $('#pro_submit').val('Actualizando...');
             $.ajax({
                 url: "/api/auth/user/",
                 data: $(this).serialize(), 
@@ -131,7 +159,23 @@
                 })
                 .always(function(data) {
                     $('#pro_submit').attr('disabled', false);
-                    $('#pro_submit').val('Actualizar');
+                    toastr.success('Perfil actualizado exitosamente');
+                });
+        });
+        $('#change_password_form').on('submit', function(e){
+            e.preventDefault();
+            $('#cha_submit').attr('disabled', true);
+            var jqxhr = $.post( "{% url 'users:password-change' %}", $(this).serialize(), function(data) {
+                location.reload();
+            })
+                .fail(function(data) {
+                    $('.validator').remove();
+                    $.each(data.responseJSON, function(key,value) {
+                        $('#cha_' + key).after('<span class="red validator">'+ value +'</span>')
+                    }); 
+                })
+                .always(function(data) {
+                    $('#cha_submit').attr('disabled', false);
                 });
         });
     })(jQuery);

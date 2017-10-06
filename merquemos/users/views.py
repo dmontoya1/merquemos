@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from django.contrib.sites.models import Site
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
+from django.views.decorators.debug import sensitive_post_parameters
 
 from rest_framework import generics, status
 from rest_framework.authtoken.models import Token
@@ -21,7 +23,7 @@ from rest_auth.registration.views import SocialLoginView
 from rest_auth.app_settings import UserDetailsSerializer
 
 from api.helpers import get_api_user
-from .serializers import AddressSerializer, AddressCreateSerializer
+from .serializers import AddressSerializer, AddressCreateSerializer, PasswordChangeSerializer
 from .models import Address
 
 
@@ -70,6 +72,27 @@ class UserDetailsView(generics.RetrieveUpdateAPIView):
 
     def get_queryset(self):
         return get_user_model().objects.none()
+
+sensitive_post_parameters_m = method_decorator(
+    sensitive_post_parameters(
+        'password', 'old_password', 'new_password1', 'new_password2'
+    )
+)
+
+class PasswordChangeView(generics.GenericAPIView):
+    serializer_class = PasswordChangeSerializer
+    permission_classes = (AllowAny,)
+
+    @sensitive_post_parameters_m
+    def dispatch(self, *args, **kwargs):
+        return super(PasswordChangeView, self).dispatch(*args, **kwargs)
+
+    def post(self, request):
+        print request.data
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({"detail": _("New password has been saved.")})
 
 class FacebookAuth(SocialLoginView):   
     adapter_class = FacebookOAuth2Adapter

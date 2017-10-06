@@ -15,7 +15,8 @@ from users.models import Address
 class Order(models.Model):
     STATUS_CHOICES = (
         ('PE', 'Pendiente'),
-        ('AC', 'Aceptada'),
+        ('AC', 'Recibida'),
+        ('SH', 'Enviada'),
         ('CA', 'Cancelada'),
         ('DE', 'Entregada')
     )
@@ -48,7 +49,7 @@ class Order(models.Model):
             if devices.count() > 0:
                 devices.send_message(
                     title="Tu orden de Merquemos",
-                    body="Hemos recibido tu orden",
+                    body="Tu orden ha sido " + self.get_status_display().lower(),
                     icon="",
                     data=data
                 )

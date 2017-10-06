@@ -111,6 +111,8 @@ AUTHENTICATION_BACKENDS = (
    "allauth.account.auth_backends.AuthenticationBackend"
 )
 LOGOUT_REDIRECT_URL = '/'
+LOGOUT_ON_PASSWORD_CHANGE = True
+OLD_PASSWORD_FIELD_ENABLED = True
 
 #Social account settings
 SOCIALACCOUNT_PROVIDERS = {
@@ -222,6 +224,6 @@ FCM_DJANGO_SETTINGS = {
 }
 
 #Centrifugo Config
-CENTRIFUGE_ADDRESS = 'http://sandbox.apptitud.com.co:8008'
+CENTRIFUGE_ADDRESS = 'http://localhost:8008'
 CENTRIFUGE_SECRET = 'f@pp#qe3b7)7uy27u094t8s1pq'
 CENTRIFUGE_TIMEOUT = 10
