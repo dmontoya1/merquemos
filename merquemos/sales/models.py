@@ -48,7 +48,7 @@ class Order(models.Model):
             if devices.count() > 0:
                 devices.send_message(
                     title="Tu orden de Merquemos",
-                    body="Tu orden ha sido " + self.get_status_display(),
+                    body="Hemos recibido tu orden",
                     icon="",
                     data=data
                 )

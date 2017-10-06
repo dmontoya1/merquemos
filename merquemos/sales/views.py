@@ -159,7 +159,7 @@ def checkout(request):
 
     devices.send_message(
         title="Orden aceptada",
-        body="Tu orden está en camino",
+        body="Hemos recibido tu orden",
         icon="",
         data={
             "order_id": order.pk,
