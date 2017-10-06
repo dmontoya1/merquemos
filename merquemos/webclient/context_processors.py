@@ -5,7 +5,7 @@ from manager.models import City
 from stock.models import Category, Store
 
 def webclient_processor(request):
-    categories = Category.objects.all()
+    categories = Category.objects.filter(parent=None)
     stores = Store.objects.all()
     cities = City.objects.all()
     web_api_key = APIKey.objects.get(name='Web client API Key')
