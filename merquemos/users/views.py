@@ -66,9 +66,6 @@ class UserDetailsView(generics.RetrieveUpdateAPIView):
     serializer_class = UserDetailsSerializer
     permission_classes = (AllowAny,)
 
-    def get(self, request, format=None):
-        return Response({'Unauthorized access'}, status=401)
-
     def get_object(self):
         return get_api_user(self.request)
 
