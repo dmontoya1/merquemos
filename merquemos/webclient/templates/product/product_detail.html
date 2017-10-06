@@ -73,7 +73,7 @@
             $('#add_to_cart_form').on('submit', function(e) {
                 e.preventDefault();
                 {% if not request.user.is_authenticated %}
-                    window.location.reload("{% url 'webclient:login' %}");
+                    window.location.replace("{% url 'webclient:login' %}");
                 {% endif %}    
                 var jqxhr = $.post( "{% url 'sales:item-create' %}", $(this).serialize(), function(data) {
                     update_cart();
