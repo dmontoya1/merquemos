@@ -7,7 +7,7 @@
 <div id="primary" class="content-area">
     <main id="main" class="site-main"> 
         <br>
-        {% for category in object.parent.related_categories.all %}
+        {% for category in object.related_categories.all %}
             {% get_filtered_products store category as filtered_products %} 
             {% if filtered_products.count > 0 %}
                 <section class="products-carousel-tabs animate-in-view fadeIn animated" data-animation="fadeIn">
