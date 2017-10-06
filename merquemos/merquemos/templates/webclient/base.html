@@ -150,7 +150,7 @@
                     </div><!-- /.row -->
                 </div>
                 <div id="active-order-indicator" class="green-bg">
-                    <a class="center-align" href="{% url 'webclient:checkout' %}">Tienes una orden activa</a>
+                    <a class="center-align" href="{% url 'webclient:checkout' %}">Orden {{request.user.get_current_order.get_status_display}}</a>
                 </div>
             </header><!-- #masthead -->
             

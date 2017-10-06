@@ -60,6 +60,8 @@ class CurrentOrderDetail(generics.ListAPIView):
             else:
                 if Order.objects.filter(user=user, status='AC').exists():
                     order = Order.objects.filter(user=user, status='AC').last()
+                elif Order.objects.filter(user=user, status='SH').exists()::
+                    order = Order.objects.filter(user=user, status='SH').last()
                 else:
                     order = Order(
                         user=user
