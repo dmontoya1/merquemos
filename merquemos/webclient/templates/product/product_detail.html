@@ -71,6 +71,9 @@
     <script>
         (function($) {
             $('#add_to_cart_form').on('submit', function(e) {
+                {% if not request.user.is_authenticated %}
+                    window.location.reload("{% url 'webclient:login' %}");
+                {% endidf %}
                 e.preventDefault();
                 var jqxhr = $.post( "{% url 'sales:item-create' %}", $(this).serialize(), function(data) {
                     update_cart();
