@@ -24,10 +24,11 @@ from .serializers import (
 class CurrentOrderDetail(generics.ListAPIView):
     """Obtiene la información de la orden actual del usuario, obtenida con base en el token del usuario.
     Los estados de orden son los siguientes:
-        ('PE', 'Pending'),
-        ('AC', 'Accepted'),
-        ('CA', 'Canceled'),
-        ('DE', 'Delivered')
+        ('PE', 'Pendiente'),
+        ('AC', 'Recibida'),
+        ('SH', 'Enviada'),
+        ('CA', 'Cancelada'),
+        ('DE', 'Entregada')
     Si el parámetro 'base_order' está presente, se creará una orden nueva con base a la orden con la llave primaria
     correspondiente al valor de 'base_order'. En éste último escenario, solo se crearán items cuando cada producto tenga
     stock disponible.
