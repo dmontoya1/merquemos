@@ -5,4 +5,8 @@ register = template.Library()
 
 @register.assignment_tag
 def get_filtered_products(store, category):
-    return Product.objects.filter(category__parent=category, store=store)
+    if category.parent is None:
+        q =  Product.objects.filter(category__parent=category, store=store)
+    else:
+        q = Product.objects.filter(category=category, store=store)
+    return q
