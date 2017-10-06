@@ -41,7 +41,7 @@ class Order(models.Model):
     
     def save(self, *args, **kwargs):
         devices = FCMDevice.objects.filter(user=self.user)
-        if self.status == "CA" or self.status == "DE":
+        if self.status == "CA" or self.status == "DE" or self.status == "SH":
             data ={
                 "order_id": self.pk,
                 "order_status": self.status
