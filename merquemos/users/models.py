@@ -37,6 +37,8 @@ class User(AbstractUser):
             return self.related_orders.get(status='PE')
         elif self.related_orders.filter(status='AC').count() > 0:
             return self.related_orders.get(status='AC')
+        elif self.related_orders.filter(status='SH').count() > 0:
+            return self.related_orders.get(status='SH')
         return None
 
 class Address(models.Model):
