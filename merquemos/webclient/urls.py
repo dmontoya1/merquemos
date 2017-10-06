@@ -15,8 +15,8 @@ urlpatterns = [
     url(r'^checkout/$', CheckoutView.as_view(), name='checkout'),
     url(r'^profile/$', ProfileView.as_view(), name='profile'),
     url(r'^stores/(?P<city>[\w-]+)/(?P<slug>[\w-]+)/$', StoreView.as_view(), name='store'),
-    url(r'^stores/(?P<store_city>[\w-]+)/(?P<store_slug>[\w-]+)/products/(?P<slug>[\w-]+)/$', ProductView.as_view(), name='product'),
     url(r'^stores/(?P<store_city>[\w-]+)/(?P<store_slug>[\w-]+)/products/(?P<category_slug>[\w-]+)/$', CategoryView.as_view(), name='category'),
+    url(r'^stores/(?P<store_city>[\w-]+)/(?P<store_slug>[\w-]+)/products/(?P<category_slug>[\w-]+)/(?P<slug>[\w-]+)/$', ProductView.as_view(), name='product'),
     url(r'^policies/terms/$', TermsView.as_view(), name="terms"),
     url(r'^policies/privacy/$', PrivacyPolicyView.as_view(), name="privacy-policy"),
 ]
