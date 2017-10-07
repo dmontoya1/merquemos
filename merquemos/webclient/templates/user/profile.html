@@ -65,17 +65,19 @@
                                 <tr class="cart-subtotal">
                                     <th>Teléfono celular</th>
                                     <td data-title="Teléfono celular">
-                                        <input type="tel" class="input-text" name="phone_number" id="pro_phone_number" value="{{request.user.phone_number}}" />
+                                        <input type="tel" class="input-text" name="phone_number" id="pro_phone_number" value="{{request.user.phone_number|default:''}}" />
                                     </td>
                                 </tr>
-                                <tr class="cart-subtotal">
-                                    <th>Configuración de acceso</th>
-                                    <td data-title="iva">
-                                        <span class="amount">
-                                            <a hreF="#" data-toggle="modal" data-target="#passwordChangeModal" class="teal">Actualizar contraseña de acceso</a>
-                                        </span>
-                                    </td>
-                                </tr>            
+                                {% if not request.user.linked_social_account %}
+                                    <tr class="cart-subtotal">
+                                        <th>Configuración de acceso</th>
+                                        <td data-title="iva">
+                                            <span class="amount">
+                                                <a hreF="#" data-toggle="modal" data-target="#passwordChangeModal" class="teal">Actualizar contraseña de acceso</a>
+                                            </span>
+                                        </td>
+                                    </tr>       
+                                {% endif %}     
                                 <tr class="cart-subtotal">
                                     <th></th>
                                     <td data-title="iva">

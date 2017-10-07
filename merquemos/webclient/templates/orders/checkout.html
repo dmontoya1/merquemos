@@ -34,6 +34,11 @@
                                             <td class="product-total">
                                                 <span class="amount">${{item.total|intcomma}}</span>
                                             </td>
+                                            {% if request.user.get_current_order.status == "PE" %}
+                                                <td class="product-total">
+                                                    <a class="red item-delete" href="#" data-pk="{{item.pk}}">X</a>
+                                                </td>
+                                            {% endif %}
                                         </tr>
                                     {% endfor %}
                                 </tbody>
@@ -122,7 +127,14 @@
                                 </ul>
                                 <div class="form-row place-order">
                                     {% if request.user.get_current_order.status == "PE" %}
-                                        <input type="submit" id="che_submit" data-value="Realizar pedido" value="Realizar pedido" class="button alt">                                      
+                                        <input type="submit" 
+                                        {% if request.user.get_current_order.related_items.all.count == 0 %}
+                                        disabled
+                                        {% endif %} 
+                                        id="che_submit"
+                                         data-value="Realizar pedido" 
+                                         value=" {% if request.user.get_current_order.related_items.all.count == 0 %}Agrega items a tu compra para realizar el pedido{% else %}Realizar pedido{% endif %}" 
+                                         class="button alt">                                      
                                     {% endif %}
                                     <br>
                                     <br>
@@ -186,6 +198,21 @@
                     $('#che_submit').attr('disabled', false);
                     $('#che_submit').val('Cancelar');
                 });
+        });
+        $('.item-delete').on('click', function(e){
+            e.preventDefault();
+            pk = $(this).data('pk')
+            $.ajax({
+                url: '/api/sales/item/' + pk + '/',
+                type: 'DELETE'
+            })
+                .fail(function(data) {
+                    toastr.warning('Ha ocurrido un error intentando eliminar el item, reintenta nuevamente');
+                })
+                .always(function(data) {
+                    location.reload();
+                });
+
         });
     })(jQuery);
 </script>
