@@ -65,7 +65,7 @@ class DeliveryOrderSerializer(serializers.ModelSerializer):
         fields = ('payment_method', 'status', 'address', 'extra_details', 'paid_amount')
 
 class OrderDetailSerializer(OrderItemSerializer):
-    delivery_order = DeliveryOrderSerializer(many=False, read_only=True, source='delivery_order')
+    delivery_order = DeliveryOrderSerializer(many=False, read_only=True)
 
     class Meta:
         model = Order
