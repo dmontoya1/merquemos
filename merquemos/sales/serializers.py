@@ -65,11 +65,11 @@ class DeliveryOrderSerializer(serializers.ModelSerializer):
         fields = ('payment_method', 'status', 'address', 'extra_details', 'paid_amount')
 
 class OrderDetailSerializer(OrderItemSerializer):
-    deliveryorder = DeliveryOrderSerializer(many=False, read_only=True)
+    delivery_order = DeliveryOrderSerializer(many=False, read_only=True, source='delivery_order')
 
     class Meta:
         model = Order
-        fields = ('pk', 'items', 'total_no_tax', 'total_tax', 'delivery_price', 'total_with_tax', 'deliveryorder', 'status')
+        fields = ('pk', 'items', 'total_no_tax', 'total_tax', 'delivery_price', 'total_with_tax', 'delivery_order', 'status')
 
 class OrderHistorySerializer(OrderItemSerializer):
     store_logo = serializers.SerializerMethodField()

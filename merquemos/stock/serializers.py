@@ -29,6 +29,12 @@ class ProductSerializer(serializers.ModelSerializer):
         max_digits=10,
         decimal_places=2
     )
+    discount_price = serializers.DecimalField(
+        source='price',
+        read_only=True,
+        max_digits=10,
+        decimal_places=2
+    )
     product_image = serializers.SerializerMethodField()
 
     class Meta:
@@ -42,6 +48,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'size',
             'product_image',
             'has_discount',
+            'discount_price',
             'discount_percentage'
         )
     
