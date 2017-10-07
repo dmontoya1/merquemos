@@ -6,6 +6,9 @@ import uuid
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+
+from allauth.socialaccount.models import SocialAccount
+
 from manager.models import City
 
 class User(AbstractUser):
@@ -31,6 +34,11 @@ class User(AbstractUser):
         if not self.private_hash:
             self.private_hash = uuid.uuid4()
         super(User, self).save(*args, **kwargs)
+
+    def linked_social_account(self):
+        if SocialAccount.objects.filter(user__pk=self.pk).count() > 0:
+            return True
+        return False
 
     def get_current_order(self):
         if self.related_orders.filter(status='PE').count() > 0:
