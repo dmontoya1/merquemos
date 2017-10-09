@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from api.helpers import get_api_user
 from stock.serializers import ProductSerializer
 from users.serializers import AddressSerializer
 
@@ -18,6 +19,15 @@ class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
         fields = ('product', 'order', 'quantity')
+    
+    def create(self, validated_data):
+        order = validated_data['order']
+        for item in order.get_items():
+            if item.product == validated_data['product']:
+                item.quantity = item.quantity + validated_data['quantity']
+                item.save()
+                return item
+        return Item.objects.create(**validated_data)
 
 class ItemDetailSerializer(serializers.ModelSerializer):
     product = ProductSerializer(many=False, read_only=True)
