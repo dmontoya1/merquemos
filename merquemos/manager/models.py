@@ -16,7 +16,7 @@ class AppPolicy(models.Model):
         null=True,
         blank=True
     )
-
+    
     class Meta:
         verbose_name = 'Poliza de usuario'
         verbose_name_plural = 'Polizas de usuario'
