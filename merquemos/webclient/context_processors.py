@@ -8,7 +8,10 @@ def webclient_processor(request):
     categories = Category.objects.filter(parent=None)
     stores = Store.objects.all()
     cities = City.objects.all()
-    web_api_key = APIKey.objects.get(name='Web client API Key')
+    try:
+        web_api_key = APIKey.objects.get(name='Web client API Key')
+    except: 
+        web_api_key = None
     centrifugo_params = get_connection_parameters(request.user)
 
     context = {
