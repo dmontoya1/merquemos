@@ -50,8 +50,8 @@ class FAQItemList(generics.ListAPIView):
             queryset = queryset.filter(category__pk=faqcategory_id)
         return queryset
 
-class StateList(generics.ListAPIView):
-    """Obtiene los departamentos (regiones).
+class StateList(generics.ListCreateAPIView):
+    """Obtiene y crea los departamentos (regiones).
     """
     
     serializer_class = StateSerializer
@@ -61,8 +61,8 @@ class StateList(generics.ListAPIView):
 
         return queryset
 
-class CityList(generics.ListAPIView):
-    """Obtiene los municipios (ciudades), filtrados por departamento mediante
+class CityList(generics.ListCreateAPIView):
+    """Obtiene y crea los municipios (ciudades), filtrados por departamento mediante
     el parámetro 'state_id'.
     """
     
