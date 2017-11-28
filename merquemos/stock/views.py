@@ -46,7 +46,7 @@ class StoreList(generics.ListCreateAPIView):
             queryset = queryset.filter(city__pk=city_id)
         return queryset
 
-class StoreDetail(generics.ListCreateAPIView):
+class StoreDetail(generics.RetrieveUpdateAPIView):
     """Obtiene el detalle de una tienda  de la plataforma.
     """
 
