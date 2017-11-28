@@ -61,12 +61,19 @@ class StateList(generics.ListCreateAPIView):
 
         return queryset
 
+class StateDetail(generics.RetrieveUpdateAPIView):
+    """Obtiene y edita un departamento (region).
+    """
+    
+    serializer_class = StateSerializer
+    queryset = State.objects.all()
+
 class CityList(generics.ListCreateAPIView):
     """Obtiene y crea los municipios (ciudades), filtrados por departamento mediante
     el parámetro 'state_id'.
     """
     
-    serializer_class = StateSerializer
+    serializer_class = CitySerializer
 
     def get_queryset(self):
         queryset = City.objects.all()
@@ -75,6 +82,13 @@ class CityList(generics.ListCreateAPIView):
             queryset = queryset.filter(state__pk=state_id)
         
         return queryset
+
+class CityDetail(generics.RetrieveUpdateAPIView):
+    """Obtiene y edita un municipio (ciudad).
+    """
+    
+    serializer_class = CitySerializer
+    queryset = City.objects.all()
 
 class ContactMessageCreate(generics.CreateAPIView):
     """Crea un nuevo registro de contacto
