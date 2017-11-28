@@ -32,7 +32,7 @@ class RequiredParametersMixin(object):
                 }, status.HTTP_400_BAD_REQUEST)
         return super(generics.ListAPIView, self).list(request)
 
-class StoreList(generics.ListAPIView):
+class StoreList(generics.ListCreateAPIView):
     """Obtiene el listado de tiendas activas de la plataforma. Si el parámetro 
     'city_id' está presente, se filtrarán las tiendas por el id de la ciudad brindada.
     """
@@ -46,14 +46,14 @@ class StoreList(generics.ListAPIView):
             queryset = queryset.filter(city__pk=city_id)
         return queryset
 
-class StoreDetail(generics.RetrieveAPIView):
+class StoreDetail(generics.RetrieveUpdateAPIView):
     """Obtiene el detalle de una tienda  de la plataforma.
     """
 
     serializer_class = StoreSerializer
     queryset = Store.objects.all()
 
-class CategoryList(RequiredParametersMixin, generics.ListAPIView):
+class CategoryList(RequiredParametersMixin, generics.ListCreateAPIView):
     """Obtiene el listado de categorias de producto, filtrados por tienda
     obtenida desde el parámetro GET 'store_id'. Si el parámetro
     'parent_category_id' está presente, se filtrara las categorías por el 
@@ -74,7 +74,7 @@ class CategoryList(RequiredParametersMixin, generics.ListAPIView):
                 queryset = queryset.exclude(pk=category.pk)
         return queryset
 
-class ProductList(RequiredParametersMixin, generics.ListAPIView):
+class ProductList(RequiredParametersMixin, generics.ListCreateAPIView):
     """Obtiene el listado de productos, filtrados por categoría y
     establecimiento. Dichos filtros se envian como 'category_id' para
     categoría y 'store_id' para establecimiento a través parámetros GET y son 
@@ -105,5 +105,12 @@ class ProductList(RequiredParametersMixin, generics.ListAPIView):
             queryset = category.get_related_products(store=store)
 
         return queryset
+
+class ProductDetail(generics.RetrieveUpdateAPIView):
+    """Obtiene el detalle de un producto
+    """
+
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
 
 
