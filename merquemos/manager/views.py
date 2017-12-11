@@ -61,7 +61,7 @@ class StateList(generics.ListCreateAPIView):
 
         return queryset
 
-class StateDetail(generics.RetrieveUpdateAPIView):
+class StateDetail(generics.RetrieveUpdateDestroyAPIView):
     """Obtiene y edita un departamento (region).
     """
     
@@ -83,7 +83,7 @@ class CityList(generics.ListCreateAPIView):
         
         return queryset
 
-class CityDetail(generics.RetrieveUpdateAPIView):
+class CityDetail(generics.RetrieveUpdateDestroyAPIView):
     """Obtiene y edita un municipio (ciudad).
     """
     

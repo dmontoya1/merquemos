@@ -46,7 +46,7 @@ class StoreList(generics.ListCreateAPIView):
             queryset = queryset.filter(city__pk=city_id)
         return queryset
 
-class StoreDetail(generics.RetrieveUpdateAPIView):
+class StoreDetail(generics.RetrieveUpdateDestroyAPIView):
     """Obtiene el detalle de una tienda  de la plataforma.
     """
 
@@ -106,7 +106,7 @@ class ProductList(RequiredParametersMixin, generics.ListCreateAPIView):
 
         return queryset
 
-class ProductDetail(generics.RetrieveUpdateAPIView):
+class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     """Obtiene el detalle de un producto
     """
 
