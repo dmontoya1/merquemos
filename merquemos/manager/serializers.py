@@ -34,7 +34,7 @@ class CitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = City
-        fields = ('name',)
+        fields = ('id', 'name',)
 
 class ContactMessageSerializer(serializers.ModelSerializer):
 
