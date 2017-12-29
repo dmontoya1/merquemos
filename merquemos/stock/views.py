@@ -18,7 +18,7 @@ from .serializers import (
 
 
 class RequiredParametersMixin(object):
-    """Mixin compatible con ListAPIView. Sobreescribe el método 'list' de la
+    """Mixin compatible con ListCreateAPIView. Sobreescribe el método 'list' de la
     clase para añadir un filtrado de parámetros requeridos en el request.
     """
     required_parameters = []
@@ -30,7 +30,7 @@ class RequiredParametersMixin(object):
                 return Response({
                     'detail': detail.format(parameter)
                 }, status.HTTP_400_BAD_REQUEST)
-        return super(generics.ListAPIView, self).list(request)
+        return super(generics.ListCreateAPIView, self).list(request)
 
 class StoreList(generics.ListCreateAPIView):
     """Obtiene el listado de tiendas activas de la plataforma. Si el parámetro 
