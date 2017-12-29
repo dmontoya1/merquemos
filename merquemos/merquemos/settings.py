@@ -233,6 +233,6 @@ FCM_DJANGO_SETTINGS = {
 }
 
 #Centrifugo Config
-CENTRIFUGE_ADDRESS = 'http://www.merquemos.co/websockets/centrifugo/'
+CENTRIFUGE_ADDRESS = 'http://www.merquemos.co/connection/'
 CENTRIFUGE_SECRET = 'f@pp#qe3b7)7uy27u094t8s1pq'
 CENTRIFUGE_TIMEOUT = 10
