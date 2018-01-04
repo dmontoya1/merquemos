@@ -148,21 +148,7 @@ class TermsView(TemplateView):
         context['content'] = policies.terms_and_conditions
         return context
 
-def custom_403(request):
-    return render(
-        request,
-        'webclient/403.html',
-        status=None
-    )
-
 def custom_404(request):
-    return render(
-        request,
-        'webclient/404.html',
-        status=None
-    )
-
-def custom_500(request):
     return render(
         request,
         'webclient/404.html',
