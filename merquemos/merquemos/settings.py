@@ -198,7 +198,7 @@ STATIC_ROOT = '/var/www/merquemos.co/static/'
 # User uploades files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/var/www/merquemos.co/media/'
-
+FILE_UPLOAD_PERMISSIONS = 0644
 
 # Email config
 EMAIL_HOST = 'smtp.sendgrid.net'
@@ -236,3 +236,4 @@ FCM_DJANGO_SETTINGS = {
 CENTRIFUGE_ADDRESS = 'http://www.merquemos.co/centrifugo/'
 CENTRIFUGE_SECRET = 'f@pp#qe3b7)7uy27u094t8s1pq'
 CENTRIFUGE_TIMEOUT = 10
+
