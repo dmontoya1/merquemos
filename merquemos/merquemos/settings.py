@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 SECRET_KEY = 'e^45&1bd1c5sr1_4yk&p@9r-f@pp#qe3b7)7uy27u094t8s1pq'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'www.merquemos.co',
