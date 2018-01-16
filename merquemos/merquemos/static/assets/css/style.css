@@ -1651,7 +1651,8 @@ li.product .product-thumbnail, .section-onsale-product .onsale-product .product-
   float: left;
   height: 0; }
   li.product .product-thumbnail img, .section-onsale-product .onsale-product .product-thumbnail img, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .product-thumbnail img, .products-carousel .owl-item .product .product-thumbnail img {
-    transform-style: flat; }
+    transform-style: flat; 
+    max-height: 140px;}
 
 li.product .product-rating, .section-onsale-product .onsale-product .product-rating, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .product-rating, .products-carousel .owl-item .product .product-rating {
   clear: both;
