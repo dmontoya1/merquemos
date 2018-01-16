@@ -236,4 +236,3 @@ FCM_DJANGO_SETTINGS = {
 CENTRIFUGE_ADDRESS = 'http://www.merquemos.co/centrifugo/'
 CENTRIFUGE_SECRET = 'f@pp#qe3b7)7uy27u094t8s1pq'
 CENTRIFUGE_TIMEOUT = 10
-
