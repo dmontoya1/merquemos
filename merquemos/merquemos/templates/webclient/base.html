@@ -65,7 +65,7 @@
                         <ul id="menu-top-bar-right" class="nav nav-inline pull-right animate-dropdown flip">
                             {% if request.session.city %}
                             <li class="menu-item animate-dropdown">
-                                <a title="Cambiar ubicación" href="/?change_location=1">
+                                <a title="Cambiar ubicación" href="/?change_location=1" id="change_location">
                                     <i class="ec ec-map-pointer"></i><strong>{{request.session.city__name}}</strong> - Cambiar ubicación
                                 </a>
                             </li>
@@ -400,13 +400,13 @@
                         }
                     });
             }
+
             (function($) {
                 $.ajaxSetup({
                     headers:
                     { 'Api-Key': '{{webclient_context_web_auth_token.key}}' }
                 });
                 
-                $('#product_cat').style('width', '100%', 'important');
                 {% if messages %}
                     {% for message in messages %}
                         toastr.info('{{message}}');
@@ -424,6 +424,27 @@
                         toastr.warning('Selecciona una tienda para realizar búsquedas de productos');
                     });
                 {% endif %}
+                
+                $('a#change_location').on('click', function(e){
+                    e.preventDefault();
+                    link = $(this)
+                    if ($('#user_cart_count').html() != "0") {
+                        swal({
+                            title: '¿Deseas cambiar de tienda?',
+                            text: "Si cambias tu ubicación y seleccionas tiendas diferentes, se reiniciará tu carrito de compras",
+                            type: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Si, cambiar'
+                        }).then((result) => {
+                            window.location.replace(link.attr('href'));
+                        })
+                    } else {
+                        window.location.replace(link.attr('href'));
+                    }
+                    
+                });
 
                 $('#add_address_form').on('submit', function(e) {
                     e.preventDefault();

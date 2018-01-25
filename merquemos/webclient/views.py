@@ -47,6 +47,10 @@ class HomePageView(TemplateView):
                 del request.session['store']
             except KeyError:
                 pass
+            if request.user.is_authenticated():
+                if request.user.get_current_order():
+                    order = request.user.get_current_order()
+                    order.delete()
         else:
             if request.session.get('city', False) and request.session.get('store', False):
                 city = City.objects.get(pk=request.session['city'])
