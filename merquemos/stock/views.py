@@ -8,12 +8,18 @@ from api.paginators import PageLimitPagination
 from .models import (
     Store,
     Category,
-    Product
+    Product,
+    Brand,
+    BrandStore,
+    Inventory
 )
 from .serializers import (
     StoreSerializer,
     CategorySerializer,
-    ProductSerializer
+    ProductSerializer,
+    BrandSerializer,
+    BrandStoreSerializer,
+    InventorySerializer
 )
 
 
@@ -45,6 +51,33 @@ class StoreList(generics.ListCreateAPIView):
         if city_id:
             queryset = queryset.filter(city__pk=city_id)
         return queryset
+
+class BrandList(generics.ListCreateAPIView):
+    """Obtiene el listado de marcas de la plataforma.
+    """
+
+    serializer_class = BrandSerializer
+    queryset = Brand.objects.all()
+
+class BrandStoreList(generics.ListCreateAPIView):
+    """Obtiene el listado de marcas por tienda. Se filtra la tienda por el parámetro GET 'store_id'
+    """
+
+    serializer_class = BrandStoreSerializer
+    
+    def get_queryset(self):
+        queryset = BrandStore.objects.all()
+        store_id = self.request.query_params.get('store_id')
+        if city_id:
+            queryset = queryset.filter(store__pk=store_id)
+        return queryset
+
+class InventoryList(generics.ListCreateAPIView):
+    """Obtiene el listado de inventarios de la plataforma
+    """
+
+    serializer_class = InventorySerializer
+    queryset = Inventory.objects.all()
 
 class StoreDetail(generics.RetrieveUpdateDestroyAPIView):
     """Obtiene el detalle de una tienda  de la plataforma.
