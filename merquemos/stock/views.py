@@ -8,12 +8,16 @@ from api.paginators import PageLimitPagination
 from .models import (
     Store,
     Category,
-    Product
+    Product, 
+    Brand,
+    BrandStore
 )
 from .serializers import (
     StoreSerializer,
     CategorySerializer,
-    ProductSerializer
+    ProductSerializer,
+    BrandSerializer,
+    BrandStoreSerializer
 )
 
 
@@ -74,6 +78,13 @@ class CategoryList(RequiredParametersMixin, generics.ListCreateAPIView):
                 queryset = queryset.exclude(pk=category.pk)
         return queryset
 
+class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+    """Obtiene el detalle de una categoria.
+    """
+
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
+
 class ProductList(RequiredParametersMixin, generics.ListCreateAPIView):
     """Obtiene el listado de productos, filtrados por categoría y
     establecimiento. Dichos filtros se envian como 'category_id' para
@@ -113,4 +124,37 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
 
+class BrandList(generics.ListCreateAPIView):
+    """Obtiene el listado de marcas activas de la plataforma. 
+    """
+
+    serializer_class = BrandSerializer
+    queryset = Brand.objects.all()
+
+class BrandDetail(generics.RetrieveUpdateDestroyAPIView):
+    """Obtiene el detalle de una marca 
+    """
+
+    serializer_class = BrandSerializer
+    queryset = Brand.objects.all()
+
+class BrandStoreList(generics.ListCreateAPIView):
+    """Obtiene el listado de marcas activas de la plataforma por tienda. Filtrado opcionalmente por store_id
+    """
+
+    serializer_class = BrandStoreSerializer
+
+    def get_queryset(self):
+        queryset = BrandStore.objects.all()
+        store_id = self.request.query_params.get('store_id')
+        if store_id:
+            queryset = queryset.filter(store__pk=store_id)
+        return queryset
+
+class BrandStoreDetail(generics.RetrieveUpdateDestroyAPIView):
+    """Obtiene el detalle de una marca por tienda.
+    """
+
+    serializer_class = BrandStoreSerializer
+    queryset = BrandStore.objects.all()
 

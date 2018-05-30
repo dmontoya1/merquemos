@@ -1,6 +1,6 @@
 from django.contrib.sites.models import Site
 from rest_framework import serializers
-from .models import Store, Category, Product
+from .models import Store, Category, Product, Brand, BrandStore
 
 
 class StoreSerializer(serializers.ModelSerializer):
@@ -21,6 +21,18 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ('pk', 'name')
+
+class BrandSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Brand
+        fields = ('pk', 'name')
+
+class BrandStoreSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BrandStore
+        fields = ('pk', 'brand', 'store')
 
 class ProductSerializer(serializers.ModelSerializer):
     price = serializers.DecimalField(
