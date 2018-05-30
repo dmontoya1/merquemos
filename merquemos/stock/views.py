@@ -68,7 +68,7 @@ class BrandStoreList(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = BrandStore.objects.all()
         store_id = self.request.query_params.get('store_id')
-        if city_id:
+        if store_id:
             queryset = queryset.filter(store__pk=store_id)
         return queryset
 
@@ -106,6 +106,13 @@ class CategoryList(RequiredParametersMixin, generics.ListCreateAPIView):
             if category.get_related_products(store=store).count() == 0:
                 queryset = queryset.exclude(pk=category.pk)
         return queryset
+
+class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+    """Obtiene el detalle de una categoria.
+    """
+
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
 
 class ProductList(RequiredParametersMixin, generics.ListCreateAPIView):
     """Obtiene el listado de productos, filtrados por categoría y
@@ -146,4 +153,17 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
 
+class BrandDetail(generics.RetrieveUpdateDestroyAPIView):
+    """Obtiene el detalle de una marca 
+    """
+
+    serializer_class = BrandSerializer
+    queryset = Brand.objects.all()
+
+class BrandStoreDetail(generics.RetrieveUpdateDestroyAPIView):
+    """Obtiene el detalle de una marca por tienda.
+    """
+
+    serializer_class = BrandStoreSerializer
+    queryset = BrandStore.objects.all()
 
