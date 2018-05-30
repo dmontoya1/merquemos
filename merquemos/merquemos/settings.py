@@ -12,9 +12,12 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 SECRET_KEY = 'e^45&1bd1c5sr1_4yk&p@9r-f@pp#qe3b7)7uy27u094t8s1pq'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'www.merquemos.co',
+    'merquemos.co'
+]
 
 # Application definition
 DJANGO_APPS = [
@@ -151,6 +154,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'merquemos',
+        'USER': 'postgres',
+        'PASSWORD': 'PkvdQWIfeNvg647',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -185,12 +192,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "merquemos/static")
 ]
+STATIC_ROOT = '/var/www/merquemos.co/static/'
 
 
 # User uploades files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(PROJECT_DIR, "merquemos/media")
-
+MEDIA_ROOT = '/var/www/merquemos.co/media/'
+FILE_UPLOAD_PERMISSIONS = 0644
 
 # Email config
 EMAIL_HOST = 'smtp.sendgrid.net'
@@ -225,6 +233,6 @@ FCM_DJANGO_SETTINGS = {
 }
 
 #Centrifugo Config
-CENTRIFUGE_ADDRESS = 'http://localhost:8008'
+CENTRIFUGE_ADDRESS = 'http://www.merquemos.co/centrifugo/'
 CENTRIFUGE_SECRET = 'f@pp#qe3b7)7uy27u094t8s1pq'
 CENTRIFUGE_TIMEOUT = 10
