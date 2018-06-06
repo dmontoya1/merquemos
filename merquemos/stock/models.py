@@ -151,6 +151,7 @@ class Product(models.Model):
     brand = models.ForeignKey(BrandStore)
     category = models.ForeignKey(Category, related_name='related_products')  
     sku = models.CharField(max_length=255)
+    barcode = models.TextField(null=True, blank=True)
     name = models.CharField(max_length=255)
     description = models.TextField()
     image = models.ImageField(upload_to="stock/products/images/")
