@@ -31,6 +31,7 @@ class AuthView(TemplateView):
             messages.add_message(request, messages.WARNING, 'Datos inválidos, reintenta nuevamente.')
         return redirect(redirect_url)
 
+
 class HomePageView(TemplateView):
     template_name = 'home/store_select.html'
 
@@ -42,6 +43,7 @@ class HomePageView(TemplateView):
         return self.get(request)
     
     def get(self, request, format=None):
+        print "GET PRUEBA"
         if request.GET.get('change_location', None):
             try:
                 del request.session['store']
@@ -67,11 +69,13 @@ class HomePageView(TemplateView):
             context['city'] = city
         return context
 
+
 class StoreView(DetailView):
     model = Store
     template_name = 'home/store_detail.html'
 
     def get(self, request, city, slug):
+        print "SroteView"
         request.session['store'] = self.get_object().pk
         return super(StoreView, self).get(request)
 
@@ -92,6 +96,7 @@ class ProductView(DetailView):
         query = self.get_queryset().filter(store=store)
         return super(DetailView, self).get_object(queryset) 
 
+
 class CategoryView(DetailView):
     model = Product
     template_name = 'home/category_detail.html'
@@ -107,6 +112,7 @@ class CategoryView(DetailView):
         context['store'] = store
         return context
 
+
 class SearchView(ListView):
     template_name = 'home/search_result.html'
 
@@ -121,6 +127,7 @@ class SearchView(ListView):
             q = q.filter(category__pk=self.request.GET['category'])
         return q
 
+
 class CheckoutView(TemplateView):
     template_name = 'orders/checkout.html'
 
@@ -129,8 +136,10 @@ class CheckoutView(TemplateView):
         context['order'] = self.request.user.get_current_order()
         return context
 
+
 class ProfileView(TemplateView):
     template_name = 'user/profile.html'
+
 
 class PrivacyPolicyView(TemplateView):
     template_name = 'home/policy_detail.html'
@@ -141,6 +150,7 @@ class PrivacyPolicyView(TemplateView):
         context['name'] = 'Política de privacidad y tratamiento de datos'
         context['content'] = policies.privacy_policy
         return context
+
 
 class TermsView(TemplateView):
     template_name = 'home/policy_detail.html'

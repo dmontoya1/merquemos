@@ -304,6 +304,8 @@
             </div> <!-- /.copyright-bar-->
         </div>
 
+        
+
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//cdn.jsdelivr.net/sockjs/1.1/sockjs.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="{% static 'assets/js/centrifuge.min.js' %}"></script>
@@ -319,6 +321,14 @@
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+        <script>
+            window.addEventListener( "pageshow", function ( event ) {
+                var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type == 2 );
+                if ( historyTraversal ) {
+                    window.location.reload();
+                }
+            });
+        </script>
         <script>
             var centrifuge = new Centrifuge({
                 url: '{{ webclient_context_centrifugo_params.sockjs_endpoint }}',
@@ -391,6 +401,7 @@
                     method: "GET"
                 })
                     .done(function(data) {
+                        console.log(data.item_quantity)
                         $('#user_cart_count').html(data.item_quantity);
                         if (data.status == "AC") {
                             $('#active-order-indicator').show();
