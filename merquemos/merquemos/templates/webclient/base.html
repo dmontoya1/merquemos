@@ -401,7 +401,6 @@
                     method: "GET"
                 })
                     .done(function(data) {
-                        console.log(data.item_quantity)
                         $('#user_cart_count').html(data.item_quantity);
                         if (data.status == "AC") {
                             $('#active-order-indicator').show();

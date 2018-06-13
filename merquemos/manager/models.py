@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils.text import slugify
 
 class AppPolicy(models.Model):
     """Stores application policies.
@@ -80,6 +81,7 @@ class City(models.Model):
 
     state = models.ForeignKey(State, related_name="related_cities")
     name = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Ciudad'
@@ -87,6 +89,11 @@ class City(models.Model):
 
     def __unicode__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+        name = self.state.name + "-" + self.name
+        self.slug = slugify(name)
+        super(City, self).save(*args, **kwargs)
 
 class ContactMessage(models.Model):
     """Stores contact messages sent from contact form
