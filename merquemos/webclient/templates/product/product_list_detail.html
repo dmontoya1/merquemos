@@ -4,7 +4,7 @@
     <div class="product-outer">
         <div class="product-inner">
             <span class="loop-product-categories">{{product.category}}</span>
-            <a href="/stores/{{product.store.city}}/{{product.store.slug}}/products/{{product.category}}/{{product.slug}}/">
+            <a href="/stores/{{product.store.city}}/{{product.store.slug}}/products/{{product.category.slug}}/{{product.slug}}/">
                 <h3>{{product.name}}</h3>
                 <div class="product-thumbnail">
                     <img data-echo="{{product.get_image_url}}" src="{{product.get_image_url}}" alt="{{product.name}}">
@@ -12,7 +12,7 @@
             </a>
 
             <div class="price-add-to-cart">
-                <a rel="nofollow" href="/stores/{{product.store.city}}/{{product.store.slug}}/products/{{product.category}}/{{product.slug}}/" class="button add_to_cart_button">Agregar al carrito</a>
+                <a rel="nofollow" href="/stores/{{product.store.city}}/{{product.store.slug}}/products/{{product.category.slug}}/{{product.slug}}/" class="button add_to_cart_button">Agregar al carrito</a>
                 <span class="price">
                     <span class="electro-price">
                         <ins><span class="amount">${{product.get_price|intcomma}}</span></ins>

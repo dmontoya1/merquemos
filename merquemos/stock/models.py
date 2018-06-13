@@ -130,12 +130,17 @@ class BrandStore(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=255)
     parent = models.ForeignKey('self', null=True, blank=True, related_name="related_categories")
+    slug = models.SlugField(unique=True, null=True, blank=True)
 
     class Meta:
         verbose_name = "Categoría"
     
     def __str__(self):
         return str(self.name)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)
     
     def get_related_products(self, store=None):
         if self.parent is not None:

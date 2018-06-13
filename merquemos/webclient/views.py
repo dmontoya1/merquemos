@@ -97,7 +97,7 @@ class CategoryView(DetailView):
     template_name = 'home/category_detail.html'
 
     def get_object(self, queryset=None):
-        category = Category.objects.get(name=self.kwargs.get('slug')) 
+        category = Category.objects.get(slug=self.kwargs.get('slug')) 
         return category
 
     def get_context_data(self, **kwargs):
