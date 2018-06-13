@@ -11,6 +11,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 from manager.models import City, AppPolicy
+from sales.models import Order
 from stock.models import Store, Product, Category
 from users.models import User
 
@@ -54,10 +55,25 @@ class HomePageView(TemplateView):
                     order = request.user.get_current_order()
                     order.delete()
         else:
-            if request.session.get('city', False) and request.session.get('store', False):
-                city = City.objects.get(pk=request.session['city'])
-                store = Store.objects.get(pk=request.session['store']) 
-                return redirect('/stores/{}/{}/'.format(city.name, store.slug))
+            user = request.user
+            if request.user.is_authenticated():
+                if Order.objects.filter(user=user, status='PE').exists():
+                    order = Order.objects.filter(user=user, status='PE').last()
+                else:
+                    if Order.objects.filter(user=user, status='AC').exists():
+                        order = Order.objects.filter(user=user, status='AC').last()
+                    elif Order.objects.filter(user=user, status='SH').exists():
+                        order = Order.objects.filter(user=user, status='SH').last()
+                
+                if request.session.get('city', False):
+                    city = City.objects.get(pk=request.session['city'])
+                    if request.session.get('store', False):
+                        store = Store.objects.get(pk=request.session['store'])
+                        return redirect('/stores/{}/{}/'.format(city.slug, store.slug))
+                    elif order.get_item_quantity() > 0:
+                        store = order.related_items.last().product.store.slug
+                        return redirect('/stores/{}/{}/'.format(city.slug, store))
+            print "Salio"
         return super(HomePageView, self).get(request)
 
     def get_context_data(self, **kwargs):
@@ -75,13 +91,12 @@ class StoreView(DetailView):
     template_name = 'home/store_detail.html'
 
     def get(self, request, city, slug):
-        print "SroteView"
         request.session['store'] = self.get_object().pk
         return super(StoreView, self).get(request)
 
     def get_object(self, queryset=None):
         try:
-            city = City.objects.get(name=self.kwargs.get('city')) 
+            city = City.objects.get(slug=self.kwargs.get('city')) 
         except City.DoesNotExist:
             raise Http404("Ups, tienda no encontrada")
         query = self.get_queryset().filter(city=city)

@@ -38,7 +38,6 @@ class CurrentOrderDetail(generics.ListAPIView):
 
     def get(self, request, format=None):
         user = get_api_user(request)
-        print user
         base_order = None
         if request.GET.get('base_order', None):
             base_order = Order.objects.get(pk=request.GET['base_order'])
