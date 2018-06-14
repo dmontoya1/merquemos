@@ -44,7 +44,6 @@ class HomePageView(TemplateView):
         return self.get(request)
     
     def get(self, request, format=None):
-        print "GET PRUEBA"
         if request.GET.get('change_location', None):
             try:
                 del request.session['store']
@@ -73,7 +72,6 @@ class HomePageView(TemplateView):
                     elif order.get_item_quantity() > 0:
                         store = order.related_items.last().product.store.slug
                         return redirect('/stores/{}/{}/'.format(city.slug, store))
-            print "Salio"
         return super(HomePageView, self).get(request)
 
     def get_context_data(self, **kwargs):
