@@ -29,5 +29,6 @@ admin.site.register(State, StateAdmin)
 
 class CityAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">place</i>'
+    readonly_fields = ('slug', )
 admin.site.register(City, CityAdmin)
 
