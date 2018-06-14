@@ -10,9 +10,11 @@ from .models import Order, Item, Rating, DeliveryOrder
 class OrderSerializer(serializers.ModelSerializer):
     item_quantity = serializers.IntegerField(source='get_item_quantity', read_only=True)
 
+    store_id = serializers.ReadOnlyField(source='get_store_id')
+
     class Meta:
         model = Order
-        fields = ('pk', 'item_quantity', 'status')
+        fields = ('pk', 'item_quantity', 'status', 'store_id')
 
 class ItemSerializer(serializers.ModelSerializer):
     order = serializers.CharField(required=False)

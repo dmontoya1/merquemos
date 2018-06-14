@@ -89,7 +89,6 @@ class Order(models.Model):
         for item in self.get_items():
             tax = item.get_tax_value()
             total = total + tax
-        print total
         return total
     
     def get_total_with_tax(self):
@@ -102,6 +101,12 @@ class Order(models.Model):
             else:
                 return self.delivery_price
         return 0
+
+    @property
+    def get_store_id(self):
+        if self.has_items():
+            return self.related_items.last().product.store.id
+        return False
 
 class Item(models.Model):
     product = models.ForeignKey(Product)
