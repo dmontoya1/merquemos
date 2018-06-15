@@ -90,6 +90,21 @@ class StoreView(DetailView):
 
     def get(self, request, city, slug):
         request.session['store'] = self.get_object().pk
+        if request.user.is_authenticated():
+            user = request.user
+            if Order.objects.filter(user=user, status='PE').exists():
+                order = Order.objects.filter(user=user, status='PE').last()
+            else:
+                if Order.objects.filter(user=user, status='AC').exists():
+                    order = Order.objects.filter(user=user, status='AC').last()
+                elif Order.objects.filter(user=user, status='SH').exists():
+                    order = Order.objects.filter(user=user, status='SH').last()
+            if order.get_item_quantity() > 0:
+                store = order.related_items.last().product.store.pk
+                if not store == self.get_object().pk:
+                    order = request.user.get_current_order()
+                    order.delete()
+
         return super(StoreView, self).get(request)
 
     def get_object(self, queryset=None):
@@ -99,6 +114,7 @@ class StoreView(DetailView):
             raise Http404("Ups, tienda no encontrada")
         query = self.get_queryset().filter(city=city)
         return super(DetailView, self).get_object(queryset) 
+
 
 class ProductView(DetailView):
     model = Product
