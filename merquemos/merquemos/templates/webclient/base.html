@@ -119,7 +119,12 @@
                         </form>
                         <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
                         	<li class="nav-item dropdown">
-                        		<a href="{% url 'webclient:checkout' %}" class="nav-link">
+                                <a 
+                                {% if request.user.is_authenticated %}
+                                    href="{% url 'webclient:checkout' %}" 
+                                {% else %}
+                                    href="{% url 'webclient:login' %}"
+                                {% endif %} class="nav-link">
                         			<i class="ec ec-shopping-bag"></i>
                                     <span class="cart-items-count count" id="user_cart_count"></span>
                                 </a>
