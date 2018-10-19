@@ -1,5 +1,6 @@
 {% extends 'webclient/base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block content%}
 
@@ -97,7 +98,39 @@
                     <div class="cart_totals ">
     
                         <h2>Compras</h2>
+                        
+                        <table class="shop_table shop_table_responsive">
     
+                            <tbody>
+                                <tr class="cart-subtotal">
+                                    <th>Historial <br><br>
+                                        <ul class="address-list">
+                                            {% for order in request.user.related_orders.all %}
+                                                <div style="margin-bottom: 2em; display: inline-block;">
+                                                    <li>
+                                                        <strong class="navy">Fecha de compra: </strong> <span class="navy weight-500">{{order.last_status_date}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <strong class="navy">Estado: </strong> <span class="navy weight-500">{{order.get_status_display}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <strong class="navy">Total: </strong> <span class="navy weight-500">${{order.get_total_with_tax|intcomma}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <strong class="navy">
+                                                            <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#historyOrderDetail" class="orderHistory button">Ver productos</a>
+                                                        </strong>
+                                                    </li>     
+                                                </div>                                    
+                                            {% empty %}
+                                                Aún no has realizado compras.
+                                            {% endfor %}
+                                        </ul>
+                                    </th>
+                                </tr>                                                                                                                                                                                 
+                            </tbody>
+                        </table>
+
                         <table class="shop_table shop_table_responsive">
     
                             <tbody>
@@ -187,6 +220,30 @@
                 .always(function(data) {
                     location.reload();
                 });
+
+        });
+        $('.orderHistory').on('click', function(e){
+            e.preventDefault();
+            pk = $(this).data('order')
+            $.ajax({
+                url: '/api/sales/order/' + pk + '/items',
+                type: 'GET'
+            })
+                .success(function(data) {
+                    $('#historyOrderDetail table tr:not(.header)').remove();
+                    $.each(data.items, function( key, value ) {
+                        record = `<tr>
+                            <td><img src="${value.product.image}" width="20px"/></td>
+                            <td>${value.product.name}</td> 
+                            <td>${value.quantity}</td>
+                            <td>${value.total}</td>
+                        </tr>`
+                        $('#historyOrderDetail table').append(record);
+                    });                    
+                })
+                .fail(function(data) {
+                    toastr.warning('Ha ocurrido un error, reintenta nuevamente');
+                })
 
         });
     })(jQuery);

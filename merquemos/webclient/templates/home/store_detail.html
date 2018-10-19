@@ -21,9 +21,16 @@
                                         {{object.name}}
                                     </div>
 
-                                    <div class="hero-action-btn fadeInDown-3 {% if object.is_open %}green-bg{% endif %}">
+                                    <div class="hero-action-btn fadeInDown-3 {% if object.is_open %}green-bg{% endif %}" style="background-color: rgba(26, 109, 86, 0.81) !important">
                                         <a class="big le-button">
-                                            {% if object.is_open %}Abierto{% else %}Cerrado{% endif %}
+                                            <strong>{% if object.is_open %}
+                                                Abierto
+                                            {% else %}
+                                                Cerrado
+                                            {% endif %}
+                                            </strong></br>
+                                            <strong>Dirección</strong>: {{object.address}}</br>
+                                            <strong>Teléfono</strong>: {{object.phone_number}}
                                         </a>
                                     </div>
                                 </div><!-- /.caption -->

@@ -89,6 +89,17 @@ class CurrentOrderItems(generics.ListAPIView):
         serializer = OrderItemSerializer(order, many=False)
         return Response(serializer.data)
 
+class OrderItems(generics.ListAPIView):
+    """Obtiene los items de la orden actual, obtenida con base en el token del usuario.
+    """
+
+    serializer_class = OrderItemSerializer
+
+    def get(self, request, pk, format=None):
+        order = Order.objects.get(pk=pk)
+        serializer = OrderItemSerializer(order, many=False)
+        return Response(serializer.data)
+
 class OrderList(generics.ListAPIView):
     """Obtiene las ordenes de un usuario, obtenido con base en el token de autenticación entregado.
     """

@@ -92,6 +92,7 @@ class StoreView(DetailView):
         request.session['store'] = self.get_object().pk
         if request.user.is_authenticated():
             user = request.user
+            order = None
             if Order.objects.filter(user=user, status='PE').exists():
                 order = Order.objects.filter(user=user, status='PE').last()
             else:
@@ -99,11 +100,14 @@ class StoreView(DetailView):
                     order = Order.objects.filter(user=user, status='AC').last()
                 elif Order.objects.filter(user=user, status='SH').exists():
                     order = Order.objects.filter(user=user, status='SH').last()
-            if order.get_item_quantity() > 0:
-                store = order.related_items.last().product.store.pk
-                if not store == self.get_object().pk:
-                    order = request.user.get_current_order()
-                    order.delete()
+            if not order:
+                pass
+            else:
+                if order.get_item_quantity() > 0:
+                    store = order.related_items.last().product.store.pk
+                    if not store == self.get_object().pk:
+                        order = request.user.get_current_order()
+                        order.delete()
 
         return super(StoreView, self).get(request)
 
