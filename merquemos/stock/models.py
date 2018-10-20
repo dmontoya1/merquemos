@@ -32,7 +32,8 @@ class Store(models.Model):
     )
     app_hex_code = models.CharField(max_length=10, null=True, blank=True)
     slug = models.SlugField(unique=True, null=True, blank=True)
-
+    is_active = models.BooleanField(default=True)
+    
     class Meta:
         verbose_name = "Tienda"
 
@@ -130,12 +131,18 @@ class BrandStore(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=255)
     parent = models.ForeignKey('self', null=True, blank=True, related_name="related_categories")
+    slug = models.SlugField(unique=True, null=True, blank=True)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = "Categoría"
     
     def __str__(self):
         return str(self.name)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)
     
     def get_related_products(self, store=None):
         if self.parent is not None:
@@ -161,6 +168,7 @@ class Product(models.Model):
     stock_quantity = models.PositiveIntegerField(editable=False, default=0)
     discount_percentage = models.PositiveIntegerField(default=0)
     slug = models.SlugField(unique=True, null=True, blank=True)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = "Producto"

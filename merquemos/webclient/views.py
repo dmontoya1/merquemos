@@ -10,7 +10,8 @@ from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from manager.models import City, AppPolicy
+from manager.models import City, AppPolicy, FAQCategory
+from sales.models import Order
 from stock.models import Store, Product, Category
 from users.models import User
 
@@ -30,6 +31,7 @@ class AuthView(TemplateView):
         else:
             messages.add_message(request, messages.WARNING, 'Datos inválidos, reintenta nuevamente.')
         return redirect(redirect_url)
+
 
 class HomePageView(TemplateView):
     template_name = 'home/store_select.html'
@@ -52,10 +54,24 @@ class HomePageView(TemplateView):
                     order = request.user.get_current_order()
                     order.delete()
         else:
-            if request.session.get('city', False) and request.session.get('store', False):
-                city = City.objects.get(pk=request.session['city'])
-                store = Store.objects.get(pk=request.session['store']) 
-                return redirect('/stores/{}/{}/'.format(city.name, store.slug))
+            user = request.user
+            if request.user.is_authenticated():
+                if Order.objects.filter(user=user, status='PE').exists():
+                    order = Order.objects.filter(user=user, status='PE').last()
+                else:
+                    if Order.objects.filter(user=user, status='AC').exists():
+                        order = Order.objects.filter(user=user, status='AC').last()
+                    elif Order.objects.filter(user=user, status='SH').exists():
+                        order = Order.objects.filter(user=user, status='SH').last()
+                
+                if request.session.get('city', False):
+                    city = City.objects.get(pk=request.session['city'])
+                    if request.session.get('store', False):
+                        store = Store.objects.get(pk=request.session['store'])
+                        return redirect('/stores/{}/{}/'.format(city.slug, store.slug))
+                    elif order.get_item_quantity() > 0:
+                        store = order.related_items.last().product.store.slug
+                        return redirect('/stores/{}/{}/'.format(city.slug, store))
         return super(HomePageView, self).get(request)
 
     def get_context_data(self, **kwargs):
@@ -67,21 +83,42 @@ class HomePageView(TemplateView):
             context['city'] = city
         return context
 
+
 class StoreView(DetailView):
     model = Store
     template_name = 'home/store_detail.html'
 
     def get(self, request, city, slug):
         request.session['store'] = self.get_object().pk
+        if request.user.is_authenticated():
+            user = request.user
+            order = None
+            if Order.objects.filter(user=user, status='PE').exists():
+                order = Order.objects.filter(user=user, status='PE').last()
+            else:
+                if Order.objects.filter(user=user, status='AC').exists():
+                    order = Order.objects.filter(user=user, status='AC').last()
+                elif Order.objects.filter(user=user, status='SH').exists():
+                    order = Order.objects.filter(user=user, status='SH').last()
+            if not order:
+                pass
+            else:
+                if order.get_item_quantity() > 0:
+                    store = order.related_items.last().product.store.pk
+                    if not store == self.get_object().pk:
+                        order = request.user.get_current_order()
+                        order.delete()
+
         return super(StoreView, self).get(request)
 
     def get_object(self, queryset=None):
         try:
-            city = City.objects.get(name=self.kwargs.get('city')) 
+            city = City.objects.get(slug=self.kwargs.get('city')) 
         except City.DoesNotExist:
             raise Http404("Ups, tienda no encontrada")
         query = self.get_queryset().filter(city=city)
         return super(DetailView, self).get_object(queryset) 
+
 
 class ProductView(DetailView):
     model = Product
@@ -92,12 +129,13 @@ class ProductView(DetailView):
         query = self.get_queryset().filter(store=store)
         return super(DetailView, self).get_object(queryset) 
 
+
 class CategoryView(DetailView):
     model = Product
     template_name = 'home/category_detail.html'
 
     def get_object(self, queryset=None):
-        category = Category.objects.get(name=self.kwargs.get('slug')) 
+        category = Category.objects.get(slug=self.kwargs.get('slug')) 
         return category
 
     def get_context_data(self, **kwargs):
@@ -107,6 +145,7 @@ class CategoryView(DetailView):
         context['store'] = store
         return context
 
+
 class SearchView(ListView):
     template_name = 'home/search_result.html'
 
@@ -115,11 +154,13 @@ class SearchView(ListView):
         store = Store.objects.get(pk=store_id)
         q = Product.objects.filter(
             name__icontains=self.request.GET.get('q', ''),
-            store=store
+            store=store,
+            is_active=True
         )
         if self.request.GET.get('category', None):
             q = q.filter(category__pk=self.request.GET['category'])
         return q
+
 
 class CheckoutView(TemplateView):
     template_name = 'orders/checkout.html'
@@ -129,8 +170,10 @@ class CheckoutView(TemplateView):
         context['order'] = self.request.user.get_current_order()
         return context
 
+
 class ProfileView(TemplateView):
     template_name = 'user/profile.html'
+
 
 class PrivacyPolicyView(TemplateView):
     template_name = 'home/policy_detail.html'
@@ -142,6 +185,7 @@ class PrivacyPolicyView(TemplateView):
         context['content'] = policies.privacy_policy
         return context
 
+
 class TermsView(TemplateView):
     template_name = 'home/policy_detail.html'
 
@@ -151,6 +195,17 @@ class TermsView(TemplateView):
         context['name'] = 'Terminos y condiciones'
         context['content'] = policies.terms_and_conditions
         return context
+
+
+class FAQView(TemplateView):
+    template_name = 'home/faq.html'
+
+    def get_context_data(self, **kwargs):
+        categories = FAQCategory.objects.all()
+        context = super(FAQView, self).get_context_data(**kwargs)
+        context['categories'] = categories
+        return context
+
 
 def custom_404(request):
     return render(

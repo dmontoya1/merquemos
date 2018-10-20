@@ -38,7 +38,6 @@ class CurrentOrderDetail(generics.ListAPIView):
 
     def get(self, request, format=None):
         user = get_api_user(request)
-        print user
         base_order = None
         if request.GET.get('base_order', None):
             base_order = Order.objects.get(pk=request.GET['base_order'])
@@ -87,6 +86,17 @@ class CurrentOrderItems(generics.ListAPIView):
                 {'detail': 'El usuario no tiene compras activas'},
                 status=status.HTTP_404_NOT_FOUND
             )
+        serializer = OrderItemSerializer(order, many=False)
+        return Response(serializer.data)
+
+class OrderItems(generics.ListAPIView):
+    """Obtiene los items de la orden actual, obtenida con base en el token del usuario.
+    """
+
+    serializer_class = OrderItemSerializer
+
+    def get(self, request, pk, format=None):
+        order = Order.objects.get(pk=pk)
         serializer = OrderItemSerializer(order, many=False)
         return Response(serializer.data)
 
