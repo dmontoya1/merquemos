@@ -5,9 +5,9 @@ from manager.models import City
 from stock.models import Category, Store
 
 def webclient_processor(request):
-    categories = Category.objects.filter(parent=None)
-    stores = Store.objects.all()
-    cities = City.objects.all()
+    categories = Category.objects.filter(parent=None, is_active=True)
+    stores = Store.objects.filter(is_active=True)
+    cities = City.objects.filter(is_active=True)
     try:
         web_api_key = APIKey.objects.get(name='Web client API Key')
     except: 

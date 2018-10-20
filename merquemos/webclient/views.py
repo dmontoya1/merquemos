@@ -10,7 +10,7 @@ from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from manager.models import City, AppPolicy
+from manager.models import City, AppPolicy, FAQCategory
 from sales.models import Order
 from stock.models import Store, Product, Category
 from users.models import User
@@ -154,7 +154,8 @@ class SearchView(ListView):
         store = Store.objects.get(pk=store_id)
         q = Product.objects.filter(
             name__icontains=self.request.GET.get('q', ''),
-            store=store
+            store=store,
+            is_active=True
         )
         if self.request.GET.get('category', None):
             q = q.filter(category__pk=self.request.GET['category'])
@@ -194,6 +195,17 @@ class TermsView(TemplateView):
         context['name'] = 'Terminos y condiciones'
         context['content'] = policies.terms_and_conditions
         return context
+
+
+class FAQView(TemplateView):
+    template_name = 'home/faq.html'
+
+    def get_context_data(self, **kwargs):
+        categories = FAQCategory.objects.all()
+        context = super(FAQView, self).get_context_data(**kwargs)
+        context['categories'] = categories
+        return context
+
 
 def custom_404(request):
     return render(

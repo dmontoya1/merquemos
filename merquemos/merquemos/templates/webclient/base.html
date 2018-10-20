@@ -166,7 +166,7 @@
                         <form action="/" method="POST">
                             {% csrf_token %}
                             <div class="modal-body col-md-12">
-                                <select class="selectpicker zona  col-md-12 " id="city_selector" name="city">
+                                <select class="selectpicker zona  col-md-12 " id="city_selector" name="city" required>
                                     <option disabled selected>Ciudad</option>
                                     {% for city in webclient_context_cities %}
                                         <option value="{{city.pk}}">{{city.name}}</option>
@@ -309,17 +309,7 @@
                 <div class="container">
                     <div class="pull-left flip copyright">Powered by <a href="http://www.apptitud.com.co">Apptitud </a>&copy; Merquemos - All Rights Reserved</div>
                     <div class="pull-right flip payment">
-                        <!--                        
-                        <div class="footer-payment-logo">
-                            <ul class="cash-card card-inline">
-                                <li class="card-item"><img src="assets/images/footer/payment-icon/1.png" alt="" width="52"></li>
-                                <li class="card-item"><img src="assets/images/footer/payment-icon/2.png" alt="" width="52"></li>
-                                <li class="card-item"><img src="assets/images/footer/payment-icon/3.png" alt="" width="52"></li>
-                                <li class="card-item"><img src="assets/images/footer/payment-icon/4.png" alt="" width="52"></li>
-                                <li class="card-item"><img src="assets/images/footer/payment-icon/5.png" alt="" width="52"></li>
-                            </ul>
-                        </div><!-- /.payment-methods 
-                        --> 
+                        <a href="{% url 'webclient:faq' %}">Preguntas frecuentes</a>
                     </div>
                 </div> <!--.container -->
             </div> <!-- /.copyright-bar-->

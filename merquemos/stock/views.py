@@ -46,7 +46,7 @@ class StoreList(generics.ListCreateAPIView):
     serializer_class = StoreSerializer
 
     def get_queryset(self):
-        queryset = Store.objects.all()
+        queryset = Store.objects.filter(is_active=True)
         city_id = self.request.query_params.get('city_id')
         if city_id:
             queryset = queryset.filter(city__pk=city_id)
@@ -97,11 +97,11 @@ class CategoryList(RequiredParametersMixin, generics.ListCreateAPIView):
     required_parameters = ['store_id']
 
     def get_queryset(self):
-        queryset = Category.objects.all().filter(parent=None)
+        queryset = Category.objects.filter(parent=None, is_active=True)
         store = Store.objects.get(pk=self.request.query_params.get('store_id'))
         parent_category_id = self.request.query_params.get('parent_category_id')
         if parent_category_id is not None:
-            queryset = Category.objects.all().filter(parent__pk=parent_category_id)
+            queryset = Category.objects.filter(parent__pk=parent_category_id, is_active=True)
         for category in queryset:
             if category.get_related_products(store=store).count() == 0:
                 queryset = queryset.exclude(pk=category.pk)
@@ -112,7 +112,7 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     """
 
     serializer_class = CategorySerializer
-    queryset = Category.objects.all()
+    queryset = Category.objects.filter(is_active=True)
 
 class ProductList(RequiredParametersMixin, generics.ListCreateAPIView):
     """Obtiene el listado de productos, filtrados por categoría y
@@ -127,7 +127,7 @@ class ProductList(RequiredParametersMixin, generics.ListCreateAPIView):
     required_parameters = ['store_id', 'limit']
 
     def get_queryset(self):
-        queryset = Product.objects.all()
+        queryset = Product.objects.filter(is_active=True)
         
         store_id = self.request.query_params.get('store_id')
         queryset = queryset.filter(store__pk=store_id)
@@ -151,7 +151,7 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     """
 
     serializer_class = ProductSerializer
-    queryset = Product.objects.all()
+    queryset = Product.objects.filter(is_active=True)
 
 class BrandDetail(generics.RetrieveUpdateDestroyAPIView):
     """Obtiene el detalle de una marca 

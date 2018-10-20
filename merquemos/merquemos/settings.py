@@ -27,10 +27,12 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django.contrib.humanize'
+    'django.contrib.humanize',
+    
 ]
 
 THIRD_PARTY_APPS = [
+    'import_export',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',

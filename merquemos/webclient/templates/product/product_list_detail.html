@@ -15,9 +15,9 @@
                 <a rel="nofollow" href="/stores/{{product.store.city}}/{{product.store.slug}}/products/{{product.category.slug}}/{{product.slug}}/" class="button add_to_cart_button">Agregar al carrito</a>
                 <span class="price">
                     <span class="electro-price">
-                        <ins><span class="amount">${{product.get_price|intcomma}}</span></ins>
+                        <ins><span class="amount">${{product.get_price.normalize|intcomma}}</span></ins>
                         {% if product.has_discount %}
-                            <del><span class="amount">${{product.price|intcomma}}</span></del>
+                            <del><span class="amount">${{product.price.normalize|intcomma}}</span></del>
                         {% endif %}
                     </span>
                 </span>

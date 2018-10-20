@@ -32,7 +32,7 @@
                                                 <strong class="product-quantity">× {{item.quantity}}</strong>
                                             </td>
                                             <td class="product-total">
-                                                <span class="amount">${{item.total|intcomma}}</span>
+                                                <span class="amount">${{item.total.normalize|intcomma}}</span>
                                             </td>
                                             {% if request.user.get_current_order.status == "PE" %}
                                                 <td class="product-total">
@@ -46,12 +46,12 @@
 
                                     <tr class="cart-subtotal">
                                         <th>Subtotal</th>
-                                        <td><span class="amount">${{order.get_total_no_tax|intcomma}}</span></td>
+                                        <td><span class="amount">${{order.get_total_no_tax.normalize|intcomma}}</span></td>
                                     </tr>
 
                                     <tr class="shipping">
                                         <th>Impuestos</th>
-                                        <td data-title="Shipping"><span class="amount">${{order.get_total_tax|intcomma}}</span> <input type="hidden" class="shipping_method" value="international_delivery" id="shipping_method_0" data-index="0" name="shipping_method[0]"></td>
+                                        <td data-title="Shipping"><span class="amount">${{order.get_total_tax.normalize|intcomma}}</span> <input type="hidden" class="shipping_method" value="international_delivery" id="shipping_method_0" data-index="0" name="shipping_method[0]"></td>
                                     </tr>
 
                                     <tr class="shipping">
@@ -61,7 +61,7 @@
 
                                     <tr class="order-total">
                                         <th>Total</th>
-                                        <td><strong><span class="amount">${{order.get_total_with_tax|intcomma}}</span></strong> </td>
+                                        <td><strong><span class="amount">${{order.get_total_with_tax.normalize|intcomma}}</span></strong> </td>
                                     </tr>
                                 </tfoot>
                             </table>

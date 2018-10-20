@@ -32,7 +32,8 @@ class Store(models.Model):
     )
     app_hex_code = models.CharField(max_length=10, null=True, blank=True)
     slug = models.SlugField(unique=True, null=True, blank=True)
-
+    is_active = models.BooleanField(default=True)
+    
     class Meta:
         verbose_name = "Tienda"
 
@@ -131,6 +132,7 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
     parent = models.ForeignKey('self', null=True, blank=True, related_name="related_categories")
     slug = models.SlugField(unique=True, null=True, blank=True)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = "Categoría"
@@ -166,6 +168,7 @@ class Product(models.Model):
     stock_quantity = models.PositiveIntegerField(editable=False, default=0)
     discount_percentage = models.PositiveIntegerField(default=0)
     slug = models.SlugField(unique=True, null=True, blank=True)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = "Producto"

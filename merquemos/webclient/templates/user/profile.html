@@ -114,7 +114,7 @@
                                                         <strong class="navy">Estado: </strong> <span class="navy weight-500">{{order.get_status_display}}</span>
                                                     </li>
                                                     <li>
-                                                        <strong class="navy">Total: </strong> <span class="navy weight-500">${{order.get_total_with_tax|intcomma}}</span>
+                                                        <strong class="navy">Total: </strong> <span class="navy weight-500">${{order.get_total_with_tax.normalize|intcomma}}</span>
                                                     </li>
                                                     <li>
                                                         <strong class="navy">

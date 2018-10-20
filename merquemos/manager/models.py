@@ -82,6 +82,7 @@ class City(models.Model):
     state = models.ForeignKey(State, related_name="related_cities")
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, null=True, blank=True)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Ciudad'
