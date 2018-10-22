@@ -31,11 +31,17 @@ class OrderAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">shopping_cart</i>'
     list_display = ('pk', 'user', 'status', 'comments', total,)
     list_filter = ('status',)
+    readonly_fields = ('total',)
     search_fields = ['user__email', 'user__username']
     inlines = [
         ItemInline,
     ]
+
+    def total(self, obj):
+        return obj.get_total_with_tax()
+
 admin.site.register(Order, OrderAdmin)
+
 
 
 class RatingAdmin(admin.ModelAdmin):
