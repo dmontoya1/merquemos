@@ -212,7 +212,6 @@
                             <p class="form-row form-row-wide">
                                 <label for="add_city">Ciudad<span class="required">*</span></label>
                                 <select class="selectpicker input-text" name="city" id="add_city" required>
-                                    <option disabled selected>Ciudad</option>
                                     {% for city in webclient_context_cities %}
                                         <option value="{{city.pk}}">{{city.name}}</option>
                                     {% endfor %}
