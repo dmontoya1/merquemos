@@ -159,7 +159,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, related_name='related_products')  
     sku = models.CharField(max_length=255)
     barcode = models.TextField(null=True, blank=True)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     description = models.TextField()
     image = models.ImageField(upload_to="stock/products/images/")
     tax_percentage = models.DecimalField(max_digits=10, decimal_places=2)
