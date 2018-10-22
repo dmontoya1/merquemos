@@ -24,7 +24,7 @@ class ItemInline(admin.TabularInline):
     brand.short_description = "Marca"
 
 def total(obj):
-    return obj.get_total_with_tax()
+    return obj.get_total_with_tax().normalize()
 total.short_description = 'Total'
 
 class OrderAdmin(admin.ModelAdmin):
