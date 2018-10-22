@@ -23,6 +23,9 @@ class ItemInline(admin.TabularInline):
     store.short_description = "Tienda"
     brand.short_description = "Marca"
 
+def total(obj):
+    return obj.get_total_with_tax()
+total.short_description = 'Total'
 
 class OrderAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">shopping_cart</i>'
@@ -33,9 +36,7 @@ class OrderAdmin(admin.ModelAdmin):
         ItemInline,
     ]
 
-    def total(obj):
-        return obj.get_total_with_tax()
-    total.short_description = 'Total'
+    
 
 admin.site.register(Order, OrderAdmin)
 
