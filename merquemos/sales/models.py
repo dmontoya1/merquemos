@@ -49,6 +49,7 @@ class Order(models.Model):
         null=True, 
         blank=True
     )
+    date_added = models.DateField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Orden de compra"
@@ -115,6 +116,9 @@ class Order(models.Model):
     def get_total_with_tax(self):
         return self.get_total_no_tax() + self.get_total_tax() + self.get_delivery_price()
 
+    def get_total_without_delivery(self):
+        return self.get_total_no_tax() + self.get_total_tax()
+
     def get_delivery_price(self):
         if self.has_items():
             if self.status == "PE":
@@ -128,6 +132,12 @@ class Order(models.Model):
         if self.has_items():
             return self.related_items.last().product.store.id
         return False
+    
+    @property
+    def get_store_name(self):
+        if self.has_items():
+            return self.related_items.last().product.store.name
+        return "Sin establecimiento"
 
 class Item(models.Model):
     product = models.ForeignKey(
@@ -182,6 +192,7 @@ class Rating(models.Model):
     order = models.OneToOneField(Order)
     number = models.PositiveIntegerField(default=0)
     comments = models.TextField(null=True, blank=True)
+    date_added = models.DateField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Reseña de compra"
