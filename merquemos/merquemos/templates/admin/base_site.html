@@ -1,10 +1,47 @@
 {% extends 'admin/base.html' %}
-{% load static %}
+{% load admin_static material_admin i18n static %}
 {% block userphoto %}
     <a href="/">
         <img class="circle" src="/static/img/app_logo_icon_dark-bg.png">
     </a>
 {% endblock %}
+
+{% block sidenav_items %}
+    {% if site_url %}
+        {% block back_link %}<li class="no-padding"><a class="collapsible-header" href="{{ site_url }}"><i class="material-icons">arrow_back</i>{% trans 'View site' %}</a></li>{% endblock %}
+    {% endif %}
+    {% get_app_list request as app_list %}
+    {% for app in app_list %}
+    <li {% if app.active %}class="active"{% endif %}>
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="collapsible-header{% if app.active %} active{% endif %}">{{ app.app_icon }} {{ app.name|truncatechars:23 }}</a>
+                <div class="collapsible-body" {% if app.active %}style="display:block"{% endif %}>
+                    <ul>
+                        {% for model in app.models %}
+                        <li class="{% if model.active %}active{% endif %}">
+                            <a href="{{ model.admin_url }}">{% trans model.name %}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        {% endfor %}
+        <li>
+            <a href="/admin/reports/" class="collapsible-header"><i class="material-icons">description</i> {{ model.icon }} Reportes</a>
+        </li>
+        <div class="divider hide-on-large-only"></div>
+        <ul class="collapsible collapsible-accordion hide-on-large-only">
+            <li>
+                <a href="{% url 'admin:password_change' %}" class="collapsible-header "><i class="material-icons">autorenew</i> Cambiar contraseña</a>
+            </li>
+            <li>
+                <a href="{% url 'admin:logout' %}" class="collapsible-header "><i class="material-icons">exit_to_app</i> Cerrar Sesión</a>
+            </li>
+        </ul>
+{% endblock sidenav_items %}
+
 
 {% block extrastyle %}
     <link href="{% static 'assets/css/admin/admin.css' %}"  rel="stylesheet">

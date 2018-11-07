@@ -1,0 +1,137 @@
+{% extends 'admin/index.html' %}
+
+{% block extracss %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />   
+    <style>
+        .select2-selection__rendered {
+            display: none !important;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+        <div id="route_record_modal" class="modal">
+            <form method="POST" action=".">
+                <input type="hidden" name="report" value="route_record" />
+                {% csrf_token %}
+                <div class="modal-content">
+                    <select class="select2" name="student" class="browser-default">
+                        {% for student in students %}
+                            <option value="{{student.pk}}">{{student.first_name}} {{student.last_name}}</option>
+                        {% endfor %}
+                    </select>
+                    <select class="select2" name="report_type" class="browser-default">
+                        <option value="pdf">PDF</option>
+                        <option value="xlsx">XLSX</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-flat" type="submit">Generar</a>
+                </div>
+            </form>
+        </div>
+
+        <div id="routes_modal" class="modal">
+            <form method="POST" action=".">
+                <input type="hidden" name="report" value="routes" />
+                {% csrf_token %}
+                <div class="modal-content">
+                    <select class="select2" name="report_type" class="browser-default">
+                        <option value="pdf">PDF</option>
+                        <option value="xlsx">XLSX</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-flat" type="submit">Generar</a>
+                </div>
+            </form>
+        </div>
+
+        <div id="daily_routes_modal" class="modal">
+            <form method="POST" action=".">
+                <input type="hidden" name="report" value="daily_routes" />
+                {% csrf_token %}
+                <div class="modal-content">
+                    <select class="select2" name="report_type" class="browser-default">
+                        <option value="pdf">PDF</option>
+                        <option value="xlsx">XLSX</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-flat" type="submit">Generar</a>
+                </div>
+            </form>
+        </div>
+
+        <div id="no_attendance_modal" class="modal">
+            <form method="POST" action=".">
+                <input type="hidden" name="report" value="no_attendance" />
+                {% csrf_token %}
+                <div class="modal-content">
+                    <select class="select2" name="report_type" class="browser-default">
+                        <option value="pdf">PDF</option>
+                        <option value="xlsx">XLSX</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-flat" type="submit">Generar</a>
+                </div>
+            </form>
+        </div>
+
+    
+    <div class="row">
+        <div class="app-list">
+            <div class="app">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title black-text">Reportes</span>
+                        <div class="row">
+                                <div class="app-item col s6 m6 l4">
+                                    <a href="#route_record_modal" class="modal-trigger">
+                                        <i class="material-icons">description</i>
+                                        <h6>Registro de ruta</h6>
+                                    </a>
+                                </div>
+                                <div class="app-item col s6 m6 l4">
+                                    <a href="#routes_modal" class="modal-trigger">
+                                        <i class="material-icons">description</i>
+                                        <h6>Rutas</h6>
+                                    </a>
+                                </div>
+                                <div class="app-item col s6 m6 l4">
+                                    <a href="#daily_routes_modal">
+                                        <i class="material-icons">description</i>
+                                        <h6>Rutas diarias</h6>
+                                    </a>
+                                </div>
+                                <div class="app-item col s6 m6 l4">
+                                    <a href="#no_attendance_modal">
+                                        <i class="material-icons">description</i>
+                                        <h6>Inasistencias</h6>
+                                    </a>
+                                </div>
+                            <div class="app-item col s6 m6 l4">
+                                <a href="#max_managers_modal">
+                                    <i class="material-icons">description</i>
+                                    <h6>Alumnos con 3 acudientes</h6>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extrajs %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.modal').modal();
+            $('.select2').select2();
+        });
+    </script>
+{% endblock %}
