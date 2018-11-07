@@ -14,7 +14,8 @@
         padding: 3px;
     }
 </style>
-<h2>Reporte de inasistencias</h2>
+<h2>Reporte de productos realizados a través de la plataforma </h2>
+<h5>Fechas: Desde {{start_date}} hasta {{end_date}}</h5>
 <table>
     <th>
         <tr>
@@ -26,12 +27,11 @@
         </tr>
     </th>
     <tbody>
-        {% for r in route_records %}
+        {% for p in products %}
             <tr>
-                <td>{{r.date}}</td>
-                <td>{{r.student.get_full_name}}</td>
-                <td>{{r.route}}</td>
-                <td>{{r.comments}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.description}}</td>
+                <td>${{p.price}}</td>
             </tr>
         {% endfor %}
     </tbody>

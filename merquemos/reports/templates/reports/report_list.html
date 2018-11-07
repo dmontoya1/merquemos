@@ -1,84 +1,153 @@
 {% extends 'admin/index.html' %}
 
-{% block extracss %}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />   
+{% block extrastyle %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
     <style>
         .select2-selection__rendered {
             display: none !important;
+        }
+        .select2.select2-container.select2-container--default {
+            width: 100% !important;
         }
     </style>
 {% endblock %}
 
 {% block content %}
-        <div id="route_record_modal" class="modal">
-            <form method="POST" action=".">
-                <input type="hidden" name="report" value="route_record" />
-                {% csrf_token %}
-                <div class="modal-content">
-                    <select class="select2" name="student" class="browser-default">
-                        {% for student in students %}
-                            <option value="{{student.pk}}">{{student.first_name}} {{student.last_name}}</option>
-                        {% endfor %}
-                    </select>
-                    <select class="select2" name="report_type" class="browser-default">
-                        <option value="pdf">PDF</option>
-                        <option value="xlsx">XLSX</option>
-                    </select>
+    <div id="register_products" class="modal">
+        <form method="POST" action=".">
+            <input type="hidden" name="report" value="register_products" />
+            {% csrf_token %}
+            <div class="modal-content">
+                <h5>Reporte de  productos realizados a través de la plataforma</h5>
+                <br>
+                <h6>Fechas</h6>
+                <div class="input-daterange input-group" >
+                    <input type="date" class="input-sm form-control" name="start" />
+                    <span class="input-group-addon">hasta</span>
+                    <input type="date" class="input-sm form-control" name="end" />
                 </div>
-                <div class="modal-footer">
-                    <button class="btn-flat" type="submit">Generar</a>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-flat" type="submit">Generar</a>
+            </div>
+        </form>
+    </div>
 
-        <div id="routes_modal" class="modal">
-            <form method="POST" action=".">
-                <input type="hidden" name="report" value="routes" />
-                {% csrf_token %}
-                <div class="modal-content">
-                    <select class="select2" name="report_type" class="browser-default">
-                        <option value="pdf">PDF</option>
-                        <option value="xlsx">XLSX</option>
-                    </select>
+    <div id="number_services" class="modal">
+        <form method="POST" action=".">
+            <input type="hidden" name="report" value="number_services" />
+            {% csrf_token %}
+            <div class="modal-content">
+                <h5>Reporte de número de servicios prestados por un establecimiento</h5>
+                <br>
+                <h6>Fechas</h6>
+                <div class="input-daterange input-group" >
+                    <input type="date" class="input-sm form-control" name="start" required/>
+                    <span class="input-group-addon">hasta</span>
+                    <input type="date" class="input-sm form-control" name="end" required/>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn-flat" type="submit">Generar</a>
-                </div>
-            </form>
-        </div>
+                <select class="select2" name="store" class="browser-default" required>
+                    <option disabled selected value="">Seleccione un establecimiento</option>
+                    {% for store in stores %}
+                        <option value="{{store.pk}}">{{store.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-flat" type="submit">Generar</a>
+            </div>
+        </form>
+    </div>
 
-        <div id="daily_routes_modal" class="modal">
-            <form method="POST" action=".">
-                <input type="hidden" name="report" value="daily_routes" />
-                {% csrf_token %}
-                <div class="modal-content">
-                    <select class="select2" name="report_type" class="browser-default">
-                        <option value="pdf">PDF</option>
-                        <option value="xlsx">XLSX</option>
-                    </select>
+    <div id="rating" class="modal">
+        <form method="POST" action=".">
+            <input type="hidden" name="report" value="rating" />
+            {% csrf_token %}
+            <div class="modal-content">
+                <h5>Reporte de calificaciones de la plataforma</h5>
+                <br>
+                <h6>Fechas</h6>
+                <div class="input-daterange input-group" >
+                    <input type="date" class="input-sm form-control" name="start" required/>
+                    <span class="input-group-addon">hasta</span>
+                    <input type="date" class="input-sm form-control" name="end" required/>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn-flat" type="submit">Generar</a>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-flat" type="submit">Generar</a>
+            </div>
+        </form>
+    </div>
 
-        <div id="no_attendance_modal" class="modal">
-            <form method="POST" action=".">
-                <input type="hidden" name="report" value="no_attendance" />
-                {% csrf_token %}
-                <div class="modal-content">
-                    <select class="select2" name="report_type" class="browser-default">
-                        <option value="pdf">PDF</option>
-                        <option value="xlsx">XLSX</option>
-                    </select>
+    <div id="sales" class="modal">
+        <form method="POST" action=".">
+            <input type="hidden" name="report" value="sales" />
+            {% csrf_token %}
+            <div class="modal-content">
+                <h5>Reporte de ventas realizadas a través de la plataforma de un establecimiento</h5>
+                <br>
+                <h6>Departamento</h6>
+                <select name="state" class="browser-default state-select-sales" required>
+                    <option disabled selected value="">Seleccione un departamento</option>
+                    {% for state in states %}
+                        <option value="{{state.pk}}">{{state.name}}</option>
+                    {% endfor %}
+                </select>
+                <h6>Ciudad</h6>
+                <select name="city" class="browser-default city-select-sales" required>
+                    <option disabled selected value="">Seleccione primero un departamento</option>
+                </select>
+                <h6>Establecimiento</h6>
+                <select name="store" class="browser-default store-select-sales" required>
+                    <option disabled selected value="">Seleccione primero la ciudad</option>
+                </select>
+                <h6>Fechas</h6>
+                <div class="input-daterange input-group" >
+                    <input type="date" class="input-sm form-control" name="start" required/>
+                    <span class="input-group-addon">hasta</span>
+                    <input type="date" class="input-sm form-control" name="end" required/>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn-flat" type="submit">Generar</a>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-flat" type="submit">Generar</a>
+            </div>
+        </form>
+    </div>
+    
+    <div id="requests" class="modal">
+        <form method="POST" action=".">
+            <input type="hidden" name="report" value="requests" />
+            {% csrf_token %}
+            <div class="modal-content">
+                <h5>Reporte de Solicitudes realizadas a través de la plataforma </h5>
+                <br>
+                <h6>Departamento</h6>
+                <select name="state" class="browser-default state-select-request" required>
+                    <option disabled selected value="">Seleccione un departamento</option>
+                    {% for state in states %}
+                        <option value="{{state.pk}}">{{state.name}}</option>
+                    {% endfor %}
+                </select>
+                <h6>Ciudad</h6>
+                <select name="city" class="browser-default city-select-request" required>
+                    <option disabled selected value="">Seleccione primero un departamento</option>
+                </select>
+                <h6>Establecimiento</h6>
+                <select name="store" class="browser-default store-select-request" required>
+                    <option disabled selected value="">Seleccione primero la ciudad</option>
+                </select>
+                <h6>Fechas</h6>
+                <div class="input-daterange input-group" >
+                    <input type="date" class="input-sm form-control" name="start" required/>
+                    <span class="input-group-addon">hasta</span>
+                    <input type="date" class="input-sm form-control" name="end" required/>
                 </div>
-            </form>
-        </div>
-
+            </div>
+            <div class="modal-footer">
+                <button class="btn-flat" type="submit">Generar</a>
+            </div>
+        </form>
+    </div>
     
     <div class="row">
         <div class="app-list">
@@ -87,37 +156,36 @@
                     <div class="card-content">
                         <span class="card-title black-text">Reportes</span>
                         <div class="row">
-                                <div class="app-item col s6 m6 l4">
-                                    <a href="#route_record_modal" class="modal-trigger">
-                                        <i class="material-icons">description</i>
-                                        <h6>Registro de ruta</h6>
-                                    </a>
-                                </div>
-                                <div class="app-item col s6 m6 l4">
-                                    <a href="#routes_modal" class="modal-trigger">
-                                        <i class="material-icons">description</i>
-                                        <h6>Rutas</h6>
-                                    </a>
-                                </div>
-                                <div class="app-item col s6 m6 l4">
-                                    <a href="#daily_routes_modal">
-                                        <i class="material-icons">description</i>
-                                        <h6>Rutas diarias</h6>
-                                    </a>
-                                </div>
-                                <div class="app-item col s6 m6 l4">
-                                    <a href="#no_attendance_modal">
-                                        <i class="material-icons">description</i>
-                                        <h6>Inasistencias</h6>
-                                    </a>
-                                </div>
                             <div class="app-item col s6 m6 l4">
-                                <a href="#max_managers_modal">
+                                <a href="#register_products" class="modal-trigger" style="padding: 10px 0 !important;">
                                     <i class="material-icons">description</i>
-                                    <h6>Alumnos con 3 acudientes</h6>
+                                    <h6 style="font-size: 0.9rem !important;">Productos realizados</h6>
                                 </a>
                             </div>
-
+                            <div class="app-item col s6 m6 l4">
+                                <a href="#number_services" class="modal-trigger" style="padding: 10px 0 !important;">
+                                    <i class="material-icons">description</i>
+                                    <h6 style="font-size: 0.9rem !important;">Número de servicios por establecimiento</h6>
+                                </a>
+                            </div>
+                            <div class="app-item col s6 m6 l4">
+                                <a href="#rating" style="padding: 10px 0 !important;">
+                                    <i class="material-icons">description</i>
+                                    <h6 style="font-size: 0.9rem !important;">Calificaciones de la plataforma</h6>
+                                </a>
+                            </div>
+                            <div class="app-item col s6 m6 l4">
+                                <a href="#sales" style="padding: 10px 0 !important;">
+                                    <i class="material-icons">description</i>
+                                    <h6 style="font-size: 0.9rem !important;">Ventas realizadas</h6>
+                                </a>
+                            </div>
+                            <div class="app-item col s6 m6 l4">
+                                <a href="#requests" style="padding: 10px 0 !important;">
+                                    <i class="material-icons">description</i>
+                                    <h6 style="font-size: 0.9rem !important;">Solicitudes realizadas</h6>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -128,10 +196,104 @@
 
 {% block extrajs %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.modal').modal();
-            $('.select2').select2();
+            axios.defaults.headers.common['Api-Key'] = '{{webclient_context_web_auth_token.key}}';
         });
+
+        $('.state-select-sales').on('change', function(){
+            axios.get('/api/manager/cities', {
+                params: {
+                    state_id: $(this).val()
+                }
+            })
+            .then(function (response) {
+                data = response.data
+                $('.city-select-sales').empty()
+                $.each( data, function( k, v ) {
+                    $('.city-select-sales').append(
+                        `<option value=${v.id}>${v.name}</option>`
+                    )
+                });
+                $('.city-select-sales').prepend(
+                    `<option selected disabled>Selecciona una ciudad</option>`
+                )
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        })
+
+        $('.city-select-sales').on('change', function(){
+            axios.get('/api/stock/stores', {
+                params: {
+                    city_id: $(this).val()
+                }
+            })
+            .then(function (response) {
+                data = response.data
+                $('.store-select-sales').empty()
+                $.each( data, function( k, v ) {
+                    $('.store-select-sales').append(
+                        `<option value=${v.id}>${v.name}</option>`
+                    )
+                });
+                $('.store-select-sales').prepend(
+                    `<option selected disabled>Selecciona un establecimiento</option>`
+                )
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        })
+
+        $('.state-select-request').on('change', function(){
+            axios.get('/api/manager/cities', {
+                params: {
+                    state_id: $(this).val()
+                }
+            })
+            .then(function (response) {
+                data = response.data
+                $('.city-select-request').empty()
+                $.each( data, function( k, v ) {
+                    $('.city-select-request').append(
+                        `<option value=${v.id}>${v.name}</option>`
+                    )
+                });
+                $('.city-select-request').prepend(
+                    `<option selected disabled>Selecciona una ciudad</option>`
+                )
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        })
+
+        $('.city-select-request').on('change', function(){
+            axios.get('/api/stock/stores', {
+                params: {
+                    city_id: $(this).val()
+                }
+            })
+            .then(function (response) {
+                data = response.data
+                console.log(data)
+                $('.store-select-request').empty()
+                $.each( data, function( k, v ) {
+                    $('.store-select-request').append(
+                        `<option value=${v.pk}>${v.name}</option>`
+                    )
+                });
+                $('.store-select-request').prepend(
+                    `<option selected disabled>Selecciona un establecimiento</option>`
+                )
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        })
     </script>
 {% endblock %}

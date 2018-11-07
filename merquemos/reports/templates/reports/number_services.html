@@ -1,0 +1,25 @@
+{% load humanize %}
+
+<style>
+    @page {
+        size: letter landscape;
+        margin: 2cm;
+    }
+    table {
+        width: 100%;
+        text-align: center;
+    }
+    table, th, td {
+        border: 1px solid #161616;
+    }
+    td {
+        padding: 3px;
+    }
+</style>
+<h1>Número de servicios prestados por {{store.name}}</h1>
+<h5>Fechas: Desde {{start_date}} hasta {{end_date}}</h5>
+
+<h2>NUMERO DE SERVICIOS: {{count}}</h2>
+<h4>Precio total sin IVA: ${{total_no_tax|intcomma}}</h4>
+<h4>Precio IVA: ${{total_tax|intcomma}}</h4>
+<h4>Precio Total IVA Incluido: ${{total_with_tax|intcomma}}</h4>

@@ -169,6 +169,7 @@ class Product(models.Model):
     discount_percentage = models.PositiveIntegerField(default=0)
     slug = models.SlugField(unique=True, null=True, blank=True)
     is_active = models.BooleanField(default=True)
+    date_added = models.DateField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Producto"
