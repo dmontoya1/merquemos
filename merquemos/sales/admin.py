@@ -31,7 +31,7 @@ class OrderAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">shopping_cart</i>'
     list_display = ('pk', 'user', 'status', 'comments', total,)
     list_filter = ('status',)
-    readonly_fields = ('total',)
+    readonly_fields = ('total', 'date_added')
     search_fields = ['user__email', 'user__username']
     inlines = [
         ItemInline,
@@ -51,4 +51,7 @@ admin.site.register(Rating, RatingAdmin)
 
 class DeliveryOrderAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">local_shipping</i>'
+
+    readonly_fields = ('address', )
+    
 admin.site.register(DeliveryOrder, DeliveryOrderAdmin)

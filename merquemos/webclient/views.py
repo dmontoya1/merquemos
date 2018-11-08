@@ -152,13 +152,17 @@ class SearchView(ListView):
     def get_queryset(self):
         store_id = self.request.session.get('store', None)
         store = Store.objects.get(pk=store_id)
+        print self.request.GET
+        print store
         q = Product.objects.filter(
             name__icontains=self.request.GET.get('q', ''),
             store=store,
             is_active=True
         )
+        print q
         if self.request.GET.get('category', None):
-            q = q.filter(category__pk=self.request.GET['category'])
+            q = q.filter(category__parent__pk=self.request.GET['category'])
+        print q
         return q
 
 

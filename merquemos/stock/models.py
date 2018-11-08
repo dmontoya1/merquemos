@@ -156,7 +156,7 @@ class Category(models.Model):
 class Product(models.Model):
     store = models.ForeignKey(Store)
     brand = models.ForeignKey(BrandStore)
-    category = models.ForeignKey(Category, related_name='related_products')  
+    category = models.ForeignKey(Category, related_name='related_products')
     sku = models.CharField(max_length=255)
     barcode = models.TextField(null=True, blank=True)
     name = models.CharField(max_length=255, unique=True)
