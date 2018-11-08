@@ -158,7 +158,7 @@ class SearchView(ListView):
             is_active=True
         )
         if self.request.GET.get('category', None):
-            q = q.filter(category__pk=self.request.GET['category'])
+            q = q.filter(category__parent__pk=self.request.GET['category'])
         return q
 
 

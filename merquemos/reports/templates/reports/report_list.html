@@ -237,7 +237,7 @@
                 $('.store-select-sales').empty()
                 $.each( data, function( k, v ) {
                     $('.store-select-sales').append(
-                        `<option value=${v.id}>${v.name}</option>`
+                        `<option value=${v.pk}>${v.name}</option>`
                     )
                 });
                 $('.store-select-sales').prepend(

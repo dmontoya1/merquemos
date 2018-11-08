@@ -33,9 +33,9 @@
             <tr>
                 <td>{{o.get_store_name}}</td>
                 <td>{{o.id}}</td>
-                <td>{{o.rating.date_added|default:"Sin Fecha"}}</td>
+                <td>{{o.date_added|default:"Sin Fecha"}}</td>
                 <td>{{o.get_status_display}}</td>
-                <td>${{o.user.get_total_without_delivery|intcomma|default:"Sin precio"}}</td>
+                <td>${{o.get_total_without_delivery|intcomma|default:"Sin precio"}}</td>
                 <td>{{o.user.username}}</td>
                 <td>{{o.user.email}}</td>
             </tr>
