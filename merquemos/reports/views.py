@@ -91,7 +91,6 @@ class ReportView(TemplateView):
                 related_items__product__store=store,
                 date_added__gte=start_date, 
                 date_added__lte=end_date,
-                city=city,
                 status='DE'
             )
              
