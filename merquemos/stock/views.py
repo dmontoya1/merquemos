@@ -19,7 +19,8 @@ from .serializers import (
     ProductSerializer,
     BrandSerializer,
     BrandStoreSerializer,
-    InventorySerializer
+    InventorySerializer,
+    ProductDeleteSerializer
 )
 
 
@@ -152,6 +153,17 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
 
     serializer_class = ProductSerializer
     queryset = Product.objects.filter(is_active=True)
+
+
+class ProductDelete(generics.DestroyAPIView):
+    """Elimina un producto
+    """
+
+    serializer_class = ProductDeleteSerializer
+    queryset = Product.objects.filter(is_active=True)
+    lookup_field = 'sku'
+    lookup_url_kwarg = 'sku'
+
 
 class BrandDetail(generics.RetrieveUpdateDestroyAPIView):
     """Obtiene el detalle de una marca 

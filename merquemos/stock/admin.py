@@ -44,6 +44,7 @@ class InventoryInline(admin.StackedInline):
 class ProductAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">storage</i>'
     list_display = ('sku', 'name', 'brand', 'store', 'category', 'price', 'tax_percentage', 'size', 'stock_quantity')
+    search_fields = ('sku', 'name',)
     readonly_fields = ('stock_quantity', 'slug')
     list_filter = ('store', 'category')
     inlines = [
