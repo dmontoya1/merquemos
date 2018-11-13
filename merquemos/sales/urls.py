@@ -3,7 +3,7 @@ from django.contrib import admin
 from .views import (
     CurrentOrderDetail, ItemCreate, OrderList,
     CurrentOrderItems, ItemDetail, OrderDetail, checkout,
-    RatingCreate, order_cancellation
+    RatingCreate, order_cancellation, OrderItems
 )
 
 urlpatterns = [
@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^current-order/items/$', CurrentOrderItems.as_view(), name="current-order-items"),
     url(r'^orders/$', OrderList.as_view(), name="order-list"),
     url(r'^order/(?P<pk>[0-9]+)/$', OrderDetail.as_view(), name="order-detail"),
+    url(r'^order/(?P<pk>[0-9]+)/items/$', OrderItems.as_view(), name="order-items"),
     url(r'^item/$', ItemCreate.as_view(), name="item-create"),
     url(r'^item/(?P<pk>[0-9]+)/$', ItemDetail.as_view(), name="item-detail"),
     url(r'^checkout/$', checkout, name="checkout"),

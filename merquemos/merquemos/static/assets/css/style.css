@@ -256,7 +256,7 @@ table.layout {
 
 img {
   height: auto;
-  max-width: 100%;
+  max-width: 90%;
   display: block;
 }
 
@@ -1629,7 +1629,7 @@ li.product .loop-product-categories, .section-onsale-product .onsale-product .lo
     color: #878787; }
     li.product .loop-product-categories a:focus, .section-onsale-product .onsale-product .loop-product-categories a:focus, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .loop-product-categories a:focus, .products-carousel .owl-item .product .loop-product-categories a:focus, li.product .loop-product-categories a:hover, .section-onsale-product .onsale-product .loop-product-categories a:hover, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .loop-product-categories a:hover, .products-carousel .owl-item .product .loop-product-categories a:hover {
       text-decoration: none;
-      color: #333; }
+      color: #333;}
 
 li.product a, .section-onsale-product .onsale-product a, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content a, .products-carousel .owl-item .product a {
   color: #0062bd; }
@@ -1651,7 +1651,9 @@ li.product .product-thumbnail, .section-onsale-product .onsale-product .product-
   float: left;
   height: 0; }
   li.product .product-thumbnail img, .section-onsale-product .onsale-product .product-thumbnail img, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .product-thumbnail img, .products-carousel .owl-item .product .product-thumbnail img {
-    transform-style: flat; }
+    transform-style: flat; 
+    margin: 0 auto; }
+    
 
 li.product .product-rating, .section-onsale-product .onsale-product .product-rating, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .product-rating, .products-carousel .owl-item .product .product-rating {
   clear: both;
@@ -4142,7 +4144,10 @@ div.quantity.buttons_added {
     width: 100%; }
     @media (min-width: 992px) {
       .features-list.columns-5 .feature {
-        width: 20%; } }
+        width: 20%; }
+        li.product .product-thumbnail img, .section-onsale-product .onsale-product .product-thumbnail img, .section-onsale-product-carousel .onsale-product-carousel .onsale-product .onsale-product-content .product-thumbnail img, .products-carousel .owl-item .product .product-thumbnail img {
+          max-height: 140px;}
+      }
 
 /*===================================================================================*/
 /*  Ads Block

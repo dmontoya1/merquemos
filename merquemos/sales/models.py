@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from datetime import datetime
+
 from django.conf import settings
 from django.db import models
 from django.db.models import Sum
@@ -20,17 +22,36 @@ class Order(models.Model):
         ('CA', 'Cancelada'),
         ('DE', 'Entregada')
     )
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="related_orders")
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name="related_orders",
+        verbose_name='Usuario'
+    )
     delivery_price = models.DecimalField(
+        'Precio del domicilio',
         max_digits=10,
         decimal_places=2,
         default=0,
         null=True,
         blank=True
     )
-    status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='PE')
-    last_status_date = models.DateTimeField(auto_now_add=True)
-    comments = models.TextField(null=True, blank=True)
+    status = models.CharField(
+        'Estado',
+        max_length=2,
+        choices=STATUS_CHOICES,
+        default='PE'
+    )
+    last_status_date = models.DateTimeField(
+        'Fecha de última actualización de estado',
+        auto_now_add=True
+    )
+    comments = models.TextField(
+        'Comentarios',
+        null=True, 
+        blank=True
+    )
+    date_added = models.DateField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Orden de compra"
@@ -41,20 +62,23 @@ class Order(models.Model):
     
     def save(self, *args, **kwargs):
         devices = FCMDevice.objects.filter(user=self.user)
-        if self.status == "CA" or self.status == "DE" or self.status == "SH":
-            data ={
-                "order_id": self.pk,
-                "order_status": self.status
-            }
-            if devices.count() > 0:
-                devices.send_message(
-                    title="Tu orden de Merquemos",
-                    body="Tu orden ha sido " + self.get_status_display().lower(),
-                    icon="",
-                    data=data
-                )
-            client = Client(settings.CENTRIFUGE_ADDRESS, settings.CENTRIFUGE_SECRET, timeout=1)
-            client.publish("private:{}#{}".format(self.user.private_hash, self.user.pk), data)
+        try:
+            if self.status == "CA" or self.status == "DE" or self.status == "SH":
+                data ={
+                    "order_id": self.pk,
+                    "order_status": self.status
+                }
+                if devices.count() > 0:
+                    devices.send_message(
+                        title="Tu orden de Merquemos",
+                        body="Tu orden ha sido " + self.get_status_display().lower(),
+                        icon="",
+                        data=data
+                    )
+                client = Client(settings.CENTRIFUGE_ADDRESS, settings.CENTRIFUGE_SECRET, timeout=1)
+                client.publish("private:{}#{}".format(self.user.private_hash, self.user.pk), data)
+        except:
+            pass
         super(Order, self).save(*args, **kwargs)
 
     def get_rating(self):
@@ -89,11 +113,13 @@ class Order(models.Model):
         for item in self.get_items():
             tax = item.get_tax_value()
             total = total + tax
-        print total
         return total
     
     def get_total_with_tax(self):
         return self.get_total_no_tax() + self.get_total_tax() + self.get_delivery_price()
+
+    def get_total_without_delivery(self):
+        return self.get_total_no_tax() + self.get_total_tax()
 
     def get_delivery_price(self):
         if self.has_items():
@@ -103,23 +129,45 @@ class Order(models.Model):
                 return self.delivery_price
         return 0
 
+    @property
+    def get_store_id(self):
+        if self.has_items():
+            return self.related_items.last().product.store.id
+        return False
+    
+    @property
+    def get_store_name(self):
+        if self.has_items():
+            return self.related_items.last().product.store.name
+        return "Sin establecimiento"
+
 class Item(models.Model):
-    product = models.ForeignKey(Product)
-    order = models.ForeignKey(Order, related_name="related_items")
-    quantity = models.PositiveIntegerField()
+    product = models.ForeignKey(
+        Product,
+        verbose_name='Producto'
+    )
+    order = models.ForeignKey(
+        Order,
+        related_name="related_items",
+        verbose_name='Orden'
+    )
+    quantity = models.PositiveIntegerField('Cantidad')
     tax_percentage = models.DecimalField(
+        'Porcentaje de impuestos',
         max_digits=10,
         decimal_places=2,
         null=True,
         blank=True
     )
     price = models.DecimalField(
+        'Precio',
         max_digits=10,
         decimal_places=2,
         null=True,
         blank=True
     )
     total = models.DecimalField(
+        'Total',
         max_digits=10,
         decimal_places=2,
         null=True,
@@ -146,6 +194,7 @@ class Rating(models.Model):
     order = models.OneToOneField(Order)
     number = models.PositiveIntegerField(default=0)
     comments = models.TextField(null=True, blank=True)
+    date_added = models.DateField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Reseña de compra"

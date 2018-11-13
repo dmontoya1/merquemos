@@ -15,6 +15,7 @@ class StoreParameterInline(admin.StackedInline):
 
 class StoreAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">store</i>'
+    readonly_fields = ('slug', )
     inlines = [
         StoreParameterInline,
     ]
@@ -23,6 +24,7 @@ admin.site.register(Store, StoreAdmin)
 class CategoryAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">layers</i>'
     list_display = ('name', 'parent')
+    readonly_fields = ('slug', )
 admin.site.register(Category, CategoryAdmin)
 
 class BrandAdmin(admin.ModelAdmin):
@@ -42,7 +44,8 @@ class InventoryInline(admin.StackedInline):
 class ProductAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">storage</i>'
     list_display = ('sku', 'name', 'brand', 'store', 'category', 'price', 'tax_percentage', 'size', 'stock_quantity')
-    readonly_fields = ('stock_quantity',)
+    search_fields = ('sku', 'name',)
+    readonly_fields = ('stock_quantity', 'slug')
     list_filter = ('store', 'category')
     inlines = [
         InventoryInline,

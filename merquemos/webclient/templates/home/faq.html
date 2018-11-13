@@ -1,0 +1,22 @@
+{% extends 'webclient/base.html' %}
+{% load static %}
+{% block content%}
+<div id="primary" class="content-area">
+    <main id="main" class="site-main">
+    <br>
+        <h2 style="text-align:center;">Preguntas Frecuentes</h2>
+        <br>
+        {% for c in categories %}
+        
+            <h4 style="text-align:center;"><strong>{{c.name}}</strong></h4>
+            <br>
+            {% for i in c.faqitem_set.all %}
+                <strong><p>{{i.question}}</p></strong>
+                <p>{{i.answer}}</p>
+                <br>
+            {% endfor %}
+        {% endfor %}
+        <br> <br> <br>
+    </main>
+</div>
+{% endblock %}

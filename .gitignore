@@ -1,4 +1,6 @@
 *.pyc
 *.sqlite3
 .vscode/*
-!.vscode/settings.json
+media
+
+.vscode/settings.json

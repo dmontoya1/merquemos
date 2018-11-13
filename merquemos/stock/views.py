@@ -8,12 +8,19 @@ from api.paginators import PageLimitPagination
 from .models import (
     Store,
     Category,
-    Product
+    Product,
+    Brand,
+    BrandStore,
+    Inventory
 )
 from .serializers import (
     StoreSerializer,
     CategorySerializer,
-    ProductSerializer
+    ProductSerializer,
+    BrandSerializer,
+    BrandStoreSerializer,
+    InventorySerializer,
+    ProductDeleteSerializer
 )
 
 
@@ -40,11 +47,38 @@ class StoreList(generics.ListCreateAPIView):
     serializer_class = StoreSerializer
 
     def get_queryset(self):
-        queryset = Store.objects.all()
+        queryset = Store.objects.filter(is_active=True)
         city_id = self.request.query_params.get('city_id')
         if city_id:
             queryset = queryset.filter(city__pk=city_id)
         return queryset
+
+class BrandList(generics.ListCreateAPIView):
+    """Obtiene el listado de marcas de la plataforma.
+    """
+
+    serializer_class = BrandSerializer
+    queryset = Brand.objects.all()
+
+class BrandStoreList(generics.ListCreateAPIView):
+    """Obtiene el listado de marcas por tienda. Se filtra la tienda por el parámetro GET 'store_id'
+    """
+
+    serializer_class = BrandStoreSerializer
+    
+    def get_queryset(self):
+        queryset = BrandStore.objects.all()
+        store_id = self.request.query_params.get('store_id')
+        if store_id:
+            queryset = queryset.filter(store__pk=store_id)
+        return queryset
+
+class InventoryList(generics.ListCreateAPIView):
+    """Obtiene el listado de inventarios de la plataforma
+    """
+
+    serializer_class = InventorySerializer
+    queryset = Inventory.objects.all()
 
 class StoreDetail(generics.RetrieveUpdateDestroyAPIView):
     """Obtiene el detalle de una tienda  de la plataforma.
@@ -64,15 +98,22 @@ class CategoryList(RequiredParametersMixin, generics.ListCreateAPIView):
     required_parameters = ['store_id']
 
     def get_queryset(self):
-        queryset = Category.objects.all().filter(parent=None)
+        queryset = Category.objects.filter(parent=None, is_active=True)
         store = Store.objects.get(pk=self.request.query_params.get('store_id'))
         parent_category_id = self.request.query_params.get('parent_category_id')
         if parent_category_id is not None:
-            queryset = Category.objects.all().filter(parent__pk=parent_category_id)
+            queryset = Category.objects.filter(parent__pk=parent_category_id, is_active=True)
         for category in queryset:
             if category.get_related_products(store=store).count() == 0:
                 queryset = queryset.exclude(pk=category.pk)
         return queryset
+
+class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+    """Obtiene el detalle de una categoria.
+    """
+
+    serializer_class = CategorySerializer
+    queryset = Category.objects.filter(is_active=True)
 
 class ProductList(RequiredParametersMixin, generics.ListCreateAPIView):
     """Obtiene el listado de productos, filtrados por categoría y
@@ -87,7 +128,7 @@ class ProductList(RequiredParametersMixin, generics.ListCreateAPIView):
     required_parameters = ['store_id', 'limit']
 
     def get_queryset(self):
-        queryset = Product.objects.all()
+        queryset = Product.objects.filter(is_active=True)
         
         store_id = self.request.query_params.get('store_id')
         queryset = queryset.filter(store__pk=store_id)
@@ -111,6 +152,30 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     """
 
     serializer_class = ProductSerializer
-    queryset = Product.objects.all()
+    queryset = Product.objects.filter(is_active=True)
 
+
+class ProductDelete(generics.DestroyAPIView):
+    """Elimina un producto
+    """
+
+    serializer_class = ProductDeleteSerializer
+    queryset = Product.objects.filter(is_active=True)
+    lookup_field = 'sku'
+    lookup_url_kwarg = 'sku'
+
+
+class BrandDetail(generics.RetrieveUpdateDestroyAPIView):
+    """Obtiene el detalle de una marca 
+    """
+
+    serializer_class = BrandSerializer
+    queryset = Brand.objects.all()
+
+class BrandStoreDetail(generics.RetrieveUpdateDestroyAPIView):
+    """Obtiene el detalle de una marca por tienda.
+    """
+
+    serializer_class = BrandStoreSerializer
+    queryset = BrandStore.objects.all()
 

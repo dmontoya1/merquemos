@@ -63,5 +63,5 @@ class Address(models.Model):
         ordering = ['-pk']
 
     def __str__(self):
-        return str(self.label)
+        return "{} ({})".format(self.label, self.directions)
 
