@@ -10122,3 +10122,25 @@ header {
 .address-list li span {
   margin-bottom: .5em;
 }
+
+.paginated {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-prod {
+  display: inline-block;
+}
+
+.pagination-prod a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination-prod a.active {
+  background-color: #bb5354;;
+  color: white;
+}
