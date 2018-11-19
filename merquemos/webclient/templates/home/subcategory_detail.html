@@ -1,0 +1,56 @@
+{% extends 'webclient/base.html' %}
+{% load static %}
+{% load webclientextras %}
+{% load humanize %}
+
+{% block content %}
+<div id="primary" class="content-area">
+    <main id="main" class="site-main"> 
+        <br>
+        <section class="products-carousel-tabs animate-in-view fadeIn animated" data-animation="fadeIn">
+            <h2 class="sr-only">Categorias</h2>
+            <ul class="nav nav-inline text-xs-left">
+                <li class="nav-item">
+                    <a class="nav-link active">{{category.name}}</a>
+                </li>                         
+            </ul>
+        </section><!-- /.products-carousel-tabs -->
+        <section class="products-6-1 animate-in-view fadeIn animated" data-animation="fadeIn">
+            <div class="container">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">  
+                        <ul class="products columns-6">
+                            {% for product in products %}
+                                {% include 'product/product_list_detail.html' %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% if is_paginated %}
+                <div class="paginated">
+                    <ul class="pagination-prod">
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                        {% else %}
+                            <a class="disabled"><span>&laquo;</span></a>
+                        {% endif %}
+                        {% for i in paginator.page_range %}
+                            {% if page_obj.number == i %}
+                                <a class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></a>
+                            {% else %}
+                                <a href="?page={{ i }}">{{ i }}</a>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+                        {% else %}
+                            <a class="disabled"><span>&raquo;</span></a>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+    </main><!-- #main -->
+</div><!-- #primary -->
+{% endblock %}

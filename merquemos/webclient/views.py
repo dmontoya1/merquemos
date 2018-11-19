@@ -146,6 +146,29 @@ class CategoryView(DetailView):
         return context
 
 
+class SubCategoryView(ListView):
+    model = Product
+    template_name = 'home/subcategory_detail.html'
+    context_object_name = 'products'
+    paginate_by = 18
+
+    def get_queryset(self):
+        products = Product.objects.filter(
+            store__slug=self.kwargs.get('store_slug'),
+            category__slug=self.kwargs.get('slug')
+        ).order_by('pk')
+        return products
+
+    def get_context_data(self, **kwargs):
+        context = super(SubCategoryView, self).get_context_data(**kwargs)
+        store_id = self.request.session.get('store', None)
+        store = Store.objects.get(pk=store_id)
+        category = Category.objects.get(slug=self.kwargs.get('slug'))
+        context['store'] = store
+        context['category'] = category
+        return context
+
+
 class SearchView(ListView):
     template_name = 'home/search_result.html'
 
