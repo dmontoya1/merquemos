@@ -155,14 +155,21 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.filter(is_active=True)
 
 
-class ProductDelete(generics.DestroyAPIView):
+class ProductDetailERP(generics.RetrieveUpdateDestroyAPIView):
     """Elimina un producto
     """
 
-    serializer_class = ProductDeleteSerializer
+    serializer_class = ProductSerializer
     queryset = Product.objects.filter(is_active=True)
-    lookup_field = 'sku'
-    lookup_url_kwarg = 'sku'
+
+    def get_object(self):
+        store = Store.objects.get(pk=self.kwargs['store_id'])
+        sku = self.kwargs['sku']
+        obj = Product.objects.get(
+            store__pk=self.kwargs['store_id'], 
+            sku=self.kwargs['sku']
+        )
+        return obj
 
 
 class BrandDetail(generics.RetrieveUpdateDestroyAPIView):
