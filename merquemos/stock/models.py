@@ -161,7 +161,7 @@ class Product(models.Model):
     barcode = models.TextField(null=True, blank=True)
     name = models.CharField(max_length=255, unique=True,)
     description = models.TextField()
-    image = models.ImageField(upload_to="stock/products/images/", blank=True, null=True)
+    image = models.ImageField(upload_to="stock/products/images/", default="logo.png")
     tax_percentage = models.DecimalField(max_digits=10, decimal_places=2)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     size = models.CharField(max_length=255)

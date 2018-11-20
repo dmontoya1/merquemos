@@ -47,7 +47,7 @@
         
 
         {% for category in webclient_context_categories %}
-            {% get_filtered_products object category as filtered_products %} 
+            {% get_5_filtered_products object category as filtered_products %} 
             {% if filtered_products.count > 0 %}
                 <section class="products-carousel-tabs animate-in-view fadeIn animated" data-animation="fadeIn">
                     <h2 class="sr-only">Categorias</h2>
