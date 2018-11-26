@@ -4,6 +4,7 @@ from api.helpers import get_api_user
 from stock.serializers import ProductSerializer
 from users.serializers import AddressSerializer
 
+from users.serializers import UserSerializer
 from .models import Order, Item, Rating, DeliveryOrder
 
 
@@ -11,10 +12,11 @@ class OrderSerializer(serializers.ModelSerializer):
     item_quantity = serializers.IntegerField(source='get_item_quantity', read_only=True)
 
     store_id = serializers.ReadOnlyField(source='get_store_id')
+    user = UserSerializer(many=False, read_only=True)
 
     class Meta:
         model = Order
-        fields = ('pk', 'item_quantity', 'status', 'store_id')
+        fields = ('pk', 'item_quantity', 'status', 'store_id', 'user')
 
 class ItemSerializer(serializers.ModelSerializer):
     order = serializers.CharField(required=False)
@@ -78,19 +80,21 @@ class DeliveryOrderSerializer(serializers.ModelSerializer):
 
 class OrderDetailSerializer(OrderItemSerializer):
     delivery_order = DeliveryOrderSerializer(many=False, read_only=True)
+    user = UserSerializer(many=False, read_only=True)
 
     class Meta:
         model = Order
-        fields = ('pk', 'items', 'total_no_tax', 'total_tax', 'delivery_price', 'total_with_tax', 'delivery_order', 'status')
+        fields = ('pk', 'user', 'items', 'total_no_tax', 'total_tax', 'delivery_price', 'total_with_tax', 'delivery_order', 'status')
 
 class OrderHistorySerializer(OrderItemSerializer):
     store_logo = serializers.SerializerMethodField()
     formated_last_status_date = serializers.DateTimeField(format="%Y-%m-%d", source="last_status_date", read_only=True)
     rating = serializers.IntegerField(source="get_rating", read_only=True)
+    user = UserSerializer(many=False, read_only=True)
 
     class Meta:
         model = Order
-        fields = ('pk', 'formated_last_status_date', 'status', 'store_logo', 'rating', 'total_with_tax')
+        fields = ('pk', 'formated_last_status_date', 'status', 'store_logo', 'rating', 'total_with_tax', 'user')
     
     def get_store_logo(self, obj):
         if obj.related_items.all().count() > 0:
