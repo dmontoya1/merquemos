@@ -25,10 +25,12 @@ class AddressCreateSerializer(serializers.ModelSerializer):
         fields = ('user', 'city', 'name', 'phone_number', 'label', 'directions')
 
 class UserSerializer(serializers.ModelSerializer):
+
+    related_addresses = AddressSerializer(many=True, read_only=True)
     
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email', 'phone_number')
+        fields = ('first_name', 'last_name', 'email', 'phone_number', 'related_addresses')
 
 class PasswordChangeSerializer(serializers.Serializer):
     old_password = serializers.CharField(max_length=128)
