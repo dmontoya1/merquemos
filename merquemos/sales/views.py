@@ -38,7 +38,6 @@ class CurrentOrderDetail(generics.ListAPIView):
 
     def get(self, request, format=None):
         user = get_api_user(request)
-        base_order = None
         if request.GET.get('base_order', None):
             base_order = Order.objects.get(pk=request.GET['base_order'])
             Order.objects.filter(user=user, status='PE').delete()
@@ -47,7 +46,7 @@ class CurrentOrderDetail(generics.ListAPIView):
             )
             order.save()
             for item in base_order.get_items():
-                if item.product.stock_quantity > 0:
+                if item.product.is_active:
                     new_item = Item(
                         product=item.product,
                         order=order,
