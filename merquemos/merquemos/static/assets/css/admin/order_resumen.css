@@ -1,0 +1,21 @@
+
+.container-fluid {
+    width: 85%;
+}
+
+.row.user-data {
+    border: 1px solid #999;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+span.data-title {
+    display: block;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+span.data-value {
+    font-size: 1em;
+    font-weight: 500;
+}

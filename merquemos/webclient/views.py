@@ -236,3 +236,8 @@ def custom_404(request):
         'webclient/404.html',
         status=None
     )
+
+
+class ExportOrder(TemplateView):
+
+    template_name = 'admin/order_resume.html'

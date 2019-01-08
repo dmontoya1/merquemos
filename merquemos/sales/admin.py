@@ -8,6 +8,16 @@ from .models import (
 )
 
 
+class DeliveryOrderAdmin(admin.TabularInline):
+
+    model = DeliveryOrder
+    readonly_fields = ('address', )
+    extra = 0
+
+    def has_add_permission(self, obj):
+        return False
+
+
 class ItemInline(admin.TabularInline):
     model = Item
     readonly_fields = ('product', 'quantity', 'tax_percentage', 'price', 'total')
@@ -25,7 +35,9 @@ class ItemInline(admin.TabularInline):
 
 def total(obj):
     return int(obj.get_total_with_tax())
+
 total.short_description = 'Total'
+
 
 class OrderAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">shopping_cart</i>'
@@ -34,7 +46,7 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('total', 'date_added')
     search_fields = ['user__email', 'user__username']
     inlines = [
-        ItemInline,
+        DeliveryOrderAdmin, ItemInline, 
     ]
 
     def total(self, obj):
@@ -49,9 +61,3 @@ class RatingAdmin(admin.ModelAdmin):
 admin.site.register(Rating, RatingAdmin)
 
 
-class DeliveryOrderAdmin(admin.ModelAdmin):
-    icon = '<i class="material-icons">local_shipping</i>'
-
-    readonly_fields = ('address', )
-    
-admin.site.register(DeliveryOrder, DeliveryOrderAdmin)

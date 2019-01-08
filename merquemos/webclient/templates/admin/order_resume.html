@@ -1,0 +1,109 @@
+{% load static %}
+{% load humanize %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'assets/css/admin/order_resumen.css' %}">
+        <title>Orden de Compra</title>
+    </head>
+    <body>
+        <div class="container-fluid mt-5">
+            <div class="row title">
+                <h1>Orden de compra #1</h1>
+            </div>
+            <div class="row user-data my-4">
+                <div class="col-md-6">
+                    <span class="data-title">Nombres:</span><span class="data-value">Daniel</span><hr>
+                    <span class="data-title">Apellidos:</span><span class="data-value">Montoya</span><hr>
+                    <span class="data-title">Metodo de pago:</span><span class="data-value">Efectivo</span><hr>
+                </div>
+                <div class="col-md-6">
+                    <span class="data-title">Numero telefonico:</span><span class="data-value">3103647622</span><hr>
+                    <span class="data-title">Direccion de entrega:</span><span class="data-value">Calle 80 # 32-64</span><hr>
+                    <span class="data-title">Datos extra:</span><span class="data-value">Conjunto Batara, Torre 3 Apto 406</span><hr>
+                </div>
+            </div>
+            <div class="row items-list mt-4">
+                <div class="col">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">SKU</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">% Impuestos</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">301074</th>
+                                <td>CREMA DENTAL TRIPLEACCION COLGATE 3UNDS.X100ML P.E</td>
+                                <td>1</td>
+                                <td>19</td>
+                                <td>$10.449</td>
+                                <td>$12.900</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">301077</th>
+                                <td>SUAVIZANTE DP FRESCA PRIMAVERA SUAVITEL X 430 ML.</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>$2.450</td>
+                                <td>$2.450</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">301099</th>
+                                <td>LECHE LIQUIDA ENTERA LARGA VI COLANTA MAXILX1100ML</td>
+                                <td>2</td>
+                                <td>18</td>
+                                <td>$2.200</td>
+                                <td>$2.200</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row total-price justify-content-end">
+                <div class="col-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td>$48.965</td>
+                            </tr>
+                            <tr>
+                                <td>Impuestos</td>
+                                <td>$6.325</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>$55.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+</html>

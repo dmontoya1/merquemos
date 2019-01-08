@@ -55,6 +55,7 @@ PROJECT_APPS = [
     'users',
     'sales',
     'reports',
+    'utils',
     'webclient'
 ]
 
