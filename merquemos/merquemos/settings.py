@@ -45,7 +45,8 @@ THIRD_PARTY_APPS = [
     'rest_auth.registration',
     'raven.contrib.django.raven_compat',
     'fcm_django',
-    'adjacent'
+    'adjacent',
+    'easy_pdf',
 ]
 
 PROJECT_APPS = [

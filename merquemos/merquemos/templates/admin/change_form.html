@@ -6,11 +6,13 @@
 {% block submit_buttons_bottom %}
     {{ block.super }} 
     <style>
-        input.export {
+        a.export {
             background-color: rgb(218, 104, 5);
             color: #fff;
+            padding: 9px 25px;
+            border-radius: 5px;
         }
-        input.export:hover {
+        a.export:hover {
             background-color: #eb8e3d;
             
         }
@@ -31,7 +33,7 @@
                 {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
                 <a href="{% add_preserved_filters delete_url %}" class="deletelink custom">Eliminar definitivamente</a>
                 {% if original|is_export_instance %}
-                    <input type="submit" class="export" value="EXPORTAR FACTURA" name="export-invoice" />
+                    <a href="/export/{{original.pk}}/" target="_blank" class="export" name="export-invoice">EXPORTAR FACTURA</a>
                 {% endif %}
             </p>        
         </div>
