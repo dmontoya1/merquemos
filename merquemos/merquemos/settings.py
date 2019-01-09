@@ -233,3 +233,5 @@ FCM_DJANGO_SETTINGS = {
 CENTRIFUGE_ADDRESS = 'http://localhost:8008'
 CENTRIFUGE_SECRET = 'f@pp#qe3b7)7uy27u094t8s1pq'
 CENTRIFUGE_TIMEOUT = 10
+
+JET_INDEX_DASHBOARD = 'custom_dashboard.IndexDashboard'
