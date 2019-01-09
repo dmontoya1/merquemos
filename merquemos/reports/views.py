@@ -7,8 +7,9 @@ import xlwt
 from django.db.models import Avg, Count, Min, Sum, F
 from django.http import HttpResponse
 from django.shortcuts import render
-from django_xhtml2pdf.utils import generate_pdf
 from django.views.generic import TemplateView
+
+from django_xhtml2pdf.utils import generate_pdf
 
 from manager.models import State, City
 from sales.models import Order

@@ -16,13 +16,13 @@
     <body>
         <div class="container-fluid mt-5">
             <div class="row title">
-                <h1>Orden de compra #1</h1>
+                <h1>Orden de compra #{{order.pk}}</h1>
             </div>
             <div class="row user-data my-4">
                 <div class="col-md-6">
-                    <span class="data-title">Nombres:</span><span class="data-value">Daniel</span><hr>
-                    <span class="data-title">Apellidos:</span><span class="data-value">Montoya</span><hr>
-                    <span class="data-title">Metodo de pago:</span><span class="data-value">Efectivo</span><hr>
+                    <span class="data-title">Nombres:</span><span class="data-value">{{order.user.first_name}}</span><hr>
+                    <span class="data-title">Apellidos:</span><span class="data-value">{{order.user.last_name}}</span><hr>
+                    <span class="data-title">Metodo de pago:</span><span class="data-value">{{order.delivery_order.get_payment_method_display}}</span><hr>
                 </div>
                 <div class="col-md-6">
                     <span class="data-title">Numero telefonico:</span><span class="data-value">3103647622</span><hr>

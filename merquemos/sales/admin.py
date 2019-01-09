@@ -2,13 +2,17 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from django.http import HttpResponse
+
+from django_xhtml2pdf.utils import generate_pdf
+
 from .models import (
     Order, Item, Rating,
     DeliveryOrder
 )
 
 
-class DeliveryOrderAdmin(admin.TabularInline):
+class DeliveryOrderAdmin(admin.StackedInline):
 
     model = DeliveryOrder
     readonly_fields = ('address', )
@@ -51,6 +55,24 @@ class OrderAdmin(admin.ModelAdmin):
 
     def total(self, obj):
         return int(obj.get_total_with_tax())
+
+    def response_change(self, request, obj):
+        """
+        """
+
+        opts = self.model._meta
+        custom_redirect = False
+
+        if "export-invoice" in request.POST:
+            context = {
+                'order': obj,
+            }
+            report_template_name = 'admin/order_resume.html'
+            response = HttpResponse(content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="factura.pdf"'
+            result = generate_pdf(report_template_name, file_object=response, context=context)
+            return response
+        return super(OrderAdmin, self).response_change(request, obj)
 
 admin.site.register(Order, OrderAdmin)
 

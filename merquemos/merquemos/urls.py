@@ -5,6 +5,8 @@ from django.contrib import admin
 from reports.views import ReportView 
 
 urlpatterns = [
+    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
+    url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
     url(r'^admin/', admin.site.urls),
     url(r'^admin/reports/$', ReportView.as_view(), name="admin-reports"),
     url(r'^', include('webclient.urls', namespace='webclient')),

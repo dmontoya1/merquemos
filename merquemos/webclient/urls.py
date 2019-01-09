@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^stores/(?P<store_city>[\w-]+)/(?P<store_slug>[\w-]+)/products/(?P<category_slug>[\w-]+)/(?P<slug>[\w-]+)/$', ProductView.as_view(), name='product'),
     url(r'^policies/terms/$', TermsView.as_view(), name="terms"),
     url(r'^policies/privacy/$', PrivacyPolicyView.as_view(), name="privacy-policy"),
-    url(r'^export/$', ExportOrder.as_view(), name="privacy-policy"),
+    url(r'^export/(?P<pk>[0-9])/$', ExportOrder.as_view(), name="privacy-policy"),
 ]

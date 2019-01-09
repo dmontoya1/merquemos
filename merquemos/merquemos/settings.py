@@ -18,8 +18,8 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 DJANGO_APPS = [
-    'material', #Third party app, needs to be before django.contrib.admin
-    'material.admin', #Third party app, needs to be before django.contrib.admin
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -188,6 +188,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "merquemos/static")
 ]
+STATIC_ROOT = 'static'
 
 
 # User uploades files
