@@ -17,7 +17,7 @@ try:
 except ImportError:
     from django.core.context_processors import csrf
 
-# from reports.dashboard_modules import ReportView
+from reports.dashboard_modules import Reports
 
 class IndexDashboard(Dashboard):
     columns = 3
@@ -25,7 +25,7 @@ class IndexDashboard(Dashboard):
     def init_with_context(self, context):
         self.available_children.append(modules.LinkList)
         self.available_children.append(modules.Feed)
-
+        
         site_name = get_admin_site_name(context)
         # append a link list module for "quick links"
         self.children.append(modules.LinkList(
@@ -40,36 +40,20 @@ class IndexDashboard(Dashboard):
                  reverse('%s:password_change' % site_name)],
                 [_('Log out'), reverse('%s:logout' % site_name)],
             ],
-            column=0,
+            column=2,
             order=0
         ))
+
 
         # append an app list module for "Applications"
         self.children.append(modules.AppList(
             _('Applications'),
             exclude=('auth.*',),
+            column=0,
+            order=0
+        ))
+        self.children.append(Reports(
+            'Reportes',
             column=1,
             order=0
-        ))
-
-        # append an app list module for "Administration"
-        self.children.append(modules.AppList(
-            _('Administration'),
-            models=('auth.*',),
-            column=2,
-            order=0
-        ))
-
-        # self.children.append(ReportView(
-        #     'Reportes',
-        #     column=1,
-        #     order=0
-        # ))
-
-        # append a recent actions module
-        self.children.append(modules.RecentActions(
-            _('Recent Actions'),
-            10,
-            column=0,
-            order=1
         ))

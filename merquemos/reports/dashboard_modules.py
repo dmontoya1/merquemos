@@ -10,8 +10,15 @@ from django.views.generic import TemplateView
 
 from jet.dashboard.modules import DashboardModule
 
+from manager.models import State, City
+from stock.models import Store
 
-class ReportView(DashboardModule):
+
+class Reports(DashboardModule):
 
     title = 'Reportes'
-    template_name = 'reports/report_list.html'
+    template = 'reports/report_list.html'
+
+    def init_with_context(self, context):
+        self.children = Store.objects.all()
+        self.states = State.objects.all()
