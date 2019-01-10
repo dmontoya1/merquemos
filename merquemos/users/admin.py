@@ -9,6 +9,7 @@ admin.site.unregister(Group)
 
 class AddressInline(admin.StackedInline):
     model = Address
+    extra = 0
 
 class UserAdmin(admin.ModelAdmin):
     inlines = [

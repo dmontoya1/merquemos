@@ -22,8 +22,8 @@ ALLOWED_HOSTS = [
 
 # Application definition
 DJANGO_APPS = [
-    'material', #Third party app, needs to be before django.contrib.admin
-    'material.admin', #Third party app, needs to be before django.contrib.admin
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,7 +49,8 @@ THIRD_PARTY_APPS = [
     'rest_auth.registration',
     'raven.contrib.django.raven_compat',
     'fcm_django',
-    'adjacent'
+    'adjacent',
+    'easy_pdf',
 ]
 
 PROJECT_APPS = [
@@ -59,6 +60,7 @@ PROJECT_APPS = [
     'users',
     'sales',
     'reports',
+    'utils',
     'webclient'
 ]
 
@@ -239,3 +241,5 @@ FCM_DJANGO_SETTINGS = {
 CENTRIFUGE_ADDRESS = 'http://www.merquemos.co/centrifugo/'
 CENTRIFUGE_SECRET = 'f@pp#qe3b7)7uy27u094t8s1pq'
 CENTRIFUGE_TIMEOUT = 10
+
+JET_INDEX_DASHBOARD = 'dashboard.IndexDashboard'

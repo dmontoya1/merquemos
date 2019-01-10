@@ -12,9 +12,10 @@ from fcm_django.models import FCMDevice
 
 from stock.models import Product
 from users.models import Address
+from utils.models import ExportModelMixin
 
 
-class Order(models.Model):
+class Order(ExportModelMixin):
     STATUS_CHOICES = (
         ('PE', 'Pendiente'),
         ('AC', 'Recibida'),
@@ -209,17 +210,17 @@ class DeliveryOrder(models.Model):
         ('PS', 'Datáfono'),
     )
     STATUS_CHOICES = (
-        ('RN', 'Running'),
-        ('DV', 'Delivered'),
-        ('CA', 'Cancelled'),
+        ('RN', 'En ejecución'),
+        ('DV', 'Entregado'),
+        ('CA', 'Cancelado'),
     )
 
     order = models.OneToOneField(Order, related_name="delivery_order")
-    payment_method = models.CharField(max_length=2, choices=PAYMENT_METHOD_CHOICES)
-    status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='RN')
-    address = models.ForeignKey(Address, null=True, blank=True)
-    extra_details = models.TextField(null=True, blank=True)
-    paid_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    payment_method = models.CharField('Método de pago', max_length=2, choices=PAYMENT_METHOD_CHOICES)
+    status = models.CharField('Estado', max_length=2, choices=STATUS_CHOICES, default='RN')
+    address = models.ForeignKey(Address, verbose_name='Dirección', null=True, blank=True)
+    extra_details = models.TextField('Datos extra', null=True, blank=True)
+    paid_amount = models.DecimalField('Valor pagado', max_digits=10, decimal_places=2, null=True, blank=True)
 
     class Meta:
         verbose_name = "Orden de entrega"

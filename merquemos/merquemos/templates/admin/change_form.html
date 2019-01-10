@@ -1,0 +1,41 @@
+{% extends 'admin/change_form.html' %}
+{% load static %}
+{% load i18n admin_urls %}
+{% load utils_extras %}
+
+{% block submit_buttons_bottom %}
+    {{ block.super }} 
+    <style>
+        a.export {
+            background-color: rgb(218, 104, 5);
+            color: #fff;
+            padding: 9px 25px;
+            border-radius: 5px;
+        }
+        a.export:hover {
+            background-color: #eb8e3d;
+            
+        }
+        .submit-row p.deletelink-box{
+            float: right;
+        }
+        .submit-row a.deletelink{
+            display: inline-block;
+        }
+        .submit-row a.deletelink:not(.custom){
+            display: none;
+        }
+    </style>
+    <div class="hidden object-info" data-id="{{original.pk}}" data-slug="{{original.slug}}" data-model="{{opts.model_name}}"></div>
+    {% if change %}
+        <div class="submit-row">
+            <p class="deletelink-box">
+                {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
+                <a href="{% add_preserved_filters delete_url %}" class="deletelink custom">Eliminar definitivamente</a>
+                {% if original|is_export_instance %}
+                    <a href="/export/{{original.pk}}/" target="_blank" class="export" name="export-invoice">EXPORTAR FACTURA</a>
+                {% endif %}
+            </p>        
+        </div>
+    {% endif %}
+{% endblock %}

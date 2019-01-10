@@ -49,6 +49,7 @@ class User(AbstractUser):
             return self.related_orders.get(status='SH')
         return None
 
+
 class Address(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="related_addresses")
     city = models.ForeignKey(City)

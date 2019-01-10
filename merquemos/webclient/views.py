@@ -10,6 +10,8 @@ from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
+from easy_pdf.views import PDFTemplateView
+
 from manager.models import City, AppPolicy, FAQCategory
 from sales.models import Order
 from stock.models import Store, Product, Category
@@ -236,3 +238,18 @@ def custom_404(request):
         'webclient/404.html',
         status=None
     )
+
+
+class ExportOrder(PDFTemplateView):
+# class ExportOrder(TemplateView):
+
+    template_name = 'admin/order_resume.html'
+
+    def get_context_data(self, **kwargs):
+        order = Order.objects.get(pk=self.kwargs.get('pk'))
+        return super(ExportOrder, self).get_context_data(
+            pagesize='Letter',
+            title='Factura Merquemos',
+            order=order,
+            **kwargs
+        )

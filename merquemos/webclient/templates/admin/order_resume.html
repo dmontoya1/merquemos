@@ -1,0 +1,149 @@
+{% extends "easy_pdf/base.html" %}
+
+{% load static %}
+{% load humanize %}
+
+{% block layout_style %}
+    <style type="text/css">
+        @page {
+            size: "A4";
+            margin-left: 1.5cm;
+            margin-right: 2.5cm;
+            margin-top: 2.5cm;
+            margin-bottom: 2cm;
+            /* @frame header {
+                -pdf-frame-content: page-header;
+                margin-top: 0.7cm;
+                margin-right: 2mm;
+                margin-bottom: 0cm;
+                margin-left: 1.2cm;
+            }
+            @frame footer {
+                -pdf-frame-content: page-footer;
+                bottom: 0cm;
+                margin-left: 1cm;
+                margin-right: 1cm;
+                height: 1cm;
+            } */
+        }
+    </style>
+{%endblock%}
+
+{% block extra_style %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: "Helvetica", "sans-serif";
+            color: #333333;
+        }
+        .container {
+            width: 85%;
+        }
+        .row.user-data {
+            border: 1px solid #999;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        span.data-title {
+            display: block;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        span.data-value {
+            font-size: 1em;
+            font-weight: 500;
+        }
+        .total-price {
+            margin-top: 50px;
+        }
+        tr.total {
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        table.table-bordered {
+            border: 1px solid #666 !important;
+            margin-top: 50px;
+        }
+    </style>
+{% endblock %}
+    
+{% block content %}
+    <div class="container mt-5" id="content">
+        <div class="row title">
+            <h1>Orden de compra #{{order.pk}}</h1>
+        </div>
+        <div class="row user-data my-4">
+            <div class="col-md-6">
+                <span class="data-title">Nombres:</span><span class="data-value">{{order.user.first_name}}</span><hr>
+                <span class="data-title">Apellidos:</span><span class="data-value">{{order.user.last_name}}</span><hr>
+                <span class="data-title">Metodo de pago:</span><span class="data-value">{{order.delivery_order.get_payment_method_display}}</span><hr>
+            </div>
+            <div class="col-md-6">
+                <span class="data-title">Numero telefonico:</span><span class="data-value">{{order.user.phone_number|default:"Sin teléfono"}}</span><hr>
+                <span class="data-title">Direccion de entrega:</span><span class="data-value">{{order.delivery_order.address}}</span><hr>
+                <span class="data-title">Datos extra:</span><span class="data-value">{{order.delivery_order.extra_details|default:"Sin datos extra"}}</span><hr>
+            </div>
+        </div>
+        <div class="row items-list mt-4">
+            <div class="col">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">SKU</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">% Impuestos</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in order.related_items.all %}
+                            <tr>
+                                <th scope="row">{{item.product.sku}}</th>
+                                <td>{{item.product.name}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>{{item.tax_percentage|floatformat:0|intcomma}}</td>
+                                <td>${{item.price|floatformat:0|intcomma}}</td>
+                                <td>${{item.total|floatformat:0|intcomma}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row total-price">
+            <div class="col-4">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Subtotal</td>
+                            <td>${{order.get_total_no_tax|floatformat:0|intcomma}}</td>
+                        </tr>
+                        <tr>
+                            <td>Impuestos</td>
+                            <td>${{order.get_total_tax|floatformat:0|intcomma}}</td>
+                        </tr>
+                        <tr>
+                            <td>Domicilio</td>
+                            <td>${{order.get_delivery_price|floatformat:0|intcomma}}</td>
+                        </tr>
+                        <tr class="total">
+                            <td>Total</td>
+                            <td>${{order.get_total_with_tax|floatformat:0|intcomma}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+{% endblock %}
