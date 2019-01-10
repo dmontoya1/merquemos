@@ -20,5 +20,5 @@ class Reports(DashboardModule):
     template = 'reports/report_list.html'
 
     def init_with_context(self, context):
-        self.children = Store.objects.all()
+        self.stores = Store.objects.all()
         self.states = State.objects.all()
