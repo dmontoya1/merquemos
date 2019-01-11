@@ -28,10 +28,13 @@
         .container {
             width: 100%;
         }
-        .row.user-data {
+        .user-data {
             border: 1px solid #999;
             padding: 25px;
             border-radius: 10px;
+        }
+        .col-md-6{
+            display: inline;
         }
         span.data-title {
             display: block;
@@ -74,7 +77,7 @@
         <div class="row title">
             <h1>Orden de compra #{{order.pk}}</h1>
         </div>
-        <div class="row user-data my-4">
+        <div class="user-data my-4">
             <div class="col-md-6">
                 <span class="data-title">Nombres:</span><span class="data-value">{{order.user.first_name}}</span><hr>
                 <span class="data-title">Apellidos:</span><span class="data-value">{{order.user.last_name}}</span><hr>
