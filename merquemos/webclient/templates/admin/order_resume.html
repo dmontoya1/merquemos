@@ -6,43 +6,35 @@
 {% block layout_style %}
     <style type="text/css">
         @page {
-            size: "A4";
+            size: letter;
             margin-left: 1.5cm;
             margin-right: 2.5cm;
             margin-top: 2.5cm;
             margin-bottom: 2cm;
-            /* @frame header {
-                -pdf-frame-content: page-header;
-                margin-top: 0.7cm;
-                margin-right: 2mm;
-                margin-bottom: 0cm;
-                margin-left: 1.2cm;
-            }
-            @frame footer {
-                -pdf-frame-content: page-footer;
-                bottom: 0cm;
-                margin-left: 1cm;
-                margin-right: 1cm;
-                height: 1cm;
-            } */
         }
+        @page {
+            margin: 2cm;
+        }
+        
     </style>
 {%endblock%}
 
 {% block extra_style %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
         body {
             font-family: "Helvetica", "sans-serif";
             color: #333333;
         }
         .container {
-            width: 85%;
+            width: 100%;
         }
-        .row.user-data {
+        .user-data {
             border: 1px solid #999;
             padding: 25px;
             border-radius: 10px;
+        }
+        .col-md-6{
+            display: inline;
         }
         span.data-title {
             display: block;
@@ -60,19 +52,32 @@
             font-size: 1.1em;
             font-weight: 600;
         }
-        table.table-bordered {
-            border: 1px solid #666 !important;
+        table {
+            width: 100%;
+            text-align: center;
             margin-top: 50px;
         }
+        table, th, td {
+            border: 1px solid #161616;
+        }
+        td {
+            padding: 3px;
+        }
+        .table-total-prices{
+            width: 50%;
+            float: right;
+        }
+        
     </style>
 {% endblock %}
     
 {% block content %}
-    <div class="container mt-5" id="content">
+    <div class="container" id="content">
+        <img src="http://merquemos.co/static/assets/images/logo_footer.png"  class="d-inline-block align-top" alt="">
         <div class="row title">
             <h1>Orden de compra #{{order.pk}}</h1>
         </div>
-        <div class="row user-data my-4">
+        <div class="user-data my-4">
             <div class="col-md-6">
                 <span class="data-title">Nombres:</span><span class="data-value">{{order.user.first_name}}</span><hr>
                 <span class="data-title">Apellidos:</span><span class="data-value">{{order.user.last_name}}</span><hr>
@@ -86,7 +91,7 @@
         </div>
         <div class="row items-list mt-4">
             <div class="col">
-                <table class="table table-bordered">
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">SKU</th>
@@ -114,7 +119,7 @@
         </div>
         <div class="row total-price">
             <div class="col-4">
-                <table class="table table-bordered">
+                <table class="table table-total-prices">
                     <thead>
                         <tr>
                             <th scope="col"></th>
