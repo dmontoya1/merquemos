@@ -145,3 +145,38 @@ class ReportView(TemplateView):
         start_date = request.POST['start']
         end_date = request.POST['end']
         return self.generate_pdf_report(request, report, start_date, end_date)
+
+
+class RegisteredProducts(TemplateView):
+    """
+    """
+
+    template_name = 'reports/products.html'
+
+
+class NumberServices(TemplateView):
+    """
+    """
+
+    template_name = 'reports/services.html'
+
+
+class Rating(TemplateView):
+    """
+    """
+
+    template_name = 'reports/system_rating.html'
+
+
+class Sales(TemplateView):
+    """
+    """
+
+    template_name = 'reports/system_sales.html'
+
+
+class Requests(TemplateView):
+    """
+    """
+
+    template_name = 'reports/system_requests.html'

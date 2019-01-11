@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^admin/reports/$', ReportView.as_view(), name="admin-reports"),
     url(r'^', include('webclient.urls', namespace='webclient')),
     url(r'^auth/', include('rest_auth.urls')),
+    url(r'^reports/', include('reports.urls', namespace='reports')),
     url(r'^auth/registration/', include('rest_auth.registration.urls')),
     url(r'^api/', include('api.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
