@@ -93,9 +93,9 @@
         <script>
             $(document).ready(function() {
                 axios.defaults.headers.common['Api-Key'] = '{{webclient_context_web_auth_token.key}}';
-                $('.state-select-sales').select2();
-                $('.city-select-sales').select2();
-                $('.store-select-sales').select2();
+                $('.state-select-request').select2();
+                $('.city-select-request').select2();
+                $('.store-select-request').select2();
             });
 
             $('.state-select-request').on('change', function(){
