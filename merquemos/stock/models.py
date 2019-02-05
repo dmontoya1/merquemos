@@ -14,25 +14,33 @@ from manager.models import City
 
 
 class Store(models.Model):
-    name = models.CharField(max_length=255, unique=True)
-    legal_id_number = models.CharField(max_length=255, unique=True)
-    logo = models.ImageField(upload_to="stock/stores/logos/")
-    city = models.ForeignKey(City, related_name="related_stores")
-    address = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=255)
+    name = models.CharField('Nombre', max_length=255, unique=True)
+    legal_id_number = models.CharField('NIT', max_length=255, unique=True)
+    manager = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name='Administrador',
+        related_name='store',
+        blank=True, null=True
+    )
+    logo = models.ImageField('logo', upload_to="stock/stores/logos/")
+    city = models.ForeignKey(City, verbose_name='Ciudad', related_name="related_stores")
+    address = models.CharField('Dirección', max_length=255)
+    phone_number = models.CharField('Número telefónico', max_length=255)
     app_cover = models.ImageField(
+        verbose_name='Imágen para Móvil',
         upload_to="stock/stores/app_covers/",
         null=True,
         blank=True
     )
     web_cover = models.ImageField(
+        verbose_name='Imágen para Web',
         upload_to="stock/stores/web_covers/",
         null=True,
         blank=True
     )
-    app_hex_code = models.CharField(max_length=10, null=True, blank=True)
+    app_hex_code = models.CharField('Código HEX color', max_length=10, null=True, blank=True)
     slug = models.SlugField(unique=True, null=True, blank=True)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField('Tienda activa?', default=True)
     
     class Meta:
         verbose_name = "Tienda"
@@ -102,7 +110,10 @@ class StoreHour(models.Model):
 
 class StoreParameter(models.Model):
     store = models.ForeignKey(Store, related_name='related_parameters')
-    delivery_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    delivery_price = models.DecimalField('Precio Domicilio', max_digits=10, decimal_places=2, default=0)
+
+    def __unicode__(self):
+        return "Parámetro de la tienda"
 
     class Meta:
         verbose_name = "Parámetro de tienda"
@@ -235,6 +246,3 @@ class Inventory(models.Model):
             self.product.save()
             super(Inventory, self).save(*args, **kwargs)
 
-
-
-    

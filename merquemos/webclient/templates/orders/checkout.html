@@ -167,37 +167,75 @@
             e.preventDefault();
             $('#che_submit').attr('disabled', true);
             $('#che_submit').val('Enviando...');
-            var jqxhr = $.post( "{% url 'sales:checkout' %}", $(this).serialize(), function(data) {
-                window.location.replace("/");
+            var price = "{{order.get_total_with_tax.normalize|intcomma}}"
+            swal({
+                title: 'Estas seguro?',
+                text: `Seguro quieres realizar tu pedido?. El valor total es de $${price}`,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#bb5353',
+                cancelButtonColor: '#999',
+                confirmButtonText: 'Si, realizar pedido',
+                cancelButtonText: 'Cancelar',
+                reverseButtons: true,
+            }).then((result) => {
+                if (result) {
+                    var jqxhr = $.post( "{% url 'sales:checkout' %}", $(this).serialize(), function(data) {
+                        window.location.replace("/");
+                    })
+                    .fail(function(data) {
+                        $('.validator').remove();
+                        $.each(data.responseJSON, function(key,value) {
+                            $('#che_' + key).after('<span class="red validator">'+ value +'</span>')
+                        }); 
+                    })
+                    .always(function(data) {
+                        $('#che_submit').attr('disabled', false);
+                        $('#che_submit').val('Realizar pedido');
+                    });
+                }
             })
-                .fail(function(data) {
-                    $('.validator').remove();
-                    $.each(data.responseJSON, function(key,value) {
-                        $('#che_' + key).after('<span class="red validator">'+ value +'</span>')
-                    }); 
-                })
-                .always(function(data) {
-                    $('#che_submit').attr('disabled', false);
-                    $('#che_submit').val('Realizar pedido');
-                });
+            .catch((result) => {
+                $('#che_submit').attr('disabled', false);
+                $('#che_submit').val('Realizar pedido');
+            });
         });
         $('#cancellation_form').on('submit', function(e) {
             e.preventDefault();
             $('#can_submit').attr('disabled', true);
             $('#can_submit').val('Cancelando...');
-            var jqxhr = $.post( "{% url 'sales:cancellation' %}", $(this).serialize(), function(data) {
-                window.location.replace("/");
+            swal({
+                title: 'Estas seguro?',
+                text: `Seguro quieres cancelar tu pedido?`,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#bb5353',
+                cancelButtonColor: '#999',
+                confirmButtonText: 'Si, cancelar pedido',
+                cancelButtonText: 'Volver',
+                reverseButtons: true,
+            }).then((result) => {
+                if (result) {
+                    var jqxhr = $.post( "{% url 'sales:cancellation' %}", $(this).serialize(), function(data) {
+                        window.location.replace("/");
+                    })
+                        .fail(function(data) {
+                            $('.validator').remove();
+                            $.each(data.responseJSON, function(key,value) {
+                                $('#can_' + key).after('<span class="red validator">'+ value +'</span>')
+                            }); 
+                        })
+                        .always(function(data) {
+                            $('#can_submit').attr('disabled', false);
+                            $('#can_submit').val('Cancelar');
+                        });
+                }
             })
-                .fail(function(data) {
-                    $('.validator').remove();
-                    $.each(data.responseJSON, function(key,value) {
-                        $('#can_' + key).after('<span class="red validator">'+ value +'</span>')
-                    }); 
-                })
-                .always(function(data) {
-                    $('#che_submit').attr('disabled', false);
-                    $('#che_submit').val('Cancelar');
-                });
+            .catch((result) => {
+                $('#can_submit').attr('disabled', false);
+                $('#can_submit').val('Cancelar');;
+            });
+            
         });
         $('.item-delete').on('click', function(e){
             e.preventDefault();
