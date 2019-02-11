@@ -215,7 +215,7 @@ EMAIL_HOST_PASSWORD = 'SG.wxhGWcCtRv-gYVkKA-cHtA.Fvti4Mcrid-IY7EkerFy6PoWoUwfoC5
 
 # Sentry Config
 RAVEN_CONFIG = {
-    'dsn': 'https://79c7c7b847f144ac806773d761810fd9:17bde4d4addb4494b1e8a32f2aed91a3@sentry.io/210686',
+    'dsn': 'https://e7a3800d1f6546d2999e3a658ba1d405:e8e87c77e875489c8531b6b67f397ed8@sentry.apptitud.com.co/5',
     'release': raven.fetch_git_sha(BASE_DIR),
 }
 
