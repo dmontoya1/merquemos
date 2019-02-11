@@ -160,11 +160,11 @@ def checkout(request):
 
     payment_method = request.POST['payment_method']
     delivery_option = request.POST['delivery_option']
-    try:
-        delivery_time = request.POST['delivery_time']
-    except:
+    delivery_time = request.POST['delivery_time']
+    if delivery_time == '':
         delivery_time = datetime.now()
-
+    print (delivery_time)
+    print ('TIMEEE')
     delivery_order = DeliveryOrder(
         order=order,
         address=address,
