@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from datetime import datetime
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -158,11 +159,18 @@ def checkout(request):
     address = Address.objects.get(pk=request.POST['address_id'])
 
     payment_method = request.POST['payment_method']
+    delivery_option = request.POST['delivery_option']
+    try:
+        delivery_time = request.POST['delivery_time']
+    except:
+        delivery_time = datetime.now()
 
     delivery_order = DeliveryOrder(
         order=order,
         address=address,
-        payment_method=payment_method
+        payment_method=payment_method,
+        delivery_option=delivery_option,
+        delivery_time=delivery_time,
     )
     delivery_order.save()
 
@@ -177,8 +185,6 @@ def checkout(request):
             "order_status": order.status
         }
     )
-    print devices
-
     return JsonResponse(
         {
             'detail': 'Compra aceptada satisfactoriamente'

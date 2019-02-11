@@ -12,6 +12,21 @@ from allauth.socialaccount.models import SocialAccount
 from manager.models import City
 
 class User(AbstractUser):
+
+    CLIENT = 'CL'
+    MANAGER = 'MG'
+
+    USER_TYPE = (
+        (CLIENT, 'Cliente'),
+        (MANAGER, 'Administrador Tienda')
+    )
+
+    user_type = models.CharField(
+        'Tipo de Usuario',
+        max_length=2,
+        choices=USER_TYPE,
+        default=CLIENT
+    )
     phone_number = models.CharField(
         max_length=15,
         blank=True,
@@ -25,7 +40,7 @@ class User(AbstractUser):
         verbose_name = "Usuario"
         verbose_name_plural = "Usuarios"
     
-    def __str__(self):
+    def __unicode__(self):
         if self.get_full_name() == "":
             return str(self.email)
         return str(self.get_full_name())
@@ -33,6 +48,8 @@ class User(AbstractUser):
     def save(self, *args, **kwargs):
         if not self.private_hash:
             self.private_hash = uuid.uuid4()
+        if self.user_type == self.MANAGER:
+            self.is_staff = True
         super(User, self).save(*args, **kwargs)
 
     def linked_social_account(self):

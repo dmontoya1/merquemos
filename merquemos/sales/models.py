@@ -24,6 +24,7 @@ class Order(ExportModelMixin):
         ('DE', 'Entregada')
     )
 
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name="related_orders",
@@ -53,6 +54,7 @@ class Order(ExportModelMixin):
         blank=True
     )
     date_added = models.DateField(auto_now_add=True)
+
 
     class Meta:
         verbose_name = "Orden de compra"
@@ -205,6 +207,14 @@ class Rating(models.Model):
         return str(self.pk)
 
 class DeliveryOrder(models.Model):
+    INMEDIATELY = 'IN'
+    PROGRAMMED = 'PM'
+
+    DELIVERY_CHOICES = (
+        (INMEDIATELY, 'Inmediato'),
+        (PROGRAMMED, 'Programado'),
+    )
+
     PAYMENT_METHOD_CHOICES = (
         ('CS', 'Efectivo'),
         ('PS', 'Datáfono'),
@@ -221,6 +231,18 @@ class DeliveryOrder(models.Model):
     address = models.ForeignKey(Address, verbose_name='Dirección', null=True, blank=True)
     extra_details = models.TextField('Datos extra', null=True, blank=True)
     paid_amount = models.DecimalField('Valor pagado', max_digits=10, decimal_places=2, null=True, blank=True)
+    delivery_option = models.CharField(
+        'Opción de entrega',
+        max_length=2,
+        choices=DELIVERY_CHOICES
+    )
+    delivery_time = models.DateTimeField(
+        'Tiempo de entrega',
+        auto_now=False,
+        auto_now_add=False,
+        blank=True, null=True
+    )
+
 
     class Meta:
         verbose_name = "Orden de entrega"
