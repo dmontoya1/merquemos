@@ -139,7 +139,7 @@ table.cart .actions .checkout-button,
 .customer-login-form .button,
 .btn-primary,
 input[type="submit"] {
-  color: #333e48;
+  color: #fff;
   background-color: #BB5353;
   border-color: #BB5353; }
   .widget_price_filter .price_slider_amount .button:hover,
