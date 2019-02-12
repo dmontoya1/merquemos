@@ -306,9 +306,7 @@
 
         $('#rating-service').on('submit', function(event){
             event.preventDefault();
-            console.log('submit')
             data = $( this ).serialize()
-            console.log(data)
             $.ajax({
                 url: "{% url 'sales:rating-create' %}",
                 type: 'POST',
