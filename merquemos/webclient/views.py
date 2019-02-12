@@ -241,7 +241,6 @@ def custom_404(request):
 
 
 class ExportOrder(PDFTemplateView):
-# class ExportOrder(TemplateView):
 
     template_name = 'admin/order_resume.html'
 

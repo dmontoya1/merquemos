@@ -43,6 +43,12 @@ def total(obj):
 total.short_description = 'Total'
 
 
+class RatingAdmin(admin.StackedInline):
+
+    model = Rating
+    extra = 0
+
+
 class OrderAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">shopping_cart</i>'
     list_display = ('pk', 'user', 'status', 'comments', total,)
@@ -50,7 +56,7 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('total', 'date_added')
     search_fields = ['user__email', 'user__username']
     inlines = [
-        DeliveryOrderAdmin, ItemInline, 
+        DeliveryOrderAdmin, ItemInline, RatingAdmin
     ]
 
     def total(self, obj):
@@ -78,8 +84,5 @@ admin.site.register(Order, OrderAdmin)
 
 
 
-class RatingAdmin(admin.ModelAdmin):
-    icon = '<i class="material-icons">rate_review</i>'
-admin.site.register(Rating, RatingAdmin)
 
 

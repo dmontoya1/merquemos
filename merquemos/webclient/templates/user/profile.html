@@ -32,7 +32,51 @@
     </div>
 </div>
 
-<div id="primary" class="content-area">
+<div class="modal fade" id="ratedService" tabindex="-1" role="dialog" aria-labelledby="ratedServiceLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ratedServiceLabel">Calificar Servicio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="rating-service">
+                    {% csrf_token %}
+                    <input type="hidden" name="order" id="order-pk" value="">
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Observaciones:</label>
+                        <textarea class="form-control" id="message-text" name="comments" required></textarea>
+                    </div>
+                    <div class="form-group rate">
+                        <span class="rating-title" style="display:block;">Calificación</span>
+                        <input type="radio" id="star5" name="number" value="5" />
+                        <label for="star5" title="5 Estrellas">5 estrellas</label>
+                        <input type="radio" id="star4" name="number" value="4" />
+                        <label for="star4" title="4 Estrellas">4 estrellas</label>
+                        <input type="radio" id="star3" name="number" value="3" />
+                        <label for="star3" title="3 Estrellas">3 estrellas</label>
+                        <input type="radio" id="star2" name="number" value="2" />
+                        <label for="star2" title="2 Estrellas">2 estrellas</label>
+                        <input type="radio" id="star1" name="number" value="1" />
+                        <label for="star1" title="1 estrella">1 estrella</label>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary btn-rate">Calificar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="primary" class="content-area" style="width:110% !important">
     <main id="main" class="site-main">
         <article class="page type-page status-publish hentry">
 
@@ -72,7 +116,7 @@
                                 {% if not request.user.linked_social_account %}
                                     <tr class="cart-subtotal">
                                         <th>Configuración de acceso</th>
-                                        <td data-title="iva">
+                                        <td data-title="Contraseña">
                                             <span class="amount">
                                                 <a hreF="#" data-toggle="modal" data-target="#passwordChangeModal" class="teal">Actualizar contraseña de acceso</a>
                                             </span>
@@ -81,7 +125,7 @@
                                 {% endif %}     
                                 <tr class="cart-subtotal">
                                     <th></th>
-                                    <td data-title="iva">
+                                    <td data-title="">
                                         <input type="submit" class="button" name="submit" value="Actualizar" id="pro_submit"/>
                                     </td>
                                 </tr>                                                                                                                                                                            
@@ -116,11 +160,18 @@
                                                     <li>
                                                         <strong class="navy">Total: </strong> <span class="navy weight-500">${{order.get_total_with_tax.normalize|intcomma}}</span>
                                                     </li>
-                                                    <li>
+                                                    <li class="see-prods">
                                                         <strong class="navy">
                                                             <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#historyOrderDetail" class="orderHistory button">Ver productos</a>
                                                         </strong>
-                                                    </li>     
+                                                    </li>
+                                                    {% if not order.rating %}
+                                                        <li class="rate-service">
+                                                            <strong class="navy">
+                                                                <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#ratedService" class="ratingOrder button">Calificar</a>
+                                                            </strong>
+                                                        </li>
+                                                    {% endif %}
                                                 </div>                                    
                                             {% empty %}
                                                 Aún no has realizado compras.
@@ -246,6 +297,51 @@
                 })
 
         });
+        $('.ratingOrder').on('click', function(e){
+            e.preventDefault();
+            pk = $(this).data('order')
+            $('#order-pk').attr('value', pk)
+
+        });
+
+        $('#rating-service').on('submit', function(event){
+            event.preventDefault();
+            console.log('submit')
+            data = $( this ).serialize()
+            console.log(data)
+            $.ajax({
+                url: "{% url 'sales:rating-create' %}",
+                type: 'POST',
+                data: data
+            })
+            .success(function (response) {
+                swal({
+                    title: 'Exitoso',
+                    text: "Tu calificación se ha enviado correctamente.",
+                    type: 'success',
+                    showCancelButton: false,
+                    confirmButtonColor: '#162d40',
+                    confirmButtonText: 'Aceptar',
+                    reverseButtons: true
+                }).then(response => {
+                    location.reload()
+                })
+            })
+            .fail(function (error) {
+                if (error.response.status === 400){
+                    swal({
+                        title: 'Error',
+                        text: "Debes ingresar el valor de la calificación",
+                        type: 'error',
+                        showCancelButton: false,
+                        confirmButtonColor: '#162d40',
+                        confirmButtonText: 'Aceptar',
+                        reverseButtons: true
+                    })
+                }
+            });
+            
+        })
     })(jQuery);
 </script>
 {% endblock %}
