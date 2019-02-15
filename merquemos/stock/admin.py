@@ -41,6 +41,12 @@ class StoreAdmin(admin.ModelAdmin):
         else:
             return query.all()
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "manager":
+            if request.user.user_type != User.MANAGER:
+                kwargs["queryset"] = User.objects.filter(user_type=User.MANAGER)
+        return super(StoreAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+
     def get_readonly_fields(self, request, obj=None):
         if request.user.user_type == User.MANAGER:
             return self.manager_readonly_fields
