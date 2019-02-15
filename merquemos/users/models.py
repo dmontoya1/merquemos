@@ -11,6 +11,7 @@ from allauth.socialaccount.models import SocialAccount
 
 from manager.models import City
 
+
 class User(AbstractUser):
 
     CLIENT = 'CL'

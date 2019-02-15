@@ -1,5 +1,5 @@
 // Coloque su configuración en este archivo para sobrescribir la configuración predeterminada y de usuario.
 {
     "python.linting.pylintEnabled": false,
-    "python.pythonPath": "/usr/bin/python"
+    "python.pythonPath": "/home/daniel/virtualenvs/merquemos/bin/python"
 }

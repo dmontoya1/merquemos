@@ -24,7 +24,6 @@ class Order(ExportModelMixin):
         ('DE', 'Entregada')
     )
 
-
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name="related_orders",
@@ -55,14 +54,13 @@ class Order(ExportModelMixin):
     )
     date_added = models.DateField(auto_now_add=True)
 
-
     class Meta:
         verbose_name = "Orden de compra"
         verbose_name_plural = "Ordenes de compra"
-    
+
     def __str__(self):
         return str(self.pk)
-    
+
     def save(self, *args, **kwargs):
         devices = FCMDevice.objects.filter(user=self.user)
         try:
@@ -144,6 +142,7 @@ class Order(ExportModelMixin):
             return self.related_items.last().product.store.name
         return "Sin establecimiento"
 
+
 class Item(models.Model):
     product = models.ForeignKey(
         Product,
@@ -192,6 +191,7 @@ class Item(models.Model):
     def get_price_no_tax(self):
         return self.total - self.get_tax_value()
 
+
 class Rating(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     order = models.OneToOneField(Order)
@@ -202,9 +202,10 @@ class Rating(models.Model):
     class Meta:
         verbose_name = "Reseña de compra"
         verbose_name_plural = "Reseñas de compra"
-    
+
     def __str__(self):
         return str(self.pk)
+
 
 class DeliveryOrder(models.Model):
     INMEDIATELY = 'IN'
@@ -243,10 +244,9 @@ class DeliveryOrder(models.Model):
         blank=True, null=True
     )
 
-
     class Meta:
         verbose_name = "Orden de entrega"
         verbose_name_plural = "Ordenes de entrega"
-    
+
     def __str__(self):
         return str(self.pk)

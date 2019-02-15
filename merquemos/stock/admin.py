@@ -28,7 +28,6 @@ class StoreAdmin(admin.ModelAdmin):
 
     manager_readonly_fields = ('name', 'legal_id_number', 'manager', 'slug', 'is_active', )
 
-
     def get_queryset(self, request):
         """
         Función para reemplazar el queryset por defecto de django
@@ -37,11 +36,11 @@ class StoreAdmin(admin.ModelAdmin):
         """
         query = super(StoreAdmin, self).get_queryset(request)
         if request.user.user_type == User.MANAGER:
-            if request.user.store:
+            if request.user.related_store:
                 return query.filter(manager=request.user)
         else:
             return query.all()
-    
+
     def get_readonly_fields(self, request, obj=None):
         if request.user.user_type == User.MANAGER:
             return self.manager_readonly_fields

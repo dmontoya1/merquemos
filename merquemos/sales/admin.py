@@ -6,6 +6,7 @@ from django.http import HttpResponse
 
 from django_xhtml2pdf.utils import generate_pdf
 
+from users.models import User
 from .models import (
     Order, Item, Rating,
     DeliveryOrder
@@ -37,6 +38,7 @@ class ItemInline(admin.TabularInline):
     store.short_description = "Tienda"
     brand.short_description = "Marca"
 
+
 def total(obj):
     return int(obj.get_total_with_tax())
 
@@ -61,6 +63,19 @@ class OrderAdmin(admin.ModelAdmin):
 
     def total(self, obj):
         return int(obj.get_total_with_tax())
+
+    def get_queryset(self, request):
+        """
+        Función para reemplazar el queryset por defecto de django
+        si el request.user es un Coordinador, entonces solo muestra los profesores
+        de la institución educativa a la que pertenece
+        """
+        query = super(OrderAdmin, self).get_queryset(request)
+        if request.user.user_type == User.MANAGER:
+            user_store = request.user.related_store.first()
+            return query.filter(related_items__product__store=user_store)
+        else:
+            return query.all()
 
     def response_change(self, request, obj):
         """

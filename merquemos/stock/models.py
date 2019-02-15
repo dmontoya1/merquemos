@@ -19,7 +19,7 @@ class Store(models.Model):
     manager = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         verbose_name='Administrador',
-        related_name='store',
+        related_name='related_store',
         blank=True, null=True
     )
     logo = models.ImageField('logo', upload_to="stock/stores/logos/")
