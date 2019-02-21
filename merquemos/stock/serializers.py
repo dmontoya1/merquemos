@@ -26,6 +26,8 @@ class StoreSerializer(serializers.ModelSerializer):
 
 class CategorySerializer(serializers.ModelSerializer):
 
+    parent = serializers.StringRelatedField(many=False)
+
     class Meta:
         model = Category
         fields = ('pk', 'name', 'parent')
