@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import datetime
-
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db.models import F
 from django.urls import reverse_lazy
 from django.utils.text import slugify
 
@@ -41,13 +38,13 @@ class Store(models.Model):
     app_hex_code = models.CharField('Código HEX color', max_length=10, null=True, blank=True)
     slug = models.SlugField(unique=True, null=True, blank=True)
     is_active = models.BooleanField('Tienda activa?', default=True)
-    
+
     class Meta:
         verbose_name = "Tienda"
 
-    def __str__(self): 
+    def __str__(self):
         return str(self.name)
-    
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Store, self).save(*args, **kwargs)
@@ -57,7 +54,7 @@ class Store(models.Model):
             params = self.related_parameters.all().last()
             return params.delivery_price
         return 0
-    
+
     @models.permalink
     def get_absolute_url(self):
         return reverse_lazy('webclient:store', args=(self.city.name, self.slug))
@@ -66,12 +63,13 @@ class Store(models.Model):
         if self.related_hours.all().count() > 0:
             return True
         return True
-    
+
     def get_web_cover_url(self):
         if self.web_cover:
             return self.web_cover.url
         else:
             return ''
+
 
 class StoreContact(models.Model):
     store = models.ForeignKey(Store, related_name='related_contacts')
@@ -85,6 +83,7 @@ class StoreContact(models.Model):
 
     def __str__(self):
         return str(self.name)
+
 
 class StoreHour(models.Model):
     DAY_CHOICES = (
@@ -108,6 +107,7 @@ class StoreHour(models.Model):
     def __str__(self):
         return str(self.day.get_display_name())
 
+
 class StoreParameter(models.Model):
     store = models.ForeignKey(Store, related_name='related_parameters')
     delivery_price = models.DecimalField('Precio Domicilio', max_digits=10, decimal_places=2, default=0)
@@ -119,6 +119,7 @@ class StoreParameter(models.Model):
         verbose_name = "Parámetro de tienda"
         verbose_name_plural = "Parámetros de tiendas"
 
+
 class Brand(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
@@ -128,6 +129,7 @@ class Brand(models.Model):
     def __str__(self):
         return str(self.name)
 
+
 class BrandStore(models.Model):
     brand = models.ForeignKey(Brand)
     store = models.ForeignKey(Store)
@@ -135,9 +137,10 @@ class BrandStore(models.Model):
     class Meta:
         verbose_name = "Marca por tienda"
         verbose_name_plural = "Marcas por tiendas"
-    
+
     def __str__(self):
         return str(self.brand)
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -147,14 +150,14 @@ class Category(models.Model):
 
     class Meta:
         verbose_name = "Categoría"
-    
+
     def __str__(self):
         return str(self.name)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
-    
+
     def get_related_products(self, store=None):
         if self.parent is not None:
             queryset = self.related_products.all()
@@ -163,14 +166,31 @@ class Category(models.Model):
         if store is not None:
             queryset = queryset.filter(store=store)
         return queryset
-        
+
+
 class Product(models.Model):
+    GRAMO = 'GR'
+    KILOGRAMO = 'KG'
+    MILILITRO = 'ML'
+    LITRO = 'LT'
+    CENTIMETRO = 'CM'
+    METRO = 'MT'
+
+    PUM = (
+        (GRAMO, 'Gramo'),
+        (KILOGRAMO, 'Kilogramo'),
+        (MILILITRO, 'Mililitro'),
+        (LITRO, 'Litro'),
+        (CENTIMETRO, 'Centimetro'),
+        (METRO, 'Metro')
+    )
+
     store = models.ForeignKey(Store)
     brand = models.ForeignKey(BrandStore)
     category = models.ForeignKey(Category, related_name='related_products')
     sku = models.CharField(max_length=255)
     barcode = models.TextField(null=True, blank=True)
-    name = models.CharField(max_length=255, unique=True,)
+    name = models.CharField(max_length=255, unique=True, )
     description = models.TextField()
     image = models.ImageField(upload_to="stock/products/images/", default="logo.png")
     tax_percentage = models.DecimalField(max_digits=10, decimal_places=2)
@@ -181,13 +201,26 @@ class Product(models.Model):
     slug = models.SlugField(unique=True, null=True, blank=True)
     is_active = models.BooleanField(default=True)
     date_added = models.DateField(auto_now_add=True)
+    pum_value = models.DecimalField(
+        'Precio por unidad de medida',
+        decimal_places=2,
+        max_digits=10,
+        default=0
+    )
+    pum_type = models.CharField(
+        'Unidad de medida',
+        max_length=2,
+        choices=PUM,
+        null=True,
+        blank=True
+    )
 
     class Meta:
         verbose_name = "Producto"
-    
+
     def __str__(self):
         return str(self.name)
-    
+
     def clean(self):
         if self.category.parent is None:
             raise ValidationError("La categoría seleccionada para el producto no puede ser {}, pues es una categoría principal. Por favor,\
@@ -201,12 +234,12 @@ class Product(models.Model):
         if self.discount_percentage > 0:
             return True
         return False
-    
+
     def get_discount_value(self):
-        return self.discount_percentage*self.price/100
-    
+        return self.discount_percentage * self.price / 100
+
     def get_tax_value(self):
-        return self.tax_percentage*self.price/100
+        return self.tax_percentage * self.price / 100
 
     def get_price(self):
         if self.has_discount():
@@ -221,6 +254,7 @@ class Product(models.Model):
             return self.image.url
         return None
 
+
 class Inventory(models.Model):
     product = models.ForeignKey(Product)
     quantity = models.PositiveIntegerField()
@@ -229,19 +263,19 @@ class Inventory(models.Model):
 
     class Meta:
         verbose_name = "Inventario"
-    
+
     def __str__(self):
         return str(self.quantity)
 
     def __init__(self, *args, **kwargs):
         super(Inventory, self).__init__(*args, **kwargs)
-        #Save last quantity value 
+        # Save last quantity value
         self.last_quantity = self.quantity
 
     def save(self, raw=False, *args, **kwargs):
         if raw is False:
-            #Increase product stock quantity when Inventory object is saved
-            print self.last_quantity
+            # Increase product stock quantity when Inventory object is saved
+            self.last_quantity
             self.product.stock_quantity = self.product.stock_quantity + self.quantity
             self.product.save()
             super(Inventory, self).save(*args, **kwargs)

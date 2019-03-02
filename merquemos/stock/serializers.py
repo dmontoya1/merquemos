@@ -87,7 +87,9 @@ class ProductSerializer(serializers.ModelSerializer):
             'product_image',
             'has_discount',
             'discount_price',
-            'discount_percentage'
+            'discount_percentage',
+            'pum_type',
+            'pum_value'
         )
     
     def get_product_image(self, obj):

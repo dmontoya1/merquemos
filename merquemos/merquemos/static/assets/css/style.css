@@ -10208,3 +10208,11 @@ button.rated-service {
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
 }
+
+span.pum-price {
+    display: block;
+    font-size: 0.6em;
+}
+.pum {
+  color: #999;
+}

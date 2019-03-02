@@ -20,6 +20,9 @@
                             <del><span class="amount">${{product.price.normalize|intcomma}}</span></del>
                         {% endif %}
                     </span>
+                     <span class="pum-price ">
+                        <ins><span class="pum">${{product.pum_value|intcomma}} x {{product.get_pum_type_display}}</span></ins>
+                      </span>
                 </span>
                 
             </div><!-- /.price-add-to-cart -->
