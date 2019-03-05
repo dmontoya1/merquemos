@@ -165,7 +165,7 @@
                                                             <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#historyOrderDetail" class="orderHistory button">Ver productos</a>
                                                         </strong>
                                                     </li>
-                                                    {% if not order.rating && order.status == 'DE' %}
+                                                    {% if not order.rating and order.status == 'DE' %}
                                                         <li class="rate-service">
                                                             <strong class="navy">
                                                                 <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#ratedService" class="ratingOrder button">Calificar</a>
