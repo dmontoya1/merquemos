@@ -69,6 +69,7 @@
 {% endblock %}
 
 {% block extra_js %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
         (function($) {
             $('#add_to_cart_form').on('submit', function(e) {
@@ -77,8 +78,24 @@
                     window.location.replace("{% url 'webclient:login' %}");
                 {% endif %}    
                 var jqxhr = $.post( "{% url 'sales:item-create' %}", $(this).serialize(), function(data) {
+                    Swal.fire({
+                      title: 'Producto agregado exitosamente',
+                      text: "El producto se ha agregado al carrito exitosamente. Quieres agregar más productos, o ir al carrito?",
+                      type: 'success',
+                      showCancelButton: true,
+                      confirmButtonColor: '#BB5353',
+                      cancelButtonColor: '#55ba95',
+                      confirmButtonText: 'Agregar más productos',
+                      cancelButtonText: 'Ir al carrito'
+                    }).then((result) => {
+                      if (result.value) {
+                        location.href = "{% url 'webclient:home' %}"
+                      }
+                      else{
+                        location.href = "{% url 'webclient:checkout' %}"
+                      }
+                    })
                     update_cart();
-                    toastr.success('Producto agregado exitosamente');
                 });
             });
         })(jQuery);

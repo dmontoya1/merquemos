@@ -88,6 +88,12 @@ class Order(ExportModelMixin):
         except:
             return 0
 
+    def get_rating_comments(self):
+        try:
+            return self.rating.comments
+        except:
+            return ''
+
     def get_items(self):
         return self.related_items.all().order_by('pk')
     

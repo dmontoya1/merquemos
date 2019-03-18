@@ -163,8 +163,6 @@ def checkout(request):
     delivery_time = request.POST['delivery_time']
     if delivery_time == '':
         delivery_time = datetime.now()
-    print (delivery_time)
-    print ('TIMEEE')
     delivery_order = DeliveryOrder(
         order=order,
         address=address,
