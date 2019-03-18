@@ -42,7 +42,13 @@ class ItemInline(admin.TabularInline):
 def total(obj):
     return int(obj.get_total_with_tax())
 
+
+def tienda(obj):
+    return obj.related_items.first().product.store
+
+
 total.short_description = 'Total'
+tienda.short_description = 'Tienda'
 
 
 class RatingAdmin(admin.StackedInline):
@@ -53,9 +59,9 @@ class RatingAdmin(admin.StackedInline):
 
 class OrderAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">shopping_cart</i>'
-    list_display = ('pk', 'user', 'status', 'comments', total,)
+    list_display = ('pk', 'user', 'status', 'comments', total, tienda)
     list_filter = ('status',)
-    readonly_fields = ('total', 'date_added')
+    readonly_fields = ('total', 'date_added', tienda, )
     search_fields = ['user__email', 'user__username']
     inlines = [
         DeliveryOrderAdmin, ItemInline, RatingAdmin

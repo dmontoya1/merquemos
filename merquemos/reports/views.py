@@ -75,9 +75,10 @@ class ReportView(TemplateView):
             context = {
                 'headers': (
                     'Establecimiento',
-                    '# Orden', 
+                    '# Orden',
                     'Fecha', 
                     'Calificación',
+                    'Observacion',
                     'Nombre de usuario',
                     'Correo',
                     'Teléfono'

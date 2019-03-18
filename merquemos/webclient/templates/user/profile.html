@@ -5,222 +5,227 @@
 {% block content%}
 
 <div class="modal fade " id="passwordChangeModal" tabindex="-1" role="dialog" aria-labelledby="passwordChangeModal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog " role="document">
-        <div class="modal-content col-md-12">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <form action="/" method="POST" id="change_password_form">
-                {% csrf_token %}
-                <div class="modal-body col-md-12">
-                    <p class="form-row form-row-wide">
-                        <label for="cha_old_password">Contraseña actual<span class="required">*</span></label>
-                        <input type="password" required class="input-text" name="old_password" id="cha_old_password" />
-                    </p>
-                    <p class="form-row form-row-wide">
-                        <label for="cha_new_password_1">Nueva contraseña<span class="required">*</span></label>
-                        <input type="password" required class="input-text" name="new_password1" id="cha_new_password1" />
-                    </p>
-                    <p class="form-row form-row-wide">
-                        <label for="cha_new_password_2">Confirmación nueva contraseña<span class="required">*</span></label>
-                        <input type="password" required class="input-text" name="new_password2" id="cha_new_password2" />
-                    </p>
-                </div>
-                <div class="modal-footer col-md-12">
-                    <button type="submit" class="btn btn-secondary" id="cha_submit">Actualizar</button>
-                </div>
-            </form>
+  <div class="modal-dialog " role="document">
+    <div class="modal-content col-md-12">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <form action="/" method="POST" id="change_password_form">
+        {% csrf_token %}
+        <div class="modal-body col-md-12">
+          <p class="form-row form-row-wide">
+            <label for="cha_old_password">Contraseña actual<span class="required">*</span></label>
+            <input type="password" required class="input-text" name="old_password" id="cha_old_password" />
+          </p>
+          <p class="form-row form-row-wide">
+            <label for="cha_new_password_1">Nueva contraseña<span class="required">*</span></label>
+            <input type="password" required class="input-text" name="new_password1" id="cha_new_password1" />
+          </p>
+          <p class="form-row form-row-wide">
+            <label for="cha_new_password_2">Confirmación nueva contraseña<span class="required">*</span></label>
+            <input type="password" required class="input-text" name="new_password2" id="cha_new_password2" />
+          </p>
         </div>
+        <div class="modal-footer col-md-12">
+          <button type="submit" class="btn btn-secondary" id="cha_submit">Actualizar</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
 
 <div class="modal fade" id="ratedService" tabindex="-1" role="dialog" aria-labelledby="ratedServiceLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="ratedServiceLabel">Calificar Servicio</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="rating-service">
-                    {% csrf_token %}
-                    <input type="hidden" name="order" id="order-pk" value="">
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Observaciones:</label>
-                        <textarea class="form-control" id="message-text" name="comments" required></textarea>
-                    </div>
-                    <div class="form-group rate">
-                        <span class="rating-title" style="display:block;">Calificación</span>
-                        <input type="radio" id="star5" name="number" value="5" />
-                        <label for="star5" title="5 Estrellas">5 estrellas</label>
-                        <input type="radio" id="star4" name="number" value="4" />
-                        <label for="star4" title="4 Estrellas">4 estrellas</label>
-                        <input type="radio" id="star3" name="number" value="3" />
-                        <label for="star3" title="3 Estrellas">3 estrellas</label>
-                        <input type="radio" id="star2" name="number" value="2" />
-                        <label for="star2" title="2 Estrellas">2 estrellas</label>
-                        <input type="radio" id="star1" name="number" value="1" />
-                        <label for="star1" title="1 estrella">1 estrella</label>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary btn-rate">Calificar</button>
-                </form>
-            </div>
-        </div>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ratedServiceLabel">Calificar Servicio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="rating-service">
+          {% csrf_token %}
+          <input type="hidden" name="order" id="order-pk" value="">
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Observaciones:</label>
+            <textarea class="form-control" id="message-text" name="comments" required></textarea>
+          </div>
+          <div class="form-group rate">
+            <span class="rating-title" style="display:block;">Calificación</span>
+            <input type="radio" id="star5" name="number" value="5" />
+            <label for="star5" title="5 Estrellas">5 estrellas</label>
+            <input type="radio" id="star4" name="number" value="4" />
+            <label for="star4" title="4 Estrellas">4 estrellas</label>
+            <input type="radio" id="star3" name="number" value="3" />
+            <label for="star3" title="3 Estrellas">3 estrellas</label>
+            <input type="radio" id="star2" name="number" value="2" />
+            <label for="star2" title="2 Estrellas">2 estrellas</label>
+            <input type="radio" id="star1" name="number" value="1" />
+            <label for="star1" title="1 estrella">1 estrella</label>
+          </div>
+          <br>
+          <br>
+          <br>
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary btn-rate">Calificar</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 <div id="primary" class="content-area" style="width:110% !important">
-    <main id="main" class="site-main">
-        <article class="page type-page status-publish hentry">
+  <main id="main" class="site-main">
+    <article class="page type-page status-publish hentry">
 
-            <div class="cart-collaterals col-md-8 center-align">
-                <br>
-                <div class="cart_totals ">
+      <div class="cart-collaterals col-md-8 center-align">
+        <br>
+        <div class="cart_totals ">
 
-                    <h2>Información personal</h2>
+          <h2>Información personal</h2>
 
-                    <table class="shop_table shop_table_responsive">
-                        <form id="profile-form">
-                            <tbody>
-                                <tr class="cart-subtotal">
-                                    <th>Nombres</th>
-                                    <td data-title="Nombres">
-                                        <input type="text" class="input-text" name="first_name" id="pro_first_name" value="{{request.user.first_name}}" />
-                                    </td>
-                                </tr>
-                                <tr class="cart-subtotal">
-                                    <th>Apellidos</th>
-                                    <td data-title="Apellidos">
-                                        <input type="text" class="input-text" name="last_name" id="pro_last_name" value="{{request.user.last_name}}" />
-                                    </td>
-                                </tr>
-                                <tr class="cart-subtotal">
-                                    <th>Correo electrónico</th>
-                                    <td data-title="Correo electrónico">
-                                        <input type="email" class="input-text" name="email" id="pro_email" value="{{request.user.email}}" />
-                                    </td>
-                                </tr>
-                                <tr class="cart-subtotal">
-                                    <th>Teléfono celular</th>
-                                    <td data-title="Teléfono celular">
-                                        <input type="tel" class="input-text" name="phone_number" id="pro_phone_number" value="{{request.user.phone_number|default:''}}" />
-                                    </td>
-                                </tr>
-                                {% if not request.user.linked_social_account %}
-                                    <tr class="cart-subtotal">
-                                        <th>Configuración de acceso</th>
-                                        <td data-title="Contraseña">
+          <table class="shop_table shop_table_responsive">
+            <form id="profile-form">
+              <tbody>
+              <tr class="cart-subtotal">
+                <th>Nombres</th>
+                <td data-title="Nombres">
+                  <input type="text" class="input-text" name="first_name" id="pro_first_name" value="{{request.user.first_name}}" />
+                </td>
+              </tr>
+              <tr class="cart-subtotal">
+                <th>Apellidos</th>
+                <td data-title="Apellidos">
+                  <input type="text" class="input-text" name="last_name" id="pro_last_name" value="{{request.user.last_name}}" />
+                </td>
+              </tr>
+              <tr class="cart-subtotal">
+                <th>Correo electrónico</th>
+                <td data-title="Correo electrónico">
+                  <input type="email" class="input-text" name="email" id="pro_email" value="{{request.user.email}}" />
+                </td>
+              </tr>
+              <tr class="cart-subtotal">
+                <th>Teléfono celular</th>
+                <td data-title="Teléfono celular">
+                  <input type="tel" class="input-text" name="phone_number" id="pro_phone_number" value="{{request.user.phone_number|default:''}}" />
+                </td>
+              </tr>
+              {% if not request.user.linked_social_account %}
+              <tr class="cart-subtotal">
+                <th>Configuración de acceso</th>
+                <td data-title="Contraseña">
                                             <span class="amount">
                                                 <a hreF="#" data-toggle="modal" data-target="#passwordChangeModal" class="teal">Actualizar contraseña de acceso</a>
                                             </span>
-                                        </td>
-                                    </tr>       
-                                {% endif %}     
-                                <tr class="cart-subtotal">
-                                    <th></th>
-                                    <td data-title="">
-                                        <input type="submit" class="button" name="submit" value="Actualizar" id="pro_submit"/>
-                                    </td>
-                                </tr>                                                                                                                                                                            
-                            </tbody>
-                        </form>
-                    </table>
+                </td>
+              </tr>
+              {% endif %}
+              <tr class="cart-subtotal">
+                <th></th>
+                <td data-title="">
+                  <input type="submit" class="button" name="submit" value="Actualizar" id="pro_submit"/>
+                </td>
+              </tr>
+              </tbody>
+            </form>
+          </table>
 
-                    
-                </div>
-            </div>            
-            
-            <div class="cart-collaterals col-md-8 center-align">
+
+        </div>
+      </div>
+
+      <div class="cart-collaterals col-md-8 center-align">
+        <br>
+        <div class="cart_totals ">
+
+          <h2>Compras</h2>
+
+          <table class="shop_table shop_table_responsive">
+
+            <tbody>
+            <tr class="cart-subtotal">
+              <th>Historial <br><br>
+                <ul class="address-list">
+                  {% for order in request.user.related_orders.all %}
+                  <div style="margin-bottom: 2em; display: inline-block;">
+                    <li>
+                      <strong class="navy">Fecha de compra: </strong> <span class="navy weight-500">{{order.last_status_date}}</span>
+                    </li>
+                    <li>
+                      <strong class="navy">Estado: </strong> <span class="navy weight-500">{{order.get_status_display}}</span>
+                    </li>
+                    <li>
+                      <strong class="navy">Total: </strong> <span class="navy weight-500">${{order.get_total_with_tax.normalize|intcomma}}</span>
+                    </li>
+                    <li class="see-prods">
+                      <strong class="navy">
+                        <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#historyOrderDetail" class="orderHistory button">Ver productos</a>
+                      </strong>
+                    </li>
+                    <li class="see-prods">
+                      <strong class="navy">
+                        <a href="#" data-order="{{order.pk}}" class="re-order-order button">Pedir nuevamente</a>
+                      </strong>
+                    </li>
+                    {% if not order.rating and order.status == 'DE' %}
+                    <li class="rate-service">
+                      <strong class="navy">
+                        <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#ratedService" class="ratingOrder button">Calificar</a>
+                      </strong>
+                    </li>
+                    {% endif %}
+                  </div>
+                  {% empty %}
+                  Aún no has realizado compras.
+                  {% endfor %}
+                </ul>
+              </th>
+            </tr>
+            </tbody>
+          </table>
+
+          <table class="shop_table shop_table_responsive">
+
+            <tbody>
+            <tr class="cart-subtotal">
+              <th>Direcciones <br><br>
+                <ul class="address-list">
+                  {% for address in request.user.related_addresses.all %}
+                  <li>
+                    <strong class="navy">Nombre: </strong> <span class="navy weight-500">{{address.name}}</span>
+                    <strong class="navy">Teléfono: </strong> <span class="navy weight-500">{{address.phone_number}}</span>
+                    <strong class="navy">Dirección: </strong> <span class="navy weight-500">{{address.label}}</span>
+                    <strong class="navy">Indicaciones: </strong> <span class="navy weight-500">{{address.directions|default:"Sin indicaciones"}}</span>
                     <br>
-                    <div class="cart_totals ">
-    
-                        <h2>Compras</h2>
-                        
-                        <table class="shop_table shop_table_responsive">
-    
-                            <tbody>
-                                <tr class="cart-subtotal">
-                                    <th>Historial <br><br>
-                                        <ul class="address-list">
-                                            {% for order in request.user.related_orders.all %}
-                                                <div style="margin-bottom: 2em; display: inline-block;">
-                                                    <li>
-                                                        <strong class="navy">Fecha de compra: </strong> <span class="navy weight-500">{{order.last_status_date}}</span>
-                                                    </li>
-                                                    <li>
-                                                        <strong class="navy">Estado: </strong> <span class="navy weight-500">{{order.get_status_display}}</span>
-                                                    </li>
-                                                    <li>
-                                                        <strong class="navy">Total: </strong> <span class="navy weight-500">${{order.get_total_with_tax.normalize|intcomma}}</span>
-                                                    </li>
-                                                    <li class="see-prods">
-                                                        <strong class="navy">
-                                                            <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#historyOrderDetail" class="orderHistory button">Ver productos</a>
-                                                        </strong>
-                                                    </li>
-                                                    {% if not order.rating and order.status == 'DE' %}
-                                                        <li class="rate-service">
-                                                            <strong class="navy">
-                                                                <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#ratedService" class="ratingOrder button">Calificar</a>
-                                                            </strong>
-                                                        </li>
-                                                    {% endif %}
-                                                </div>                                    
-                                            {% empty %}
-                                                Aún no has realizado compras.
-                                            {% endfor %}
-                                        </ul>
-                                    </th>
-                                </tr>                                                                                                                                                                                 
-                            </tbody>
-                        </table>
+                    <a href="#" class="red address-delete" data-pk="{{address.pk}}" >Eliminar dirección</a>
+                    <br>
+                    <br>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </th>
 
-                        <table class="shop_table shop_table_responsive">
-    
-                            <tbody>
-                                <tr class="cart-subtotal">
-                                    <th>Direcciones <br><br>
-                                        <ul class="address-list">
-                                            {% for address in request.user.related_addresses.all %}
-                                                <li>
-                                                    <strong class="navy">Nombre: </strong> <span class="navy weight-500">{{address.name}}</span>
-                                                    <strong class="navy">Teléfono: </strong> <span class="navy weight-500">{{address.phone_number}}</span>
-                                                    <strong class="navy">Dirección: </strong> <span class="navy weight-500">{{address.label}}</span>
-                                                    <strong class="navy">Indicaciones: </strong> <span class="navy weight-500">{{address.directions|default:"Sin indicaciones"}}</span>
-                                                    <br>
-                                                    <a href="#" class="red address-delete" data-pk="{{address.pk}}" >Eliminar dirección</a>
-                                                    <br>
-                                                    <br>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </th>
-                                    
-                                    <td data-title="Subtotal">
+              <td data-title="Subtotal">
                                         <span class="amount">
                                             <a href="#" data-toggle="modal" data-target="#addressCreationModal" class="teal">Agregar nueva dirección</a>
                                         </span>
-                                    </td>
-                                </tr>                                                                                                                                                                                 
-                            </tbody>
-                        </table>
-    
-                        
-                    </div>
-                </div>     
-        </article>
-    </main><!-- #main -->
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+  </main><!-- #main -->
 </div><!-- #primary -->
 {% endblock %}
 
 {% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     (function($) {
         $('#profile-form').on('submit', function(e){
@@ -228,14 +233,14 @@
             $('#pro_submit').attr('disabled', true);
             $.ajax({
                 url: "/api/auth/user/",
-                data: $(this).serialize(), 
+                data: $(this).serialize(),
                 type: 'PUT'
             })
                 .fail(function(data) {
                     $('.validator').remove();
                     $.each(data.responseJSON, function(key,value) {
                         $('#pro_' + key).after('<span class="red validator">'+ value +'</span>')
-                    }); 
+                    });
                 })
                 .always(function(data) {
                     $('#pro_submit').attr('disabled', false);
@@ -252,7 +257,7 @@
                     $('.validator').remove();
                     $.each(data.responseJSON, function(key,value) {
                         $('#cha_' + key).after('<span class="red validator">'+ value +'</span>')
-                    }); 
+                    });
                 })
                 .always(function(data) {
                     $('#cha_submit').attr('disabled', false);
@@ -290,7 +295,7 @@
                             <td>${value.total}</td>
                         </tr>`
                         $('#historyOrderDetail table').append(record);
-                    });                    
+                    });
                 })
                 .fail(function(data) {
                     toastr.warning('Ha ocurrido un error, reintenta nuevamente');
@@ -303,7 +308,6 @@
             $('#order-pk').attr('value', pk)
 
         });
-
         $('#rating-service').on('submit', function(event){
             event.preventDefault();
             data = $( this ).serialize()
@@ -312,33 +316,80 @@
                 type: 'POST',
                 data: data
             })
-            .success(function (response) {
-                swal({
-                    title: 'Exitoso',
-                    text: "Tu calificación se ha enviado correctamente.",
-                    type: 'success',
-                    showCancelButton: false,
-                    confirmButtonColor: '#162d40',
-                    confirmButtonText: 'Aceptar',
-                    reverseButtons: true
-                }).then(response => {
-                    location.reload()
-                })
-            })
-            .fail(function (error) {
-                if (error.response.status === 400){
+                .success(function (response) {
                     swal({
-                        title: 'Error',
-                        text: "Debes ingresar el valor de la calificación",
-                        type: 'error',
+                        title: 'Exitoso',
+                        text: "Tu calificación se ha enviado correctamente.",
+                        type: 'success',
                         showCancelButton: false,
                         confirmButtonColor: '#162d40',
                         confirmButtonText: 'Aceptar',
                         reverseButtons: true
+                    }).then(response => {
+                        location.reload()
+                    })
+                })
+                .fail(function (error) {
+                    if (error.response.status === 400){
+                        swal({
+                            title: 'Error',
+                            text: "Debes ingresar el valor de la calificación",
+                            type: 'error',
+                            showCancelButton: false,
+                            confirmButtonColor: '#162d40',
+                            confirmButtonText: 'Aceptar',
+                            reverseButtons: true
+                        })
+                    }
+                });
+
+        })
+        $('.re-order-order').on('click', function(){
+            id = $(this).data('order')
+            Swal.fire({
+                title: 'Ordenar pedido antiguo',
+                text: "Esta seguro que deseas pedir nuevamente esta orden?",
+                type: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#BB5353',
+                cancelButtonColor: '#55ba95',
+                confirmButtonText: 'Si, pedir nuevamente',
+                cancelButtonText: 'Cancelar',
+                reverseButtons: true
+            })
+            .then((result) => {
+                if (result.value) {
+                    axios.defaults.headers.common['Api-Key'] = '{{webclient_context_web_auth_token.key}}'
+                    axios.get("/api/sales/current-order/", {
+                      params: {
+                          base_order: id
+                      }
+                    })
+                    .then(function (response) {
+                        Swal.fire({
+                          title: 'Se ha generado tu pedido exitosamente',
+                          text: "El pedido se ha generado exitosamente. Quieres agregar más productos, o ir al carrito?",
+                          type: 'success',
+                          showCancelButton: true,
+                          confirmButtonColor: '#BB5353',
+                          cancelButtonColor: '#55ba95',
+                          confirmButtonText: 'Agregar más productos',
+                          cancelButtonText: 'Ir al carrito',
+                          allowOutsideClick: false
+                        }).then((result) => {
+                          if (result.value) {
+                            location.href = "{% url 'webclient:home' %}"
+                          }
+                          else{
+                            location.href = "{% url 'webclient:checkout' %}"
+                          }
+                        })
+                    })
+                    .catch(function (error) {
+                        console.log(error);
                     })
                 }
-            });
-            
+            })
         })
     })(jQuery);
 </script>
