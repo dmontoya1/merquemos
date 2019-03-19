@@ -44,7 +44,10 @@ def total(obj):
 
 
 def tienda(obj):
-    return obj.related_items.first().product.store
+    try:
+        return obj.related_items.first().product.store
+    except:
+        return "Sin Tienda asociada"
 
 
 total.short_description = 'Total'

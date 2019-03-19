@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8cb6b25c-97f3-41b3-932c-a01a3ec49b66" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/merquemos/stock/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/merquemos/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/admin.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +18,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/merquemos/reports/templates/reports/ratings.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="392">
+                <state relative-caret-position="455">
                   <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
                 </state>
               </provider>
@@ -28,7 +27,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/merquemos/stock/urls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="273">
+                <state relative-caret-position="78">
                   <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
@@ -40,8 +39,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/merquemos/stock/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="288">
-                  <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+                <state relative-caret-position="301">
+                  <caret line="117" selection-start-line="116" selection-end-line="117" />
                 </state>
               </provider>
             </entry>
@@ -49,7 +48,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/merquemos/stock/serializers.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
+                <state relative-caret-position="273">
                   <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
                 </state>
               </provider>
@@ -58,8 +57,8 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/merquemos/reports/views.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="165">
@@ -70,6 +69,15 @@
                     <element signature="e#3123#3965#0" />
                     <element signature="e#4013#4846#0" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/merquemos/sales/admin.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="236">
+                  <caret line="49" column="36" lean-forward="true" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
                 </state>
               </provider>
             </entry>
@@ -107,7 +115,6 @@
         <option value="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/style.css" />
         <option value="$PROJECT_DIR$/merquemos/stock/models.py" />
         <option value="$PROJECT_DIR$/merquemos/webclient/templates/auth/auth.html" />
-        <option value="$PROJECT_DIR$/merquemos/sales/admin.py" />
         <option value="$PROJECT_DIR$/merquemos/webclient/templates/product/product_detail.html" />
         <option value="$PROJECT_DIR$/merquemos/sales/urls.py" />
         <option value="$PROJECT_DIR$/merquemos/sales/views.py" />
@@ -119,6 +126,7 @@
         <option value="$PROJECT_DIR$/merquemos/sales/models.py" />
         <option value="$PROJECT_DIR$/merquemos/stock/urls.py" />
         <option value="$PROJECT_DIR$/merquemos/stock/views.py" />
+        <option value="$PROJECT_DIR$/merquemos/sales/admin.py" />
       </list>
     </option>
   </component>
@@ -136,7 +144,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -159,6 +166,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -205,12 +213,14 @@
       <workItem from="1552916408972" duration="109000" />
       <workItem from="1552933475649" duration="2771000" />
       <workItem from="1552940206533" duration="722000" />
-      <workItem from="1552952320045" duration="3940000" />
+      <workItem from="1552952320045" duration="4183000" />
+      <workItem from="1553003819874" duration="25000" />
+      <workItem from="1553011680172" duration="43000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18083000" />
+    <option name="totallyTimeSpent" value="18394000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-2" width="1366" height="770" extended-state="6" />
@@ -286,13 +296,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2340">
           <caret line="203" column="35" selection-start-line="203" selection-start-column="23" selection-end-line="203" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/sales/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="46" column="50" lean-forward="true" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -409,10 +412,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/reports/templates/reports/ratings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/stock/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/merquemos/stock/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="273">
           <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/stock/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="117" selection-start-line="116" selection-end-line="117" />
         </state>
       </provider>
     </entry>
@@ -429,27 +456,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/reports/templates/reports/ratings.html">
+    <entry file="file://$PROJECT_DIR$/merquemos/sales/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/stock/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/stock/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+        <state relative-caret-position="236">
+          <caret line="49" column="36" lean-forward="true" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
         </state>
       </provider>
     </entry>
