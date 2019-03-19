@@ -92,7 +92,7 @@ class Order(ExportModelMixin):
         try:
             return self.rating.comments
         except:
-            return ''
+            return 'Sin obervación'
 
     def get_items(self):
         return self.related_items.all().order_by('pk')
