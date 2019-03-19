@@ -78,7 +78,7 @@ class ReportView(TemplateView):
                     '# Orden',
                     'Fecha', 
                     'Calificación',
-                    'Observacion',
+                    'Observación',
                     'Nombre de usuario',
                     'Correo',
                     'Teléfono'
