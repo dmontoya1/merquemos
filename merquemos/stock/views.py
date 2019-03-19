@@ -105,6 +105,28 @@ class CategoryList(RequiredParametersMixin, generics.ListCreateAPIView):
     required_parameters = ['store_id']
 
     def get_queryset(self):
+        queryset = Category.objects.filter(parent=None, is_active=True)
+        store = Store.objects.get(pk=self.request.query_params.get('store_id'))
+        parent_category_id = self.request.query_params.get('parent_category_id')
+        if parent_category_id is not None:
+            queryset = Category.objects.filter(parent__pk=parent_category_id, is_active=True)
+        for category in queryset:
+            if category.get_related_products(store=store).count() == 0:
+                queryset = queryset.exclude(pk=category.pk)
+        return queryset
+
+
+class CategoryList1(RequiredParametersMixin, generics.ListCreateAPIView):
+    """Obtiene el listado de categorias de producto, filtrados por tienda
+    obtenida desde el parámetro GET 'store_id'. Si el parámetro
+    'parent_category_id' está presente, se filtrara las categorías por el
+    id de categoría padre brindado.
+    """
+
+    serializer_class = CategorySerializer
+    required_parameters = ['store_id']
+
+    def get_queryset(self):
         queryset = Category.objects.all()
         # queryset = Category.objects.filter(parent!=None, is_active=True)
         store = Store.objects.get(pk=self.request.query_params.get('store_id'))

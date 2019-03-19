@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8cb6b25c-97f3-41b3-932c-a01a3ec49b66" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/merquemos/reports/templates/reports/ratings.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/templates/reports/ratings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/merquemos/reports/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/merquemos/sales/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.52891934">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -26,25 +26,31 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/merquemos/reports/views.py">
+            <entry file="file://$PROJECT_DIR$/merquemos/stock/urls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="126">
-                  <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="30" />
+                <state relative-caret-position="273">
+                  <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
                   <folding>
-                    <element signature="e#940#1395#0" />
-                    <element signature="e#1450#2498#0" />
-                    <element signature="e#3123#3965#0" />
-                    <element signature="e#4013#4846#0" />
+                    <element signature="e#0#41#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/merquemos/sales/models.py">
+            <entry file="file://$PROJECT_DIR$/merquemos/stock/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="273">
-                  <caret line="94" column="34" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
+                <state relative-caret-position="288">
+                  <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/merquemos/stock/serializers.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="187">
+                  <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -111,6 +117,8 @@
         <option value="$PROJECT_DIR$/merquemos/reports/views.py" />
         <option value="$PROJECT_DIR$/merquemos/reports/templates/reports/ratings.html" />
         <option value="$PROJECT_DIR$/merquemos/sales/models.py" />
+        <option value="$PROJECT_DIR$/merquemos/stock/urls.py" />
+        <option value="$PROJECT_DIR$/merquemos/stock/views.py" />
       </list>
     </option>
   </component>
@@ -145,22 +153,7 @@
               <item name="merquemos" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="merquemos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="reports" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="merquemos" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="merquemos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="reports" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="merquemos" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="merquemos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="reports" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="reports" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="stock" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -212,12 +205,12 @@
       <workItem from="1552916408972" duration="109000" />
       <workItem from="1552933475649" duration="2771000" />
       <workItem from="1552940206533" duration="722000" />
-      <workItem from="1552952320045" duration="3206000" />
+      <workItem from="1552952320045" duration="3940000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17349000" />
+    <option name="totallyTimeSpent" value="18083000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-2" width="1366" height="770" extended-state="6" />
@@ -256,13 +249,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/merquemos/stock/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
-          <caret line="92" column="8" lean-forward="true" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/merquemos/stock/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="395">
@@ -416,10 +402,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/sales/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="94" column="34" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/stock/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/merquemos/reports/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="30" />
+        <state relative-caret-position="165">
+          <caret line="80" column="32" selection-start-line="80" selection-start-column="32" selection-end-line="80" selection-end-column="32" />
           <folding>
             <element signature="e#940#1395#0" />
             <element signature="e#1450#2498#0" />
@@ -436,10 +436,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/sales/models.py">
+    <entry file="file://$PROJECT_DIR$/merquemos/stock/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
-          <caret line="94" column="34" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
+          <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/stock/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
         </state>
       </provider>
     </entry>
