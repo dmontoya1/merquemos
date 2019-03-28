@@ -161,7 +161,7 @@ DATABASES = {
         'NAME': 'merquemos',
         'USER': 'postgres',
         'PASSWORD': 'PkvdQWIfeNvg647',
-        'HOST': 'localhost',
+        'HOST': 'ls-8df0ef9919d9ba7af8587631252eddc2e5b20579.cz63tzo6s6up.us-east-1.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
