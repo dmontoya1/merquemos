@@ -298,6 +298,27 @@ label {
   border-radius: 1.286em;
   width: 100%; }
 
+.btn-profile {
+  font-size: 0.875rem;
+  border-radius: 1.571em;
+  padding: 10px;
+  border-width: 0;
+  display: inline-block;
+  color: #3DB292;
+  background-color: #efecec;
+  border-color: #efecec;
+}
+.btn-profile:hover {
+    color: #fff;
+    background-color: #BB5353;
+    border-color: #BB5353;
+}
+.btn-profile:focus {
+  color: #fff;
+  background-color: #BB5353;
+  border-color: #BB5353;
+}
+
 textarea.input-text {
   min-height: 10em;
   padding: 1.858em; }

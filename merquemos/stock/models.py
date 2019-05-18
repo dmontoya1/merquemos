@@ -227,7 +227,8 @@ class Product(models.Model):
             selecciona una subcategoría".format(self.category.name))
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        name = self.name.replace('.', '')
+        self.slug = slugify(name)
         super(Product, self).save(*args, **kwargs)
 
     def has_discount(self):

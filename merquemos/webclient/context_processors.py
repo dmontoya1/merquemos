@@ -4,6 +4,7 @@ from api.models import APIKey
 from manager.models import City, State
 from stock.models import Category, Store
 
+
 def webclient_processor(request):
     categories = Category.objects.filter(parent=None, is_active=True)
     stores = Store.objects.filter(is_active=True)

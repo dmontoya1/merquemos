@@ -49,7 +49,7 @@ class Order(ExportModelMixin):
     )
     comments = models.TextField(
         'Comentarios',
-        null=True, 
+        null=True,
         blank=True
     )
     date_added = models.DateField(auto_now_add=True)
@@ -65,7 +65,7 @@ class Order(ExportModelMixin):
         devices = FCMDevice.objects.filter(user=self.user)
         try:
             if self.status == "CA" or self.status == "DE" or self.status == "SH":
-                data ={
+                data = {
                     "order_id": self.pk,
                     "order_status": self.status
                 }
@@ -96,7 +96,7 @@ class Order(ExportModelMixin):
 
     def get_items(self):
         return self.related_items.all().order_by('pk')
-    
+
     def has_items(self):
         if self.get_items().count() > 0:
             return True
@@ -121,7 +121,7 @@ class Order(ExportModelMixin):
             tax = item.get_tax_value()
             total = total + tax
         return total
-    
+
     def get_total_with_tax(self):
         return self.get_total_no_tax() + self.get_total_tax() + self.get_delivery_price()
 
@@ -141,7 +141,7 @@ class Order(ExportModelMixin):
         if self.has_items():
             return self.related_items.last().product.store.id
         return False
-    
+
     @property
     def get_store_name(self):
         if self.has_items():
@@ -192,7 +192,7 @@ class Item(models.Model):
         super(Item, self).save(*args, **kwargs)
 
     def get_tax_value(self):
-        return self.tax_percentage*self.total/100
+        return self.tax_percentage * self.total / 100
 
     def get_price_no_tax(self):
         return self.total - self.get_tax_value()
@@ -216,10 +216,12 @@ class Rating(models.Model):
 class DeliveryOrder(models.Model):
     INMEDIATELY = 'IN'
     PROGRAMMED = 'PM'
+    POINT = 'PO'
 
     DELIVERY_CHOICES = (
         (INMEDIATELY, 'Inmediato'),
         (PROGRAMMED, 'Programado'),
+        (POINT, 'Recoger en el punto'),
     )
 
     PAYMENT_METHOD_CHOICES = (

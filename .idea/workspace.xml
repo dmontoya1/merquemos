@@ -2,8 +2,599 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8cb6b25c-97f3-41b3-932c-a01a3ec49b66" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/merquemos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/merquemos.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/ApptitudDeveloper.pem" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/ApptitudDeveloper.pem" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/Pipfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/api/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/api/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/api/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/api/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/api/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/api/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/api/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/api/paginators.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/api/paginators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/api/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/api/permissions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/centrifugo/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/centrifugo/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/dashboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/django_xhtml2pdf/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/django_xhtml2pdf/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/django_xhtml2pdf/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/django_xhtml2pdf/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/django_xhtml2pdf/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/django_xhtml2pdf/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/fcm_django/migrations/0004_auto_20170918_1645.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/fcm_django/migrations/0004_auto_20170918_1645.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/migrations/0002_auto_20170802_0547.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/migrations/0002_auto_20170802_0547.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/migrations/0003_auto_20170802_0550.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/migrations/0003_auto_20170802_0550.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/migrations/0004_apikey.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/migrations/0004_apikey.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/migrations/0005_auto_20170803_1913.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/migrations/0005_auto_20170803_1913.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/migrations/0006_contactmessage.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/migrations/0006_contactmessage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/migrations/0007_auto_20170928_0012.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/migrations/0007_auto_20170928_0012.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/migrations/0008_city_slug.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/migrations/0008_city_slug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/migrations/0009_city_is_active.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/migrations/0009_city_is_active.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/manager/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/1_0rnxI9a.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/1_0rnxI9a.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/1_HOW4zik.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/1_HOW4zik.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/leche-clasica-semidesnatada-1.5L.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/leche-clasica-semidesnatada-1.5L.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/leche-de-arroz-integral-con-quinoa-procesada.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/leche-de-arroz-integral-con-quinoa-procesada.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/leche-de-arroz-integral-con-quinoa-procesada_porKkmB.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/leche-de-arroz-integral-con-quinoa-procesada_porKkmB.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/leche-polvo-soya-quinua-natural-500x500.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/products/images/leche-polvo-soya-quinua-natural-500x500.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/app_covers/Almacenes_exito_logo.svg.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/app_covers/Almacenes_exito_logo.svg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/app_covers/Almacenes_exito_logo.svg_iaCi7Dj.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/app_covers/Almacenes_exito_logo.svg_iaCi7Dj.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/logos/Almacenes_exito_logo.svg.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/logos/Almacenes_exito_logo.svg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/logos/Almacenes_exito_logo.svg_O72aTgc.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/logos/Almacenes_exito_logo.svg_O72aTgc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/logos/frutas-exoticas-frescas-en-mercado-dos-lavradores-funchal-madeira-54430695.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/logos/frutas-exoticas-frescas-en-mercado-dos-lavradores-funchal-madeira-54430695.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/logos/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/logos/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/web_covers/Almacenes_exito_logo.svg.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/web_covers/Almacenes_exito_logo.svg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/web_covers/Almacenes_exito_logo.svg_9cSHZsp.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/web_covers/Almacenes_exito_logo.svg_9cSHZsp.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/web_covers/Sin_titulo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/web_covers/Sin_titulo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/web_covers/column1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/web_covers/column1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/web_covers/frutas-exoticas-frescas-en-mercado-dos-lavradores-funchal-madeir_vgeGJ4o.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/media/stock/stores/web_covers/frutas-exoticas-frescas-en-mercado-dos-lavradores-funchal-madeir_vgeGJ4o.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/admin/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/admin/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/admin/electro-admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/admin/electro-admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/animate.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/animate.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/bootstrap-rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/bootstrap-rtl.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/bootstrap.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/bootstrap.min.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/checkout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/black.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/black.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/black.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/black.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/blue.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/blue.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/blue.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/blue.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/dark-green.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/dark-green.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/dark-green.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/dark-green.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/flat-blue.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/flat-blue.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/flat-blue.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/flat-blue.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/gold.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/gold.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/gold.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/gold.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/green.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/green.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/green.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/green.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/navy.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/navy.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/navy.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/navy.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/orange.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/orange.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/orange.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/orange.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/pink.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/pink.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/pink.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/pink.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/red.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/red.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/red.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/red.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/yellow.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/yellow.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/yellow.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/colors/yellow.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/config.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/config.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/config.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/config.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/font-awesome.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/font-electro.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/font-electro.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/font-electro.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/font-electro.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/owl-carousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/owl-carousel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/owl-carousel.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/owl-carousel.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/rtl.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/style-modify.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/style-modify.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/style.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/FontAwesome.otf" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/FontAwesome.otf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/font-electro.eot" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/font-electro.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/font-electro.svg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/font-electro.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/font-electro.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/font-electro.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/font-electro.woff" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/font-electro.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/fontawesome-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/fontawesome-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/fontawesome-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/fontawesome-webfont.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/star.eot" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/star.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/star.svg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/star.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/star.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/star.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/star.woff" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/fonts/star.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/ad-banner-3.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/ad-banner-3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/ad-block/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/ad-block/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/ad-block/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/ad-block/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/ajax-loader.gif" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/ajax-loader.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/2-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/2-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/DesktopPC.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/DesktopPC.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/MobileDevicesv2-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/MobileDevicesv2-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/ad-banner-sidebar.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/ad-banner-sidebar.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/cameras.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/cameras.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/home-v1-banner.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/home-v1-banner.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/home-v2.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/banner/home-v2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blank.gif" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blank.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/avatar.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/avatar.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-s-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-s-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-s-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-s-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-s-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-s-3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-s-4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/blog/blog-s-4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/brands/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/brands/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/brands/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/brands/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/brands/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/brands/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/brands/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/brands/4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/brands/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/brands/5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/brands/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/brands/6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/column1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/column1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/column2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/column2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/column3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/column3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/amex.svg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/amex.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/diners.svg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/diners.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/discover.svg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/discover.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/jcb.svg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/jcb.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/maestro.svg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/maestro.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/mastercard.svg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/mastercard.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/paypal.svg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/paypal.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/unknown.svg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/unknown.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/visa.svg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/credit-cards/visa.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/1-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/1-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/1-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/1-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/1-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/1-3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/2-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/2-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/2-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/2-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/2-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/2-3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/2-4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/2-4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/deals/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/error.gif" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/error.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/estados/Entregado.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/estados/Entregado.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/fav-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/fav-icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/payment-icon/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/payment-icon/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/payment-icon/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/payment-icon/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/payment-icon/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/payment-icon/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/payment-icon/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/payment-icon/4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/payment-icon/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/footer/payment-icon/5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/home-v3-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/home-v3-bg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/amex.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/amex.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/diners.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/diners.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/discover.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/discover.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/jcb.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/jcb.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/laser.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/laser.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/maestro.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/maestro.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/mastercard.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/mastercard.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/visa.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/icons/credit-cards/visa.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/logo_footer.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/logo_footer.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/megamenu-2.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/megamenu-2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/onsale-product.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/onsale-product.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/perfil/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/perfil/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-2-1-2/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-2-1-2/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-2-1-2/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-2-1-2/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-2-1-2/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-2-1-2/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-2-1-2/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-2-1-2/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-2-1-2/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-2-1-2/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-cards/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-cards/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-cards/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-cards/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-cards/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-cards/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-cards/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-cards/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-cards/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-cards/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-cards/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-cards/6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/10.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/11.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/12.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/13.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/13.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/14.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/14.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/8.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/product-category/9.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/6-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/6-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/header-image.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/header-image.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/header-image.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/header-image.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/mini-cart1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/mini-cart1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/mini-cart2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/mini-cart2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/mini-cart3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/mini-cart3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/thumb1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/thumb1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/thumb2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/thumb2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/thumb3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/products/thumb3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/ForDescription-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/ForDescription-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/ForDescription.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/ForDescription.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/ad-banner.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/ad-banner.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/brand.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/brand.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/s1-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/s1-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/s1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/s1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/s2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/s2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/s3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/s3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/s4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/s4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/s5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/s5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/single-thumb1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/single-thumb1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/single-thumb2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/single-thumb2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/single-thumb3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/single-thumb3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/single-thumb4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/single-thumb4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/single-thumb5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/single-thumb5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/single-thumb6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/single-product/single-thumb6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/slider/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/slider/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/slider/banner-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/slider/banner-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/slider/banner-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/slider/banner-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/slider/banner-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/slider/banner-3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/team-member/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/team-member/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/team-member/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/team-member/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/team-member/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/team-member/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/team-member/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/team-member/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/team-member/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/team-member/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/team-member/7.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/team-member/7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/temp/brand-logo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/temp/brand-logo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/temp/slider-v2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/temp/slider-v2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/tiendas/makro1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/images/tiendas/makro1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/bootstrap-hover-dropdown.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/bootstrap-hover-dropdown.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/centrifuge.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/centrifuge.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/echo.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/echo.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/electro.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/electro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/electro.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/electro.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/jquery.easing.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/jquery.easing.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/jquery.jplayer.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/jquery.jplayer.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/jquery.waypoints.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/jquery.waypoints.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/owl.carousel.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/owl.carousel.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/pace.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/pace.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/scrollup.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/scrollup.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/spin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/spin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/tether.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/tether.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/wow.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/js/wow.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/_bs-variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/_bs-variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/_direction-controller.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/_direction-controller.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/_main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/_main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/_mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/_mixins.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/_responsive.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/_responsive.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/admin/_ec-tabs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/admin/_ec-tabs.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/admin/_electro-options-panel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/admin/_electro-options-panel.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/admin/_mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/admin/_mixins.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/admin/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/admin/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/admin/admin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/admin/admin.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_base.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_form.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_layout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_media.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_media.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_type.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_type.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_woocommerce.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/base/_woocommerce.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_ads.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_ads.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_brands-carousel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_brands-carousel.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_comments.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_comments.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_features-list.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_features-list.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_footer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_home-full-width-slider.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_home-full-width-slider.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_home-list-categories.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_home-list-categories.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_navbar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_posts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_posts.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_product-card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_product-card.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_product-cards-carousel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_product-cards-carousel.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_product-categories.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_product-categories.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_products-2-1-2.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_products-2-1-2.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_products-6-1.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_products-6-1.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_products-carousel-tabs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_products-carousel-tabs.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_products-carousel-with-image.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_products-carousel-with-image.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_products-carousel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_products-carousel.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_products.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_products.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_section-onsale-product.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_section-onsale-product.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_shop-control-bar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_shop-control-bar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_sidebar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_sidebar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_sliders.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_sliders.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_top-bar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_top-bar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_wc-widgets.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_wc-widgets.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_widgets.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_widgets.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_woocommerce-checkout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/blocks/_woocommerce-checkout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/_color.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/_color.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/_light.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/_light.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/black.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/black.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/blue.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/blue.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/dark-green.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/dark-green.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/flat-blue.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/flat-blue.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/gold.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/gold.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/green.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/green.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/navy.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/navy.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/orange.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/orange.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/pink.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/pink.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/red.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/red.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/yellow.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/colors/yellow.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_blog-pagination.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_blog-pagination.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_cart-collaterals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_cart-collaterals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_departments-menu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_departments-menu.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_electro-adv-pagination.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_electro-adv-pagination.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_electro-wc-ppp-select.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_electro-wc-ppp-select.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_jplayer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_jplayer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_megamenu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_megamenu.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_navbar-mini-cart.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_navbar-mini-cart.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_navbar-search.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_navbar-search.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_owl-carousel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_owl-carousel.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_pace.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_pace.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_post-format-gallery.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_post-format-gallery.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_post-item.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_post-item.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_primary-nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_primary-nav.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_product-item.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_product-item.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_product-list-view.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_product-list-view.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_qty-buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_qty-buttons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_scrollup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_scrollup.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_secondary-nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_secondary-nav.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_star-rating.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_star-rating.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_table-cart.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_table-cart.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_typeahead.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_typeahead.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_utilities.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_utilities.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_vertical-menu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_vertical-menu.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_wc-breadcrumb.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_wc-breadcrumb.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_wc-ordering.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_wc-ordering.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_wc-pagination.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_wc-pagination.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_wc-reviews.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_wc-reviews.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_wc-tabs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_wc-tabs.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_widget-electro-recent-posts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/components/_widget-electro-recent-posts.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/integrations/_fontawesome-variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/integrations/_fontawesome-variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/integrations/_wishlist.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/integrations/_wishlist.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/integrations/_woocompare.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/integrations/_woocompare.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_alert.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_alert.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_background-variant.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_background-variant.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_border-radius.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_border-radius.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_breakpoints.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_breakpoints.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_buttons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_cards.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_cards.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_center-block.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_center-block.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_clearfix.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_clearfix.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_custom-controls.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_custom-controls.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_font-awesome.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_font-awesome.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_forms.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_forms.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_gradients.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_gradients.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_grid-framework.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_grid-framework.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_grid.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_grid.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_hover.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_hover.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_image.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_image.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_label.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_label.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_list-group.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_list-group.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_lists.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_lists.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_multiline-ellipsis.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_multiline-ellipsis.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_nav-divider.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_nav-divider.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_nav.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_navbar-align.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_navbar-align.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_pagination.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_pagination.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_product-item.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_product-item.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_progress.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_progress.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_pulls.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_pulls.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_reset-filter.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_reset-filter.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_reset-text.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_reset-text.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_resize.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_resize.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_screen-reader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_screen-reader.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_size.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_size.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_tab-focus.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_tab-focus.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_table-row.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_table-row.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_text-emphasis.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_text-emphasis.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_text-hide.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_text-hide.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_text-truncate.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_text-truncate.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_type.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/mixins/_type.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-404.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-404.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-about.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-about.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-cart.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-cart.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-checkout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-checkout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-compare.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-compare.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-contact.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-contact.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-faq.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-faq.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-myaccount.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-myaccount.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-order-received.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-order-received.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-single-product.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-single-product.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-store-directory.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-store-directory.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-track-your-order.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/pages/_page-track-your-order.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/responsive/_screen-down-lg.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/responsive/_screen-down-lg.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/responsive/_screen-down-md.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/responsive/_screen-down-md.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/responsive/_screen-down-sm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/responsive/_screen-down-sm.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/responsive/_screen-md-lg.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/responsive/_screen-md-lg.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/responsive/_screen-sm-md.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/responsive/_screen-sm-md.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/rtl.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/rtl.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/assets/sass/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/img/app_logo_icon_dark-bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/img/app_logo_icon_dark-bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/static/img/slider_01.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/static/img/slider_01.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/templates/account/email/email_confirmation_message.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/templates/account/email/email_confirmation_message.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/templates/account/email/email_confirmation_signup_message.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/templates/account/email/email_confirmation_signup_message.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/templates/account/email/email_confirmation_subject.txt" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/templates/account/email/email_confirmation_subject.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/templates/admin/base_site1.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/templates/admin/base_site1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/templates/admin/change_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/templates/admin/change_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/templates/rest_framework_docs/docs.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/templates/rest_framework_docs/docs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/templates/socialaccount/authentication_error.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/templates/socialaccount/authentication_error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/templates/webclient/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/templates/webclient/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/templates/webclient/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/templates/webclient/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/merquemos/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/merquemos/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/dashboard_modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/dashboard_modules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/templates/reports/number_services.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/templates/reports/number_services.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/templates/reports/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/templates/reports/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/templates/reports/products_registered.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/templates/reports/products_registered.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/templates/reports/ratings.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/templates/reports/ratings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/templates/reports/report_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/templates/reports/report_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/templates/reports/requests.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/templates/reports/requests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/templates/reports/sales.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/templates/reports/sales.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/templates/reports/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/templates/reports/services.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/templates/reports/system_rating.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/templates/reports/system_rating.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/templates/reports/system_requests.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/templates/reports/system_requests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/templates/reports/system_sales.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/templates/reports/system_sales.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/reports/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/reports/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/rest_framework/authtoken/migrations/0003_auto_20170803_1858.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/rest_framework/authtoken/migrations/0003_auto_20170803_1858.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/merquemos/sales/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0002_auto_20170906_1639.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0002_auto_20170906_1639.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0003_auto_20170919_0721.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0003_auto_20170919_0721.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0004_deliveryorder_address.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0004_deliveryorder_address.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0005_auto_20170919_0918.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0005_auto_20170919_0918.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0006_auto_20170920_2343.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0006_auto_20170920_2343.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0007_order_delivery_price.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0007_order_delivery_price.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0008_rating_comments.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0008_rating_comments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0009_auto_20170929_1121.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0009_auto_20170929_1121.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0010_auto_20170929_1721.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0010_auto_20170929_1721.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0011_auto_20171003_0009.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0011_auto_20171003_0009.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0012_auto_20171004_1817.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0012_auto_20171004_1817.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0013_auto_20171004_2106.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0013_auto_20171004_2106.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0014_order_comments.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0014_order_comments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0015_auto_20171006_1642.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0015_auto_20171006_1642.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0016_auto_20181019_1436.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0016_auto_20181019_1436.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0017_auto_20181108_0946.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0017_auto_20181108_0946.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0018_auto_20181229_1528.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0018_auto_20181229_1528.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0019_auto_20190211_1249.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0019_auto_20190211_1249.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/0020_auto_20190211_1332.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/0020_auto_20190211_1332.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/sales/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/sales/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0002_auto_20170802_0739.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0002_auto_20170802_0739.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0003_auto_20170802_0739.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0003_auto_20170802_0739.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0004_inventory_date_added.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0004_inventory_date_added.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0005_product_stock_quantity.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0005_product_stock_quantity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0006_inventory_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0006_inventory_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0007_auto_20170819_0941.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0007_auto_20170819_0941.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0008_product_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0008_product_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0009_category_parent.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0009_category_parent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0010_auto_20170902_0910.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0010_auto_20170902_0910.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0011_auto_20170907_1457.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0011_auto_20170907_1457.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0012_auto_20170907_1637.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0012_auto_20170907_1637.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0013_store_slug.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0013_store_slug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0014_auto_20170926_1604.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0014_auto_20170926_1604.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0015_auto_20170927_1112.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0015_auto_20170927_1112.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0016_auto_20170928_0002.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0016_auto_20170928_0002.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0017_auto_20170929_1121.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0017_auto_20170929_1121.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0018_store_web_cover.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0018_store_web_cover.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0019_auto_20171001_2024.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0019_auto_20171001_2024.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0020_auto_20171005_1926.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0020_auto_20171005_1926.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0021_product_barcode.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0021_product_barcode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0022_category_slug.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0022_category_slug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0023_auto_20181020_0838.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0023_auto_20181020_0838.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0024_store_is_active.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0024_store_is_active.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0025_auto_20181022_1737.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0025_auto_20181022_1737.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0026_product_date_added.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0026_product_date_added.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0027_auto_20181113_1153.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0027_auto_20181113_1153.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0028_store_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0028_store_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0029_auto_20190204_1308.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0029_auto_20190204_1308.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0030_auto_20190302_1119.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0030_auto_20190302_1119.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0031_auto_20190302_1141.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0031_auto_20190302_1141.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/0032_auto_20190302_1152.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/0032_auto_20190302_1152.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/stock/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/adapters.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/adapters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/migrations/0002_auto_20170802_0606.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/migrations/0002_auto_20170802_0606.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/migrations/0003_token.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/migrations/0003_token.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/migrations/0004_auto_20170929_1924.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/migrations/0004_auto_20170929_1924.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/migrations/0005_auto_20171004_1506.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/migrations/0005_auto_20171004_1506.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/migrations/0006_auto_20171004_1817.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/migrations/0006_auto_20171004_1817.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/migrations/0007_user_private_hash.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/migrations/0007_user_private_hash.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/migrations/0008_auto_20171005_0949.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/migrations/0008_auto_20171005_0949.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/migrations/0009_auto_20171005_0951.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/migrations/0009_auto_20171005_0951.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/migrations/0010_user_user_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/migrations/0010_user_user_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/utils/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/utils/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/utils/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/utils/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/utils/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/utils/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/utils/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/utils/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/utils/templatetags/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/utils/templatetags/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/utils/templatetags/utils_extras.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/utils/templatetags/utils_extras.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/utils/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/utils/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/utils/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/utils/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/context_processors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/admin/order_resume.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/admin/order_resume.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/auth/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/auth/auth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/home/category_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/home/category_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/home/faq.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/home/faq.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/home/policy_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/home/policy_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/home/search_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/home/search_result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/home/store_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/home/store_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/home/store_home.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/home/store_home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/home/store_select.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/home/store_select.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/home/subcategory_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/home/subcategory_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/orders/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/orders/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/orders/order_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/orders/order_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/product/product_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/product/product_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/product/product_list_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/product/product_list_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templates/user/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templates/user/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templatetags/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templatetags/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/templatetags/webclientextras.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/templatetags/webclientextras.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merquemos/webclient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/merquemos/webclient/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,79 +603,104 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.52891934">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/merquemos/reports/templates/reports/ratings.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="455">
-                  <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/merquemos/stock/urls.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="78">
-                  <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
-                  <folding>
-                    <element signature="e#0#41#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/merquemos/stock/views.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="301">
-                  <caret line="117" selection-start-line="116" selection-end-line="117" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/merquemos/stock/serializers.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="273">
-                  <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/merquemos/reports/views.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="80" column="32" selection-start-line="80" selection-start-column="32" selection-end-line="80" selection-end-column="32" />
-                  <folding>
-                    <element signature="e#940#1395#0" />
-                    <element signature="e#1450#2498#0" />
-                    <element signature="e#3123#3965#0" />
-                    <element signature="e#4013#4846#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/merquemos/sales/admin.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="236">
-                  <caret line="49" column="36" lean-forward="true" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/merquemos/stock/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="117" selection-start-line="116" selection-end-line="117" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/merquemos/merquemos/templates/webclient/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1467">
+              <caret line="427" column="16" lean-forward="true" selection-start-line="427" selection-start-column="16" selection-end-line="427" selection-end-column="16" />
+              <folding>
+                <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#i#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/merquemos/stock/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1145">
+              <caret line="229" column="41" lean-forward="true" selection-start-line="229" selection-start-column="41" selection-end-line="229" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/merquemos/merquemos/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="10" column="73" lean-forward="true" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/merquemos/webclient/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/merquemos/webclient/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="514">
+              <caret line="254" selection-start-line="254" selection-end-line="254" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/merquemos/webclient/templates/admin/order_resume.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="106">
+              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/merquemos/webclient/templates/user/profile.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="175" column="140" selection-start-line="175" selection-start-column="140" selection-end-line="175" selection-end-column="140" />
+              <folding>
+                <element signature="n#div#0;n#!!top" />
+                <element signature="n#table#1;n#div#0;n#div#1;n#article#0;n#main#0;n#div#2;n#!!top" />
+                <element signature="e#10356#11086#0" />
+                <element signature="e#11148#11854#0" />
+                <element signature="e#11909#12386#0" />
+                <element signature="e#12439#13404#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/merquemos/merquemos/static/assets/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1131">
+              <caret line="303" column="16" lean-forward="true" selection-start-line="303" selection-start-column="16" selection-end-line="303" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -101,6 +717,14 @@
       <find>Api-Key</find>
       <find>s==</find>
       <find>shipping_method_0</find>
+      <find>ec ec-shopping-bag</find>
+      <find>Api</find>
+      <find>webclient_context_web_auth_token</find>
+      <find>ReportView</find>
+      <find>ratedService</find>
+      <find>rating-service</find>
+      <find>d-inline-block</find>
+      <find>align-top</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -112,13 +736,10 @@
         <option value="$PROJECT_DIR$/merquemos/stock/serializers.py" />
         <option value="$PROJECT_DIR$/merquemos/stock/admin.py" />
         <option value="$PROJECT_DIR$/merquemos/webclient/templates/product/product_list_detail.html" />
-        <option value="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/style.css" />
-        <option value="$PROJECT_DIR$/merquemos/stock/models.py" />
         <option value="$PROJECT_DIR$/merquemos/webclient/templates/auth/auth.html" />
         <option value="$PROJECT_DIR$/merquemos/webclient/templates/product/product_detail.html" />
         <option value="$PROJECT_DIR$/merquemos/sales/urls.py" />
         <option value="$PROJECT_DIR$/merquemos/sales/views.py" />
-        <option value="$PROJECT_DIR$/merquemos/webclient/templates/user/profile.html" />
         <option value="$PROJECT_DIR$/merquemos/webclient/templates/orders/checkout.html" />
         <option value="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/checkout.css" />
         <option value="$PROJECT_DIR$/merquemos/reports/views.py" />
@@ -127,6 +748,13 @@
         <option value="$PROJECT_DIR$/merquemos/stock/urls.py" />
         <option value="$PROJECT_DIR$/merquemos/stock/views.py" />
         <option value="$PROJECT_DIR$/merquemos/sales/admin.py" />
+        <option value="$PROJECT_DIR$/merquemos/merquemos/templates/webclient/base.html" />
+        <option value="$PROJECT_DIR$/merquemos/webclient/context_processors.py" />
+        <option value="$PROJECT_DIR$/merquemos/stock/models.py" />
+        <option value="$PROJECT_DIR$/merquemos/webclient/views.py" />
+        <option value="$PROJECT_DIR$/merquemos/webclient/templates/user/profile.html" />
+        <option value="$PROJECT_DIR$/merquemos/merquemos/static/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/merquemos/webclient/templates/admin/order_resume.html" />
       </list>
     </option>
   </component>
@@ -149,18 +777,42 @@
           <expand>
             <path>
               <item name="merquemos" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="~/Projects/merquemos" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
             <path>
               <item name="merquemos" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="~/Projects/merquemos" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="merquemos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="merquemos" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="~/Projects/merquemos" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="merquemos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="stock" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="merquemos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="merquemos" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Projects/merquemos" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="merquemos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="merquemos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="merquemos" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Projects/merquemos" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="merquemos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="merquemos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="merquemos" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Projects/merquemos" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="merquemos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="merquemos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -171,12 +823,16 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -213,20 +869,19 @@
       <workItem from="1552916408972" duration="109000" />
       <workItem from="1552933475649" duration="2771000" />
       <workItem from="1552940206533" duration="722000" />
-      <workItem from="1552952320045" duration="4183000" />
-      <workItem from="1553003819874" duration="25000" />
-      <workItem from="1553011680172" duration="43000" />
+      <workItem from="1552952320045" duration="3940000" />
+      <workItem from="1558190862121" duration="4568000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18394000" />
+    <option name="totallyTimeSpent" value="22656000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-2" width="1366" height="770" extended-state="6" />
+    <frame x="0" y="9" width="1366" height="768" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.22907154" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.22850679" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -266,13 +921,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/webclient/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="88" column="6" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/merquemos/webclient/templates/home/store_detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-475" />
@@ -285,31 +933,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/merquemos/static/assets/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="10216" column="14" selection-start-line="10216" selection-start-column="14" selection-end-line="10216" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/stock/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2340">
-          <caret line="203" column="35" selection-start-line="203" selection-start-column="23" selection-end-line="203" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/merquemos/webclient/templates/product/product_list_detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/webclient/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="19" column="130" selection-start-line="19" selection-start-column="130" selection-end-line="19" selection-end-column="130" />
         </state>
       </provider>
     </entry>
@@ -333,28 +960,6 @@
           <caret line="33" column="35" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="35" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/webclient/templates/user/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2041">
-          <caret line="286" column="14" lean-forward="true" selection-start-line="286" selection-start-column="14" selection-end-line="286" selection-end-column="14" />
-          <folding>
-            <element signature="n#div#0;n#!!top" />
-            <element signature="n#div#1;n#!!top" />
-            <element signature="n#table#1;n#div#0;n#div#1;n#article#0;n#main#0;n#div#2;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/merquemos/templates/webclient/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="25" column="83" lean-forward="true" selection-start-line="25" selection-start-column="83" selection-end-line="25" selection-end-column="83" />
-          <folding>
-            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -412,19 +1017,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/reports/templates/reports/ratings.html">
+    <entry file="file://$PROJECT_DIR$/merquemos/reports/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+        <state relative-caret-position="351">
+          <caret line="80" column="32" selection-start-line="80" selection-start-column="32" selection-end-line="80" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/merquemos/stock/urls.py">
+    <entry file="file://$PROJECT_DIR$/merquemos/sales/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
+        <state relative-caret-position="197">
+          <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/webclient/templates/home/store_home.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/merquemos/static/assets/css/font-awesome.min.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/webclient/context_processors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/merquemos/templates/webclient/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1467">
+          <caret line="427" column="16" lean-forward="true" selection-start-line="427" selection-start-column="16" selection-end-line="427" selection-end-column="16" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -433,6 +1062,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/reports/templates/reports/ratings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -458,8 +1094,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/merquemos/sales/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="49" column="36" lean-forward="true" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+        <state relative-caret-position="301">
+          <caret line="117" selection-start-line="116" selection-end-line="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/stock/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1145">
+          <caret line="229" column="41" lean-forward="true" selection-start-line="229" selection-start-column="41" selection-end-line="229" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/merquemos/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="10" column="73" lean-forward="true" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/webclient/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/webclient/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="254" selection-start-line="254" selection-end-line="254" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/webclient/templates/user/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="175" column="140" selection-start-line="175" selection-start-column="140" selection-end-line="175" selection-end-column="140" />
+          <folding>
+            <element signature="n#div#0;n#!!top" />
+            <element signature="n#table#1;n#div#0;n#div#1;n#article#0;n#main#0;n#div#2;n#!!top" />
+            <element signature="e#10356#11086#0" />
+            <element signature="e#11148#11854#0" />
+            <element signature="e#11909#12386#0" />
+            <element signature="e#12439#13404#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/merquemos/static/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1131">
+          <caret line="303" column="16" lean-forward="true" selection-start-line="303" selection-start-column="16" selection-end-line="303" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merquemos/webclient/templates/admin/order_resume.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
         </state>
       </provider>
     </entry>
