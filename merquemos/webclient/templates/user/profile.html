@@ -162,18 +162,18 @@
                     </li>
                     <li class="see-prods">
                       <strong class="navy">
-                        <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#historyOrderDetail" class="orderHistory button">Ver productos</a>
+                        <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#historyOrderDetail" class="orderHistory btn-profile">Ver productos</a>
                       </strong>
                     </li>
                     <li class="see-prods">
                       <strong class="navy">
-                        <a href="#" data-order="{{order.pk}}" class="re-order-order button">Pedir nuevamente</a>
+                        <a href="#" data-order="{{order.pk}}" class="re-order-order btn-profile">Pedir nuevamente</a>
                       </strong>
                     </li>
                     {% if not order.rating and order.status == 'DE' %}
                     <li class="rate-service">
                       <strong class="navy">
-                        <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#ratedService" class="ratingOrder button">Calificar</a>
+                        <a href="#" data-order="{{order.pk}}" data-toggle="modal" data-target="#ratedService" class="ratingOrder btn-profile">Calificar</a>
                       </strong>
                     </li>
                     {% endif %}
@@ -317,7 +317,7 @@
                 data: data
             })
                 .success(function (response) {
-                    swal({
+                    Swal.fire({
                         title: 'Exitoso',
                         text: "Tu calificación se ha enviado correctamente.",
                         type: 'success',
@@ -331,7 +331,7 @@
                 })
                 .fail(function (error) {
                     if (error.response.status === 400){
-                        swal({
+                        Swal.fire({
                             title: 'Error',
                             text: "Debes ingresar el valor de la calificación",
                             type: 'error',

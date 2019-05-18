@@ -57,6 +57,11 @@ Pillow = "==4.2.1"
 PyYAML = "==3.13"
 "psycopg2-binary" = "*"
 "xhtml2pdf" = "*"
+django-jet = "*"
+easy-pdf = "*"
 
 [requires]
 python_version = "2.7"
+
+[pipenv]
+allow_prereleases = true
