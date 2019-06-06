@@ -2,102 +2,200 @@
 {% load static %}
 {% load humanize %}
 
-{% block content%}
+{% block extra_css %}
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+#prod-img:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 999; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)}
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+#close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#close:hover,
+#close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+</style>
+
+{% endblock %}
+
+{% block content %}
 <div id="primary" class="content-area">
-    <main id="main" class="site-main">
+  <main id="main" class="site-main">
 
-        <div class="product">
+    <div class="product">
 
-            <div class="single-product-wrapper">
-                <div class="product-images-wrapper">
-                    <div class="images electro-gallery">
-                        <img src="{{product.get_image_url}}" class="wp-post-image" alt="">
-                    </div><!-- .electro-gallery -->
-                </div><!-- /.product-images-wrapper -->
+      <div class="single-product-wrapper">
+        <div class="product-images-wrapper">
+          <div class="images electro-gallery">
+            <img src="{{product.get_image_url}}" class="wp-post-image" id="prod-img" alt="">
+          </div><!-- .electro-gallery -->
+        </div><!-- /.product-images-wrapper -->
 
-                <div class="summary entry-summary">
+        <div class="summary entry-summary">
 
                     <span class="loop-product-categories">
                         <a rel="tag">{{product.categoy.name}}</a>
                     </span><!-- /.loop-product-categories -->
 
-                    <h1 itemprop="name" class="product_title entry-title">{{product.name}}</h1>
+          <h1 itemprop="name" class="product_title entry-title">{{product.name}}</h1>
 
-                    <hr class="single-product-title-divider" />
+          <hr class="single-product-title-divider"/>
 
-                    <div itemprop="description">
-                        <p>{{product.description}}</p>
-                        <p><strong>Referencia</strong>: {{product.sku}}</p>
-                        <p><strong>Presentación</strong>: {{product.size}}</p>
-                        <p><strong>PUM</strong>: ${{product.pum_value}} x {{product.get_pum_type_display}}</p>
-                    </div><!-- .description -->
+          <div itemprop="description">
+            <p>{{product.description}}</p>
+            <p><strong>Referencia</strong>: {{product.sku}}</p>
+            <p><strong>Presentación</strong>: {{product.size}}</p>
+            <p><strong>PUM</strong>: ${{product.pum_value}} x {{product.get_pum_type_display}}</p>
+          </div><!-- .description -->
 
-                    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 
-                        <p class="price"><span class="electro-price">
+            <p class="price"><span class="electro-price">
                         <ins><h4 class="amount">&#36;{{product.get_price|intcomma}}</h4></ins> 
                         {% if product.has_discount %}
                         <del><span class="amount">&#36;{{product.price|intcomma}}</span></del></span></p>
-                        {% endif %}
-                        <meta itemprop="price" content="{{product.price|intcomma}}" />
-                        <meta itemprop="priceCurrency" content="COP" />
-                        <link itemprop="availability" href="http://schema.org/InStock" />
+            {% endif %}
+            <meta itemprop="price" content="{{product.price|intcomma}}"/>
+            <meta itemprop="priceCurrency" content="COP"/>
+            <link itemprop="availability" href="http://schema.org/InStock"/>
 
-                    </div><!-- /itemprop -->
+          </div><!-- /itemprop -->
 
-                    <form class="variations_form cart" method="POST" id="add_to_cart_form">
+          <form class="variations_form cart" method="POST" id="add_to_cart_form">
 
-                        <div class="single_variation_wrap">
-                            <div class="woocommerce-variation single_variation"></div>
-                            <div class="woocommerce-variation-add-to-cart variations_button">
-                                    <div class="quantity">
-                                        <label>Cantidad:</label>
-                                        <input type="number" name="quantity" value="1" title="Qty" class="input-text qty text quantity_selector"/>
-                                    </div>
-                                    <button type="submit" class="single_add_to_cart_button button">Agregar al carrito</button>
-                                    <input type="hidden" name="product" value="{{product.pk}}" />
-                            </div>
-                        </div>
-                    </form>
+            <div class="single_variation_wrap">
+              <div class="woocommerce-variation single_variation"></div>
+              <div class="woocommerce-variation-add-to-cart variations_button">
+                <div class="quantity">
+                  <label>Cantidad:</label>
+                  <input type="number" name="quantity" value="1" title="Qty"
+                         class="input-text qty text quantity_selector"/>
+                </div>
+                <button type="submit" class="single_add_to_cart_button button">Agregar al carrito</button>
+                <input type="hidden" name="product" value="{{product.pk}}"/>
+              </div>
+            </div>
+          </form>
 
-                </div><!-- .summary -->
-            </div><!-- /.single-product-wrapper -->
-        </div><!-- /.product -->
+        </div><!-- .summary -->
+      </div><!-- /.single-product-wrapper -->
+    </div><!-- /.product -->
 
-    </main><!-- /.site-main -->
+  </main><!-- /.site-main -->
 </div><!-- /.content-area -->
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span id="close">&times;</span>
+  <img class="modal-content" id="img01">
+</div>
 {% endblock %}
 
 {% block extra_js %}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script>
-        (function($) {
-            $('#add_to_cart_form').on('submit', function(e) {
-                e.preventDefault();
-                {% if not request.user.is_authenticated %}
-                    window.location.replace("{% url 'webclient:login' %}");
-                {% endif %}    
-                var jqxhr = $.post( "{% url 'sales:item-create' %}", $(this).serialize(), function(data) {
-                    Swal.fire({
-                      title: 'Producto agregado exitosamente',
-                      text: "El producto se ha agregado al carrito exitosamente. Quieres agregar más productos, o ir al carrito?",
-                      type: 'success',
-                      showCancelButton: true,
-                      confirmButtonColor: '#BB5353',
-                      cancelButtonColor: '#55ba95',
-                      confirmButtonText: 'Agregar más productos',
-                      cancelButtonText: 'Ir al carrito'
-                    }).then((result) => {
-                      if (result.value) {
-                        location.href = "{% url 'webclient:home' %}"
-                      }
-                      else{
-                        location.href = "{% url 'webclient:checkout' %}"
-                      }
-                    })
-                    update_cart();
-                });
-            });
-        })(jQuery);
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script>
+  (function ($) {
+    $('#add_to_cart_form').on('submit', function (e) {
+      e.preventDefault();
+      {% if not request.user.is_authenticated %}
+      window.location.replace("{% url 'webclient:login' %}");
+      {% endif %}
+      var jqxhr = $.post("{% url 'sales:item-create' %}", $(this).serialize(), function (data) {
+        Swal.fire({
+          title: 'Producto agregado exitosamente',
+          text: "El producto se ha agregado al carrito exitosamente. Quieres agregar más productos, o ir al carrito?",
+          type: 'success',
+          showCancelButton: true,
+          confirmButtonColor: '#BB5353',
+          cancelButtonColor: '#55ba95',
+          confirmButtonText: 'Agregar más productos',
+          cancelButtonText: 'Ir al carrito'
+        }).then((result) => {
+          if (result.value) {
+            window.history.go(-1)
+          } else {
+            location.href = "{% url 'webclient:checkout' %}"
+          }
+        })
+        update_cart();
+      });
+    });
+    $('#close').on('click', function () {
+      console.log("Close MODAL")
+      modal.style.display = "none";
+    })
+  })(jQuery);
+
+  var modal = document.getElementById("myModal");
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("prod-img");
+  var modalImg = document.getElementById("img01");
+  img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+  }
+
+</script>
 {% endblock %}
