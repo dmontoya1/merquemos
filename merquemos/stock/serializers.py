@@ -1,13 +1,19 @@
 from django.contrib.sites.models import Site
 from rest_framework import serializers
 from .models import (
-    Store, Category, Product, 
+    Store, Category, Product,
     Brand, BrandStore, Inventory
 )
 
 
 class StoreSerializer(serializers.ModelSerializer):
-    
+
+    bank = serializers.StringRelatedField(many=True)
+    bank_type = serializers.SerializerMethodField()
+
+    def get_bank_type(self, obj):
+        return obj.get_bank_type_display()
+
     class Meta:
         model = Store
         fields = (
@@ -21,32 +27,36 @@ class StoreSerializer(serializers.ModelSerializer):
             'address',
             'phone_number',
             'web_cover',
-            'legal_id_number'
+            'legal_id_number',
+            'bank',
+            'bank_type',
+            'bank_number'
         )
 
-class CategorySerializer(serializers.ModelSerializer):
 
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ('pk', 'name', 'parent')
 
-class BrandSerializer(serializers.ModelSerializer):
 
+class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
         fields = ('pk', 'name')
 
-class BrandStoreSerializer(serializers.ModelSerializer):
 
+class BrandStoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = BrandStore
         fields = ('pk', 'brand', 'store')
 
-class InventorySerializer(serializers.ModelSerializer):
 
+class InventorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Inventory
         fields = ('pk', 'product', 'quantity')
+
 
 class ProductSerializer(serializers.ModelSerializer):
     price = serializers.DecimalField(
@@ -91,14 +101,13 @@ class ProductSerializer(serializers.ModelSerializer):
             'pum_type',
             'pum_value'
         )
-    
+
     def get_product_image(self, obj):
         domain = Site.objects.get_current().domain
         return 'http://{domain}{path}'.format(domain=domain, path=obj.image.url)
 
 
 class ProductDeleteSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Product
         fields = (
@@ -108,4 +117,3 @@ class ProductDeleteSerializer(serializers.ModelSerializer):
             'image',
         )
         lookup_field = 'sku'
-    

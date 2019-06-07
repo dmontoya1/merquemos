@@ -109,7 +109,10 @@
                                     </label>
                                     {% if not request.user.get_current_order.status == "PE" %}
                                         <select {% if not request.user.get_current_order.status == "PE" %}disabled{% endif %} id="delivery_option" name="delivery_option" class="selectpicker input-text" required>
-                                            <option selected disabled>{% if request.user.get_current_order.delivery_order.get_delivery_option_display == 'PR'%}Programado{%else%}Inmediato{%endif%} - {{request.user.get_current_order.delivery_order.delivery_time}}</option>
+                                            <option selected disabled>
+                                              {{ request.user.get_current_order.delivery_order.delivery_option_display }}
+                                              - {{request.user.get_current_order.delivery_order.delivery_time}}
+                                            </option>
                                         </select>
                                         <br>
                                     {% else %}
@@ -120,42 +123,50 @@
                                             <option value="PO">Recoger en punto</option>
                                         </select>
                                         <br>
-
                                     {% endif %}
                                     <div class="delivery-time d-none" style="margin-top: 20px; display: none; width: 100%;">
-                                        <label for="che_address">Tiempo de entrega
+                                        <label for="datetimepicker">Tiempo de entrega
                                         </label>
                                         <input id="datetimepicker" type="text" placeholder="Fecha y hora de entrega" name="delivery_time" style="width: 100%;">
                                     </div>
-
                                 </li>
                             </ul>
                         </div>
                         </div>
                         <div class="col-2" style="float: right;">
-                                <br>
-                                <br>
-                                <h3>Método de pago</h3>
+                            <br>
+                            <br>
+                            <h3>Método de pago</h3>
                             <div class="woocommerce-checkout-payment" id="payment">
                                 <ul class="wc_payment_methods payment_methods methods">
                                     {% if request.user.get_current_order.status == "PE" %}
                                         <li class="wc_payment_method payment_method_bacs">
                                             <input type="radio" data-order_button_text="" checked="checked" value="CS" name="payment_method" class="input-radio" id="che_payment_method">
-                                            <label for="payment_method_bacs">Efectivo</label>
+                                            <label for="che_payment_method">Efectivo</label>
                                         </li>
                                         <li class="wc_payment_method payment_method_paypal">
                                             <input type="radio" data-order_button_text="Proceed to PayPal" value="PS" name="payment_method" class="input-radio" id="che_payment_method">
 
-                                            <label for="payment_method_paypal">Datáfono <img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"></label>
+                                            <label for="che_payment_method">Datáfono <img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"></label>
+                                        </li>
+                                        <li class="wc_payment_method payment_method_paypal">
+                                            <input type="radio" data-order_button_text="Proceed to PayPal" value="BA" name="payment_method" class="input-radio" id="che_payment_method">
+
+                                            <label for="che_payment_method">Consignación o transferencia bancaria <img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"></label>
                                         </li>
                                     {% else %}
                                         <li class="wc_payment_method payment_method_paypal">
                                             <input type="radio" data-order_button_text="{{request.user.get_current_order.delivery_order.get_payment_method_display}}" checked class="input-radio" id="che_payment_method">
 
-                                            <label for="payment_method_paypal">{{request.user.get_current_order.delivery_order.get_payment_method_display}}</label>
+                                            <label for="che_payment_method">{{request.user.get_current_order.delivery_order.get_payment_method_display}}</label>
                                         </li>
                                     {% endif %}
                                 </ul>
+                                <div class="bank-info" style="margin: 10px 0px 30px 40px; display: none; width: 100%;">
+                                    <span class="bank-info"><strong>Banco:</strong> {{store.bank}} </span>
+                                    <span class="bank-info"><strong>Tipo de Cuenta:</strong> {{store.get_bank_type_display}} </span>
+                                    <span class="bank-info"><strong>Nº de cuenta:</strong> {{store.bank_number}}</span>
+                                </div>
                                 <div class="form-row place-order">
                                     {% if request.user.get_current_order.status == "PE" %}
                                         <input type="submit"
@@ -171,7 +182,7 @@
                                     <br>
                                 </div>
                             </div>
-                            </div>
+                        </div>
                     </div>
 
                 </form>
@@ -344,6 +355,16 @@
                         location.reload();
                     });
             }
+        })
+
+        $('.input-radio').on('click', function () {
+          if ($(this).val() === 'BA'){
+            $('.bank-info').show()
+          }
+          else {
+            $('.bank-info').hide()
+          }
+
         })
     })(jQuery);
 </script>

@@ -227,6 +227,7 @@ class DeliveryOrder(models.Model):
     PAYMENT_METHOD_CHOICES = (
         ('CS', 'Efectivo'),
         ('PS', 'Datáfono'),
+        ('BA', 'Consignación o transferencia bancaria'),
     )
     STATUS_CHOICES = (
         ('RN', 'En ejecución'),

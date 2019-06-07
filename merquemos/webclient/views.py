@@ -192,7 +192,13 @@ class CheckoutView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(CheckoutView, self).get_context_data(**kwargs)
-        context['order'] = self.request.user.get_current_order()
+        order = self.request.user.get_current_order()
+        try:
+            store = order.related_items.first().product.store
+        except:
+            store = "Sin tienda Asociada"
+        context['order'] = order
+        context['store'] = store
         return context
 
 

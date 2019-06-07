@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.text import slugify
 
+
 class AppPolicy(models.Model):
     """Stores application policies.
     """
@@ -31,6 +32,7 @@ class AppPolicy(models.Model):
             raise ValidationError('An %s record is already created' % self._meta.verbose_name)
         return True
 
+
 class FAQCategory(models.Model):
     """Stores Frequently Asked Quetions categories
     """
@@ -47,6 +49,7 @@ class FAQCategory(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class FAQItem(models.Model):
     """Stores FAQ questions per category (FAQCategory)
     """
@@ -62,6 +65,7 @@ class FAQItem(models.Model):
     def __unicode__(self):
         return self.question
 
+
 class State(models.Model):
     """Stores country states
     """
@@ -74,6 +78,7 @@ class State(models.Model):
 
     def __unicode__(self):
         return self.name
+
 
 class City(models.Model):
     """Stores country cities, referenced by state (State). e.g: Pereira (City), Risaralda (State)
@@ -96,6 +101,7 @@ class City(models.Model):
         self.slug = slugify(name)
         super(City, self).save(*args, **kwargs)
 
+
 class ContactMessage(models.Model):
     """Stores contact messages sent from contact form
     """
@@ -110,3 +116,16 @@ class ContactMessage(models.Model):
     def __unicode__(self):
         return self.title
 
+
+class Bank(models.Model):
+
+    name = models.CharField(
+        'Nombre',
+        max_length=255
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Banco'

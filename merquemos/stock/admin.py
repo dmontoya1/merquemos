@@ -21,12 +21,12 @@ class StoreParameterInline(admin.StackedInline):
 @admin.register(Store)
 class StoreAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">store</i>'
-    readonly_fields = ('slug', )
+    readonly_fields = ('slug',)
     inlines = [
         StoreParameterInline,
     ]
 
-    manager_readonly_fields = ('name', 'legal_id_number', 'manager', 'slug', 'is_active', )
+    manager_readonly_fields = ('name', 'legal_id_number', 'manager', 'slug', 'is_active',)
 
     def get_queryset(self, request):
         """
@@ -58,7 +58,7 @@ class StoreAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">layers</i>'
     list_display = ('name', 'parent')
-    readonly_fields = ('slug', )
+    readonly_fields = ('slug',)
 
 
 @admin.register(Brand)
@@ -81,7 +81,9 @@ class InventoryInline(admin.StackedInline):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">storage</i>'
-    list_display = ('sku', 'name', 'brand', 'store', 'category', 'price', 'pum_value', 'pum_type', 'tax_percentage', 'size', 'stock_quantity')
+    list_display = (
+        'sku', 'name', 'brand', 'store', 'category', 'price', 'pum_value', 'pum_type', 'tax_percentage', 'size',
+        'stock_quantity')
     search_fields = ('sku', 'name',)
     readonly_fields = ('stock_quantity', 'slug')
     list_filter = ('store', 'category')
@@ -95,10 +97,8 @@ class ProductAdmin(admin.ModelAdmin):
             instance.user = request.user
             instance.save(raw=True)
         formset.save()
-    
+
     def get_form(self, request, obj=None, **kwargs):
         form = super(ProductAdmin, self).get_form(request, obj, **kwargs)
         form.base_fields['category'].queryset = Category.objects.exclude(parent=None)
         return form
-
-

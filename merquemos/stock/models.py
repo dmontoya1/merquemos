@@ -7,10 +7,19 @@ from django.db import models
 from django.urls import reverse_lazy
 from django.utils.text import slugify
 
-from manager.models import City
+from manager.models import City, Bank
 
 
 class Store(models.Model):
+
+    AHORROS = 'AH'
+    CORRIENTE = 'CO'
+
+    BANK_TYPE = (
+        (AHORROS, 'Ahorros'),
+        (CORRIENTE, 'Corriente'),
+    )
+
     name = models.CharField('Nombre', max_length=255, unique=True)
     legal_id_number = models.CharField('NIT', max_length=255, unique=True)
     manager = models.ForeignKey(
@@ -38,6 +47,23 @@ class Store(models.Model):
     app_hex_code = models.CharField('Código HEX color', max_length=10, null=True, blank=True)
     slug = models.SlugField(unique=True, null=True, blank=True)
     is_active = models.BooleanField('Tienda activa?', default=True)
+    bank = models.ForeignKey(
+        Bank,
+        verbose_name='Banco',
+        null=True, blank=True
+    )
+    bank_type = models.CharField(
+        'Tipo de cuenta',
+        choices=BANK_TYPE,
+        max_length=2,
+        null=True,
+        blank=True
+    )
+    bank_number = models.CharField(
+        'Numero de cuenta',
+        max_length=20,
+        null=True, blank=True
+    )
 
     class Meta:
         verbose_name = "Tienda"

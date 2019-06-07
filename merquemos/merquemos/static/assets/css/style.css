@@ -10237,3 +10237,7 @@ span.pum-price {
 .pum {
   color: #999;
 }
+
+span.bank-info{
+  display: block;
+}
