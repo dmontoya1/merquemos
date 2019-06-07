@@ -104,9 +104,5 @@ class OrderAdmin(admin.ModelAdmin):
             return response
         return super(OrderAdmin, self).response_change(request, obj)
 
+
 admin.site.register(Order, OrderAdmin)
-
-
-
-
-
