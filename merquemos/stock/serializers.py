@@ -8,7 +8,11 @@ from .models import (
 
 class StoreSerializer(serializers.ModelSerializer):
 
-    bank = serializers.StringRelatedField(many=True)
+    bank = serializers.SlugRelatedField(
+            many=False,
+            read_only=True,
+            slug_field='name'
+         )
     bank_type = serializers.SerializerMethodField()
 
     def get_bank_type(self, obj):
