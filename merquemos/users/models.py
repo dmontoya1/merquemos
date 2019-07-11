@@ -71,7 +71,7 @@ class User(AbstractUser):
 class Address(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="related_addresses")
     city = models.ForeignKey(City)
-    name = models.CharField(max_length=25)
+    name = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=15)
     label = models.CharField(max_length=255)
     directions = models.TextField(null=True, blank=True)
