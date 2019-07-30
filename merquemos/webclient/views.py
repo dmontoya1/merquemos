@@ -254,7 +254,7 @@ class ExportOrder(PDFTemplateView):
         order = Order.objects.get(pk=self.kwargs.get('pk'))
         return super(ExportOrder, self).get_context_data(
             pagesize='Letter',
-            title='Factura Merquemos',
+            title='Factura Tú mercado',
             order=order,
             **kwargs
         )

@@ -176,6 +176,7 @@ class Category(models.Model):
 
     class Meta:
         verbose_name = "Categoría"
+        ordering = ['name', ]
 
     def __str__(self):
         return str(self.name)
@@ -243,6 +244,7 @@ class Product(models.Model):
 
     class Meta:
         verbose_name = "Producto"
+        ordering = ['name', ]
 
     def __str__(self):
         return str(self.name)
