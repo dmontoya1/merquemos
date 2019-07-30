@@ -339,70 +339,70 @@
     });
 </script>
 <script>
-    var centrifuge = new Centrifuge({
-        url: '{{ webclient_context_centrifugo_params.sockjs_endpoint }}',
-        user: '{{ webclient_context_centrifugo_params.user }}',
-        timestamp: '{{ webclient_context_centrifugo_params.timestamp }}',
-        info: '{{ webclient_context_centrifugo_params.info|safe }}',
-        token: '{{ webclient_context_centrifugo_params.token }}'
-    });
-    
-    centrifuge.subscribe("private:{{request.user.private_hash}}#{{request.user.pk}}", function(message) {
-        if (message.data.order_status == "CA") {
-            title = 'Tu orden ha sido cancelada'
-            type = 'warning'
-            html = ''
-            confirmButtonText = 'Aceptar'
-        } else {
-            title = 'Orden entregada satisfactoriamente'
-            type = 'success'
-            html = '<div id="rater" class="center-align"></div><br>' +
-              '<input type="text" class="input-text" name="rat_comments" id="rat_comments" placeholder="Comentarios (opcional)" />'
-            confirmButtonText = 'Calificar'
-        }
-        swal({
-            title: title,
-            type: type,
-            html: html,
-            showCloseButton: true,
-            focusConfirm: false,
-            confirmButtonText: confirmButtonText,
-            showLoaderOnConfirm: true,
-            preConfirm: function() {
-                if (message.data.order_status == "DE") {
-                    return new Promise(function(resolve) {
-                        var jqxhr = $.post(
-                          "{% url 'sales:rating-create' %}",
-                          {
-                              number: $("#rater").rateYo("option", "numStars"),
-                              order: message.data.order_id,
-                              comments: $('#rat_comments').val()
-                          }, function(data) {
-                              resolve();
-                          }
-                        );
-                    });
-                } else {
-                    return new Promise(function(resolve){resolve();});
-                }
-            }
-        }).then(function () {
-            if (message.data.order_status == "DE") {
-                $('.swal2-confirm').attr('disabled', false);
-                $('.swal2-confirm').val('Guardar');
-                swal('Orden calificada correctamente').then(function () {
-                    window.location.replace('/');
-                });
-            }
-            window.location.reload();
-        });
-        
-        $("#rater").rateYo({
-            numStars: 5
-        });
-    });
-    
-    centrifuge.connect();
+    // var centrifuge = new Centrifuge({
+    //     url: '{{ webclient_context_centrifugo_params.sockjs_endpoint }}',
+    //     user: '{{ webclient_context_centrifugo_params.user }}',
+    //     timestamp: '{{ webclient_context_centrifugo_params.timestamp }}',
+    //     info: '{{ webclient_context_centrifugo_params.info|safe }}',
+    //     token: '{{ webclient_context_centrifugo_params.token }}'
+    // });
+    //
+    // centrifuge.subscribe("private:{{request.user.private_hash}}#{{request.user.pk}}", function(message) {
+    //     if (message.data.order_status == "CA") {
+    //         title = 'Tu orden ha sido cancelada'
+    //         type = 'warning'
+    //         html = ''
+    //         confirmButtonText = 'Aceptar'
+    //     } else {
+    //         title = 'Orden entregada satisfactoriamente'
+    //         type = 'success'
+    //         html = '<div id="rater" class="center-align"></div><br>' +
+    //           '<input type="text" class="input-text" name="rat_comments" id="rat_comments" placeholder="Comentarios (opcional)" />'
+    //         confirmButtonText = 'Calificar'
+    //     }
+    //     swal({
+    //         title: title,
+    //         type: type,
+    //         html: html,
+    //         showCloseButton: true,
+    //         focusConfirm: false,
+    //         confirmButtonText: confirmButtonText,
+    //         showLoaderOnConfirm: true,
+    //         preConfirm: function() {
+    //             if (message.data.order_status == "DE") {
+    //                 return new Promise(function(resolve) {
+    //                     var jqxhr = $.post(
+    //                       "{% url 'sales:rating-create' %}",
+    //                       {
+    //                           number: $("#rater").rateYo("option", "numStars"),
+    //                           order: message.data.order_id,
+    //                           comments: $('#rat_comments').val()
+    //                       }, function(data) {
+    //                           resolve();
+    //                       }
+    //                     );
+    //                 });
+    //             } else {
+    //                 return new Promise(function(resolve){resolve();});
+    //             }
+    //         }
+    //     }).then(function () {
+    //         if (message.data.order_status == "DE") {
+    //             $('.swal2-confirm').attr('disabled', false);
+    //             $('.swal2-confirm').val('Guardar');
+    //             swal('Orden calificada correctamente').then(function () {
+    //                 window.location.replace('/');
+    //             });
+    //         }
+    //         window.location.reload();
+    //     });
+    //
+    //     $("#rater").rateYo({
+    //         numStars: 5
+    //     });
+    // });
+    //
+    // centrifuge.connect();
     
     function update_cart(){
         $.ajax({
