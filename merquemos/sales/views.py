@@ -16,7 +16,7 @@ from api.helpers import get_api_user
 from users.models import Address
 from .models import Order, Item, DeliveryOrder
 from .serializers import (
-    OrderSerializer, OrderItemSerializer, 
+    OrderSerializer, OrderItemSerializer,
     ItemSerializer, OrderHistorySerializer,
     RatingSerializer, OrderDetailSerializer
 )
@@ -149,8 +149,12 @@ class RatingCreate(generics.CreateAPIView):
 
 @csrf_exempt
 def checkout(request):
+    print(request.POST)
     order = Order.objects.get(pk=request.POST['order_id'])
-    order.delivery_price = order.get_delivery_price()
+    if request.POST['delivery_option'] == DeliveryOrder.POINT:
+        order.delivery_price = 0
+    else:
+        order.delivery_price = order.get_delivery_price()
     order.status = 'AC'
     if request.POST.get('comments', False):
         order.comments = request.POST['comments']
@@ -169,6 +173,7 @@ def checkout(request):
         payment_method=payment_method,
         delivery_option=delivery_option,
         delivery_time=delivery_time,
+        paid_amount=request.POST['total_price']
     )
     delivery_order.save()
 
