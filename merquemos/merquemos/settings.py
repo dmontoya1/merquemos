@@ -16,8 +16,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '34.231.240.208',
-    'www.merquemos.co',
-    'merquemos.co'
+    'www.tu-mercado.co',
+    'tu-mercado.co'
 ]
 
 # Application definition
@@ -197,12 +197,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "merquemos/static")
 ]
-STATIC_ROOT = '/var/www/merquemos.co/static/'
+STATIC_ROOT = '/var/www/tu-mercado.co/static/'
 
 
 # User uploades files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/var/www/merquemos.co/media/'
+MEDIA_ROOT = '/var/www/tu-mercado.co/media/'
 FILE_UPLOAD_PERMISSIONS = 0644
 
 # Email config
