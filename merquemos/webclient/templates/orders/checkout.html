@@ -220,7 +220,7 @@
     $("#delivery_option").on('change', function(e){
       delivery_price = '${{order.get_delivery_price|intcomma}}'
       delivery_price_value = parseInt('{{order.get_delivery_price}}')
-      total_price = '${{order.get_total_with_tax.normalize|intcomma}}'
+      total_price = '{{order.get_total_with_tax.normalize|intcomma}}'
       if ($(this).val() === 'IN' || $(this).val() === 'PO'){
         $('.delivery-time').hide()
         if ($(this).val() === 'PO'){
