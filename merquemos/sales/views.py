@@ -149,7 +149,6 @@ class RatingCreate(generics.CreateAPIView):
 
 @csrf_exempt
 def checkout(request):
-    print(request.POST)
     order = Order.objects.get(pk=request.POST['order_id'])
     if request.POST['delivery_option'] == DeliveryOrder.POINT:
         order.delivery_price = 0
@@ -173,7 +172,7 @@ def checkout(request):
         payment_method=payment_method,
         delivery_option=delivery_option,
         delivery_time=delivery_time,
-        paid_amount=request.POST['total_price']
+        paid_amount=request.POST.get('total_price', 0)
     )
     delivery_order.save()
 
