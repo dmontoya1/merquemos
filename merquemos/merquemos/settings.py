@@ -203,7 +203,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = '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'
-
+DEFAULT_FROM_EMAIL = 'no-reply@tu-mercado.co'
 
 # Sentry Config
 RAVEN_CONFIG = {
