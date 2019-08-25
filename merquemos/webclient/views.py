@@ -65,6 +65,8 @@ class HomePageView(TemplateView):
                         order = Order.objects.filter(user=user, status='AC').last()
                     elif Order.objects.filter(user=user, status='SH').exists():
                         order = Order.objects.filter(user=user, status='SH').last()
+                    else:
+                        order = Order.objects.create(user=user, status='PE')
                 
                 if request.session.get('city', False):
                     city = City.objects.get(pk=request.session['city'])
