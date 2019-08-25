@@ -71,7 +71,7 @@ class Order(ExportModelMixin):
                 }
                 if devices.count() > 0:
                     devices.send_message(
-                        title="Tu orden de Tú mercado",
+                        title="Tu orden de Tu mercado",
                         body="Tu orden ha sido " + self.get_status_display().lower(),
                         icon="",
                         data=data
