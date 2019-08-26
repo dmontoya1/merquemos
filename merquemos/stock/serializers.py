@@ -108,7 +108,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def get_product_image(self, obj):
         domain = Site.objects.get_current().domain
-        return 'http://{domain}{path}'.format(domain=domain, path=obj.image.url)
+        return 'https://{domain}{path}'.format(domain=domain, path=obj.image.url)
 
 
 class ProductDeleteSerializer(serializers.ModelSerializer):
