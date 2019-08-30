@@ -106,4 +106,4 @@ class GoogleAuth(SocialLoginView):
     
     def get_callback_url(self):
         domain = Site.objects.get_current().domain
-        return 'http://{domain}/api/accounts/google/login/callback/'.format(domain=domain)
+        return 'https://tu-mercado.co/api/accounts/google/login/callback/'.format(domain=domain)
