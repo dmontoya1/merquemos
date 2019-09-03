@@ -28,7 +28,7 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    
+
 ]
 
 THIRD_PARTY_APPS = [
@@ -111,15 +111,15 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_ADAPTER = 'users.adapters.AccountAdapter'
 AUTHENTICATION_BACKENDS = (
-   "django.contrib.auth.backends.ModelBackend",
-   "allauth.account.auth_backends.AuthenticationBackend"
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend"
 )
 LOGIN_REDIRECT_URL = '/login/'
 LOGOUT_REDIRECT_URL = '/'
 LOGOUT_ON_PASSWORD_CHANGE = True
 OLD_PASSWORD_FIELD_ENABLED = True
 
-#Social account settings
+# Social account settings
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
         'METHOD': 'oauth2',
@@ -229,7 +229,7 @@ FCM_DJANGO_SETTINGS = {
     "FCM_SERVER_KEY": "AIzaSyA103iO1CMBzGnUGhk1M2kp0iWK0ReUoyE"
 }
 
-#Centrifugo Config
+# Centrifugo Config
 CENTRIFUGE_ADDRESS = 'http://localhost:8008'
 CENTRIFUGE_SECRET = 'f@pp#qe3b7)7uy27u094t8s1pq'
 CENTRIFUGE_TIMEOUT = 10
@@ -254,6 +254,13 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose'
+        },
+        'gunicorn': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': '/opt/djangoprojects/reports/bin/gunicorn.errors',
+            'maxBytes': 1024 * 1024 * 100,  # 100 mb
         }
     },
     'loggers': {
@@ -267,6 +274,10 @@ LOGGING = {
             'handlers': ['console'],
             'propagate': False,
         },
+        'gunicorn.errors': {
+            'level': 'DEBUG',
+            'handlers': ['gunicorn'],
+            'propagate': True,
+        },
     },
 }
-
