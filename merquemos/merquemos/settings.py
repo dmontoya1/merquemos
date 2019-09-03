@@ -247,7 +247,7 @@ JET_INDEX_DASHBOARD = 'dashboard.IndexDashboard'
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': false,
+    'disable_existing_loggers': False,
     'root': {
         'level': 'INFO',
         'handlers': ['console'],
