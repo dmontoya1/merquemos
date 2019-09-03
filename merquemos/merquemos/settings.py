@@ -238,7 +238,7 @@ JET_INDEX_DASHBOARD = 'dashboard.IndexDashboard'
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': True,
+    'disable_existing_loggers': false,
     'root': {
         'level': 'INFO',
         'handlers': ['console'],
@@ -263,7 +263,7 @@ LOGGING = {
             'propagate': False,
         },
         'django.security.DisallowedHost': {
-            'level': 'ERROR',
+            'level': 'INFO',
             'handlers': ['console'],
             'propagate': False,
         },
