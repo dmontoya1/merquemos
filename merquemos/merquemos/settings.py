@@ -268,7 +268,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
             'formatter': 'verbose',
-            'filename': '/opt/tu-mercado/reports/bin/gunicorn.errors',
+            'filename': '/home/ubuntu/gunicorn.errors',
             'maxBytes': 1024 * 1024 * 100,  # 100 mb
         }
     },
