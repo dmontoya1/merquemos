@@ -9,14 +9,18 @@ from .models import (
 class StoreSerializer(serializers.ModelSerializer):
 
     bank = serializers.SlugRelatedField(
-            many=False,
-            read_only=True,
-            slug_field='name'
-         )
+        many=False,
+        read_only=True,
+        slug_field='name'
+    )
     bank_type = serializers.SerializerMethodField()
+    delivery_price = serializers.SerializerMethodField()
 
     def get_bank_type(self, obj):
         return obj.get_bank_type_display()
+
+    def get_delivery_price(self, obj):
+        return obj.related_parameters.get().delivery_price
 
     class Meta:
         model = Store
@@ -34,7 +38,8 @@ class StoreSerializer(serializers.ModelSerializer):
             'legal_id_number',
             'bank',
             'bank_type',
-            'bank_number'
+            'bank_number',
+            'delivery_price'
         )
 
 
