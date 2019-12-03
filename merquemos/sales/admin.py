@@ -82,7 +82,7 @@ class OrderAdmin(admin.ModelAdmin):
         query = super(OrderAdmin, self).get_queryset(request)
         if request.user.user_type == User.MANAGER:
             user_store = request.user.related_store.first()
-            return query.filter(related_items__product__store=user_store)
+            return query.filter(related_items__product__store=user_store).distinct()
         else:
             return query.all()
 
